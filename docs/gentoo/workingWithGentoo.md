@@ -153,9 +153,9 @@ root #emerge --update --deep --newuse @world
 
 Some packages in the Gentoo repository don't have any real content but are used to install a collection of packages. For instance, the [kde-plasma/plasma-meta](https://packages.gentoo.org/packages/kde-plasma/plasma-meta) package will install the KDE Plasma desktop on the system by pulling in various Plasma-related packages as dependencies.
 
-To remove such a package from the system, running `emerge --deselect` on the package will not have much effect since the dependencies for the package remain on the system.
+To remove such a package from the system, running **emerge --deselect** on the package will not have much effect since the dependencies for the package remain on the system.
 
-Portage has the functionality to remove orphaned dependencies as well, but since the availability of software is dynamically dependent it is important to first update the entire system fully, including the new changes applied when changing USE flags. After this one can run emerge --depclean to remove the orphaned dependencies. When this is done, it might be necessary to rebuild the applications that were dynamically linked to the now-removed software titles but don't require them anymore, although recently support for this has been added to Portage.
+Portage has the functionality to remove orphaned dependencies as well, but since the availability of software is dynamically dependent it is important to first update the entire system fully, including the new changes applied when changing USE flags. After this one can run **emerge --depclean** to remove the orphaned dependencies. When this is done, it might be necessary to rebuild the applications that were dynamically linked to the now-removed software titles but don't require them anymore, although recently support for this has been added to Portage.
 
 All this is handled with the following two commands:
 
@@ -163,7 +163,8 @@ root #emerge --update --deep --newuse @world
 root #emerge --ask --depclean
 
 ## Licenses
-Beginning with Portage version 2.1.7, it is possible to accept or reject software installation based on its license. All packages in the tree contain a LICENSE entry in their ebuilds. Running emerge --search category/package will show the package's license.
+
+Beginning with Portage version 2.1.7, it is possible to accept or reject software installation based on its license. All packages in the tree contain a *LICENSE* entry in their ebuilds. Running **emerge --search category/package** will show the package's license.
 
  Important
 As a disclaimer and limitation of liability, the LICENSE variable in an ebuild is merely a guideline for Gentoo developers and users. It is not a legal statement or a guarantee that it will reflect the license of every file installed by an ebuild. It should not be relied upon for a completely accurate legal representation of all files provided by a package. To gain assurance, system administrators should perform an in-depth check of each file installed by a package for proper licensing alignment and/or compliance. If a discrepancies is found in the ebuild, please file a bug to suggest a change to the value(s) assigned to the ebuild's LICENSE variable.
