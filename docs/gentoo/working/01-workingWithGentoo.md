@@ -168,14 +168,17 @@ root # emerge --ask --depclean
 
 Beginning with Portage version 2.1.7, it is possible to accept or reject software installation based on its license. All packages in the tree contain a *LICENSE* entry in their ebuilds. Running **emerge --search category/package** will show the package's license.
 
-*Important
+```
+Important
 As a disclaimer and limitation of liability, the LICENSE variable in an ebuild is merely a guideline for Gentoo developers and users. It is *not* a legal statement or a guarantee that it will reflect the license of every file installed by an ebuild. It should not be relied upon for a completely accurate legal representation of all files provided by a package. To gain assurance, system administrators should perform an in-depth check of each file installed by a package for proper licensing alignment and/or compliance. If a discrepancies is found in the ebuild, please file a bug to suggest a change to the value(s) assigned to the ebuild's LICENSE variable.
-By default, Portage permits licenses that are explicitly approved by the Free Software Foundation, the Open Source Initiative, or that follow the Free Software Definition.
-*
+```
 
-The variable that controls permitted licenses is called ACCEPT_LICENSE, which can be set in the /etc/portage/make.conf file. In the next example, this default value is shown:
+By default, Portage permits licenses that are explicitly approved by the [Free Software Foundation](https://www.gnu.org/licenses/license-list.html), the [Open Source Initiative](https://opensource.org/licenses), or that follow the [Free Software Definition](https://www.gnu.org/philosophy/free-sw.html).
 
-FILE /etc/portage/make.confThe default ACCEPT_LICENSE setting
+
+The variable that controls permitted licenses is called *ACCEPT_LICENSE*, which can be set in the `/etc/portage/make.conf` file. In the next example, this default value is shown:
+
+FILE /etc/portage/make.conf The default ACCEPT_LICENSE setting
 ACCEPT_LICENSE="-* @FREE"
 With this configuration, packages with a free software or documentation license will be installable. Non-free software will not be installable.
 
