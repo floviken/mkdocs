@@ -121,13 +121,17 @@ user $ equery files --filter=doc alsa-lib
 /usr/share/doc/alsa-lib-1.1.3/asoundrc.txt.bz2
 ```
 
-The `--filter` option can be used with other rules to view the install locations for many other types of files. Additional functionality can be reviewed in equery's man page: man 1 equery.
+The `--filter` option can be used with other rules to view the install locations for many other types of files. Additional functionality can be reviewed in equery's man page: **man 1 equery**.
 
-Removing software
-To safely remove software from a system, use emerge --deselect. This will tell Portage a package is no longer required and it is eligible for cleaning through --depclean.
+### Removing software
 
+To safely remove software from a system, use `emerge --deselect`. This will tell Portage a package is no longer required and it is eligible for cleaning through `--depclean`.
+
+``` shell
 root #emerge --deselect gnumeric
-When a package is no longer selected, the package and its dependencies that were installed automatically when it was installed are still left on the system. To have Portage locate all dependencies that can now be removed, use emerge's --depclean functionality, which is documented later.
+```
+
+When a package is no longer selected, the package and its dependencies that were installed automatically when it was installed are still left on the system. To have Portage locate all dependencies that can now be removed, use **emerge**'s `--depclean` functionality, which is documented later.
 
 Updating the system
 To keep the system in perfect shape (and not to mention install the latest security updates) it is necessary to update the system regularly. Since Portage only checks the ebuilds in the Gentoo repository, the first thing to do is to update this repository using emerge --sync. Then the system can be updated using emerge --deep --update @world.
