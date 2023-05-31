@@ -33,7 +33,7 @@ An additional advantage of using emerge-webrsync is that it allows the administr
 ).
 ## Maintaining software
 ### Searching for software
-There are multiple ways to search through the Gentoo repository for software. One way is through **emerge** itself. By default, **emerge --search** returns the names of packages whose title matches (either fully or partially) the given search term.
+There are multiple ways to search through the Gentoo repository for software. One way is through **emerge** itself. By default,  **emerge --search** returns the names of packages whose title matches (either fully or partially) the given search term.
 
 For instance, to search for all packages who have "pdf" in their name:
 
@@ -69,10 +69,15 @@ root # emerge --ask app-office/gnumeric
 
 Since many applications depend on each other, any attempt to install a certain software package might result in the installation of several dependencies as well. Don't worry, Portage handles dependencies well. To find out what Portage would install, add the `--pretend` option. For instance:
 
+``` shell
 root # emerge --pretend gnumeric
-To do the same, but interactively choose whether or not to proceed with the installation, add the --ask flag:
+```
+To do the same, but interactively choose whether or not to proceed with the installation, add the `--ask` flag:
 
+``` shell
 root # emerge --ask gnumeric
+``` 
+
 During the installation of a package, Portage will download the necessary source code from the Internet (if necessary) and store it by default in /var/cache/distfiles/. After this it will unpack, compile and install the package. To tell Portage to only download the sources without installing them, add the --fetchonly option to the emerge command:
 
 root #emerge --fetchonly gnumeric
