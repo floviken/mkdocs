@@ -78,7 +78,7 @@ To do the same, but interactively choose whether or not to proceed with the inst
 root # emerge --ask gnumeric
 ``` 
 
-During the installation of a package, Portage will download the necessary source code from the Internet (if necessary) and store it by default in `/var/cache/distfiles/`. After this it will unpack, compile and install the package. To tell Portage to only download the sources without installing them, add the `--fetchonly` option to the emerge command:
+During the installation of a package, Portage will download the necessary source code from the Internet (if necessary) and store it by ==default== in `/var/cache/distfiles/`. After this it will unpack, compile and install the package. To tell Portage to only download the sources without installing them, add the `--fetchonly` option to the emerge command:
 
 ``` shell
 root # emerge --fetchonly gnumeric
