@@ -109,7 +109,7 @@ total 16
 -rw-r--r-- 1 root root  220 Mar  9 15:36 TODO.bz2
 ```
 
-A more sure way to list installed documentation files is to use **equery**'s `--filter` option. **equery** is used to query Portage's database and comes as part of the `app-portage/gentoolkit` package:
+A more sure way to list installed documentation files is to use **equery**'s `--filter` option. **equery** is used to query Portage's database and comes as part of the [app-portage/gentoolkit](https://packages.gentoo.org/packages/app-portage/gentoolkit) package:
 
 ``` shell
 user $ equery files --filter=doc alsa-lib
