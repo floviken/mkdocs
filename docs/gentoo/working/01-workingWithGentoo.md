@@ -185,7 +185,7 @@ ACCEPT_LICENSE="-* @FREE"
 ```
 With this configuration, packages with a free software or documentation license will be installable. Non-free software will not be installable.
 
-It is possible to set ACCEPT_LICENSE globally in /etc/portage/make.conf, or to specify it on a per-package basis in the /etc/portage/package.license file.
+It is possible to set *ACCEPT_LICENSE* globally in /etc/portage/make.conf, or to specify it on a per-package basis in the /etc/portage/package.license file.
 
 For example, to allow the google-chrome license for the www-client/google-chrome package, add the following to /etc/portage/package.license:
 
@@ -197,14 +197,17 @@ This permits the installation of the www-client/google-chrome package, but prohi
 
 Or to allow the often-needed sys-kernel/linux-firmware:
 
-FILE /etc/portage/package.licenseAccepting the licenses for the linux-firmware package
+``` shell title="FILE /etc/portage/package.licenseAccepting the licenses for the linux-firmware package"
 # Accepting the license for linux-firmware
 sys-kernel/linux-firmware linux-fw-redistributable
 
 # Accepting any license that permits redistribution
 sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
- Important
+```
+
+```title="Important"
 Licenses are stored in /var/db/repos/gentoo/licenses/ directory, and license groups are kept in /var/db/repos/gentoo/profiles/license_groups file. The first entry of each line in CAPITAL letters is the name of the license group, and every entry after that is an individual license.
+```
 License groups defined in the ACCEPT_LICENSE variable are prefixed with an @ sign. A possible setting (which was the previous Portage default) is to allow all licenses, except End User License Agreements (EULAs) that require reading and signing an acceptance agreement. To accomplish this, accept all licenses (using *) and then remove the licenses in the EULA group as follows:
 
 FILE /etc/portage/make.confAccept all licenses except EULAs
