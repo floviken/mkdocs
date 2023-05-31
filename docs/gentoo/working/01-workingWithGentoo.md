@@ -96,7 +96,7 @@ Calculating dependencies... done!
 [ebuild   R    ] media-libs/alsa-lib-1.1.3::gentoo  USE="python -alisp -debug -doc" ABI_X86="(64) -32 (-x32)" PYTHON_TARGETS="python2_7" 0 KiB
 ```
 
-The best way of enabling the `doc` USE flag is doing it on a per-package basis via `/etc/portage/package.use`, so that only the documentation for the wanted packages is installed. For more information read the [USE flags](02-useflags.md) section.
+The best way of enabling the `doc` USE flag is doing it on a per-package basis via `/etc/portage/package.use`, so that only the documentation for the wanted packages is installed. For more information read the [USE flags](/docs/gentoo/working/02-useflags.md) section.
 
 Once the package installed, its documentation is generally found in a subdirectory named after the package in the `/usr/share/doc/` directory:
 
