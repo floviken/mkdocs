@@ -180,8 +180,9 @@ By default, Portage permits licenses that are explicitly approved by the [Free S
 
 The variable that controls permitted licenses is called *ACCEPT_LICENSE*, which can be set in the `/etc/portage/make.conf` file. In the next example, this default value is shown:
 
-```shell title="FILE /etc/portage/make.conf The default ACCEPT_LICENSE setting"
+``` shell title="FILE /etc/portage/make.conf The default ACCEPT_LICENSE setting"
 ACCEPT_LICENSE="-* @FREE"
+```
 With this configuration, packages with a free software or documentation license will be installable. Non-free software will not be installable.
 
 It is possible to set ACCEPT_LICENSE globally in /etc/portage/make.conf, or to specify it on a per-package basis in the /etc/portage/package.license file.
