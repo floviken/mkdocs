@@ -161,7 +161,8 @@ All this is handled with the following two commands:
 
 root #emerge --update --deep --newuse @world
 root #emerge --ask --depclean
-Licenses
+
+## Licenses
 Beginning with Portage version 2.1.7, it is possible to accept or reject software installation based on its license. All packages in the tree contain a LICENSE entry in their ebuilds. Running emerge --search category/package will show the package's license.
 
  Important
@@ -198,7 +199,7 @@ FILE /etc/portage/make.confAccept all licenses except EULAs
 ACCEPT_LICENSE="* -@EULA"
 Note that this setting will also accept non-free software and documentation.
 
-When Portage is complaining
+## When Portage is complaining
 Terminology
 As stated before, Portage is extremely powerful and supports many features that other software management tools lack. To understand this, we explain a few aspects of Portage without going into too much detail.
 
