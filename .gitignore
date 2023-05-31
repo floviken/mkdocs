@@ -4,7 +4,8 @@ __pycache__/
 *$py.class
 
 # obsidian
-.obsidian/
+# to exclude Obsidian workspace settings (including plugin and hotkey configurations)
+.obsidian/*
 
 # C extensions
 *.so
