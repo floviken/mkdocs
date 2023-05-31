@@ -29,20 +29,27 @@ Sometimes firewall restrictions apply that prevent **rsync** from contacting the
 root # emerge-webrsync
 ```
 
-An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on [fetching validated Gentoo repository snapshots(#Portage features
-)].
+An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on [fetching validated Gentoo repository snapshots](##Portage features
+).
 ## Maintaining software
 ### Searching for software
-There are multiple ways to search through the Gentoo repository for software. One way is through emerge itself. By default, emerge --search returns the names of packages whose title matches (either fully or partially) the given search term.
+There are multiple ways to search through the Gentoo repository for software. One way is through **emerge** itself. By default, **emerge --search** returns the names of packages whose title matches (either fully or partially) the given search term.
 
 For instance, to search for all packages who have "pdf" in their name:
 
-user $emerge --search pdf
+``` shell
+user $ emerge --search pdf
+```
+
 To search through the descriptions as well, use the --searchdesc (or -S) option:
 
+``` shell
 user $emerge --searchdesc pdf
+```
+
 Notice that the output returns a lot of information. The fields are clearly labelled so we won't go further into their meanings:
 
+``` code
 CODE Example output for a search command
 *  net-print/cups-pdf
       Latest version available: 1.5.2
@@ -51,10 +58,15 @@ CODE Example output for a search command
       Homepage:    http://cip.physik.uni-wuerzburg.de/~vrbehr/cups-pdf/
       Description: Provides a virtual printer for CUPS to produce PDF files.
       License:     GPL-2
-Installing software
+```
+
+### Installing software
 When a software title has been found, then the installation is just one emerge command away. For instance, to install gnumeric:
 
+``` shell
 root #emerge --ask app-office/gnumeric
+```
+
 Since many applications depend on each other, any attempt to install a certain software package might result in the installation of several dependencies as well. Don't worry, Portage handles dependencies well. To find out what Portage would install, add the --pretend option. For instance:
 
 root #emerge --pretend gnumeric
