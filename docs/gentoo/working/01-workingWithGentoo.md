@@ -1,6 +1,7 @@
 # Working with Gentoo
-
+#gentoo #handbook #portage
 ## Welcome to Portage
+
 Portage is one of Gentoo's most notable innovations in software management. With its high flexibility and enormous amount of features it is frequently seen as the best software management tool available for Linux.
 
 Portage is completely written in [Python](https://www.python.org/) and [Bash](https://www.gnu.org/software/bash) and therefore fully visible to the users as both are scripting languages.
@@ -12,10 +13,12 @@ user $ man emerge
 ```
 
 ## Gentoo repository
+
 ### Ebuilds
 When Gentoo's documentation talks about packages, it means software titles that are available to the Gentoo users through the Gentoo repository. This repository is a collection of ebuilds, files that contain all information Portage needs to maintain software (install, search, query, etc.). These ebuilds reside in `/var/db/repos/gentoo` by default.
 
 Whenever someone asks Portage to perform some action regarding software titles, it will use the ebuilds on the system as a base. It is therefore important to regularly update the ebuilds on the system so Portage knows about new software, security updates, etc.
+
 ### Updating the Gentoo repository
 The Gentoo repository is usually updated with **rsync**, a fast incremental file transfer utility. Updating is fairly simple as the **emerge** command provides a front-end for **rsync**:
 
@@ -31,8 +34,11 @@ root # emerge-webrsync
 
 An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on [fetching validated Gentoo repository snapshots](##Portage features
 ).
+
 ## Maintaining software
+
 ### Searching for software
+
 There are multiple ways to search through the Gentoo repository for software. One way is through **emerge** itself. By default,  **emerge --search** returns the names of packages whose title matches (either fully or partially) the given search term.
 
 For instance, to search for all packages who have "pdf" in their name:
@@ -61,6 +67,7 @@ CODE Example output for a search command
 ```
 
 ### Installing software
+
 When a software title has been found, then the installation is just one **emerge** command away. For instance, to install gnumeric:
 
 ``` shell
@@ -181,6 +188,7 @@ The variable that controls permitted licenses is called *ACCEPT_LICENSE*, which 
 ``` shell title="FILE /etc/portage/make.conf  The default ACCEPT_LICENSE setting"
 ACCEPT_LICENSE="-* @FREE"
 ```
+
 With this configuration, packages with a free software or documentation license will be installable. Non-free software will not be installable.
 
 It is possible to set *ACCEPT_LICENSE* globally in /etc/portage/make.conf, or to specify it on a per-package basis in the /etc/portage/package.license file.
@@ -190,6 +198,7 @@ For example, to allow the google-chrome license for the www-client/google-chrome
 ``` shell title="FILE /etc/portage/package.license  Accepting the google-chrome license for the google-chrome package"
 www-client/google-chrome google-chrome
 ```
+
 This permits the installation of the www-client/google-chrome package, but prohibits the installation of the www-plugins/chrome-binary-plugins package, even though it has the same license.
 
 
@@ -206,14 +215,18 @@ sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
 ```title="Important"
 Licenses are stored in /var/db/repos/gentoo/licenses/ directory, and license groups are kept in /var/db/repos/gentoo/profiles/license_groups file. The first entry of each line in CAPITAL letters is the name of the license group, and every entry after that is an individual license.
 ```
-License groups defined in the ACCEPT_LICENSE variable are prefixed with an @ sign. A possible setting (which was the previous Portage default) is to allow all licenses, except End User License Agreements (EULAs) that require reading and signing an acceptance agreement. To accomplish this, accept all licenses (using *) and then remove the licenses in the EULA group as follows:
 
-FILE /etc/portage/make.confAccept all licenses except EULAs
+License groups defined in the *ACCEPT_LICENSE* variable are prefixed with an @ sign. A possible setting (which was the previous Portage default) is to allow all licenses, except End User License Agreements (EULAs) that require reading and signing an acceptance agreement. To accomplish this, accept all licenses (using *) and then remove the licenses in the EULA group as follows:
+
+```title="FILE /etc/portage/make.confAccept all licenses except EULAs"
 ACCEPT_LICENSE="* -@EULA"
+```
+
 Note that this setting will also accept non-free software and documentation.
 
 ## When Portage is complaining
-Terminology
+
+### Terminology
 As stated before, Portage is extremely powerful and supports many features that other software management tools lack. To understand this, we explain a few aspects of Portage without going into too much detail.
 
 With Portage different versions of a single package can coexist on a system. While other distributions tend to name their package to those versions (like gtk+2 and gtk+3) Portage uses a technology called SLOTs. An ebuild declares a certain SLOT for its version. Ebuilds with different SLOTs can coexist on the same system. For instance, the gtk+ package has ebuilds with SLOT="2" and SLOT="3".
