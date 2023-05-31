@@ -41,15 +41,15 @@ For instance, to search for all packages who have "pdf" in their name:
 user $ emerge --search pdf
 ```
 
-To search through the descriptions as well, use the --searchdesc (or -S) option:
+To search through the descriptions as well, use the `--searchdesc` (or `-S`) option:
 
 ``` shell
-user $emerge --searchdesc pdf
+user $ emerge --searchdesc pdf
 ```
 
 Notice that the output returns a lot of information. The fields are clearly labelled so we won't go further into their meanings:
 
-``` code
+``` shell
 CODE Example output for a search command
 *  net-print/cups-pdf
       Latest version available: 1.5.2
@@ -61,18 +61,18 @@ CODE Example output for a search command
 ```
 
 ### Installing software
-When a software title has been found, then the installation is just one emerge command away. For instance, to install gnumeric:
+When a software title has been found, then the installation is just one **emerge** command away. For instance, to install gnumeric:
 
 ``` shell
-root #emerge --ask app-office/gnumeric
+root # emerge --ask app-office/gnumeric
 ```
 
-Since many applications depend on each other, any attempt to install a certain software package might result in the installation of several dependencies as well. Don't worry, Portage handles dependencies well. To find out what Portage would install, add the --pretend option. For instance:
+Since many applications depend on each other, any attempt to install a certain software package might result in the installation of several dependencies as well. Don't worry, Portage handles dependencies well. To find out what Portage would install, add the `--pretend` option. For instance:
 
-root #emerge --pretend gnumeric
+root # emerge --pretend gnumeric
 To do the same, but interactively choose whether or not to proceed with the installation, add the --ask flag:
 
-root #emerge --ask gnumeric
+root # emerge --ask gnumeric
 During the installation of a package, Portage will download the necessary source code from the Internet (if necessary) and store it by default in /var/cache/distfiles/. After this it will unpack, compile and install the package. To tell Portage to only download the sources without installing them, add the --fetchonly option to the emerge command:
 
 root #emerge --fetchonly gnumeric
