@@ -1,5 +1,5 @@
 # Working with Gentoo
-#gentoo #handbook #portage
+
 ## Welcome to Portage
 
 Portage is one of Gentoo's most notable innovations in software management. With its high flexibility and enormous amount of features it is frequently seen as the best software management tool available for Linux.
