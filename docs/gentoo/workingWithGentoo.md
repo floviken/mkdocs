@@ -135,20 +135,25 @@ When a package is no longer selected, the package and its dependencies that were
 
 ### Updating the system
 
-To keep the system in perfect shape (and not to mention install the latest security updates) it is necessary to update the system regularly. Since Portage only checks the ebuilds in the Gentoo repository, the first thing to do is to update this repository using emerge --sync. Then the system can be updated using emerge --deep --update @world.
+To keep the system in perfect shape (and not to mention install the latest security updates) it is necessary to update the system regularly. Since Portage only checks the ebuilds in the Gentoo repository, the first thing to do is to update this repository using `emerge --sync`. Then the system can be updated using `emerge --deep --update @world`.
 
-Portage will, with --deep, search for newer version of the applications that are installed. Without --deep, it will only verify the versions for the applications that are explicitly installed (the applications listed in /var/lib/portage/world) - it does not thoroughly check their dependencies. This option should almost always therefore be used:
+Portage will, with `--deep`, search for newer version of the applications that are installed. Without `--deep`, it will only verify the versions for the applications that are explicitly installed (the applications listed in `/var/lib/portage/world`) - it does not thoroughly check their dependencies. This option should almost always therefore be used:
 
-root #emerge --update --deep @world
-The standard upgrade command should include --changed-use or --newuse because of possible changes within the repository's profiles, or if the USE settings of the system have been altered. Portage will then verify if the change requires the installation of new packages or recompilation of existing ones:
+``` shell
+root # emerge --update --deep @world
+```
 
+The standard upgrade command should include `--changed-use` or `--newuse` because of possible changes within the repository's profiles, or if the USE settings of the system have been altered. Portage will then verify if the change requires the installation of new packages or recompilation of existing ones:
+
+```shell
 root #emerge --update --deep --newuse @world
+```
 
 ### Metapackages
 
-Some packages in the Gentoo repository don't have any real content but are used to install a collection of packages. For instance, the kde-plasma/plasma-meta package will install the KDE Plasma desktop on the system by pulling in various Plasma-related packages as dependencies.
+Some packages in the Gentoo repository don't have any real content but are used to install a collection of packages. For instance, the [kde-plasma/plasma-meta](https://packages.gentoo.org/packages/kde-plasma/plasma-meta) package will install the KDE Plasma desktop on the system by pulling in various Plasma-related packages as dependencies.
 
-To remove such a package from the system, running emerge --deselect on the package will not have much effect since the dependencies for the package remain on the system.
+To remove such a package from the system, running `emerge --deselect` on the package will not have much effect since the dependencies for the package remain on the system.
 
 Portage has the functionality to remove orphaned dependencies as well, but since the availability of software is dynamically dependent it is important to first update the entire system fully, including the new changes applied when changing USE flags. After this one can run emerge --depclean to remove the orphaned dependencies. When this is done, it might be necessary to rebuild the applications that were dynamically linked to the now-removed software titles but don't require them anymore, although recently support for this has been added to Portage.
 
