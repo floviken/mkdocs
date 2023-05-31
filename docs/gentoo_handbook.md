@@ -2,17 +2,17 @@
 
 The Gentoo Handbook is an effort to centralize documentation into a coherent handbook. This handbook contains the installation instructions for an Internet-based installation and some additional sections for working with Gentoo's native software tools such as the OpenRC init system and the Portage package manager.
 
-## Gentoo Linux amd64 Handbook: Working with Gentoo
+## Working with Gentoo
 
 ### Welcome to Portage
 Portage is one of Gentoo's most notable innovations in software management. With its high flexibility and enormous amount of features it is frequently seen as the best software management tool available for Linux.
 
-Portage is completely written in Python and Bash and therefore fully visible to the users as both are scripting languages.
+Portage is completely written in [Python](https://www.python.org/) and [Bash](https://www.gnu.org/software/bash) and therefore fully visible to the users as both are scripting languages.
 
-Most users will work with Portage through the emerge tool. This chapter is not meant to duplicate the information available from the emerge man page. For a complete rundown of emerge's options, please consult the man page:
+Most users will work with Portage through the **emerge** tool. This chapter is not meant to duplicate the information available from the emerge man page. For a complete rundown of emerge's options, please consult the man page:
 
 ``` shell
-user $man emerge
+user $ man emerge
 ```
 
 ### Gentoo repository
