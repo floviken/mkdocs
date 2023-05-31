@@ -86,34 +86,42 @@ root # emerge --fetchonly gnumeric
 
 ### Finding installed package documentation
 
-Many packages come with their own documentation. Sometimes, the doc USE flag determines whether the package documentation should be installed or not. To see if the doc USE flag is used by a package, use emerge -vp category/package:
+Many packages come with their own documentation. Sometimes, the doc USE flag determines whether the package documentation should   be installed or not. To see if the doc USE flag is used by a package, use emerge -vp category/package:
 
-`root # emerge -vp media-libs/alsa-lib`
-
+``` shell
+root # emerge -vp media-libs/alsa-lib
 These are the packages that would be merged, in order:
  
 Calculating dependencies... done!
 [ebuild   R    ] media-libs/alsa-lib-1.1.3::gentoo  USE="python -alisp -debug -doc" ABI_X86="(64) -32 (-x32)" PYTHON_TARGETS="python2_7" 0 KiB
-The best way of enabling the doc USE flag is doing it on a per-package basis via /etc/portage/package.use, so that only the documentation for the wanted packages is installed. For more information read the USE flags section.
+```
 
-Once the package installed, its documentation is generally found in a subdirectory named after the package in the /usr/share/doc/ directory:
+The best way of enabling the `doc` USE flag is doing it on a per-package basis via `/etc/portage/package.use`, so that only the documentation for the wanted packages is installed. For more information read the [USE flags]() section.
 
-user $ls -l /usr/share/doc/alsa-lib-1.1.3
+Once the package installed, its documentation is generally found in a subdirectory named after the package in the `/usr/share/doc/` directory:
+
+``` shell 
+user $ ls -l /usr/share/doc/alsa-lib-1.1.3
 total 16
 -rw-r--r-- 1 root root 3098 Mar  9 15:36 asoundrc.txt.bz2
 -rw-r--r-- 1 root root  672 Mar  9 15:36 ChangeLog.bz2
 -rw-r--r-- 1 root root 1083 Mar  9 15:36 NOTES.bz2
 -rw-r--r-- 1 root root  220 Mar  9 15:36 TODO.bz2
-A more sure way to list installed documentation files is to use equery's --filter option. equery is used to query Portage's database and comes as part of the app-portage/gentoolkit package:
+```
 
-user $equery files --filter=doc alsa-lib
+A more sure way to list installed documentation files is to use **equery**'s `--filter` option. **equery** is used to query Portage's database and comes as part of the `app-portage/gentoolkit` package:
+
+``` shell
+user $ equery files --filter=doc alsa-lib
  * Searching for alsa-lib in media-libs ...
  * Contents of media-libs/alsa-lib-1.1.3:
 /usr/share/doc/alsa-lib-1.1.3/ChangeLog.bz2
 /usr/share/doc/alsa-lib-1.1.3/NOTES.bz2
 /usr/share/doc/alsa-lib-1.1.3/TODO.bz2
 /usr/share/doc/alsa-lib-1.1.3/asoundrc.txt.bz2
-The --filter option can be used with other rules to view the install locations for many other types of files. Additional functionality can be reviewed in equery's man page: man 1 equery.
+```
+
+The `--filter` option can be used with other rules to view the install locations for many other types of files. Additional functionality can be reviewed in equery's man page: man 1 equery.
 
 Removing software
 To safely remove software from a system, use emerge --deselect. This will tell Portage a package is no longer required and it is eligible for cleaning through --depclean.
