@@ -189,9 +189,11 @@ It is possible to set ACCEPT_LICENSE globally in /etc/portage/make.conf, or to s
 
 For example, to allow the google-chrome license for the www-client/google-chrome package, add the following to /etc/portage/package.license:
 
-FILE /etc/portage/package.licenseAccepting the google-chrome license for the google-chrome package
+``` shell title="FILE /etc/portage/package.licenseAccepting the google-chrome license for the google-chrome package"
 www-client/google-chrome google-chrome
+```
 This permits the installation of the www-client/google-chrome package, but prohibits the installation of the www-plugins/chrome-binary-plugins package, even though it has the same license.
+
 
 Or to allow the often-needed sys-kernel/linux-firmware:
 
