@@ -21,20 +21,20 @@ When Gentoo's documentation talks about packages, it means software titles that 
 
 Whenever someone asks Portage to perform some action regarding software titles, it will use the ebuilds on the system as a base. It is therefore important to regularly update the ebuilds on the system so Portage knows about new software, security updates, etc.
 #### Updating the Gentoo repository
-The Gentoo repository is usually updated with rsync, a fast incremental file transfer utility. Updating is fairly simple as the emerge command provides a front-end for rsync:
+The Gentoo repository is usually updated with **rsync**, a fast incremental file transfer utility. Updating is fairly simple as the **emerge** command provides a front-end for **rsync**:
 
 ``` shell
 root # emerge --sync
 ```
 
-Sometimes firewall restrictions apply that prevent rsync from contacting the mirrors. In this case, update the Gentoo repository through Gentoo's daily generated snapshots. The emerge-webrsync tool automatically fetches and installs the latest snapshot on the system:
+Sometimes firewall restrictions apply that prevent **rsync** from contacting the mirrors. In this case, update the Gentoo repository through Gentoo's daily generated snapshots. The **emerge-webrsync** tool automatically fetches and installs the latest snapshot on the system:
 
 ``` shell
 root # emerge-webrsync
 ```
 
-An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on fetching validated Gentoo repository snapshots.
-
+An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on [fetching validated Gentoo repository snapshots(#Portage features
+)].
 ### Maintaining software
 #### Searching for software
 There are multiple ways to search through the Gentoo repository for software. One way is through emerge itself. By default, emerge --search returns the names of packages whose title matches (either fully or partially) the given search term.
