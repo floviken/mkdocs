@@ -133,7 +133,8 @@ root #emerge --deselect gnumeric
 
 When a package is no longer selected, the package and its dependencies that were installed automatically when it was installed are still left on the system. To have Portage locate all dependencies that can now be removed, use **emerge**'s `--depclean` functionality, which is documented later.
 
-Updating the system
+### Updating the system
+
 To keep the system in perfect shape (and not to mention install the latest security updates) it is necessary to update the system regularly. Since Portage only checks the ebuilds in the Gentoo repository, the first thing to do is to update this repository using emerge --sync. Then the system can be updated using emerge --deep --update @world.
 
 Portage will, with --deep, search for newer version of the applications that are installed. Without --deep, it will only verify the versions for the applications that are explicitly installed (the applications listed in /var/lib/portage/world) - it does not thoroughly check their dependencies. This option should almost always therefore be used:
@@ -142,7 +143,9 @@ root #emerge --update --deep @world
 The standard upgrade command should include --changed-use or --newuse because of possible changes within the repository's profiles, or if the USE settings of the system have been altered. Portage will then verify if the change requires the installation of new packages or recompilation of existing ones:
 
 root #emerge --update --deep --newuse @world
-Metapackages
+
+### Metapackages
+
 Some packages in the Gentoo repository don't have any real content but are used to install a collection of packages. For instance, the kde-plasma/plasma-meta package will install the KDE Plasma desktop on the system by pulling in various Plasma-related packages as dependencies.
 
 To remove such a package from the system, running emerge --deselect on the package will not have much effect since the dependencies for the package remain on the system.
