@@ -159,8 +159,10 @@ Portage has the functionality to remove orphaned dependencies as well, but since
 
 All this is handled with the following two commands:
 
+``` shell
 root #emerge --update --deep --newuse @world
 root #emerge --ask --depclean
+```
 
 ## Licenses
 
