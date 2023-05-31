@@ -4,15 +4,18 @@ The Gentoo Handbook is an effort to centralize documentation into a coherent han
 
 ## Gentoo Linux amd64 Handbook: Working with Gentoo
 
-Welcome to Portage
+### Welcome to Portage
 Portage is one of Gentoo's most notable innovations in software management. With its high flexibility and enormous amount of features it is frequently seen as the best software management tool available for Linux.
 
 Portage is completely written in Python and Bash and therefore fully visible to the users as both are scripting languages.
 
 Most users will work with Portage through the emerge tool. This chapter is not meant to duplicate the information available from the emerge man page. For a complete rundown of emerge's options, please consult the man page:
 
+``` shell
 user $man emerge
-Gentoo repository
+```
+
+### Gentoo repository
 Ebuilds
 When Gentoo's documentation talks about packages, it means software titles that are available to the Gentoo users through the Gentoo repository. This repository is a collection of ebuilds, files that contain all information Portage needs to maintain software (install, search, query, etc.). These ebuilds reside in /var/db/repos/gentoo by default.
 
