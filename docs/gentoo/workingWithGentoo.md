@@ -1,10 +1,6 @@
-# Gentoo AMD64 Handbook
+# Working with Gentoo
 
-The Gentoo Handbook is an effort to centralize documentation into a coherent handbook. This handbook contains the installation instructions for an Internet-based installation and some additional sections for working with Gentoo's native software tools such as the OpenRC init system and the Portage package manager.
-
-## Working with Gentoo
-
-### Welcome to Portage
+## Welcome to Portage
 Portage is one of Gentoo's most notable innovations in software management. With its high flexibility and enormous amount of features it is frequently seen as the best software management tool available for Linux.
 
 Portage is completely written in [Python](https://www.python.org/) and [Bash](https://www.gnu.org/software/bash) and therefore fully visible to the users as both are scripting languages.
@@ -15,12 +11,12 @@ Most users will work with Portage through the **emerge** tool. This chapter is n
 user $ man emerge
 ```
 
-### Gentoo repository
-#### Ebuilds
+## Gentoo repository
+### Ebuilds
 When Gentoo's documentation talks about packages, it means software titles that are available to the Gentoo users through the Gentoo repository. This repository is a collection of ebuilds, files that contain all information Portage needs to maintain software (install, search, query, etc.). These ebuilds reside in `/var/db/repos/gentoo` by default.
 
 Whenever someone asks Portage to perform some action regarding software titles, it will use the ebuilds on the system as a base. It is therefore important to regularly update the ebuilds on the system so Portage knows about new software, security updates, etc.
-#### Updating the Gentoo repository
+### Updating the Gentoo repository
 The Gentoo repository is usually updated with **rsync**, a fast incremental file transfer utility. Updating is fairly simple as the **emerge** command provides a front-end for **rsync**:
 
 ``` shell
@@ -35,8 +31,8 @@ root # emerge-webrsync
 
 An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on [fetching validated Gentoo repository snapshots(#Portage features
 )].
-### Maintaining software
-#### Searching for software
+## Maintaining software
+### Searching for software
 There are multiple ways to search through the Gentoo repository for software. One way is through emerge itself. By default, emerge --search returns the names of packages whose title matches (either fully or partially) the given search term.
 
 For instance, to search for all packages who have "pdf" in their name:
