@@ -255,13 +255,13 @@ Each Gentoo installation also adheres to a certain profile which contains, among
     x11-wm/i3-gaps required by @selected
 ```
 
-Ebuilds contain specific fields that inform Portage about its dependencies. There are two possible dependencies: build dependencies, declared in the DEPEND variable and run-time dependencies, likewise declared in RDEPEND. When one of these dependencies explicitly marks a package or virtual as being not compatible, it triggers a blockage.
+Ebuilds contain specific fields that inform Portage about its dependencies. There are two possible dependencies: build dependencies, declared in the *DEPEND* variable and run-time dependencies, likewise declared in *RDEPEND*. When one of these dependencies explicitly marks a package or virtual as being not compatible, it triggers a blockage.
 
 While recent versions of Portage are smart enough to work around minor blockages without user intervention, occasionally such blockages need to be resolved manually.
 
-To fix a blockage, users can choose to not install the package or unmerge the conflicting package first. In the given example, one can opt not to install x11-wm/i3 or to remove x11-wm/i3-gaps first. It is usually best to simply tell Portage the package is no longer desired, with emerge --deselect x11-wm/i3-gaps, for example, to remove it from the world file rather than removing the package itself forcefully.
+To fix a blockage, users can choose to not install the package or unmerge the conflicting package first. In the given example, one can opt not to install x11-wm/i3 or to remove x11-wm/i3-gaps first. It is usually best to simply tell Portage the package is no longer desired, with **emerge --deselect x11-wm/i3-gaps**, for example, to remove it from the world file rather than removing the package itself forcefully.
 
-Sometimes there are also blocking packages with specific atoms, such as <media-video/mplayer-1.0_rc1-r2. In this case, updating to a more recent version of the blocking package could remove the block.
+Sometimes there are also blocking packages with specific atoms, such as `<media-video/mplayer-1.0_rc1-r2`. In this case, updating to a more recent version of the blocking package could remove the block.
 
 It is also possible that two packages that are yet to be installed are blocking each other. In this rare case, try to find out why both would need to be installed. In most cases it is sufficient to do with one of the packages alone. If not, please file a bug on Gentoo's bug tracking system.
 
