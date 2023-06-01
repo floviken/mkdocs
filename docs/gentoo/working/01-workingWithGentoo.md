@@ -478,27 +478,35 @@ dev-lang/php -bzip2
 
 ### Declaring temporary USE flags
 
-Sometimes users need to set a USE flag for a brief moment. Instead of editing /etc/portage/make.conf twice (to do and undo the USE changes) just declare the USE variable as an environment variable. Remember that this setting only applies for the command entered; re-emerging or updating this application (either explicitly or as part of a system update) will undo the changes that were triggered through the (temporary) USE flag definition.
+Sometimes users need to set a USE flag for a brief moment. Instead of editing /etc/portage/make.conf twice (to do and undo the *USE* changes) just declare the USE variable as an environment variable. Remember that this setting only applies for the command entered; re-emerging or updating this application (either explicitly or as part of a system update) will undo the changes that were triggered through the (temporary) USE flag definition.
 
-The following example temporarily removes the pulseaudio value from the USE variable during the installation of SeaMonkey:
+The following example temporarily removes the `pulseaudio` value from the USE variable during the installation of SeaMonkey:
 
-root #USE="-pulseaudio" emerge www-client/seamonkey
+```shell
+root # USE="-pulseaudio" emerge www-client/seamonkey
+```
 
-Precedence
+### Precedence
 Of course there is a certain precedence on what setting has priority over the USE setting. The precedence for the USE setting is, ordered by priority (first has lowest priority):
 
-Default USE setting declared in the make.defaults files part of your profile
-User-defined USE setting in /etc/portage/make.conf
-User-defined USE setting in /etc/portage/package.use
-User-defined USE setting as environment variable
-To view the final USE setting as seen by Portage, run emerge --info. This will list all relevant variables (including the USE variable) with their current definition as known to Portage.
+1. Default USE setting declared in the make.defaults files part of your profile
+2. User-defined USE setting in /etc/portage/make.conf
+3. User-defined USE setting in /etc/portage/package.use
+4. User-defined USE setting as environment variable
 
-root #emerge --info
+To view the final USE setting as seen by Portage, run **emerge --info**. This will list all relevant variables (including the USE variable) with their current definition as known to Portage.
 
-Adapting the entire system to the new USE flags
-After having altered USE flags, the system should be updated to reflect the necessary changes. To do so, use the --newuse option with emerge:
+``` shell 
+root # emerge --info
+```
 
-root #emerge --update --deep --newuse @world
+### Adapting the entire system to the new USE flags
+After having altered USE flags, the system should be updated to reflect the necessary changes. To do so, use the `--newuse` option with **emerge**:
+
+```shell 
+root # emerge --update --deep --newuse @world
+```
+
 Next, run Portage's depclean to remove the conditional dependencies that were emerged on the "old" system but that have been obsoleted by the new USE flags.
 
  Important
