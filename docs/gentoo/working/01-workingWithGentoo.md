@@ -263,12 +263,16 @@ To fix a blockage, users can choose to not install the package or unmerge the co
 
 Sometimes there are also blocking packages with specific atoms, such as `<media-video/mplayer-1.0_rc1-r2`. In this case, updating to a more recent version of the blocking package could remove the block.
 
-It is also possible that two packages that are yet to be installed are blocking each other. In this rare case, try to find out why both would need to be installed. In most cases it is sufficient to do with one of the packages alone. If not, please file a bug on Gentoo's bug tracking system.
+It is also possible that two packages that are yet to be installed are blocking each other. In this rare case, try to find out why both would need to be installed. In most cases it is sufficient to do with one of the packages alone. If not, please file a bug on [Gentoo's bug tracking system](https://bugs.gentoo.org/).
 
-Masked packages
-CODE Portage warning about masked packages
+### Masked packages
+
+```title="CODE Portage warning about masked packages"
 !!! all ebuilds that could satisfy "bootsplash" have been masked.
-CODE Portage warning about masked packages - reason
+```
+
+```title="CODE Portage warning about masked packages - reason"
+
 !!! possible candidates are:
   
 - gnome-base/gnome-2.8.0_pre1 (masked by: ~x86 keyword)
@@ -278,16 +282,21 @@ CODE Portage warning about masked packages - reason
 - games-fps/unreal-tournament-451 (masked by: package.mask)
 - sys-libs/glibc-2.3.2-r11 (masked by: profile)
 - net-im/skype-2.1.0.81 (masked by: skype-eula license(s))
+```
+
 When trying to install a package that isn't available for the system, this masking error occurs. Users should try installing a different application that is available for the system or wait until the package is marked as available. There is always a reason why a package is masked:
 
-Reason for mask	Description
-~arch keyword	The application is not tested sufficiently to be put in the stable branch. Wait a few days or weeks and try again.
--arch keyword or -* keyword	The application does not work on the target architecture. If this is not the case, then please file a bug.
-missing keyword	The application has not yet been tested on the target architecture. Ask the architecture porting team to test the package or test it for them and report the findings on Gentoo's Bugzilla website. See /etc/portage/package.accept_keywords and Accepting a keyword for a single package.
-package.mask	The package has been found corrupt, unstable or worse and has been deliberately marked as do-not-use.
-profile	The package has been found not suitable for the current profile. The application might break the system if it is installed or is just not compatible with the profile currently in use.
-license	The package's license is not compatible with the ACCEPT_LICENSE value. Permit its license or the right license group by setting it in /etc/portage/make.conf or in /etc/portage/package.license.
-Necessary USE flag changes
+
+|Reason for mask	|Description |
+|:---|---|
+|~arch keyword	|The application is not tested sufficiently to be put in the stable branch. Wait a few days or weeks and try again.|
+|-arch keyword or -* keyword	| The application does not work on the target architecture. If this is not the case, then please file a bug. |
+|missing keyword	|The application has not yet been tested on the target architecture. Ask the architecture porting team to test the package or test it for them and report the findings on Gentoo's Bugzilla website. See /etc/portage/package.accept_keywords and Accepting a keyword for a single package.|
+|package.mask	 |The package has been found corrupt, unstable or worse and has been deliberately marked as do-not-use.|
+|profile	|The package has been found not suitable for the current profile. The application might break the system if it is installed or is just not compatible with the profile currently in use.|
+|license	|The package's license is not compatible with the ACCEPT_LICENSE value. Permit its license or the right license group by setting it in /etc/portage/make.conf or in /etc/portage/package.license.|
+
+### Necessary USE flag changes
 CODE Portage warning about USE flag change requirement
 The following USE changes are necessary to proceed:
 #required by app-text/happypackage-2.0, required by happypackage (argument)
