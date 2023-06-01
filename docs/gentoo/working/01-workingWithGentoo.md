@@ -381,31 +381,37 @@ Retry after one hour to see if the issue still persists.
 
 ### System profile protection
 
-CODE Portage warning about profile-protected package
+```shell title="CODE Portage warning about profile-protected package"
 !!! Trying to unmerge package(s) in system profile. 'sys-apps/portage'
 !!! This could be damaging to your system.
+```
 The user has asked to remove a package that is part of the system's core packages. It is listed in the profile as required and should therefore not be removed from the system.
 
-Digest verification failure
-CODE Digest verification failure
+### Digest verification failure
+
+``` shell title="CODE Digest verification failure"
 >>> checking ebuild checksums
 !!! Digest verification failed:
+```
+
 This is a sign that something is wrong with the Gentoo repository - often, caused by a mistake made when committing an ebuild to the Gentoo ebuild repository.
 
-When the digest verification fails, do not try to re-digest the package personally. Running ebuild foo manifest will not fix the problem; it quite possibly could make it worse.
+When the digest verification fails, do not try to re-digest the package personally. Running **ebuild foo manifest** will not fix the problem; it quite possibly could make it worse.
 
-Instead, wait an hour or two for the repository to settle down. It is likely that the error was noticed right away, but it can take a little time for the fix to trickle down the rsync mirrors. Check Bugzilla and see if anyone has reported the problem yet or ask around on #gentoo (webchat) (IRC). If not, go ahead and file a bug for the broken ebuild.
+Instead, wait an hour or two for the repository to settle down. It is likely that the error was noticed right away, but it can take a little time for the fix to trickle down the rsync mirrors. Check [Bugzilla](https://bugs.gentoo.org/) and see if anyone has reported the problem yet or ask around on [#gentoo ](ircs://irc.libera.chat/#gentoo) [(webchat)](https://web.libera.chat/#gentoo) (IRC). If not, go ahead and file a bug for the broken ebuild.
+
 
 Once the bug has been fixed, re-sync the Gentoo ebuild repository to pick up the fixed digest.
 
- Important
+```markdown title="Important"
 Be careful to not sync the Gentoo ebuild repository more than once a day. As stated in the official Gentoo netiquette policy (as well as when running emerge --sync), users who sync too often will be soft-banned from additional syncs for a time. Abusers who repeatedly fail to follow this policy may be hard-banned. Unless absolutely necessary it is often best to wait for a 24 hours period to sync so that re-synchronization does not overload Gentoo's rsync mirrors.
+```
 
 
 
 
 
-What are USE flags
+# What are USE flags
 
 The idea behind USE flags
 When installing Gentoo, users make choices depending on the environment they are working with. A setup for a server differs from a setup for a workstation. A gaming workstation differs from a 3D rendering workstation.
