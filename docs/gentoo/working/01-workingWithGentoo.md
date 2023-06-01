@@ -176,7 +176,7 @@ root # emerge --ask --depclean
 Beginning with Portage version 2.1.7, it is possible to accept or reject software installation based on its license. All packages in the tree contain a *LICENSE* entry in their ebuilds. Running **emerge --search category/package** will show the package's license.
 
 !!! Important
-```markdown{ .yaml .no-copy }
+```markdown
 As a disclaimer and limitation of liability, the LICENSE variable in an ebuild is merely a guideline for Gentoo developers and users. It is *not* a legal statement or a guarantee that it will reflect the license of every file installed by an ebuild. It should not be relied upon for a completely accurate legal representation of all files provided by a package. To gain assurance, system administrators should perform an in-depth check of each file installed by a package for proper licensing alignment and/or compliance. If a discrepancies is found in the ebuild, please file a bug to suggest a change to the value(s) assigned to the ebuild's LICENSE variable.
 ```
 
@@ -229,9 +229,9 @@ Note that this setting will also accept non-free software and documentation.
 ### Terminology
 As stated before, Portage is extremely powerful and supports many features that other software management tools lack. To understand this, we explain a few aspects of Portage without going into too much detail.
 
-With Portage different versions of a single package can coexist on a system. While other distributions tend to name their package to those versions (like gtk+2 and gtk+3) Portage uses a technology called SLOTs. An ebuild declares a certain SLOT for its version. Ebuilds with different SLOTs can coexist on the same system. For instance, the gtk+ package has ebuilds with SLOT="2" and SLOT="3".
+With Portage different versions of a single package can coexist on a system. While other distributions tend to name their package to those versions (like gtk+2 and gtk+3) Portage uses a technology called *SLOT*s. An ebuild declares a certain SLOT for its version. Ebuilds with different SLOTs can coexist on the same system. For instance, the gtk+ package has ebuilds with SLOT="2" and SLOT="3".
 
-There are also packages that provide the same functionality but are implemented differently. For instance, metalogd, sysklogd, and syslog-ng are all system loggers. Applications that rely on the availability of "a system logger" cannot depend on, for instance, metalogd, as the other system loggers are as good a choice as any. Portage allows for virtuals: each system logger is listed as an "exclusive" dependency of the logging service in the logger virtual package of the virtual category, so that applications can depend on the virtual/logger package. When installed, the package will pull in the first logging package mentioned in the package, unless a logging package was already installed (in which case the virtual is satisfied).
+There are also packages that provide the same functionality but are implemented differently. For instance, metalogd, sysklogd, and syslog-ng are all system loggers. Applications that rely on the availability of "a system logger" cannot depend on, for instance, metalogd, as the other system loggers are as good a choice as any. Portage allows for virtuals: each system logger is listed as an "exclusive" dependency of the logging service in the logger virtual package of the virtual category, so that applications can depend on the [virtual/logger](https://packages.gentoo.org/packages/virtual/logger) package. When installed, the package will pull in the first logging package mentioned in the package, unless a logging package was already installed (in which case the virtual is satisfied).
 
 Software in the Gentoo repository can reside in different branches. By default the system only accepts packages that Gentoo deems stable. Most new software titles, when committed, are added to the testing branch, meaning more testing needs to be done before it is marked as stable. Although the ebuilds for those software are in the Gentoo repository, Portage will not update them before they are placed in the stable branch.
 
@@ -239,7 +239,7 @@ Some software is only available for a few architectures. Or the software doesn't
 
 Each Gentoo installation also adheres to a certain profile which contains, amongst other information, the list of packages that are required for a system to function normally.
 
-Blocked packages
+### Blocked packages
 CODE Portage warning about blocked packages
 [ebuild  N     ] x11-wm/i3-4.20.1  USE="-doc -test"
 [blocks B      ] x11-wm/i3 ("x11-wm/i3" is soft blocking x11-wm/i3-gaps-4.20.1)
