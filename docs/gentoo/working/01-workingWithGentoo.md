@@ -240,7 +240,8 @@ Some software is only available for a few architectures. Or the software doesn't
 Each Gentoo installation also adheres to a certain profile which contains, amongst other information, the list of packages that are required for a system to function normally.
 
 ### Blocked packages
-CODE Portage warning about blocked packages
+
+```title="CODE Portage warning about blocked packages"
 [ebuild  N     ] x11-wm/i3-4.20.1  USE="-doc -test"
 [blocks B      ] x11-wm/i3 ("x11-wm/i3" is soft blocking x11-wm/i3-gaps-4.20.1)
 
@@ -252,6 +253,8 @@ CODE Portage warning about blocked packages
 
   (x11-wm/i3-gaps-4.20.1-1:0/0::gentoo, installed) pulled in by
     x11-wm/i3-gaps required by @selected
+```
+
 Ebuilds contain specific fields that inform Portage about its dependencies. There are two possible dependencies: build dependencies, declared in the DEPEND variable and run-time dependencies, likewise declared in RDEPEND. When one of these dependencies explicitly marks a package or virtual as being not compatible, it triggers a blockage.
 
 While recent versions of Portage are smart enough to work around minor blockages without user intervention, occasionally such blockages need to be resolved manually.
