@@ -573,6 +573,7 @@ Some ebuilds require or forbid certain combinations of USE flags in order to wor
 |REQUIRED_USE="^^ ( foo bar baz )"	|Exactly one of foo bar or baz must be set.|
 |REQUIRED_USE="|| ( foo bar baz )"	|At least one of foo bar or baz must be set.|
 |REQUIRED_USE="?? ( foo bar baz )"	|No more than one of foo bar or baz may be set.|
+|--|--|
 ## Portage features
 
 Portage has several additional features that make the Gentoo experience even better. Many of these features rely on certain software tools that improve performance, reliability, security, ...
