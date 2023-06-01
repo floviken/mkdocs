@@ -305,12 +305,14 @@ The following USE changes are necessary to proceed:
 
 The error message might also be displayed as follows, if `--autounmask` isn't set:
 
-CODE Portage error about USE flag change requirement
+```title="CODE Portage error about USE flag change requirement
 emerge: there are no ebuilds built with USE flags to satisfy "app-text/feelings[test]".
 !!! One of the following packages is required to complete your request:
 - app-text/feelings-1.0.0 (Change USE: +test)
 (dependency required by "app-text/happypackage-2.0" [ebuild])
 (dependency required by "happypackage" [argument])
+```
+
 Such warning or error occurs when a package is requested for installation which not only depends on another package, but also requires that that package is built with a particular USE flag (or set of USE flags). In the given example, the package app-text/feelings needs to be built with USE="test", but this USE flag is not set on the system.
 
 To resolve this, either add the requested USE flag to the global USE flags in /etc/portage/make.conf, or set it for the specific package in /etc/portage/package.use.
