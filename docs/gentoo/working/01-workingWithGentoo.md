@@ -317,16 +317,20 @@ Such warning or error occurs when a package is requested for installation which 
 
 To resolve this, either add the requested USE flag to the global USE flags in /etc/portage/make.conf, or set it for the specific package in /etc/portage/package.use.
 
-Missing dependencies
-CODE Portage warning about missing dependency
+### Missing dependencies
+
+``` shell title="CODE Portage warning about missing dependency"
 emerge: there are no ebuilds to satisfy ">=sys-devel/gcc-3.4.2-r4".
   
 !!! Problem with ebuild sys-devel/gcc-3.4.2-r2
 !!! Possibly a DEPEND/*DEPEND problem.
+```
+
 The application to install depends on another package that is not available for the system. Please check Bugzilla if the issue is known and if not, please report it. Unless the system is configured to mix branches, this should not occur and is therefore a bug.
 
-Ambiguous ebuild name
-CODE Portage warning about ambiguous ebuild names
+### Ambiguous ebuild name
+
+```shell title="CODE Portage warning about ambiguous ebuild names"
 [ Results for search key : listen ]
 [ Applications found : 2 ]
   
@@ -348,26 +352,35 @@ CODE Portage warning about ambiguous ebuild names
   
 !!! The short ebuild name "listen" is ambiguous. Please specify
 !!! one of the above fully-qualified ebuild names instead.
+```
+
 The application that is selected for installation has a name that corresponds with more than one package. Supply the category name as well to resolve this. Portage will inform the user about possible matches to choose from.
 
-Circular dependencies
-CODE Portage warning about circular dependencies
+### Circular dependencies
+
+``` shell title="CODE Portage warning about circular dependencies"
 !!! Error: circular dependencies: 
   
 ebuild / net-print/cups-1.1.15-r2 depends on ebuild / app-text/ghostscript-7.05.3-r1
 ebuild / app-text/ghostscript-7.05.3-r1 depends on ebuild / net-print/cups-1.1.15-r2
-Two (or more) packages to install depend on each other and can therefore not be installed. This is most likely a bug in one of the packages in the Gentoo repository. Please re-sync after a while and try again. It might also be beneficial to check Bugzilla to see if the issue is known and if not, report it.
+```
 
-Fetch failed
-CODE Portage warning about fetch failed
+Two (or more) packages to install depend on each other and can therefore not be installed. This is most likely a bug in one of the packages in the Gentoo repository. Please re-sync after a while and try again. It might also be beneficial to check [Bugzilla](https://bugs.gentoo.org/) to see if the issue is known and if not, report it.
+
+### Fetch failed
+
+``` shell title="CODE Portage warning about fetch failed"
 !!! Fetch failed for sys-libs/ncurses-5.4-r5, continuing...
 (...)
 !!! Some fetch errors were encountered.  Please see above for details.
+```
+
 Portage was unable to download the sources for the given application and will try to continue installing the other applications (if applicable). This failure can be due to a mirror that has not synchronized correctly or because the ebuild points to an incorrect location. The server where the sources reside can also be down for some reason.
 
 Retry after one hour to see if the issue still persists.
 
-System profile protection
+### System profile protection
+
 CODE Portage warning about profile-protected package
 !!! Trying to unmerge package(s) in system profile. 'sys-apps/portage'
 !!! This could be damaging to your system.
