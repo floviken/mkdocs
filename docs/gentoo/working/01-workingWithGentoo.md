@@ -297,11 +297,13 @@ When trying to install a package that isn't available for the system, this maski
 |license	|The package's license is not compatible with the ACCEPT_LICENSE value. Permit its license or the right license group by setting it in /etc/portage/make.conf or in /etc/portage/package.license.|
 
 ### Necessary USE flag changes
-CODE Portage warning about USE flag change requirement
+
+```title="CODE Portage warning about USE flag change requirement"
 The following USE changes are necessary to proceed:
 #required by app-text/happypackage-2.0, required by happypackage (argument)
->=app-text/feelings-1.0.0 test
-The error message might also be displayed as follows, if --autounmask isn't set:
+>=app-text/feelings-1.0.0 test```
+
+The error message might also be displayed as follows, if `--autounmask` isn't set:
 
 CODE Portage error about USE flag change requirement
 emerge: there are no ebuilds built with USE flags to satisfy "app-text/feelings[test]".
