@@ -509,33 +509,46 @@ root # emerge --update --deep --newuse @world
 
 Next, run Portage's depclean to remove the conditional dependencies that were emerged on the "old" system but that have been obsoleted by the new USE flags.
 
- Important
+!!! Important
+``` markdown
 Double-check the provided list of "obsoleted" packages to make sure it does not remove packages that are needed. In the following example the --pretend (-p) switch to have depclean only list the packages without removing them:
 root #emerge --pretend --depclean
-When depclean has finished, emerge may prompt to rebuild the applications that are dynamically linked against shared objects provided by possibly removed packages. Portage will preserve necessary libraries until this action is done to prevent breaking applications. It stores what needs to be rebuilt in the preserved-rebuild set. To rebuild the necessary packages, run:
+``` 
 
-root #emerge @preserved-rebuild
+When depclean has finished, **emerge** may prompt to rebuild the applications that are dynamically linked against shared objects provided by possibly removed packages. Portage will preserve necessary libraries until this action is done to prevent breaking applications. It stores what needs to be rebuilt in the preserved-rebuild set. To rebuild the necessary packages, run:
+
+```sh
+root # emerge @preserved-rebuild
+```
+
 When all this is accomplished, the system is using the new USE flag settings.
 
 
-Package specific USE flags
+## Package specific USE flags
 
-Viewing available USE flags
-Let's take the example of seamonkey: what USE flags does it listen to? To find out, we use emerge with the --pretend and --verbose options:
+### Viewing available USE flags
+Let's take the example of seamonkey: what USE flags does it listen to? To find out, we use **emerge** with the `--pretend` and `--verbose` options:
 
-root #emerge --pretend --verbose www-client/seamonkey
+```sh
+root # emerge --pretend --verbose www-client/seamonkey
 These are the packages that would be merged, in order:
  
 Calculating dependencies... done!
 [ebuild  N     ] www-client/seamonkey-2.48_beta1::gentoo  USE="calendar chatzilla crypt dbus gmp-autoupdate ipc jemalloc pulseaudio roaming skia startup-notification -custom-cflags -custom-optimization -debug -gtk3 -jack -minimal (-neon) (-selinux) (-system-cairo) -system-harfbuzz -system-icu -system-jpeg -system-libevent -system-libvpx -system-sqlite {-test} -wifi" L10N="-ca -cs -de -en-GB -es-AR -es-ES -fi -fr -gl -hu -it -ja -lt -nb -nl -pl -pt-PT -ru -sk -sv -tr -uk -zh-CN -zh-TW" 216,860 KiB
  
 Total: 1 package (1 new), Size of downloads: 216,860 KiB
-emerge isn't the only tool for this job. In fact, there is a tool dedicated to package information called equery which resides in the app-portage/gentoolkit package
+```
 
-root #emerge --ask app-portage/gentoolkit
-Now run equery with the uses argument to view the USE flags of a certain package. For instance, for the app-portage/portage-utils package:
+**emerge** isn't the only tool for this job. In fact, there is a tool dedicated to package information called **equery** which resides in the [app-portage/gentoolkit](https://packages.gentoo.org/packages/app-portage/gentoolkit) package
 
-user $equery --nocolor uses =app-portage/portage-utils-0.93.3
+```sh
+root # emerge --ask app-portage/gentoolkit
+```
+
+Now run **equery** with the uses argument to view the USE flags of a certain package. For instance, for the [app-portage/portage-utils](https://packages.gentoo.org/packages/app-portage/portage-utils) package:
+
+```sh
+user $ equery --nocolor uses =app-portage/portage-utils-0.93.3
 [ Legend : U - final flag setting for installation]
 [        : I - package is installed with flag     ]
 [ Colors : set, unset                             ]
@@ -546,84 +559,119 @@ user $equery --nocolor uses =app-portage/portage-utils-0.93.3
  + + qmanifest : Build qmanifest applet, this adds additional dependencies for GPG, OpenSSL and BLAKE2B hashing
  + + qtegrity  : Build qtegrity applet, this adds additional dependencies for OpenSSL
  - - static    : !!do not set this during bootstrap!! Causes binaries to be statically linked instead of dynamically
+```
 
-Satisfying REQUIRED_USE conditions
-Some ebuilds require or forbid certain combinations of USE flags in order to work properly. This is expressed via a set of conditions placed in a REQUIRED_USE expression. This conditions ensure that all features and dependencies are complete and that the build will succeed and perform as expected. If any of these are not met, emerge will alert you and ask you to fix the issue.
+## Satisfying REQUIRED_USE conditions
 
-Example	Description
-REQUIRED_USE="foo? ( bar )"	If foo is set, bar must be set.
-REQUIRED_USE="foo? ( !bar )"	If foo is set, bar must not be set.
-REQUIRED_USE="foo? ( || ( bar baz ) )"	If foo is set, bar or baz must be set.
-REQUIRED_USE="^^ ( foo bar baz )"	Exactly one of foo bar or baz must be set.
-REQUIRED_USE="|| ( foo bar baz )"	At least one of foo bar or baz must be set.
-REQUIRED_USE="?? ( foo bar baz )"	No more than one of foo bar or baz may be set.
+Some ebuilds require or forbid certain combinations of USE flags in order to work properly. This is expressed via a set of conditions placed in a *REQUIRED_USE* expression. This conditions ensure that all features and dependencies are complete and that the build will succeed and perform as expected. If any of these are not met, emerge will alert you and ask you to fix the issue.
 
+|Example	|Description|
+|---------|-----------|
+|REQUIRED_USE="foo? ( bar )"	|If foo is set, bar must be set.|
+|REQUIRED_USE="foo? ( !bar )"	|If foo is set, bar must not be set.|
+|REQUIRED_USE="foo? ( || ( bar baz ) )"	|If foo is set, bar or baz must be set.|
+|REQUIRED_USE="^^ ( foo bar baz )"	|Exactly one of foo bar or baz must be set.|
+|REQUIRED_USE="|| ( foo bar baz )"	|At least one of foo bar or baz must be set.|
+|REQUIRED_USE="?? ( foo bar baz )"	|No more than one of foo bar or baz may be set.|
+## Portage features
 
-
-Portage features
 Portage has several additional features that make the Gentoo experience even better. Many of these features rely on certain software tools that improve performance, reliability, security, ...
 
-To enable or disable certain Portage features, edit /etc/portage/make.conf and update or set the FEATURES variable which contains the various feature keywords, separated by white space. In several cases it will also be necessary to install the additional tool on which the feature relies.
+To enable or disable certain Portage features, edit /etc/portage/make.conf and update or set the *FEATURES* variable which contains the various feature keywords, separated by white space. In several cases it will also be necessary to install the additional tool on which the feature relies.
 
 Not all features that Portage supports are listed here. For a full overview, please consult the make.conf man page:
 
-user $man make.conf
-To find out what FEATURES are set by default, run emerge --info and search for the FEATURES variable or grep it out:
+```sh
+user $ man make.conf
+```
 
-user $emerge --info | grep ^FEATURES=
-Distributed compiling
-Using distcc
-distcc is a program to distribute compilations across several, not necessarily identical, machines on a network. The distcc client sends all necessary information to the available distcc servers (running distccd) so they can compile pieces of source code for the client. The net result is a faster compilation time.
+To find out what *FEATURES* are set by default, run **emerge --info** and search for the *FEATURES* variable or *grep* it out:
 
-More information about distcc (and how to have it work with Gentoo) can be found in the Distcc article.
+```sh
+user $ emerge --info | grep ^FEATURES=
+```
+## Distributed compiling
+### Using distcc
 
-Installing distcc
-Distcc ships with a graphical monitor to monitor tasks that the computer is sending away for compilation. This tool is automatically installed if USE="gtk" is set.
+**distcc** is a program to distribute compilations across several, not necessarily identical, machines on a network. The distcc client sends all necessary information to the available distcc servers (running distccd) so they can compile pieces of source code for the client. The net result is a faster compilation time.
 
-root #emerge --ask sys-devel/distcc
-Activating Portage distcc support
-Add distcc to the FEATURES variable inside /etc/portage/make.conf. Next, edit the MAKEOPTS variable and increase the number of parallel build jobs that the system allows. A known guideline is to fill in -jN where N is the number of CPUs that run distccd (including the current host) plus one, but that is just a guideline.
+More information about distcc (and how to have it work with Gentoo) can be found in the [Distcc](https://wiki.gentoo.org/wiki/Distcc) article.
 
-Now run distcc-config and enter the list of available distcc servers. For a simple example assume that the available DistCC servers are 192.168.1.102 (the current host), 192.168.1.103 and 192.168.1.104 (two "remote" hosts):
+### Installing distcc
+Distcc ships with a graphical monitor to monitor tasks that the computer is sending away for compilation. This tool is automatically installed if `USE="gtk"` is set.
 
-root #distcc-config --set-hosts "192.168.1.102 192.168.1.103 192.168.1.104"
+```sh
+root # emerge --ask sys-devel/distcc
+```
+
+### Activating Portage distcc support
+
+Add distcc to the *FEATURES* variable inside /etc/portage/make.conf. Next, edit the *MAKEOPTS* variable and increase the number of parallel build jobs that the system allows. A known guideline is to fill in `-jN` where `N` is the number of CPUs that run distccd (including the current host) plus one, but that is just a guideline.
+
+Now run **distcc-config** and enter the list of available distcc servers. For a simple example assume that the available DistCC servers are 192.168.1.102 (the current host), 192.168.1.103 and 192.168.1.104 (two "remote" hosts):
+
+```sh
+root # distcc-config --set-hosts "192.168.1.102 192.168.1.103 192.168.1.104"
+```
 Don't forget to run the distccd daemon as well:
 
-root #rc-update add distccd default
-root #/etc/init.d/distccd start
-Caching compilation objects
-About ccache
-ccache is a fast compiler cache. Whenever an application is compiled, it will cache intermediate results so that, whenever the same program and version is recompiled, the compilation time is greatly reduced. The first time ccache is run, it will be much slower than a normal compilation. Subsequent recompiles however should be faster. ccache is only helpful if the same application version will be recompiled many times; thus it is mostly only useful for software developers.
+```sh
+root # rc-update add distccd default
+root # /etc/init.d/distccd start
+```
 
-For more information about ccache, please visit its homepage.
+## Caching compilation objects
 
- Warning
+### About ccache
+
+**ccache** is a fast compiler cache. Whenever an application is compiled, it will cache intermediate results so that, whenever the same program and version is recompiled, the compilation time is greatly reduced. The first time ccache is run, it will be much slower than a normal compilation. Subsequent recompiles however should be faster. ccache is only helpful if the same application version will be recompiled many times; thus it is mostly only useful for software developers.
+
+For more information about ccache, please visit its [homepage](https://ccache.dev/).
+
+!!! Warning
+```sh
 ccache is known to cause numerous compilation failures. Sometimes ccache will retain stale code objects or corrupted files, which can lead to packages that cannot be emerged. If this happens (errors like "File not recognized: File truncated" come up in build logs), try recompiling the application with ccache disabled (FEATURES="-ccache" in /etc/portage/make.conf or one-shot from the commandline with the following) before reporting a bug:
+```
+```sh
+root # FEATURES="-ccache" emerge --oneshot <category/package>
+```
+### Installing ccache
 
-root #FEATURES="-ccache" emerge --oneshot <category/package>
-Installing ccache
 To install ccache run the following command:
 
-root #emerge --ask dev-util/ccache
-Activating Portage ccache support
-Open /etc/portage/make.conf and add ccache to any values defined in the FEATURES variable. If FEATURES does not exist, then create it. Next, add a new variable called CCACHE_SIZE and set it to 2G:
+```sh
+root # emerge --ask dev-util/ccache
+```
 
-FILE /etc/portage/make.confEnabling Portage ccache support
+### Activating Portage ccache support
+
+Open /etc/portage/make.conf and add `ccache` to any values defined in the *FEATURES* variable. If *FEATURES* does not exist, then create it. Next, add a new variable called *CCACHE_SIZE* and set it to `2G`:
+
+```sh title="FILE /etc/portage/make.confEnabling Portage ccache support"
 FEATURES="ccache"
 CCACHE_SIZE="2G"
-To check if ccache functions, ask ccache to provide its statistics. Because Portage uses a different ccache home directory, it is necessary to temporarily set the CCACHE_DIR variable:
+```
 
-root #CCACHE_DIR="/var/tmp/ccache" ccache -s
-The /var/tmp/ccache/ location is Portage' default ccache home directory; it can be changed by setting the CCACHE_DIR variable in /etc/portage/make.conf.
+To check if ccache functions, ask ccache to provide its statistics. Because Portage uses a different ccache home directory, it is necessary to temporarily set the *CCACHE_DIR* variable:
 
-When running ccache standalone, it would use the default location of ${HOME}/.ccache/, which is why the CCACHE_DIR variable needs to be set when asking for the (Portage) ccache statistics.
+```sh
+root # CCACHE_DIR="/var/tmp/ccache" ccache -s
+```
 
-Using ccache outside Portage
-To use ccache for non-Portage compilations, add /usr/lib/ccache/bin/ to the beginning of the PATH variable (before /usr/bin). This can be accomplished by editing ~/.bash_profile in the user's home directory. Using ~/.bash_profile is one way to define PATH variables.
+The /var/tmp/ccache/ location is Portage' default ccache home directory; it can be changed by setting the *CCACHE_DIR* variable in /etc/portage/make.conf.
 
-FILE ~/.bash_profileSetting the ccache location before any other PATH
+When running **ccache** standalone, it would use the default location of ${HOME}/.ccache/, which is why the *CCACHE_DIR* variable needs to be set when asking for the (Portage) ccache statistics.
+
+### Using ccache outside Portage
+
+To use ccache for non-Portage compilations, add /usr/lib/ccache/bin/ to the beginning of the *PATH* variable (before /usr/bin). This can be accomplished by editing ~/.bash_profile in the user's home directory. Using ~/.bash_profile is one way to define *PATH* variables.
+
+```sh title="FILE ~/.bash_profileSetting the ccache location before any other PATH"
 PATH="/usr/lib/ccache/bin:${PATH}"
-Binary package support
+```
+
+## Binary package support
+
 Creating prebuilt packages
 Portage supports the installation of prebuilt packages. Even though Gentoo does not provide prebuilt packages by itself Portage can be made fully aware of prebuilt packages.
 
