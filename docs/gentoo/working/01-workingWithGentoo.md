@@ -510,6 +510,7 @@ root # emerge --update --deep --newuse @world
 Next, run Portage's depclean to remove the conditional dependencies that were emerged on the "old" system but that have been obsoleted by the new USE flags.
 
 !!! info title="Important"
+
     Double-check the provided list of "obsoleted" packages to make sure it does not remove packages that are needed. In the following example the --pretend (-p) switch to have depclean only list the packages without removing them:
     root # emerge --pretend --depclean
 
