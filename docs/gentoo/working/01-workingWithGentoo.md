@@ -678,28 +678,31 @@ PATH="/usr/lib/ccache/bin:${PATH}"
 
 Portage supports the installation of prebuilt packages. Even though Gentoo does not provide prebuilt packages by itself Portage can be made fully aware of prebuilt packages.
 
-To create a prebuilt package use the quickpkg command if the package is already installed on the system, or emerge with the --buildpkg or --buildpkgonly options.
+To create a prebuilt package use the **quickpkg** command if the package is already installed on the system, or emerge with the `--buildpkg` or `--buildpkgonly` options.
 
-To have Portage create prebuilt packages of every single package that gets installed, add buildpkg to the FEATURES variable.
+To have Portage create prebuilt packages of every single package that gets installed, add buildpkg to the *FEATURES* variable.
 
-More extended support for creating prebuilt package sets can be obtained with catalyst. For more information on catalyst please read the Catalyst FAQ.
+More extended support for creating prebuilt package sets can be obtained with catalyst. For more information on catalyst please read the [Catalyst FAQ](https://wiki.gentoo.org/wiki/Project:Catalyst/FAQ).
 
-Installing prebuilt packages
-Although Gentoo doesn't provide one, it is possible to create a central repository where prebuilt packages are stored. In order to use this repository, it is necessary to make Portage aware of it by having the PORTAGE_BINHOST variable point to it. For instance, if the prebuilt packages are on ftp://buildhost/gentoo:
+### Installing prebuilt packages
 
-```sh title=""FILE /etc/portage/make.conf Add PORTAGE_BINHOST location"
+Although Gentoo doesn't provide one, it is possible to create a central repository where prebuilt packages are stored. In order to use this repository, it is necessary to make Portage aware of it by having the *PORTAGE_BINHOST* variable point to it. For instance, if the prebuilt packages are on ftp://buildhost/gentoo:
+
+``` sh title="FILE /etc/portage/make.conf Add PORTAGE_BINHOST location"
 PORTAGE_BINHOST="ftp://buildhost/gentoo"
 ```
 
-To install a prebuilt package, add the --getbinpkg option to the emerge command alongside of the --usepkg option. The former tells emerge to download the prebuilt package from the previously defined server while the latter asks emerge to try to install the prebuilt package first before fetching the sources and compiling it.
+To install a prebuilt package, add the `--getbinpkg` option to the emerge command alongside of the `--usepkg` option. The former tells emerge to download the prebuilt package from the previously defined server while the latter asks emerge to try to install the prebuilt package first before fetching the sources and compiling it.
 
 For instance, to install gnumeric with prebuilt packages:
 
-`root #emerge --usepkg --getbinpkg gnumeric`
+`root # emerge --usepkg --getbinpkg gnumeric`
 More information about emerge's prebuilt package options can be found in the emerge man page:
 
-user $man emerge
-Distributing prebuilt packages to others
+`user $ man emerge`
+
+### Distributing prebuilt packages to others
+
 If prebuilt packages are to be distributed to others, then make sure that this is permitted. Check the distribution terms of the upstream package for this. For example, for a package released under the GNU GPL, sources must be made available along with the binaries.
 
 Ebuilds may define a bindist restriction in their RESTRICT variable if built binaries are not distributable. Sometimes this restriction is conditional on one or more USE flags.
