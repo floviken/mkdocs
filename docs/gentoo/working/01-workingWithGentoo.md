@@ -567,12 +567,12 @@ Some ebuilds require or forbid certain combinations of USE flags in order to wor
 
 |Example	|Description|
 |---------|-----------|
-|REQUIRED_USE="foo? ( bar )"	|If foo is set, bar must be set.|
-|REQUIRED_USE="foo? ( !bar )"	|If foo is set, bar must not be set.|
-|REQUIRED_USE="foo? ( || ( bar baz ) )"	|If foo is set, bar or baz must be set.|
-|REQUIRED_USE="^^ ( foo bar baz )"	|Exactly one of foo bar or baz must be set.|
-|REQUIRED_USE="|| ( foo bar baz )"	|At least one of foo bar or baz must be set.|
-|REQUIRED_USE="?? ( foo bar baz )"	|No more than one of foo bar or baz may be set.|
+|REQUIRED_USE=`"foo? ( bar )"`	|If foo is set, bar must be set.|
+|REQUIRED_USE=`"foo? ( !bar )"`	|If foo is set, bar must not be set.|
+|REQUIRED_USE=`"foo? ( || ( bar baz ) )"`	|If foo is set, bar or baz must be set.|
+|REQUIRED_USE=`"^^ ( foo bar baz )"`	|Exactly one of foo bar or baz must be set.|
+|REQUIRED_USE=`"|| ( foo bar baz )"`	|At least one of foo bar or baz must be set.|
+|REQUIRED_USE=`"?? ( foo bar baz )"`	|No more than one of foo bar or baz may be set.|
 |--|--|
 ## Portage features
 
@@ -673,7 +673,8 @@ PATH="/usr/lib/ccache/bin:${PATH}"
 
 ## Binary package support
 
-Creating prebuilt packages
+### Creating prebuilt packages
+
 Portage supports the installation of prebuilt packages. Even though Gentoo does not provide prebuilt packages by itself Portage can be made fully aware of prebuilt packages.
 
 To create a prebuilt package use the quickpkg command if the package is already installed on the system, or emerge with the --buildpkg or --buildpkgonly options.
