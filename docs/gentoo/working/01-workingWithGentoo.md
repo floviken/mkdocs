@@ -720,27 +720,33 @@ Also consider setting the *ACCEPT_LICENSE* variable when distributing packages. 
 
 !!! Important
 
-It is entirely the responsibility of each user to comply with packages' license terms and with laws of each user's country. The metadata variables defined by ebuilds (RESTRICT or LICENSE) can provide guidance when distribution of binaries is not permitted, however output from Portage or questions answered by the Gentoo developers are not legal statements and should not be relied upon as such. Be cautious to abide by the law of your physical location.
+It is entirely the responsibility of each user to comply with packages' license terms and with laws of each user's country. The metadata variables defined by ebuilds (*RESTRICT* or *LICENSE*) can provide guidance when distribution of binaries is not permitted, however output from Portage or questions answered by the Gentoo developers are not legal statements and should not be relied upon as such. Be cautious to abide by the law of your physical location.
 
 ## Fetching files
 
 ### Userfetch
 
-Portage is normally run as the root user. Setting FEATURES="userfetch" will allow Portage to drop root privileges while fetching package sources and run with user/group permissions of portage:portage. This is a small security improvement.
+Portage is normally run as the root user. Setting `FEATURES="userfetch"` will allow Portage to drop root privileges while fetching package sources and run with user/group permissions of portage:portage. This is a small security improvement.
 
-If userfetch is set in FEATURES be sure to change the owner of all the files beneath /var/db/repos/gentoo using the chown command with root privileges:
+If `userfetch` is set in *FEATURES* be sure to change the owner of all the files beneath /var/db/repos/gentoo using the **chown** command with root privileges:
 
+```sh 
 root #chown --recursive --verbose portage:portage /var/db/repos/gentoo
-Verify distfiles
+```
+
+### Verify distfiles
+
 To re-verify the integrity and (potentially) re-download previously removed/corrupted distfiles for all currently installed packages, run:
-
+``` sh
 root #emerge --ask --fetchonly --emptytree @world
+``` 
 
 
 
+## Runlevels
 
-Runlevels
-Booting the system
+### Booting the system
+
 When the system is booted, lots of text floats by. When paying close attention, one will notice this text is (usually) the same every time the system is rebooted. The sequence of all these actions is called the boot sequence and is (more or less) statically defined.
 
 First, the boot loader will load the kernel image that is defined in the boot loader configuration. Then, the boot loader instructs the CPU to execute kernel. When the kernel is loaded and run, it initializes all kernel-specific structures and tasks and starts the init process.
