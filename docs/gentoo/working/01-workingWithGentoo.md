@@ -687,13 +687,15 @@ More extended support for creating prebuilt package sets can be obtained with ca
 Installing prebuilt packages
 Although Gentoo doesn't provide one, it is possible to create a central repository where prebuilt packages are stored. In order to use this repository, it is necessary to make Portage aware of it by having the PORTAGE_BINHOST variable point to it. For instance, if the prebuilt packages are on ftp://buildhost/gentoo:
 
-FILE /etc/portage/make.confAdd PORTAGE_BINHOST location
+```sh title=""FILE /etc/portage/make.conf Add PORTAGE_BINHOST location"
 PORTAGE_BINHOST="ftp://buildhost/gentoo"
+```
+
 To install a prebuilt package, add the --getbinpkg option to the emerge command alongside of the --usepkg option. The former tells emerge to download the prebuilt package from the previously defined server while the latter asks emerge to try to install the prebuilt package first before fetching the sources and compiling it.
 
 For instance, to install gnumeric with prebuilt packages:
 
-root #emerge --usepkg --getbinpkg gnumeric
+`root #emerge --usepkg --getbinpkg gnumeric`
 More information about emerge's prebuilt package options can be found in the emerge man page:
 
 user $man emerge
