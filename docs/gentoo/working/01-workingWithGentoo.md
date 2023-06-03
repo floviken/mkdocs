@@ -731,14 +731,14 @@ Portage is normally run as the root user. Setting `FEATURES="userfetch"` will al
 If `userfetch` is set in *FEATURES* be sure to change the owner of all the files beneath /var/db/repos/gentoo using the **chown** command with root privileges:
 
 ```sh 
-root #chown --recursive --verbose portage:portage /var/db/repos/gentoo
+root # chown --recursive --verbose portage:portage /var/db/repos/gentoo
 ```
 
 ### Verify distfiles
 
 To re-verify the integrity and (potentially) re-download previously removed/corrupted distfiles for all currently installed packages, run:
 ``` sh
-root #emerge --ask --fetchonly --emptytree @world
+root # emerge --ask --fetchonly --emptytree @world
 ``` 
 
 
