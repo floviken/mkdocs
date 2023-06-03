@@ -668,7 +668,7 @@ When running **ccache** standalone, it would use the default location of ${HOME}
 
 To use ccache for non-Portage compilations, add /usr/lib/ccache/bin/ to the beginning of the *PATH* variable (before /usr/bin). This can be accomplished by editing ~/.bash_profile in the user's home directory. Using ~/.bash_profile is one way to define *PATH* variables.
 
-```sh title="FILE ~/.bash_profileSetting the ccache location before any other PATH"
+``` sh title="FILE ~/.bash_profileSetting the ccache location before any other PATH"
 PATH="/usr/lib/ccache/bin:${PATH}"
 ```
 
