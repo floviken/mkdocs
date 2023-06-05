@@ -960,27 +960,34 @@ Every init script requires the `start()` function or `command` variable to be de
 
 ### Dependencies
 
-There are three dependency-alike settings that can be defined which influence the start-up or sequencing of init scripts: want, use and need. Next to these, there are also two order-influencing methods called before and after. These last two are no dependencies per se - they do not make the original init script fail if the selected one isn't scheduled to start (or fails to start).
+There are three dependency-alike settings that can be defined which influence the start-up or sequencing of init scripts: `want`, `use` and `need`. Next to these, there are also two order-influencing methods called `before` and `after`. These last two are no dependencies per se - they do not make the original init script fail if the selected one isn't scheduled to start (or fails to start).
 
-The use settings informs the init system that this script uses functionality offered by the selected script, but does not directly depend on it. A good example would be use logger or use dns. If those services are available, they will be put in good use, but if the system does not have a logger or DNS server the services will still work. If the services exist, then they are started before the script that uses them.
-The want setting is similar to use with one exception. use only considers services which were added to an init level. want will try to start any available service even if not added to an init level.
-The need setting is a hard dependency. It means that the script that is needing another script will not start before the other script is launched successfully. Also, if that other script is restarted, then this one will be restarted as well.
-When using before, then the given script is launched before the selected one if the selected one is part of the init level. So an init script xdm that defines before alsasound will start before the alsasound script, but only if alsasound is scheduled to start as well in the same init level. If alsasound is not scheduled to start too, then this particular setting has no effect and xdm will be started when the init system deems it most appropriate.
-Similarly, after informs the init system that the given script should be launched after the selected one if the selected one is part of the init level. If not, then the setting has no effect and the script will be launched by the init system when it deems it most appropriate.
-It should be clear from the above that need is the only "true" dependency setting as it affects if the script will be started or not. All the others are merely pointers towards the init system to clarify in which order scripts can be (or should be) launched.
+- The `use` settings informs the init system that this script uses functionality offered by the selected script, but does not directly depend on it. A good example would be `use logger` or `use dns`. If those services are available, they will be put in good use, but if the system does not have a logger or DNS server the services will still work. If the services exist, then they are started before the script that uses them.
+
+- The `want` setting is similar to `use` with one exception. `use` only considers services which were added to an init level. `want` will try to start any available service even if not added to an init level.
+
+- The `need` setting is a hard dependency. It means that the script that is needing another script will not start before the other script is launched successfully. Also, if that other script is restarted, then this one will be restarted as well.
+
+- When using `before`, then the given script is launched before the selected one if the selected one is part of the init level. So an init script xdm that defines `before alsasound` will start before the alsasound script, but only if alsasound is scheduled to start as well in the same init level. If alsasound is not scheduled to start too, then this particular setting has no effect and xdm will be started when the init system deems it most appropriate.
+
+- Similarly, `after` informs the init system that the given script should be launched after the selected one if the selected one is part of the init level. If not, then the setting has no effect and the script will be launched by the init system when it deems it most appropriate.
+
+It should be clear from the above that `need` is the only "true" dependency setting as it affects if the script will be started or not. All the others are merely pointers towards the init system to clarify in which order scripts can be (or should be) launched.
 
 Now, look at many of Gentoo's available init scripts and notice that some have dependencies on things that are no init scripts. These "things" we call virtuals.
 
-A virtual dependency is a dependency that a service provides, but that is not provided solely by that service. An init script can depend on a system logger, but there are many system loggers available (metalogd, syslog-ng, sysklogd, ...). As the script cannot need every single one of them (no sensible system has all these system loggers installed and running) we made sure that all these services provide a virtual dependency.
+A *virtual dependency* is a dependency that a service provides, but that is not provided solely by that service. An init script can depend on a system logger, but there are many system loggers available (metalogd, syslog-ng, sysklogd, ...). As the script cannot need every single one of them (no sensible system has all these system loggers installed and running) we made sure that all these services provide a virtual dependency.
 
 For instance, take a look at the postfix dependency information:
 
-FILE /etc/init.d/postfixDependency information of the postfix service
+```sh title="FILE /etc/init.d/postfixDependency information of the postfix service"
 depend() {
   need net
   use logger dns
   provide mta
 }
+```
+
 As can be seen, the postfix service:
 
 Requires the (virtual) net dependency (which is provided by, for instance, /etc/init.d/net.eth0).
