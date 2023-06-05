@@ -859,46 +859,53 @@ Similarly, it is possible to ask what services require the service (`needsme`) o
 
 Gentoo's init system uses a dependency-tree to decide what service needs to be started first. As this is a tedious task that we wouldn't want our users to have to do manually, we have created tools that ease the administration of the runlevels and init scripts.
 
-With rc-update it is possible to add and remove init scripts to a runlevel. The rc-update tool will then automatically ask the depscan.sh script to rebuild the dependency tree.
+With **rc-update** it is possible to add and remove init scripts to a runlevel. The **rc-update** tool will then automatically ask the depscan.sh script to rebuild the dependency tree.
 
 ### Adding and removing services
 
-In earlier instructions, init scripts have already been added to the "default" runlevel. What "default" means has been explained earlier in this document. Next to the runlevel, the rc-update script requires a second argument that defines the action: add, del, or show.
+In earlier instructions, init scripts have already been added to the "default" runlevel. What "default" means has been explained earlier in this document. Next to the runlevel, the **rc-update** script requires a second argument that defines the action: `add`, `del`, or `show`.
 
-To add or remove an init script, just give rc-update the add or del argument, followed by the init script and the runlevel. For instance:
+To add or remove an init script, just give **rc-update** the add or del argument, followed by the init script and the runlevel. For instance:
 
-root #rc-update del postfix default
-The rc-update -v show command will show all the available init scripts and list at which runlevels they will execute:
+`root # rc-update del postfix default`
 
-root #rc-update -v show
-It is also possible to run rc-update show (without -v) to just view enabled init scripts and their runlevels.
+The **rc-update -v show** command will show all the available init scripts and list at which runlevels they will execute:
 
-### Configuring services
+`root # rc-update -v show`
 
-Why additional configuration is needed
+It is also possible to run **rc-update show** (without -v) to just view enabled init scripts and their runlevels.
+
+## Configuring services
+
+### Why additional configuration is needed
+
 Init scripts can be quite complex. It is therefore not really desirable to have the users edit the init script directly, as it would make it more error-prone. It is however important to be able to configure such a service. For instance, users might want to give more options to the service itself.
 
 A second reason to have this configuration outside the init script is to be able to update the init scripts without the fear that the user's configuration changes will be undone.
 
-conf.d directory
+### conf.d directory
+
 Gentoo provides an easy way to configure such a service: every init script that can be configured has a file in /etc/conf.d/. For instance, the apache2 initscript (called /etc/init.d/apache2) has a configuration file called /etc/conf.d/apache2, which can contain the options to give to the Apache 2 server when it is started:
 
-FILE /etc/conf.d/apache2Example options for apache2 init script
+```sh title="FILE /etc/conf.d/apache2Example options for apache2 init script"
 APACHE2_OPTS="-D PHP5"
+```
+
 Such a configuration file contains only variables (just like /etc/portage/make.conf does), making it very easy to configure services. It also allows us to provide more information about the variables (as comments).
 
-Writing initscripts
-Another useful resource is OpenRC's service script guide.
+### Writing initscripts
+Another useful resource is OpenRC's [service script guide](https://github.com/OpenRC/openrc/blob/master/service-script-guide.md).
 
-Is it necessary?
+### Is it necessary?
+
 No, writing an init script is usually not necessary as Gentoo provides ready-to-use init scripts for all provided services. However, some users might have installed a service without using Portage, in which case they will most likely have to create an init script.
 
-Do not use the init script provided by the service if it isn't explicitly written for Gentoo: Gentoo's init scripts are not compatible with the init scripts used by other distributions! That is, unless the other distribution is using OpenRC!
+Do not use the init script provided by the service if it isn't explicitly written for Gentoo: Gentoo's init scripts are not compatible with the init scripts used by other distributions! That is, unless the other distribution is using [OpenRC](https://wiki.gentoo.org/wiki/OpenRC)!
 
-Layout
+### Layout
 The basic layout of an init script is shown below.
 
-CODE Example initscript layout (traditional)
+``` sh title="CODE Example initscript layout (traditional)"
 #!/sbin/openrc-run
   
 depend() {
@@ -912,7 +919,9 @@ start() {
 stop() {
 #  (Commands necessary to stop the service)
 }
-CODE Example initscript layout (updated)
+```
+
+``` sh title="CODE Example initscript layout (updated)"
 #!/sbin/openrc-run
 command=/usr/bin/foo
 command_args="${foo_args} --bar"
@@ -945,9 +954,12 @@ drink() {
     ${command} --drink beer
     eend $? "Failed to drink any beer :("
 }
-Every init script requires the start() function or command variable to be defined. All other sections are optional.
+``` 
 
-Dependencies
+Every init script requires the `start()` function or `command` variable to be defined. All other sections are optional.
+
+### Dependencies
+
 There are three dependency-alike settings that can be defined which influence the start-up or sequencing of init scripts: want, use and need. Next to these, there are also two order-influencing methods called before and after. These last two are no dependencies per se - they do not make the original init script fail if the selected one isn't scheduled to start (or fails to start).
 
 The use settings informs the init system that this script uses functionality offered by the selected script, but does not directly depend on it. A good example would be use logger or use dns. If those services are available, they will be put in good use, but if the system does not have a logger or DNS server the services will still work. If the services exist, then they are started before the script that uses them.
