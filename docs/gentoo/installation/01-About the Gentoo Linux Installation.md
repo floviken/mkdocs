@@ -34,6 +34,7 @@ It is very important that the Handbook reader understands that these design prin
 The Gentoo Installation can be seen as a 10-step procedure, corresponding to the next set of chapters. Each step results in a certain state:
 
 |Step	|Result|
+|--|--|
 |1	|The user is in a working environment ready to install Gentoo.|
 |2	|The Internet connection is ready to install Gentoo.|
 |3	|The hard disks are initialized to host the Gentoo installation.|
