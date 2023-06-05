@@ -996,36 +996,44 @@ depend() {
 
 As can be seen, the postfix service:
 
-Requires the (virtual) net dependency (which is provided by, for instance, /etc/init.d/net.eth0).
-Uses the (virtual) logger dependency (which is provided by, for instance, /etc/init.d/syslog-ng).
-Uses the (virtual) dns dependency (which is provided by, for instance, /etc/init.d/named).
-Provides the (virtual) mta dependency (which is common for all mail servers).
-Controlling the order
+- Requires the (virtual) net dependency (which is provided by, for instance, /etc/init.d/net.eth0).
+- Uses the (virtual) logger dependency (which is provided by, for instance, /etc/init.d/syslog-ng).
+- Uses the (virtual) dns dependency (which is provided by, for instance, /etc/init.d/named).
+- Provides the (virtual) mta dependency (which is common for all mail servers).
+
+### Controlling the order
+
 As described in the previous section, it is possible to tell the init system what order it should use for starting (or stopping) scripts. This ordering is handled both through the dependency settings use and need, but also through the order settings before and after. As we have described these earlier already, let's take a look at the portmap service as an example of such init script.
 
-FILE /etc/init.d/portmapDependency information of the portmap service
+```sh title="FILE /etc/init.d/portmapDependency information of the portmap service"
 depend() {
   need net
   before inetd
   before xinetd
 }
+```
 It is possible to use the "*" glob to catch all services in the same runlevel, although this isn't advisable.
 
-CODE Using the * glob
+```sh title="CODE Using the * glob"
 depend() {
   before *
 }
+```
+
 If the service must write to local disks, it should need localmount. If it places anything in /var/run/ such as a pidfile, then it should start after bootmisc:
 
-CODE Dependency setting with needing localmount and after bootmisc
+```sh title="CODE Dependency setting with needing localmount and after bootmisc"
 depend() {
   need localmount
   after bootmisc
 }
-Standard functions
-Next to the depend() functionality, it is also necessary to define the start() function. This one contains all the commands necessary to initialize the service. It is advisable to use the ebegin and eend functions to inform the user about what is happening:
+```
 
-CODE Example start() function
+### Standard functions
+
+Next to the `depend()` functionality, it is also necessary to define the `start()` function. This one contains all the commands necessary to initialize the service. It is advisable to use the `ebegin` and `eend` functions to inform the user about what is happening:
+
+```sh title="CODE Example start() function"
 start() {
   if [ "${RC_CMD}" = "restart" ];
   then
@@ -1037,6 +1045,8 @@ start() {
     --pidfile /path/to/my_pidfile
   eend $?
 }
+```
+
 Both --exec and --pidfile should be used in start and stop functions. If the service does not create a pidfile, then use --make-pidfile if possible, though it is recommended to test this to be sure. Otherwise, don't use pidfiles. It is also possible to add --quiet to the start-stop-daemon options, but this is not recommended unless the service is extremely verbose. Using --quiet may hinder debugging if the service fails to start.
 
 Another notable setting used in the above example is to check the contents of the RC_CMD variable. Unlike the previous init script system, the newer OpenRC system does not support script-specific restart functionality. Instead, the script needs to check the contents of the RC_CMD variable to see if a function (be it start() or stop()) is called as part of a restart or not.
