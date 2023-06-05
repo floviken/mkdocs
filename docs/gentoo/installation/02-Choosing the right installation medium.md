@@ -173,12 +173,15 @@ To burn the ISO file on the CD in the /dev/sr0 device (this is the first CD devi
 
 Users that prefer a graphical user interface can use K3B, part of the kde-apps/k3b package. In K3B, go to Tools and use Burn CD Image.
 
-Booting
-Booting the installation media
+## Booting
+
+### Booting the installation media
+
 Once the installation media is ready, it is time to boot it. Insert the media in the system, reboot, and enter the motherboard's firmware user interface. This is usually performed by pressing a keyboard key such as DEL, F1, F10, or ESC during the Power-On Self-test (POST) process. The 'trigger' key varies depending on the system and motherboard. If it is not obvious use an internet search engine and do some research using the motherboard's model name as the search keyword. Results should be easy to determine. Once inside the motherboard's firmware menu, change the boot order so that the external bootable media (CD/DVD disks or USB drives) are tried before the internal disk devices. Without this change, the system will most likely reboot to the internal disk device, ignoring the external boot media.
 
- Important
+!!! Important
 When installing Gentoo with the purpose of using the UEFI interface instead of BIOS, it is recommended to boot with UEFI immediately. If not, then it might be necessary to create a bootable UEFI USB stick (or other medium) once before finalizing the Gentoo Linux installation.
+
 If not yet done, ensure that the installation media is inserted or plugged into the system, and reboot. A boot prompt should be shown. At this screen, Enter will begin the boot process with the default boot options. To boot the installation media with custom boot options, specify a kernel followed by boot options and then hit Enter.
 
  Note
