@@ -1047,12 +1047,15 @@ start() {
 }
 ```
 
-Both --exec and --pidfile should be used in start and stop functions. If the service does not create a pidfile, then use --make-pidfile if possible, though it is recommended to test this to be sure. Otherwise, don't use pidfiles. It is also possible to add --quiet to the start-stop-daemon options, but this is not recommended unless the service is extremely verbose. Using --quiet may hinder debugging if the service fails to start.
+Both `--exec` and `--pidfile` should be used in start and stop functions. If the service does not create a pidfile, then use `--make-pidfile` if possible, though it is recommended to test this to be sure. Otherwise, don't use pidfiles. It is also possible to add `--quiet` to the start-stop-daemon options, but this is not recommended unless the service is extremely verbose. Using `--quiet` may hinder debugging if the service fails to start.
 
-Another notable setting used in the above example is to check the contents of the RC_CMD variable. Unlike the previous init script system, the newer OpenRC system does not support script-specific restart functionality. Instead, the script needs to check the contents of the RC_CMD variable to see if a function (be it start() or stop()) is called as part of a restart or not.
+Another notable setting used in the above example is to check the contents of the *RC_CMD* variable. Unlike the previous init script system, the newer OpenRC system does not support script-specific restart functionality. Instead, the script needs to check the contents of the *RC_CMD* variable to see if a function (be it `start()` or `stop()`) is called as part of a restart or not.
 
- Note
-Make sure that --exec actually calls a service and not just a shell script that launches services and exits - that's what the init script is supposed to do.
+!!! Note
+```
+Make sure that `--exec` actually calls a service and not just a shell script that launches services and exits - that's what the init script is supposed to do.
+```
+
 For more examples of the start() function, please read the source code of the available init scripts in the /etc/init.d/ directory.
 
 Another function that can (but does not have to) be defined is stop(). The init system is intelligent enough to fill in this function by itself if start-stop-daemon is used.
