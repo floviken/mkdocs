@@ -830,7 +830,8 @@ To start, stop, or restart a service (and all depending services), the `start`, 
 `root # rc-service postfix start`
 
 !!! note
-``` md 
+
+``` markdown 
 Only the services that need the given service are stopped or restarted. The other depending services (those that use the service but don't need it) are left untouched.
 ```
 
