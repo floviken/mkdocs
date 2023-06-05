@@ -1,26 +1,31 @@
 # Environment variables
 
 ## Environment variables
+
 ### Introduction
+
 An environment variable is a named object that contains information used by one or more applications. By using environment variables one can easily change a configuration setting for one or more applications.
 
-Important examples
+### Important examples
+
 The following table lists a number of variables used by a Linux system and describes their use. Example values are presented after the table.
 
-Variable	Description
-PATH	This variable contains a colon-separated list of directories in which the system looks for executable files. If a name is entered of an executable (such as ls, rc-update, or emerge) but this executable is not located in a listed directory, then the system will not execute it (unless the full path is entered as the command, such as /bin/ls).
-ROOTPATH	This variable has the same function as PATH, but this one only lists the directories that should be checked when the root-user enters a command.
-LDPATH	This variable contains a colon-separated list of directories in which the dynamical linker searches through to find a library.
-MANPATH	This variable contains a colon-separated list of directories in which the man command searches for the man pages.
-INFODIR	This variable contains a colon-separated list of directories in which the info command searches for the info pages.
-PAGER	This variable contains the path to the program used to list the contents of files through (such as less or more).
-EDITOR	This variable contains the path to the program used to change the contents of files with (such as nano or vi).
-KDEDIRS	This variable contains a colon-separated list of directories which contain KDE-specific material.
-CONFIG_PROTECT	This variable contains a space-delimited list of directories which should be protected by Portage during package updates.
-CONFIG_PROTECT_MASK	This variable contains a space-delimited list of directories which should not be protected by Portage during package updates.
+|Variable	|Description |
+|-----------|------------|
+|*PATH*	|This variable contains a colon-separated list of directories in which the system looks for executable files. If a name is entered of an executable (such as ls, rc-update, or emerge) but this executable is not located in a listed directory, then the system will not execute it (unless the full path is entered as the command, such as /bin/ls).|
+|*ROOTPATH*	|This variable has the same function as PATH, but this one only lists the directories that should be checked when the root-user enters a command.|
+|*LDPATH*	|This variable contains a colon-separated list of directories in which the dynamical linker searches through to find a library.|
+|*MANPATH*	|This variable contains a colon-separated list of directories in which the man command searches for the man pages.|
+|*INFODIR*	|This variable contains a colon-separated list of directories in which the info command searches for the info pages.|
+|*PAGER*	|This variable contains the path to the program used to list the contents of files through (such as less or more).|
+|*EDITOR*	|This variable contains the path to the program used to change the contents of files with (such as nano or vi).|
+|*KDEDIRS*	|This variable contains a colon-separated list of directories which contain KDE-specific material.|
+|*CONFIG_PROTECT*	|This variable contains a space-delimited list of directories which should be protected by Portage during package updates.|
+|*CONFIG_PROTECT_MASK*	|This variable contains a space-delimited list of directories which should not be protected by Portage during package updates.|
+
 Below is an example definition of all these variables:
 
-CODE Example settings for the mentioned variables
+```sh title="CODE Example settings for the mentioned variables"
 PATH="/bin:/usr/bin:/usr/local/bin:/opt/bin:/usr/games/bin"
 ROOTPATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin"
 LDPATH="/lib:/usr/lib:/usr/local/lib:/usr/lib/gcc-lib/i686-pc-linux-gnu/3.2.3"
@@ -36,8 +41,12 @@ CONFIG_PROTECT="/usr/X11R6/lib/X11/xkb /opt/tomcat/conf \
                 /usr/share/texmf/tex/platex/config/ /usr/share/config"
 # Directories that are _not_ protected during package updates.
 CONFIG_PROTECT_MASK="/etc/gconf"
-Defining variables globally
-The env.d directory
+```
+
+## Defining variables globally
+
+### The env.d directory
+
 To centralize the definitions of these variables, Gentoo introduced the /etc/env.d/ directory. Inside this directory a number of files are available, such as 00basic, 05gcc, etc. which contain the variables needed by the application mentioned in their name.
 
 For instance, when gcc is installed, a file called 05gcc was created by the ebuild which contains the definitions of the following variables:

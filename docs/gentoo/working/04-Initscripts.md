@@ -405,6 +405,7 @@ root # rc-update show offline
                local | offline
             net.eth0 |
 ```
+
 Even though net.eth0 has been removed from the offline runlevel, udev might want to attempt to start any devices it detects and launch the appropriate services, a functionality that is called hotplugging. By default, Gentoo does not enable hotplugging.
 
 To enable hotplugging, but only for a selected set of scripts, use the *rc_hotplug* variable in /etc/rc.conf:
@@ -414,7 +415,8 @@ rc_hotplug="net.wlan !net.*"
 ``` 
 
 !!! Note
-```For more information on device initiated services, please see the comments inside /etc/rc.conf.
+```
+For more information on device initiated services, please see the comments inside /etc/rc.conf.
 Edit the bootloader configuration and add a new entry for the offline runlevel. In that entry, add softlevel=offline as a boot parameter.
 ```
 
