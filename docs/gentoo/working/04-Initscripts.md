@@ -316,39 +316,46 @@ Another notable setting used in the above example is to check the contents of th
 Make sure that `--exec` actually calls a service and not just a shell script that launches services and exits - that's what the init script is supposed to do.
 ```
 
-For more examples of the start() function, please read the source code of the available init scripts in the /etc/init.d/ directory.
+For more examples of the `start()` function, please read the source code of the available init scripts in the /etc/init.d/ directory.
 
-Another function that can (but does not have to) be defined is stop(). The init system is intelligent enough to fill in this function by itself if start-stop-daemon is used.
+Another function that can (but does not have to) be defined is `stop()`. The init system is intelligent enough to fill in this function by itself if start-stop-daemon is used.
 
-CODE Example stop() function
+```sh title="CODE Example stop() function"
 stop() {
   ebegin "Stopping my_service"
   start-stop-daemon --stop --exec /path/to/my_service \
     --pidfile /path/to/my_pidfile
   eend $?
 }
-If the service runs some other script (for example, Bash, Python, or Perl), and this script later changes names (for example, foo.py to foo), then it is necessary to add --name to start-stop-daemon. This must specify the name that the script will be changed to. In this example, a service starts foo.py, which changes names to foo:
+```
 
-CODE Example definition for a service that starts the foo script
+If the service runs some other script (for example, Bash, Python, or Perl), and this script later changes names (for example, foo.py to foo), then it is necessary to add `--name` to start-stop-daemon. This must specify the name that the script will be changed to. In this example, a service starts foo.py, which changes names to foo:
+
+
+```sh title=""CODE Example definition for a service that starts the foo script"
 start() {
   ebegin "Starting my_script"
   start-stop-daemon --start --exec /path/to/my_script \
     --pidfile /path/to/my_pidfile --name foo
   eend $?
 }
+```
+
 start-stop-daemon has an excellent man page available if more information is needed:
 
-user $man start-stop-daemon
+`user $ man start-stop-daemon`
+
 Gentoo's init script syntax is based on the POSIX Shell so people are free to use sh-compatible constructs inside their init scripts. Keep other constructs, like bash-specific ones, out of the init scripts to ensure that the scripts remain functional regardless of the change Gentoo might do on its init system.
 
-Adding custom options
-If the initscript needs to support more options than the ones we have already encountered, then add the option to one of the following variables, and create a function with the same name as the option. For instance, to support an option called restartdelay:
+### Adding custom options
 
-extra_commands - Command is available with the service in any state
-extra_started_commands - Command is available when the service is started
-extra_stopped_commands - Command is available when the service is stopped
+If the initscript needs to support more options than the ones we have already encountered, then add the option to one of the following variables, and create a function with the same name as the option. For instance, to support an option called `restartdelay`:
 
-CODE Example definition of restartdelay method
+- *extra_commands* - Command is available with the service in any state
+- *extra_started_commands* - Command is available when the service is started
+- *extra_stopped_commands* - Command is available when the service is stopped
+
+```sh title="CODE Example definition of restartdelay method"
 extra_started_commands="restartdelay"
   
 restartdelay() {
@@ -356,9 +363,12 @@ restartdelay() {
   sleep 3    # Wait 3 seconds before starting again
   start
 }
- Important
-The restart() function cannot be overridden in OpenRC!
-Service configuration variables
+```
+
+!!! Important
+The `restart()` function cannot be overridden in OpenRC!
+
+### Service configuration variables
 In order to support configuration files in /etc/conf.d/, no specifics need to be implemented: when the init script is executed, the following files are automatically sourced (i.e. the variables are available to use):
 
 /etc/conf.d/YOUR_INIT_SCRIPT
