@@ -59,13 +59,13 @@ This document covers the installation using official Gentoo Installation media o
 ```For help on the other installation approaches, including using non-Gentoo bootable media, please read our [Alternative installation guide](https://wiki.gentoo.org/wiki/Installation_alternatives).
 ```
 
-We also provide a Gentoo installation tips and tricks document that might be useful.
+We also provide a [Gentoo installation tips and tricks](https://wiki.gentoo.org/wiki/Gentoo_installation_tips_and_tricks) document that might be useful.
 
-Troubles
-If a problem is found in the installation (or in the installation documentation), please visit our bug tracking system and check if the bug is known. If not, please create a bug report for it so we can take care of it. Do not be afraid of the developers who are assigned to the bugs - they (generally) don't eat people.
+### Troubles
+If a problem is found in the installation (or in the installation documentation), please visit our [bug tracking](https://bugs.gentoo.org/) system and check if the bug is known. If not, please create a bug report for it so we can take care of it. Do not be afraid of the developers who are assigned to the bugs - they (generally) don't eat people.
 
 Although this document is architecture-specific, it may contain references to other architectures as well, because large parts of the Gentoo Handbook use text that is identical for all architectures (to avoid duplication of effort). Such references have been kept to a minimum, to avoid confusion.
 
-If there is some uncertainty whether or not the problem is a user-problem (some error made despite having read the documentation carefully) or a software-problem (some error we made despite having tested the installation/documentation carefully) everybody is welcome to join the #gentoo (webchat) channel on irc.libera.chat. Of course, everyone is welcome otherwise too as our chat channel covers the broad Gentoo spectrum.
+If there is some uncertainty whether or not the problem is a user-problem (some error made despite having read the documentation carefully) or a software-problem (some error we made despite having tested the installation/documentation carefully) everybody is welcome to join the [#gentoo](ircs://irc.libera.chat/#gentoo) [(webchat)](https://web.libera.chat/#gentoo) channel on irc.libera.chat. Of course, everyone is welcome otherwise too as our chat channel covers the broad Gentoo spectrum.
 
-Speaking of which, if there are any additional questions regarding Gentoo, check out the Frequently Asked Questions article. There are also FAQs on the Gentoo Forums.
+Speaking of which, if there are any additional questions regarding Gentoo, check out the [Frequently Asked Questions](https://wiki.gentoo.org/wiki/FAQ) article. There are also FAQs on the Gentoo Forums.
