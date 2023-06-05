@@ -17,6 +17,7 @@ The [AMD64 project](https://wiki.gentoo.org/wiki/Project:AMD64) is a good place 
 
 
 ## Gentoo Linux installation media
+
 !!! Tip
 ```
 It is okay to use other, non-Gentoo installation media, although official media is recommended. Gentoo installation media ensures the necessary tools are around. When using non-Gentoo media, skip to Preparing the disks.
@@ -156,7 +157,7 @@ To be absolutely certain that everything is valid, verify the fingerprint shown 
 
 ### Burning a disk
 
-Of course, with just an ISO file downloaded, the Gentoo Linux installation cannot be started. The ISO file needs to be burned on a CD to boot from, and in such a way that its content is burned on the CD, not just the file itself. Below a few common methods are described - a more elaborate set of instructions can be found in Our FAQ on burning an ISO file.
+Of course, with just an ISO file downloaded, the Gentoo Linux installation cannot be started. The ISO file needs to be burned on a CD to boot from, and in such a way that its content is burned on the CD, not just the file itself. Below a few common methods are described - a more elaborate set of instructions can be found in Our [FAQ on burning an ISO file](https://wiki.gentoo.org/wiki/FAQ#How_do_I_burn_an_ISO_file.3F).
 
 #### Burning with Microsoft Windows 7 and above
 
@@ -168,7 +169,8 @@ The cdrecord utility from the package app-cdr/cdrtools can burn ISO images on Li
 
 To burn the ISO file on the CD in the /dev/sr0 device (this is the first CD device on the system - substitute with the right device file if necessary):
 
-user $cdrecord dev=/dev/sr0 install-amd64-minimal-20141204.iso
+`user $ cdrecord dev=/dev/sr0 install-amd64-minimal-20141204.iso`
+
 Users that prefer a graphical user interface can use K3B, part of the kde-apps/k3b package. In K3B, go to Tools and use Burn CD Image.
 
 Booting
