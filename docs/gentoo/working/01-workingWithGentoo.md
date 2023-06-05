@@ -821,8 +821,9 @@ In Gentoo, there are seven runlevels defined: three internal runlevels, and four
 
 The user-defined runlevels are those with an accompanying /etc/runlevels/ subdirectory: boot, default, nonetwork and single. The boot runlevel starts all system-necessary services which all other runlevels use. The remaining three runlevels differ in what services they start: default is used for day-to-day operations, nonetwork is used in case no network connectivity is required, and single is used when the system needs to be fixed.
 
-Working with initscripts
-The scripts that the openrc process starts are called init scripts. Each script in /etc/init.d/ can be executed with the arguments start, stop, restart, zap, status, ineed, iuse, iwant, needsme, usesme, or wantsme.
+### Working with initscripts
+
+The scripts that the openrc process starts are called init scripts. Each script in /etc/init.d/ can be executed with the arguments `start`, `stop`, `restart`, `zap`, `status`, `ineed`, `iuse`, `iwant`, `needsme`, `usesme`, or `wantsme`.
 
 To start, stop, or restart a service (and all depending services), the start, stop, and restart arguments should be used:
 
