@@ -177,154 +177,210 @@ Users that prefer a graphical user interface can use K3B, part of the kde-apps/k
 
 ### Booting the installation media
 
-Once the installation media is ready, it is time to boot it. Insert the media in the system, reboot, and enter the motherboard's firmware user interface. This is usually performed by pressing a keyboard key such as DEL, F1, F10, or ESC during the Power-On Self-test (POST) process. The 'trigger' key varies depending on the system and motherboard. If it is not obvious use an internet search engine and do some research using the motherboard's model name as the search keyword. Results should be easy to determine. Once inside the motherboard's firmware menu, change the boot order so that the external bootable media (CD/DVD disks or USB drives) are tried before the internal disk devices. Without this change, the system will most likely reboot to the internal disk device, ignoring the external boot media.
+Once the installation media is ready, it is time to boot it. Insert the media in the system, reboot, and enter the motherboard's firmware user interface. This is usually performed by pressing a keyboard key such as `DEL`, `F1`, `F10`, or `ESC` during the Power-On Self-test (POST) process. The 'trigger' key varies depending on the system and motherboard. If it is not obvious use an internet search engine and do some research using the motherboard's model name as the search keyword. Results should be easy to determine. Once inside the motherboard's firmware menu, change the boot order so that the external bootable media (CD/DVD disks or USB drives) are tried before the internal disk devices. Without this change, the system will most likely reboot to the internal disk device, ignoring the external boot media.
 
 !!! Important
 When installing Gentoo with the purpose of using the UEFI interface instead of BIOS, it is recommended to boot with UEFI immediately. If not, then it might be necessary to create a bootable UEFI USB stick (or other medium) once before finalizing the Gentoo Linux installation.
 
-If not yet done, ensure that the installation media is inserted or plugged into the system, and reboot. A boot prompt should be shown. At this screen, Enter will begin the boot process with the default boot options. To boot the installation media with custom boot options, specify a kernel followed by boot options and then hit Enter.
+If not yet done, ensure that the installation media is inserted or plugged into the system, and reboot. A boot prompt should be shown. At this screen, `Enter` will begin the boot process with the default boot options. To boot the installation media with custom boot options, specify a kernel followed by boot options and then hit `Enter`.
 
- Note
+!!! Note
 In all likelihood, the default gentoo kernel, as mentioned above, without specifying any of the optional parameters will work just fine. For boot troubleshooting and expert options, continue on with this section. Otherwise, just press Enter and skip ahead to Extra hardware configuration.
-At the boot prompt, users get the option of displaying the available kernels (F1) and boot options (F2). If no choice is made within 15 seconds (either displaying information or using a kernel) then the installation media will fall back to booting from disk. This allows installations to reboot and try out their installed environment without the need to remove the CD from the tray (something well appreciated for remote installations).
+At the boot prompt, users get the option of displaying the available kernels `(F1)` and boot options `(F2)`. If no choice is made within 15 seconds (either displaying information or using a kernel) then the installation media will fall back to booting from disk. This allows installations to reboot and try out their installed environment without the need to remove the CD from the tray (something well appreciated for remote installations).
 
-Specifying a kernel was mentioned. On the Minimal installation media, only two predefined kernel boot options are provided. The default option is called gentoo. The other being the -nofb variant; this disables kernel framebuffer support.
+Specifying a kernel was mentioned. On the Minimal installation media, only two predefined kernel boot options are provided. The default option is called **gentoo**. The other being the **-nofb** variant; this disables kernel framebuffer support.
 
 The next section displays a short overview of the available kernels and their descriptions:
 
-Kernel choices
-gentoo
-Default kernel with support for K8 CPUs (including NUMA support) and EM64T CPUs.
-gentoo-nofb
-Same as gentoo but without framebuffer support.
-memtest86
-Test the local RAM for errors.
+## Kernel choices
+**gentoo**
+    Default kernel with support for K8 CPUs (including NUMA support) and EM64T CPUs.
+**gentoo-nofb**
+    Same as *gentoo* but without framebuffer support.
+**memtest86**
+    Test the local RAM for errors.
+
 Alongside the kernel, boot options help in tuning the boot process further.
 
-Hardware options
-acpi=on
+### Hardware options
+
+**acpi=on**
 This loads support for ACPI and also causes the acpid daemon to be started by the CD on boot. This is only needed if the system requires ACPI to function properly. This is not required for Hyperthreading support.
-acpi=off
+
+**acpi=off**
 Completely disables ACPI. This is useful on some older systems and is also a requirement for using APM. This will disable any Hyperthreading support of your processor.
-console=X
+**console=X**
 This sets up serial console access for the CD. The first option is the device, usually ttyS0, followed by any connection options, which are comma separated. The default options are 9600,8,n,1.
-dmraid=X
+
+**dmraid=X**
 This allows for passing options to the device-mapper RAID subsystem. Options should be encapsulated in quotes.
-doapm
+
+**doapm**
 This loads APM driver support. This also requires that acpi=off.
-dopcmcia
+
+**dopcmcia**
 This loads support for PCMCIA and Cardbus hardware and also causes the pcmcia cardmgr to be started by the CD on boot. This is only required when booting from PCMCIA/Cardbus devices.
-doscsi
+
+**doscsi**
 This loads support for most SCSI controllers. This is also a requirement for booting most USB devices, as they use the SCSI subsystem of the kernel.
-sda=stroke
-This allows the user to partition the whole hard disk even when the BIOS is unable to handle large disks. This option is only used on machines with an older BIOS. Replace sda with the device that requires this option.
-ide=nodma
+
+**sda=stroke**
+This allows the user to partition the whole hard disk even when the BIOS is unable to handle large disks. This option is only used on machines with an older 
+BIOS. Replace sda with the device that requires this option.
+
+**ide=nodma**
 This forces the disabling of DMA in the kernel and is required by some IDE chipsets and also by some CDROM drives. If the system is having trouble reading from the IDE CDROM, try this option. This also disables the default hdparm settings from being executed.
-noapic
+
+**noapic**
 This disables the Advanced Programmable Interrupt Controller that is present on newer motherboards. It has been known to cause some problems on older hardware.
-nodetect
+
+**nodetect**
 This disables all of the autodetection done by the CD, including device autodetection and DHCP probing. This is useful for debugging a failing CD or driver.
-nodhcp
+
+**nodhcp**
 This disables DHCP probing on detected network cards. This is useful on networks with only static addresses.
-nodmraid
+
+**nodmraid**
 Disables support for device-mapper RAID, such as that used for on-board IDE/SATA RAID controllers.
-nofirewire
+
+**nofirewire**
 This disables the loading of Firewire modules. This should only be necessary if your Firewire hardware is causing a problem with booting the CD.
-nogpm
+
+**nogpm**
 This disables gpm console mouse support.
-nohotplug
+
+**nohotplug**
 This disables the loading of the hotplug and coldplug init scripts at boot. This is useful for debugging a failing CD or driver.
-nokeymap
+
+**nokeymap**
 This disables the keymap selection used to select non-US keyboard layouts.
-nolapic
+
+**nolapic**
 This disables the local APIC on Uniprocessor kernels.
-nosata
+
+**nosata**
 This disables the loading of Serial ATA modules. This is used if the system is having problems with the SATA subsystem.
-nosmp
+
+**nosmp**
 This disables SMP, or Symmetric Multiprocessing, on SMP-enabled kernels. This is useful for debugging SMP-related issues with certain drivers and motherboards.
-nosound
+
+**nosound**
 This disables sound support and volume setting. This is useful for systems where sound support causes problems.
-nousb
+
+**nousb**
 This disables the autoloading of USB modules. This is useful for debugging USB issues.
-slowusb
+
+**slowusb**
 This adds some extra pauses into the boot process for slow USB CDROMs, like in the IBM BladeCenter.
-Logical volume/device management
-dolvm
+
+### Logical volume/device management
+
+**dolvm**
 This enables support for Linux's Logical Volume Management.
-Other options
-debug
+
+### Other options
+
+**debug**
 Enables debugging code. This might get messy, as it displays a lot of data to the screen.
-docache
+
+**docache**
 This caches the entire runtime portion of the CD into RAM, which allows the user to umount /mnt/cdrom and mount another CDROM. This option requires that there is at least twice as much available RAM as the size of the CD.
-doload=X
+
+**doload=X**
 This causes the initial ramdisk to load any module listed, as well as dependencies. Replace X with the module name. Multiple modules can be specified by a comma-separated list.
-dosshd
+
+**dosshd**
 Starts sshd on boot, which is useful for unattended installs.
-passwd=foo
+**passwd=foo**
 Sets whatever follows the equals as the root password, which is required for dosshd since the root password is by default scrambled.
-noload=X
+
+**noload=X**
 This causes the initial ramdisk to skip the loading of a specific module that may be causing a problem. Syntax matches that of doload.
-nonfs
+
+**nonfs**
 Disables the starting of portmap/nfsmount on boot.
-nox
+
+**nox**
 This causes an X-enabled LiveCD to not automatically start X, but rather, to drop to the command line instead.
-scandelay
+
+**scandelay**
 This causes the CD to pause for 10 seconds during certain portions the boot process to allow for devices that are slow to initialize to be ready for use.
-scandelay=X
+
+**scandelay=X**
 This allows the user to specify a given delay, in seconds, to be added to certain portions of the boot process to allow for devices that are slow to initialize to be ready for use. Replace X with the number of seconds to pause.
- Note
-The bootable media will check for no* options before do* options, so that options can be overridden in the exact order specified.
-Now boot the media, select a kernel (if the default gentoo kernel does not suffice) and boot options. As an example, we boot the gentoo kernel, with dopcmcia as a kernel parameter:
 
-boot:gentoo dopcmcia
-Next the user will be greeted with a boot screen and progress bar. If the installation is done on a system with a non-US keyboard, make sure to immediately press Alt+F1 to switch to verbose mode and follow the prompt. If no selection is made in 10 seconds the default (US keyboard) will be accepted and the boot process will continue. Once the boot process completes, the user is automatically logged in to the "Live" Gentoo Linux environment as the root user, the super user. A root prompt is displayed on the current console, and one can switch to other consoles by pressing Alt+F2, Alt+F3 and Alt+F4. Get back to the one started on by pressing Alt+F1.
+!!! Note
+`The bootable media will check for no* options before do* options, so that options can be overridden in the exact order specified.`
+
+Now boot the media, select a kernel (if the default **gentoo** kernel does not suffice) and boot options. As an example, we boot the gentoo kernel, with dopcmcia as a kernel parameter:
+
+`boot:gentoo dopcmcia`
+
+Next the user will be greeted with a boot screen and progress bar. If the installation is done on a system with a non-US keyboard, make sure to immediately press Alt+F1 to switch to verbose mode and follow the prompt. If no selection is made in 10 seconds the default (US keyboard) will be accepted and the boot process will continue. Once the boot process completes, the user is automatically logged in to the "Live" Gentoo Linux environment as the root user, the super user. A root prompt is displayed on the current console, and one can switch to other consoles by pressing `Alt+F2`, `Alt+F3` and `Alt+F4`. Get back to the one started on by pressing `Alt+F1`.
 
 
-Extra hardware configuration
+### Extra hardware configuration
+
 When the Installation medium boots, it tries to detect all the hardware devices and loads the appropriate kernel modules to support the hardware. In the vast majority of cases, it does a very good job. However, in some cases it may not auto-load the kernel modules needed by the system. If the PCI auto-detection missed some of the system's hardware, the appropriate kernel modules have to be loaded manually.
 
 In the next example the 8139too module (which supports certain kinds of network interfaces) is loaded:
 
-root #modprobe 8139too
-Optional: User accounts
-If other people need access to the installation environment, or there is need to run commands as a non-root user on the installation medium (such as to chat using irssi without root privileges for security reasons), then an additional user account needs to be created and the root password set to a strong password.
+`root #modprobe 8139too`
 
-To change the root password, use the passwd utility:
+### Optional: User accounts
 
-root #passwd
+If other people need access to the installation environment, or there is need to run commands as a non-root user on the installation medium (such as to chat using **irssi** without root privileges for security reasons), then an additional user account needs to be created and the root password set to a strong password.
+
+To change the root password, use the **passwd** utility:
+
+```
+root # passwd
 New password: (Enter the new password)
 Re-enter password: (Re-enter the password)
-To create a user account, first enter their credentials, followed by the account's password. The useradd and passwd commands are used for these tasks.
+``` 
 
-In the next example, a user called john is created:
+To create a user account, first enter their credentials, followed by the account's password. The **useradd** and **passwd** commands are used for these tasks.
 
-root #useradd -m -G users john
-root #passwd john
+In the next example, a user called *john* is created:
+
+```
+root # useradd -m -G users john
+root # passwd john
 New password: (Enter john's password)
 Re-enter password: (Re-enter john's password)
+```
+
 To switch from the (current) root user to the newly created user account, use the su command:
 
-root #su - john
-Optional: Viewing documentation while installing
-TTYs
-To view the Gentoo handbook during the installation, first create a user account as described above. Then press Alt+F2 to go to a new terminal (TTY).
+`root # su - john`
 
-During the installation, the links command can be used to browse the Gentoo handbook - of course only from the moment that the Internet connection is working.
+## Optional: Viewing documentation while installing
 
-user $links https://wiki.gentoo.org/wiki/Handbook:AMD64
-To go back to the original terminal, press Alt+F1.
+### TTYs
 
- Tip
-When booted to the Gentoo minimal or Gentoo admin environments, seven TTYs will be available. They can be switched by pressing Alt then a function key between F1-F7. It can be useful to switch to a new terminal when waiting for job to complete, to open documentation, etc.
-GNU Screen
-The Screen utility is installed by default on official Gentoo installation media. It may be more efficient for the seasoned Linux enthusiast to use screen to view installation instructions via split panes rather than the multiple TTY method mentioned above.
+To view the Gentoo handbook during the installation, first create a user account as described above. Then press `Alt`+`F2` to go to a new terminal (TTY).
 
-Optional: Starting the SSH daemon
+During the installation, the **links** command can be used to browse the Gentoo handbook - of course only from the moment that the Internet connection is working.
+
+`user $ links https://wiki.gentoo.org/wiki/Handbook:AMD64`
+
+To go back to the original terminal, press `Alt`+`F1`.
+
+!!! Tip
+When booted to the Gentoo minimal or Gentoo admin environments, seven TTYs will be available. They can be switched by pressing Alt then a function key between `F1`-`F7`. It can be useful to switch to a new terminal when waiting for job to complete, to open documentation, etc.
+
+### GNU Screen
+The [Screen](https://wiki.gentoo.org/wiki/Screen) utility is installed by default on official Gentoo installation media. It may be more efficient for the seasoned Linux enthusiast to use screen to view installation instructions via split panes rather than the multiple TTY method mentioned above.
+
+### Optional: Starting the SSH daemon
+
 To allow other users to access the system during the installation (perhaps to support during an installation, or even do it remotely), a user account needs to be created (as was documented earlier on) and the SSH daemon needs to be started.
 
 To fire up the SSH daemon on an OpenRC init, execute the following command:
 
-root #rc-service sshd start
- Note
-If users log on to the system, they will see a message that the host key for this system needs to be confirmed (through what is called a fingerprint). This behavior is typical and can be expected for initial connections to an SSH server. However, later when the system is set up and someone logs on to the newly created system, the SSH client will warn that the host key has been changed. This is because the user now logs on to - for SSH - a different server (namely the freshly installed Gentoo system rather than the live environment that the installation is currently using). Follow the instructions given on the screen then to replace the host key on the client system.
+`root # rc-service sshd start`
+
+!!! Note
+    If users log on to the system, they will see a message that the host key for this system needs to be confirmed (through what is called a fingerprint). This behavior is typical and can be expected for initial connections to an SSH server. However, later when the system is set up and someone logs on to the newly created system, the SSH client will warn that the host key has been changed. This is because the user now logs on to - for SSH - a different server (namely the freshly installed Gentoo system rather than the live environment that the installation is currently using). Follow the instructions given on the screen then to replace the host key on the client system.
+
 To be able to use sshd, the network needs to function properly. Continue with the chapter on Configuring the network.
