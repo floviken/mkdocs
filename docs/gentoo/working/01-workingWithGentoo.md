@@ -823,13 +823,15 @@ The user-defined runlevels are those with an accompanying /etc/runlevels/ subdir
 
 ### Working with initscripts
 
-The scripts that the openrc process starts are called init scripts. Each script in /etc/init.d/ can be executed with the arguments `start`, `stop`, `restart`, `zap`, `status`, `ineed`, `iuse`, `iwant`, `needsme`, `usesme`, or `wantsme`.
+The scripts that the openrc process starts are called init scripts. Each script in /etc/init.d/ can be executed with the arguments `start`, `stop`, `restart`, `zap`, `status`, `ineed`, `iuse`, `iwant`, `needsme`, `usesme`, or wantsme.
 
 To start, stop, or restart a service (and all depending services), the start, stop, and restart arguments should be used:
 
-root #rc-service postfix start
- Note
-Only the services that need the given service are stopped or restarted. The other depending services (those that use the service but don't need it) are left untouched.
+`root # rc-service postfix start`
+
+!!! note
+```Only the services that need the given service are stopped or restarted. The other depending services (those that use the service but don't need it) are left untouched.```
+
 To stop a service, but not the services that depend on it, use the --nodeps option together with the stop argument:
 
 root #rc-service --nodeps postfix stop
