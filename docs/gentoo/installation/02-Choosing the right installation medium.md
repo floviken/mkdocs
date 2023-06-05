@@ -18,7 +18,8 @@ The [AMD64 project](https://wiki.gentoo.org/wiki/Project:AMD64) is a good place 
 
 ## Gentoo Linux installation media
 !!! Tip
-```It is okay to use other, non-Gentoo installation media, although official media is recommended. Gentoo installation media ensures the necessary tools are around. When using non-Gentoo media, skip to Preparing the disks.
+```
+It is okay to use other, non-Gentoo installation media, although official media is recommended. Gentoo installation media ensures the necessary tools are around. When using non-Gentoo media, skip to Preparing the disks.
 ```
 
 ### Minimal installation CD
@@ -151,15 +152,18 @@ gpg:          There is no indication that the signature belongs to the owner.
 ```
 
 Primary key fingerprint: 13EB BDBE DE7A 1277 5DFD  B1BA BB57 2E0E 2D18 2910
-To be absolutely certain that everything is valid, verify the fingerprint shown with the fingerprint on the Gentoo signatures page.
+To be absolutely certain that everything is valid, verify the fingerprint shown with the fingerprint on the [Gentoo signatures page](https://www.gentoo.org/downloads/signatures/).
 
-Burning a disk
+### Burning a disk
+
 Of course, with just an ISO file downloaded, the Gentoo Linux installation cannot be started. The ISO file needs to be burned on a CD to boot from, and in such a way that its content is burned on the CD, not just the file itself. Below a few common methods are described - a more elaborate set of instructions can be found in Our FAQ on burning an ISO file.
 
-Burning with Microsoft Windows 7 and above
+#### Burning with Microsoft Windows 7 and above
+
 Versions of Microsoft Windows 7 and above can both mount and burn ISO images to optical media without the requirement for third-party software. Simply insert a burnable disk, browse to the downloaded ISO files, right click the file in Windows Explorer, and select "Burn disk image".
 
-Burning with Linux
+#### Burning with Linux
+
 The cdrecord utility from the package app-cdr/cdrtools can burn ISO images on Linux.
 
 To burn the ISO file on the CD in the /dev/sr0 device (this is the first CD device on the system - substitute with the right device file if necessary):
