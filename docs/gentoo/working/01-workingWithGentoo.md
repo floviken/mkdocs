@@ -921,6 +921,7 @@ stop() {
 }
 ```
 
+
 ``` sh title="CODE Example initscript layout (updated)"
 #!/sbin/openrc-run
 command=/usr/bin/foo
@@ -954,6 +955,7 @@ drink() {
     ${command} --drink beer
     eend $? "Failed to drink any beer :("
 }
+
 ``` 
 
 Every init script requires the `start()` function or `command` variable to be defined. All other sections are optional.
