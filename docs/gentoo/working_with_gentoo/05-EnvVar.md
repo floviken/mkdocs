@@ -106,17 +106,21 @@ To notice the effect of **env-update** immediately after running it, execute the
 ## Defining variables locally
 
 ### User specific
-It might not be necessary to define an environment variable globally. For instance, one might want to add /home/my_user/bin and the current working directory (the directory the user is in) to the PATH variable but do not want all other users on the system to have that in their PATH too. To define an environment variable locally, use ~/.bashrc or ~/.bash_profile:
 
-FILE ~/.bashrcExtending PATH for local usage
+It might not be necessary to define an environment variable globally. For instance, one might want to add /home/my_user/bin and the current working directory (the directory the user is in) to the *PATH* variable but do not want all other users on the system to have that in their *PATH* too. To define an environment variable locally, use ~/.bashrc or ~/.bash_profile:
+
+```sh title="FILE ~/.bashrcExtending PATH for local usage"
 # A colon followed by no directory is treated as the current working directory
 PATH="${PATH}:/home/my_user/bin:"
-After logout/login, the PATH variable will be updated.
+```
 
-Session specific
+After logout/login, the *PATH* variable will be updated.
+
+### Session specific
+
 Sometimes even stricter definitions are requested. For instance, a user might want to be able to use binaries from a temporary directory created without using the path to the binaries themselves or editing ~/.bashrc for the short time necessary.
 
 In this case, just define the PATH variable in the current session by using the export command. As long as the user does not log out, the PATH variable will be using the temporary settings.
 
-root #export PATH="${PATH}:/home/my_user/tmp/usr/bin"
+`root #export PATH="${PATH}:/home/my_user/tmp/usr/bin"`
 
