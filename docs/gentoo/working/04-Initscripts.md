@@ -369,45 +369,55 @@ restartdelay() {
 The `restart()` function cannot be overridden in OpenRC!
 
 ### Service configuration variables
+
 In order to support configuration files in /etc/conf.d/, no specifics need to be implemented: when the init script is executed, the following files are automatically sourced (i.e. the variables are available to use):
 
-/etc/conf.d/YOUR_INIT_SCRIPT
-/etc/conf.d/basic
-/etc/rc.conf
+- /etc/conf.d/YOUR_INIT_SCRIPT
+- /etc/conf.d/basic
+- /etc/rc.conf
+
 Also, if the init script provides a virtual dependency (such as net), the file associated with that dependency (such as /etc/conf.d/net) will be sourced too.
 
-Changing runlevel behavior
-Who might benefit
+## Changing runlevel behavior
+
+### Who might benefit
+
 Many laptop users know the situation: at home they need to start net.eth0, but they don't want to start net.eth0 while on the road (as there is no network available). With Gentoo the runlevel behaviour can be altered at will.
 
 For instance, a second "default" runlevel can be created which can be booted that has other init scripts assigned to it. At boottime, the user can then select what default runlevel to use.
 
-Using softlevel
-First of all, create the runlevel directory for the second "default" runlevel. As an example we create the offline runlevel:
+### Using softlevel
 
-root #mkdir /etc/runlevels/offline
+First of all, create the runlevel directory for the second "default" runlevel. As an example we create the *offline* runlevel:
+
+`root # mkdir /etc/runlevels/offline`
+
 Add the necessary init scripts to the newly created runlevel. For instance, to have an exact copy of the current default runlevel but without net.eth0:
 
-root #cd /etc/runlevels/default
-root #for service in *; do rc-update add $service offline; done
-root #rc-update del net.eth0 offline
-root #rc-update show offline
+```
+root # cd /etc/runlevels/default
+root # for service in *; do rc-update add $service offline; done
+root # rc-update del net.eth0 offline
+root # rc-update show offline
 (Partial sample Output)
                acpid | offline
           domainname | offline
                local | offline
             net.eth0 |
+```
 Even though net.eth0 has been removed from the offline runlevel, udev might want to attempt to start any devices it detects and launch the appropriate services, a functionality that is called hotplugging. By default, Gentoo does not enable hotplugging.
 
-To enable hotplugging, but only for a selected set of scripts, use the rc_hotplug variable in /etc/rc.conf:
+To enable hotplugging, but only for a selected set of scripts, use the *rc_hotplug* variable in /etc/rc.conf:
 
-FILE /etc/rc.confEnable hotplugging of the WLAN interface
+```sh title=""FILE /etc/rc.confEnable hotplugging of the WLAN interface"
 rc_hotplug="net.wlan !net.*"
- Note
+``` 
+
+!!! Note
 For more information on device initiated services, please see the comments inside /etc/rc.conf.
 Edit the bootloader configuration and add a new entry for the offline runlevel. In that entry, add softlevel=offline as a boot parameter.
 
-Using bootlevel
+### Using bootlevel
 Using bootlevel is completely analogous to softlevel. The only difference here is that a second "boot" runlevel is defined instead of a second "default" runlevel.
 
 
