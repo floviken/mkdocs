@@ -825,35 +825,43 @@ The user-defined runlevels are those with an accompanying /etc/runlevels/ subdir
 
 The scripts that the openrc process starts are called init scripts. Each script in /etc/init.d/ can be executed with the arguments `start`, `stop`, `restart`, `zap`, `status`, `ineed`, `iuse`, `iwant`, `needsme`, `usesme`, or wantsme.
 
-To start, stop, or restart a service (and all depending services), the start, stop, and restart arguments should be used:
+To start, stop, or restart a service (and all depending services), the `start`, `stop`, and `restart` arguments should be used:
 
 `root # rc-service postfix start`
 
 !!! note
 ```Only the services that need the given service are stopped or restarted. The other depending services (those that use the service but don't need it) are left untouched.```
 
-To stop a service, but not the services that depend on it, use the --nodeps option together with the stop argument:
+To stop a service, but not the services that depend on it, use the `--nodeps` option together with the `stop` argument:
 
-root #rc-service --nodeps postfix stop
-To see what status a service has (started, stopped, ...) use the status argument:
+`root # rc-service --nodeps postfix stop`
 
-root #rc-service postfix status
-If the status information shows that the service is running, but in reality it is not, then reset the status information to "stopped" with the zap argument:
+To see what status a service has (started, stopped, ...) use the `status` argument:
 
-root #rc-service postfix zap
-To also ask what dependencies the service has, use iwant, iuse or ineed. With ineed it is possible to see the services that are really necessary for the correct functioning of the service. iwant or iuse, on the other hand, shows the services that can be used by the service, but are not necessary for the correct functioning.
+`root # rc-service postfix status`
 
-root #rc-service postfix ineed
-Similarly, it is possible to ask what services require the service (needsme) or can use it (usesme or wantsme):
+If the status information shows that the service is running, but in reality it is not, then reset the status information to "stopped" with the `zap` argument:
 
-root #rc-service postfix needsme
-Updating runlevels
-rc-update
+`root # rc-service postfix zap`
+
+To also ask what dependencies the service has, use `iwant`, `iuse` or `ineed`. With `ineed` it is possible to see the services that are really necessary for the correct functioning of the service. `iwant` or `iuse`, on the other hand, shows the services that can be used by the service, but are not necessary for the correct functioning.
+
+`root # rc-service postfix ineed`
+
+Similarly, it is possible to ask what services require the service (`needsme`) or can use it (`usesme` or `wantsme`):
+
+`root # rc-service postfix needsme`
+
+##  Updating runlevels
+
+### rc-update
+
 Gentoo's init system uses a dependency-tree to decide what service needs to be started first. As this is a tedious task that we wouldn't want our users to have to do manually, we have created tools that ease the administration of the runlevels and init scripts.
 
 With rc-update it is possible to add and remove init scripts to a runlevel. The rc-update tool will then automatically ask the depscan.sh script to rebuild the dependency tree.
 
-Adding and removing services
+### Adding and removing services
+
 In earlier instructions, init scripts have already been added to the "default" runlevel. What "default" means has been explained earlier in this document. Next to the runlevel, the rc-update script requires a second argument that defines the action: add, del, or show.
 
 To add or remove an init script, just give rc-update the add or del argument, followed by the init script and the runlevel. For instance:
@@ -864,7 +872,8 @@ The rc-update -v show command will show all the available init scripts and list 
 root #rc-update -v show
 It is also possible to run rc-update show (without -v) to just view enabled init scripts and their runlevels.
 
-Configuring services
+### Configuring services
+
 Why additional configuration is needed
 Init scripts can be quite complex. It is therefore not really desirable to have the users edit the init script directly, as it would make it more error-prone. It is however important to be able to configure such a service. For instance, users might want to give more options to the service itself.
 
