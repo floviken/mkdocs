@@ -831,7 +831,8 @@ To start, stop, or restart a service (and all depending services), the `start`, 
 
 !!! note
 ``` md 
-Only the services that need the given service are stopped or restarted. The other depending services (those that use the service but don't need it) are left untouched.```
+Only the services that need the given service are stopped or restarted. The other depending services (those that use the service but don't need it) are left untouched.
+```
 
 To stop a service, but not the services that depend on it, use the `--nodeps` option together with the `stop` argument:
 
