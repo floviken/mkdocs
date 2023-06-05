@@ -49,13 +49,15 @@ Whenever a certain choice is presented the handbook will try to explain the pros
 
 Sometimes an optional step can be followed. Such steps are marked as "Optional: " and are therefore not needed to install Gentoo. However, some optional steps are dependent on a previously made decision. The instructions will inform the reader when this happens, both when the decision is made, and right before the optional step is described.
 
-Installation options for Gentoo
-Gentoo can be installed in many different ways. It can be downloaded and installed from official Gentoo installation media such as our bootable ISO images. The installation media can be installed on a USB stick or accessed via a netbooted environment. Alternatively, Gentoo can be installed from non-official media such as an already installed distribution or a non-Gentoo bootable disk (such as Knoppix).
+### Installation options for Gentoo
+Gentoo can be installed in many different ways. It can be downloaded and installed from official Gentoo installation media such as our bootable ISO images. The installation media can be installed on a USB stick or accessed via a netbooted environment. Alternatively, Gentoo can be installed from non-official media such as an already installed distribution or a non-Gentoo bootable disk (such as [Knoppix](https://www.knopper.net/knoppix/index-en.html)).
 
 This document covers the installation using official Gentoo Installation media or, in certain cases, netbooting.
 
- Note
-For help on the other installation approaches, including using non-Gentoo bootable media, please read our Alternative installation guide.
+!!! Note
+```For help on the other installation approaches, including using non-Gentoo bootable media, please read our [Alternative installation guide](https://wiki.gentoo.org/wiki/Installation_alternatives).
+```
+
 We also provide a Gentoo installation tips and tricks document that might be useful.
 
 Troubles
