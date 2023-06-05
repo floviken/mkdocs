@@ -1,6 +1,7 @@
-## What are USE flags
+# What are USE flags
 
-### The idea behind USE flags
+## The idea behind USE flags
+
 When installing Gentoo, users make choices depending on the environment they are working with. A setup for a server differs from a setup for a workstation. A gaming workstation differs from a 3D rendering workstation.
 
 This is not only true for choosing what packages to install, but also what features a certain package should support. If there is no need for OpenGL, why would someone bother to install and maintain OpenGL and build OpenGL support in most of the packages? If someone doesn't want to use KDE, why would they bother compiling packages with KDE support if those packages work flawlessly without?
@@ -8,7 +9,7 @@ This is not only true for choosing what packages to install, but also what featu
 To help users in deciding what to install/activate and what not, Gentoo wanted the user to specify his/her environment in an easy way. This forces the user into deciding what they really want and eases the process for Portage to make useful decisions.
 
 
-### Definition of a USE flag
+## Definition of a USE flag
 Enter the USE flags. Such a flag is a keyword that embodies support and dependency-information for a certain concept. If a certain USE flag is set to enabled, then Portage will know the system administrator desires support for the chosen keyword. Of course this may alter the dependency information for a package. Depending on the USE flag, this may require pulling in *many* more dependencies in order to fulfill the requested dependency changes.
 
 Take a look at a specific example: the `kde` USE flag. If this flag is not set in the *USE* variable (or if the value is prefixed with a minus sign: `-kde`), then all packages that have optional KDE support will be compiled *without* KDE support. All packages that have an optional KDE dependency will be installed *without* installing the KDE libraries (as dependency).
@@ -79,6 +80,7 @@ root # USE="-pulseaudio" emerge www-client/seamonkey
 ```
 
 ### Precedence
+
 Of course there is a certain precedence on what setting has priority over the USE setting. The precedence for the USE setting is, ordered by priority (first has lowest priority):
 
 1. Default USE setting declared in the make.defaults files part of your profile
