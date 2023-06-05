@@ -753,37 +753,44 @@ First, the boot loader will load the kernel image that is defined in the boot lo
 
 This process then makes sure that all filesystems (defined in /etc/fstab) are mounted and ready to be used. Then it executes several scripts located in /etc/init.d/, which will start the services needed in order to have a successfully booted system.
 
-Finally, when all scripts are executed, init activates the terminals (in most cases just the virtual consoles which are hidden beneath Alt+F1, Alt+F2, etc.) attaching a special process called agetty to it. This process will then make sure users are able to log on through these terminals by running login.
+Finally, when all scripts are executed, init activates the terminals (in most cases just the virtual consoles which are hidden beneath `Alt+F1`, `Alt+F2`, etc.) attaching a special process called agetty to it. This process will then make sure users are able to log on through these terminals by running login.
 
 Initscripts
 Now init doesn't just execute the scripts in /etc/init.d/ randomly. Even more, it doesn't run all scripts in /etc/init.d/, only the scripts it is told to execute. It decides which scripts to execute by looking into /etc/runlevels/.
 
 First, init runs all scripts from /etc/init.d/ that have symbolic links inside /etc/runlevels/boot/. Usually, it will start the scripts in alphabetical order, but some scripts have dependency information in them, telling the system that another script must be run before they can be started.
 
-When all /etc/runlevels/boot/ referenced scripts are executed, init continues with running the scripts that have a symbolic link to them in /etc/runlevels/default/. Again, it will use the alphabetical order to decide what script to run first, unless a script has dependency information in it, in which case the order is changed to provide a valid start-up sequence. The latter is also the reason why commands used during the installation of Gentoo Linux used default, as in rc-update add sshd default.
+When all /etc/runlevels/boot/ referenced scripts are executed, init continues with running the scripts that have a symbolic link to them in /etc/runlevels/default/. Again, it will use the alphabetical order to decide what script to run first, unless a script has dependency information in it, in which case the order is changed to provide a valid start-up sequence. The latter is also the reason why commands used during the installation of Gentoo Linux used `default`, as in **rc-update add sshd default**.
 
-How init works
+### How init works
+
 Of course init doesn't decide all that by itself. It needs a configuration file that specifies what actions need to be taken. This configuration file is /etc/inittab.
 
 Remember the boot sequence that was just described - init's first action is to mount all file systems. This is defined in the following line from /etc/inittab:
 
-FILE /etc/inittabInitialization command
+``` sh title="FILE /etc/inittabInitialization command"
 si::sysinit:/sbin/openrc sysinit
-This line tells init that it must run /sbin/openrc sysinit to initialize the system. The /sbin/openrc script takes care of the initialization, so one might say that init doesn't do much - it delegates the task of initializing the system to another process.
+``` 
+
+This line tells init that it must run **/sbin/openrc sysinit** to initialize the system. The /sbin/openrc script takes care of the initialization, so one might say that init doesn't do much - it delegates the task of initializing the system to another process.
 
 Second, init executed all scripts that had symbolic links in /etc/runlevels/boot/. This is defined in the following line:
 
-FILE /etc/inittabBoot command invocation
+```sh title="FILE /etc/inittabBoot command invocation"
 rc::bootwait:/sbin/openrc boot
+```
+
 Again the openrc script performs the necessary tasks. Note that the option given to openrc (boot) is the same as the subdirectory of /etc/runlevels/ that is used.
 
 Now init checks its configuration file to see what runlevel it should run. To decide this, it reads the following line from /etc/inittab:
 
-FILE /etc/inittabDefault runlevel selection
+```sh title="FILE /etc/inittabDefault runlevel selection"
 id:3:initdefault:
+```
+
 In this case (which the majority of Gentoo users will use), the runlevel id is 3. Using this information, init checks what it must run to start runlevel 3:
 
-FILE /etc/inittabRunlevel definitions
+```sh title="FILE /etc/inittabRunlevel definitions"
 l0:0:wait:/sbin/openrc shutdown
 l1:S1:wait:/sbin/openrc single
 l2:2:wait:/sbin/openrc nonetwork
@@ -791,18 +798,23 @@ l3:3:wait:/sbin/openrc default
 l4:4:wait:/sbin/openrc default
 l5:5:wait:/sbin/openrc default
 l6:6:wait:/sbin/openrc reboot
-The line that defines level 3, again, uses the openrc script to start the services (now with argument default). Again note that the argument of openrc is the same as the subdirectory from /etc/runlevels/.
+```
+
+The line that defines level 3, again, uses the openrc script to start the services (now with argument `default`). Again note that the argument of openrc is the same as the subdirectory from /etc/runlevels/.
 
 When openrc has finished, init decides what virtual consoles it should activate and what commands need to be run at each console:
 
-FILE /etc/inittabTerminal definitions
+```sh title="FILE /etc/inittabTerminal definitions"
 c1:12345:respawn:/sbin/agetty 38400 tty1 linux
 c2:12345:respawn:/sbin/agetty 38400 tty2 linux
 c3:12345:respawn:/sbin/agetty 38400 tty3 linux
 c4:12345:respawn:/sbin/agetty 38400 tty4 linux
 c5:12345:respawn:/sbin/agetty 38400 tty5 linux
 c6:12345:respawn:/sbin/agetty 38400 tty6 linux
-Available runlevels
+```
+
+### Available runlevels
+
 In a previous section, we saw that init uses a numbering scheme to decide what runlevel it should activate. A runlevel is a state in which the system is running and contains a collection of scripts (runlevel scripts or initscripts) that must be executed when entering or leaving a runlevel.
 
 In Gentoo, there are seven runlevels defined: three internal runlevels, and four user-defined runlevels. The internal runlevels are called sysinit, shutdown and reboot and do exactly what their names imply: initialize the system, powering off the system, and rebooting the system.
