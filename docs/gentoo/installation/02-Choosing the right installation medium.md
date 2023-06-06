@@ -383,4 +383,4 @@ To fire up the SSH daemon on an OpenRC init, execute the following command:
 !!! Note
     If users log on to the system, they will see a message that the host key for this system needs to be confirmed (through what is called a fingerprint). This behavior is typical and can be expected for initial connections to an SSH server. However, later when the system is set up and someone logs on to the newly created system, the SSH client will warn that the host key has been changed. This is because the user now logs on to - for SSH - a different server (namely the freshly installed Gentoo system rather than the live environment that the installation is currently using). Follow the instructions given on the screen then to replace the host key on the client system.
 
-To be able to use sshd, the network needs to function properly. Continue with the chapter on [Configuring the network]().
+To be able to use sshd, the network needs to function properly. Continue with the chapter on [Configuring the network](docs\gentoo\installation\03-Configuring the network.md).
