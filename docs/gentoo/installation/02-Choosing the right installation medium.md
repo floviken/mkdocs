@@ -6,12 +6,13 @@ Before we start, we first list what hardware requirements are needed to successf
 
 
 AMD64 livedisk hardware requirements
-||Minimal CD	|LiveDVD|
-|--|--|--|
-|CPU|	|Any x86-64 CPU, both AMD64 and Intel 64|
-|Memory|	|2 GB|
-|Disk space|	8 GB (excluding swap space)|
-|Swap space|	At least 2 GB|
+
+|  |Minimal CD	|LiveDVD|
+|--|------------|--------|
+|CPU| -	|Any x86-64 CPU, both AMD64 and Intel 64|
+|Memory| -	|2 GB|
+|Disk space|- | 	8 GB (excluding swap space)|
+|Swap space| - |	At least 2 GB|
 
 The [AMD64 project](https://wiki.gentoo.org/wiki/Project:AMD64) is a good place to be for more information about Gentoo's **amd64** support.
 
