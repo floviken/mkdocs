@@ -72,14 +72,16 @@ If the proxy requires a username and password, use the following syntax for the 
 http://username:password@proxy.gentoo.org:8080
 ```
 
-#### Testing the network
+### Testing the network
 
 Try pinging your ISP's DNS server (found in /etc/resolv.conf) and a web site of choice. This ensures that the network is functioning properly and that the network packets are reaching the net, DNS name resolution is working correctly, etc.
 
-root #ping -c 3 www.gentoo.org
-If this all works, then the remainder of this chapter can be skipped to jump right to the next step of the installation instructions (Preparing the disks).
+`root # ping -c 3 www.gentoo.org`
 
-Automatic network configuration
+If this all works, then the remainder of this chapter can be skipped to jump right to the next step of the installation instructions ([Preparing the disks](docs/gentoo/installation/)).
+
+## Automatic network configuration
+
 If the network doesn't work immediately, some installation media allow the user to use net-setup (for regular or wireless networks), pppoe-setup (for ADSL users) or pptp (for PPTP users).
 
 If the installation medium does not contain any of these tools, continue with the Manual network configuration.
