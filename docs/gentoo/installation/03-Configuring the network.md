@@ -32,7 +32,7 @@ As a result of the shift towards predictable network interface names, the interf
 
 #### ip command
 
-As an alternative to ifconfig, the ip command can be used to determine interface names. The following example shows the output of ip addr (of another system so the information shown is different from the previous example):
+As an alternative to **ifconfig**, the **ip** command can be used to determine interface names. The following example shows the output of **ip addr** (of another system so the information shown is different from the previous example):
 
 ``` sh 
 root # ip addr
@@ -48,25 +48,32 @@ The interface name in the above example directly follows the number; it is eno1.
 
 In the remainder of this document, the handbook will assume that the operating network interface is called eth0.
 
-Optional: Configure any proxies
+### Optional: Configure any proxies
+
 If the Internet is accessed through a proxy, then it is necessary to set up proxy information during the installation. It is very easy to define a proxy: just define a variable which contains the proxy server information.
 
 In most cases, it is sufficient to define the variables using the server hostname. As an example, we assume the proxy is called proxy.gentoo.org and the port is 8080.
 
 To set up an HTTP proxy (for HTTP and HTTPS traffic):
 
-root #export http_proxy="http://proxy.gentoo.org:8080"
+`root # export http_proxy="http://proxy.gentoo.org:8080"`
+
 To set up an FTP proxy:
 
-root #export ftp_proxy="ftp://proxy.gentoo.org:8080"
+`root # export ftp_proxy="ftp://proxy.gentoo.org:8080"`
+
 To set up an RSYNC proxy:
 
-root #export RSYNC_PROXY="proxy.gentoo.org:8080"
+`root # export RSYNC_PROXY="proxy.gentoo.org:8080"`
+
 If the proxy requires a username and password, use the following syntax for the variable:
 
-CODE Adding username/password to the proxy variable
+``` sh title="CODE Adding username/password to the proxy variable"
 http://username:password@proxy.gentoo.org:8080
-Testing the network
+```
+
+#### Testing the network
+
 Try pinging your ISP's DNS server (found in /etc/resolv.conf) and a web site of choice. This ensures that the network is functioning properly and that the network packets are reaching the net, DNS name resolution is working correctly, etc.
 
 root #ping -c 3 www.gentoo.org
