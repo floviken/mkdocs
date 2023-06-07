@@ -24,11 +24,14 @@ eth0      Link encap:Ethernet  HWaddr 00:50:BA:8F:61:7A
           RX bytes:485691215 (463.1 Mb)  TX bytes:123951388 (118.2 Mb)
           Interrupt:11 Base address:0xe800 
 ```
+
 As a result of the shift towards predictable network interface names, the interface name on the system can be quite different from the old eth0 naming convention. Recent installation media might show regular network interfaces names like eno0, ens1, or enp5s0. Look for the interface in the ifconfig output that has an IP address related to the local network.
 
- Tip
-If no interfaces are displayed when the standard ifconfig command is used, try using the same command with the -a option. This option forces the utility to show all network interfaces detected by the system whether they be in an up or down state. If ifconfig -a produces no results then the hardware is faulty or the driver for the interface has not been loaded into the kernel. Both situations reach beyond the scope of this Handbook. Contact #gentoo (webchat) for support.
-ip command
+!!! Tip
+```If no interfaces are displayed when the standard ifconfig command is used, try using the same command with the -a option. This option forces the utility to show all network interfaces detected by the system whether they be in an up or down state. If ifconfig -a produces no results then the hardware is faulty or the driver for the interface has not been loaded into the kernel. Both situations reach beyond the scope of this Handbook. Contact #gentoo (webchat) for support.```
+
+#### ip command
+
 As an alternative to ifconfig, the ip command can be used to determine interface names. The following example shows the output of ip addr (of another system so the information shown is different from the previous example):
 
 root #ip addr
