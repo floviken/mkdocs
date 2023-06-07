@@ -58,7 +58,7 @@ If downloading from a mirror, the minimal installation CDs can be found as follo
 ```
 Inside this location, the installation media file is the file with the .iso suffix. For instance, take a look at the following listing:
 
-```sh title="CODE Example list of downloadable files at releases/amd64/autobuilds/current-iso/"
+``` sh title="CODE Example list of downloadable files at releases/amd64/autobuilds/current-iso/"
 [DIR] hardened/                                          05-Dec-2014 01:42    -   
 [   ] install-amd64-minimal-20141204.iso                 04-Dec-2014 21:04  208M  
 [   ] install-amd64-minimal-20141204.iso.CONTENTS        04-Dec-2014 21:04  3.0K  
