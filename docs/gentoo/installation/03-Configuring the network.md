@@ -34,13 +34,16 @@ As a result of the shift towards predictable network interface names, the interf
 
 As an alternative to ifconfig, the ip command can be used to determine interface names. The following example shows the output of ip addr (of another system so the information shown is different from the previous example):
 
-root #ip addr
+``` sh 
+root # ip addr
 2: eno1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
     link/ether e8:40:f2:ac:25:7a brd ff:ff:ff:ff:ff:ff
     inet 10.0.20.77/22 brd 10.0.23.255 scope global eno1
        valid_lft forever preferred_lft forever
     inet6 fe80::ea40:f2ff:feac:257a/64 scope link 
        valid_lft forever preferred_lft forever
+```
+
 The interface name in the above example directly follows the number; it is eno1.
 
 In the remainder of this document, the handbook will assume that the operating network interface is called eth0.
