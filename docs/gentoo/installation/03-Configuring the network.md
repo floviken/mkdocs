@@ -100,16 +100,19 @@ The simplest way to set up networking if it didn't get configured automatically 
 If the network still doesn't work, continue with Manual network configuration.
 
 ### Alternative: Using PPP
-Assuming PPPoE is needed to connect to the Internet, the installation CD (any version) has made things easier by including ppp. Use the provided pppoe-setup script to configure the connection. During the setup the Ethernet device that is connected to your ADSL modem, the username and password, the IPs of the DNS servers and if a basic firewall is needed or not will be asked.
+Assuming PPPoE is needed to connect to the Internet, the installation CD (any version) has made things easier by including ppp. Use the provided **pppoe-setup** script to configure the connection. During the setup the Ethernet device that is connected to your ADSL modem, the username and password, the IPs of the DNS servers and if a basic firewall is needed or not will be asked.
 
+``` sh
 root #pppoe-setup
 root #pppoe-start
-If something goes wrong, double-check that the username and password are correct by looking at etc/ppp/pap-secrets or /etc/ppp/chap-secrets and make sure to use the right Ethernet device. If the Ethernet device does not exist, the appropriate network modules need to be loaded. In that case continue with Manual network configuration as it will explain how to load the appropriate network modules there.
+```
+
+If something goes wrong, double-check that the username and password are correct by looking at etc/ppp/pap-secrets or /etc/ppp/chap-secrets and make sure to use the right Ethernet device. If the Ethernet device does not exist, the appropriate network modules need to be loaded. In that case continue with Manual network configuration[Manual network configuration](## Manual network configuration) as it will explain how to load the appropriate network modules there.
 
 If everything worked, continue with Preparing the disks.
 
 ### Alternative: Using PPTP
-If PPTP support is needed, use pptpclient which is provided by the installation CDs. But first make sure that the configuration is correct. Edit /etc/ppp/pap-secrets or /etc/ppp/chap-secrets so it contains the correct username/password combination:
+If PPTP support is needed, use **pptpclient** which is provided by the installation CDs. But first make sure that the configuration is correct. Edit /etc/ppp/pap-secrets or /etc/ppp/chap-secrets so it contains the correct username/password combination:
 
 root #nano -w /etc/ppp/chap-secrets
 Then adjust /etc/ppp/options.pptp if necessary:
