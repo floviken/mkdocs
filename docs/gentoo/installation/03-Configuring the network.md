@@ -137,7 +137,9 @@ If `net-setup` or `pppoe-setup` failed, then it is possible that the network car
 
 To find out what kernel modules are provided for networking, use the ls command:
 
-`root # ls /lib/modules/`uname -r`/kernel/drivers/net`
+```sh 
+root # ls /lib/modules/`uname -r`/kernel/drivers/net
+```
 
 If a driver is found for the network device, use modprobe to load the kernel module. For instance, to load the pcnet32 module:
 
