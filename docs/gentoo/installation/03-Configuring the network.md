@@ -145,7 +145,7 @@ If a driver is found for the network device, use modprobe to load the kernel mod
 
 `root # modprobe pcnet32`
 
-To check if the network card is now detected, use ifconfig. A detected network card would result in something like this (again, eth0 here is just an example):
+To check if the network card is now detected, use **ifconfig**. A detected network card would result in something like this (again, eth0 here is just an example):
 
 ```sh
 root # ifconfig eth0
@@ -159,15 +159,21 @@ eth0      Link encap:Ethernet  HWaddr FE:FD:00:00:00:00
 
 If however the following error is shown, the network card is not detected:
 
-root #ifconfig eth0
+``` sh 
+root # ifconfig eth0
 eth0: error fetching interface information: Device not found
+```
+
 The available network interface names on the system can be listed through the /sys file system:
 
+``` sh
 root #ls /sys/class/net
 dummy0  eth0  lo  sit0  tap0  wlan0
+```
+
 In the above example, 6 interfaces are found. The eth0 one is most likely the (wired) Ethernet adapter whereas wlan0 is the wireless one.
 
-Assuming that the network card is now detected, retry net-setup or pppoe-setup again (which should work now), but for the hardcore people we explain how to configure the network manually as well.
+Assuming that the network card is now detected, retry **net-setup** or **pppoe-setup** again (which should work now), but for the hardcore people we explain how to configure the network manually as well.
 
 Select one of the following sections based on your network setup:
 
@@ -175,21 +181,33 @@ Using DHCP for automatic IP retrieval
 Preparing for wireless access if a wireless network is used
 Understanding network terminology explains the basics about networking
 Using ifconfig and route explains how to set up networking manually
-Using DHCP
-DHCP (Dynamic Host Configuration Protocol) makes it possible to automatically receive networking information (IP address, netmask, broadcast address, gateway, nameservers etc.). This only works if a DHCP server is in the network (or if the ISP provider provides a DHCP service). To have a network interface receive this information automatically, use dhcpcd:
 
-root #dhcpcd eth0
+
+### Using DHCP
+
+DHCP (Dynamic Host Configuration Protocol) makes it possible to automatically receive networking information (IP address, netmask, broadcast address, gateway, nameservers etc.). This only works if a DHCP server is in the network (or if the ISP provider provides a DHCP service). To have a network interface receive this information automatically, use **dhcpcd**:
+
+`root # dhcpcd eth0`
+
 Some network administrators require that the hostname and domainname provided by the DHCP server is used by the system. In that case, use:
 
-root #dhcpcd -HD eth0
+`root # dhcpcd -HD eth0`
+
 If this works (try pinging some Internet server, like Google's 8.8.8.8 or Cloudflare's 1.1.1.1), then everything is set and ready to continue. Skip the rest of this section and continue with Preparing the disks.
 
-Preparing for wireless access
- Note
-Support for the iw command might be architecture-specific. If the command is not available see if the net-wireless/iw package is available for the current architecture. The iw command will be unavailable unless the net-wireless/iw package has been installed.
+### Preparing for wireless access
+
+!!! Note
+
+``` text
+Support for the iw command might be architecture-specific. If the command is not available see if the net-wireless/iw package is available for the current architecture. The **iw** command will be unavailable unless the net-wireless/iw package has been installed.
+```
+
+
 When using a wireless (802.11) card, the wireless settings need to be configured before going any further. To see the current wireless settings on the card, one can use iw. Running iw might show something like:
 
-root #iw dev wlp9s0 info
+``` sh
+root # iw dev wlp9s0 info
 Interface wlp9s0
 	ifindex 3
 	wdev 0x1
@@ -198,13 +216,19 @@ Interface wlp9s0
 	wiphy 0
 	channel 11 (2462 MHz), width: 20 MHz (no HT), center1: 2462 MHz
 	txpower 30.00 dBm
+```
+
 To check for a current connection:
 
-root #iw dev wlp9s0 link
+``` sh
+root # iw dev wlp9s0 link
 Not connected.
+```
+
 or
 
-root #iw dev wlp9s0 link
+```
+root # iw dev wlp9s0 link
 Connected to 00:00:00:00:00:00 (on wlp9s0)
 	SSID: GentooNode
 	freq: 2462
@@ -212,8 +236,12 @@ Connected to 00:00:00:00:00:00 (on wlp9s0)
 	TX: 1049 bytes (7 packets)
 	signal: -23 dBm
 	tx bitrate: 1.0 MBit/s
- Note
-Some wireless cards may have a device name of wlan0 or ra0 instead of wlp9s0. Run ip link to determine the correct device name.
+```
+
+!!! Note
+Some wireless cards may have a device name of wlan0 or ra0 instead of wlp9s0. Run **ip link** to determine the correct device name.
+
+
 For most users, there are only two settings needed to connect, the ESSID (aka wireless network name) and, optionally, the WEP key.
 
 First, ensure the interface is active:
