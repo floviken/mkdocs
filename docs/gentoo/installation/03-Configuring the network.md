@@ -129,27 +129,32 @@ Now continue with Preparing the disks.
 
 ## Manual network configuration
 
-Loading the appropriate network kernel modules
+### Loading the appropriate network kernel modules
+
 When the Installation CD boots, it tries to detect all the hardware devices and loads the appropriate kernel modules (drivers) to support the hardware. In the vast majority of cases, it does a very good job. However, in some cases, it may not auto-load the kernel modules needed to communicate properly with the present network hardware.
 
-If net-setup or pppoe-setup failed, then it is possible that the network card wasn't found immediately. This means users may have to load the appropriate kernel modules manually.
+If `net-setup` or `pppoe-setup` failed, then it is possible that the network card wasn't found immediately. This means users may have to load the appropriate kernel modules manually.
 
 To find out what kernel modules are provided for networking, use the ls command:
 
-root #ls /lib/modules/`uname -r`/kernel/drivers/net
+`root # ls /lib/modules/`uname -r`/kernel/drivers/net`
 
 If a driver is found for the network device, use modprobe to load the kernel module. For instance, to load the pcnet32 module:
 
-root #modprobe pcnet32
+`root # modprobe pcnet32`
+
 To check if the network card is now detected, use ifconfig. A detected network card would result in something like this (again, eth0 here is just an example):
 
-root #ifconfig eth0
+```sh
+root # ifconfig eth0
 eth0      Link encap:Ethernet  HWaddr FE:FD:00:00:00:00  
           BROADCAST NOARP MULTICAST  MTU:1500  Metric:1
           RX packets:0 errors:0 dropped:0 overruns:0 frame:0
           TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
           collisions:0 txqueuelen:0 
           RX bytes:0 (0.0 b)  TX bytes:0 (0.0 b)
+```
+
 If however the following error is shown, the network card is not detected:
 
 root #ifconfig eth0
