@@ -114,13 +114,18 @@ If everything worked, continue with Preparing the disks.
 ### Alternative: Using PPTP
 If PPTP support is needed, use **pptpclient** which is provided by the installation CDs. But first make sure that the configuration is correct. Edit /etc/ppp/pap-secrets or /etc/ppp/chap-secrets so it contains the correct username/password combination:
 
-root #nano -w /etc/ppp/chap-secrets
+`sh
+root # nano -w /etc/ppp/chap-secrets`
+
 Then adjust /etc/ppp/options.pptp if necessary:
 
-root #nano -w /etc/ppp/options.pptp
+`sh
+root # nano -w /etc/ppp/options.pptp`
+
 When all that is done, run pptp (along with the options that couldn't be set in options.pptp) to connect the server:
 
-root #pptp <server ipv4 address>
+`sh 
+root # pptp <server ipv4 address>`
 Now continue with Preparing the disks.
 
 ## Manual network configuration
