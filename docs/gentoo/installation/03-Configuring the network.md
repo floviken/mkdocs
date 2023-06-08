@@ -86,7 +86,7 @@ If the network doesn't work immediately, some installation media allow the user 
 
 If the installation medium does not contain any of these tools, continue with the [Manual network configuration](## Manual network configuration).
 
-- Regular Ethernet users should continue with [Default: Using net-setup](### Default: Using net-setup)
+- Regular Ethernet users should continue with [Default: Using net-setup](###Default: Using net-setup)
 - ADSL users should continue with [Alternative: Using PPP](### Alternative: Using PPP)
 - PPTP users should continue with [Alternative: Using PPTP](### Alternative: Using PPTP)
 
