@@ -103,8 +103,8 @@ If the network still doesn't work, continue with Manual network configuration.
 Assuming PPPoE is needed to connect to the Internet, the installation CD (any version) has made things easier by including ppp. Use the provided **pppoe-setup** script to configure the connection. During the setup the Ethernet device that is connected to your ADSL modem, the username and password, the IPs of the DNS servers and if a basic firewall is needed or not will be asked.
 
 ``` sh
-root #pppoe-setup
-root #pppoe-start
+root # pppoe-setup
+root # pppoe-start
 ```
 
 If something goes wrong, double-check that the username and password are correct by looking at etc/ppp/pap-secrets or /etc/ppp/chap-secrets and make sure to use the right Ethernet device. If the Ethernet device does not exist, the appropriate network modules need to be loaded. In that case continue with Manual network configuration[Manual network configuration](## Manual network configuration) as it will explain how to load the appropriate network modules there.
