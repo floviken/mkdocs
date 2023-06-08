@@ -112,6 +112,7 @@ If something goes wrong, double-check that the username and password are correct
 If everything worked, continue with Preparing the disks.
 
 ### Alternative: Using PPTP
+
 If PPTP support is needed, use **pptpclient** which is provided by the installation CDs. But first make sure that the configuration is correct. Edit /etc/ppp/pap-secrets or /etc/ppp/chap-secrets so it contains the correct username/password combination:
 
 `root # nano -w /etc/ppp/chap-secrets`
@@ -123,9 +124,11 @@ Then adjust /etc/ppp/options.pptp if necessary:
 When all that is done, run pptp (along with the options that couldn't be set in options.pptp) to connect the server:
 
 `root # pptp <server ipv4 address>`
+
 Now continue with Preparing the disks.
 
 ## Manual network configuration
+
 Loading the appropriate network kernel modules
 When the Installation CD boots, it tries to detect all the hardware devices and loads the appropriate kernel modules (drivers) to support the hardware. In the vast majority of cases, it does a very good job. However, in some cases, it may not auto-load the kernel modules needed to communicate properly with the present network hardware.
 
@@ -134,6 +137,7 @@ If net-setup or pppoe-setup failed, then it is possible that the network card wa
 To find out what kernel modules are provided for networking, use the ls command:
 
 root #ls /lib/modules/`uname -r`/kernel/drivers/net
+
 If a driver is found for the network device, use modprobe to load the kernel module. For instance, to load the pcnet32 module:
 
 root #modprobe pcnet32
