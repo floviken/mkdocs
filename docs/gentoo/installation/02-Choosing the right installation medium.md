@@ -54,7 +54,9 @@ If downloading from a mirror, the minimal installation CDs can be found as follo
 4. For amd64 and x86 architectures select either the current-install-amd64-minimal/ or current-install-x86-minimal/ directory (respectively). For all other architectures navigate to the current-iso/ directory.
 
 !!! Note
-```Some target architectures such as arm, mips, and s390 will not have minimal install CDs. At this time the Gentoo Release Engineering project does not support building .iso files for these targets.
+
+```
+Some target architectures such as arm, mips, and s390 will not have minimal install CDs. At this time the Gentoo Release Engineering project does not support building .iso files for these targets.
 ```
 Inside this location, the installation media file is the file with the .iso suffix. For instance, take a look at the following listing:
 
