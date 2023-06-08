@@ -82,22 +82,24 @@ If this all works, then the remainder of this chapter can be skipped to jump rig
 
 ## Automatic network configuration
 
-If the network doesn't work immediately, some installation media allow the user to use net-setup (for regular or wireless networks), pppoe-setup (for ADSL users) or pptp (for PPTP users).
+If the network doesn't work immediately, some installation media allow the user to use **net-setup** (for regular or wireless networks), **pppoe-setup** (for ADSL users) or **pptp** (for PPTP users).
 
-If the installation medium does not contain any of these tools, continue with the Manual network configuration.
+If the installation medium does not contain any of these tools, continue with the [Manual network configuration](## Manual network configuration).
 
-Regular Ethernet users should continue with Default: Using net-setup
-ADSL users should continue with Alternative: Using PPP
-PPTP users should continue with Alternative: Using PPTP
-Default: Using net-setup
-The simplest way to set up networking if it didn't get configured automatically is to run the net-setup script:
+- Regular Ethernet users should continue with [Default: Using net-setup](### Default: Using net-setup)
+- ADSL users should continue with [Alternative: Using PPP](### Alternative: Using PPP)
+- PPTP users should continue with [Alternative: Using PPTP](### Alternative: Using PPTP)
 
-root #net-setup eth0
-net-setup will ask some questions about the network environment. When all is done, the network connection should work. Test the network connection as stated before. If the tests are positive, congratulations! Skip the rest of this section and continue with Preparing the disks.
+### Default: Using net-setup
+The simplest way to set up networking if it didn't get configured automatically is to run the **net-setup script**:
+
+` root # net-setup eth0`
+
+**net-setup** will ask some questions about the network environment. When all is done, the network connection should work. Test the network connection as stated before. If the tests are positive, congratulations! Skip the rest of this section and continue with Preparing the disks.
 
 If the network still doesn't work, continue with Manual network configuration.
 
-Alternative: Using PPP
+### Alternative: Using PPP
 Assuming PPPoE is needed to connect to the Internet, the installation CD (any version) has made things easier by including ppp. Use the provided pppoe-setup script to configure the connection. During the setup the Ethernet device that is connected to your ADSL modem, the username and password, the IPs of the DNS servers and if a basic firewall is needed or not will be asked.
 
 root #pppoe-setup
@@ -106,7 +108,7 @@ If something goes wrong, double-check that the username and password are correct
 
 If everything worked, continue with Preparing the disks.
 
-Alternative: Using PPTP
+### Alternative: Using PPTP
 If PPTP support is needed, use pptpclient which is provided by the installation CDs. But first make sure that the configuration is correct. Edit /etc/ppp/pap-secrets or /etc/ppp/chap-secrets so it contains the correct username/password combination:
 
 root #nano -w /etc/ppp/chap-secrets
@@ -118,7 +120,7 @@ When all that is done, run pptp (along with the options that couldn't be set in 
 root #pptp <server ipv4 address>
 Now continue with Preparing the disks.
 
-Manual network configuration
+## Manual network configuration
 Loading the appropriate network kernel modules
 When the Installation CD boots, it tries to detect all the hardware devices and loads the appropriate kernel modules (drivers) to support the hardware. In the vast majority of cases, it does a very good job. However, in some cases, it may not auto-load the kernel modules needed to communicate properly with the present network hardware.
 
