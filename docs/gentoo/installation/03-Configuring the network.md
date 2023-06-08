@@ -244,15 +244,23 @@ Some wireless cards may have a device name of wlan0 or ra0 instead of wlp9s0. Ru
 
 For most users, there are only two settings needed to connect, the ESSID (aka wireless network name) and, optionally, the WEP key.
 
-First, ensure the interface is active:
-root #ip link set dev wlp9s0 up
-To connect to an open network with the name GentooNode:
-root #iw dev wlp9s0 connect -w GentooNode
-To connect with a hex WEP key, prefix the key with d::
-root #iw dev wlp9s0 connect -w GentooNode key 0:d:1234123412341234abcd
-To connect with an ASCII WEP key:
-root #iw dev wlp9s0 connect -w GentooNode key 0:some-password
- Note
+- First, ensure the interface is active:
+
+`root # ip link set dev wlp9s0 up`
+
+- To connect to an open network with the name GentooNode:
+
+`root # iw dev wlp9s0 connect -w GentooNode`
+
+- To connect with a hex WEP key, prefix the key with d::
+
+`root #iw dev wlp9s0 connect -w GentooNode key 0:d:1234123412341234abcd`
+
+- To connect with an ASCII WEP key:
+
+`root #iw dev wlp9s0 connect -w GentooNode key 0:some-password`
+
+!!! Note
 If the wireless network is set up with WPA or WPA2, then wpa_supplicant needs to be used. For more information on configuring wireless networking in Gentoo Linux, please read the Wireless networking chapter in the Gentoo Handbook.
 Confirm the wireless settings by using iw dev wlp9s0 link. Once wireless is working, continue configuring the IP level networking options as described in the next section (Understanding network terminology) or use the net-setup tool as described previously.
 
