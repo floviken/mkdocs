@@ -20,6 +20,7 @@ The block devices above represent an abstract interface to the disk. User progra
 
 
 ### Partition tables
+
 Although it is theoretically possible to use a raw, unpartitioned disk to house a Linux system (when creating a btrfs RAID for example), this is almost never done in practice. Instead, disk block devices are split up into smaller, more manageable block devices. On amd64 systems, these are called partitions. There are currently two standard partitioning technologies in use: MBR (sometimes also called DOS disklabel) and GPT; these are tied to the two boot process types: legacy BIOS boot and UEFI.
 
 GUID Partition Table (GPT)
