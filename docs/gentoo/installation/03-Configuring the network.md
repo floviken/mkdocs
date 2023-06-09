@@ -276,7 +276,7 @@ If all of the above fails, the network will need to be configured manually. This
 
 In a network, hosts are identified by their IP address (Internet Protocol address). Such an address is perceived as a combination of four numbers between 0 and 255. Well, at least when using IPv4 (IP version 4). In reality, such an IPv4 address consists of 32 bits (ones and zeros). Let's view an example:
 
-``` sh title=""CODE Example of an IPv4 address"
+```sh title="CODE Example of an IPv4 address"
 IP Address (numbers):   192.168.0.2
 IP Address (bits):      11000000 10101000 00000000 00000010
                         -------- -------- -------- --------
