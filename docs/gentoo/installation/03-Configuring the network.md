@@ -298,7 +298,7 @@ Netmask:    11111111 11111111 11111111 00000000
                255      255     255        0
            +--------------------------+--------+
                     Network              Host
- ```  
+```  
 
 In other words, 192.168.0.14 is part of the example network, but 192.168.1.2 is not.
 
