@@ -332,23 +332,28 @@ To summarize, the following information is needed before continuing:
 
 ### Using ifconfig and route
 
-Employing tools from the sys-apps/net-tools package, setting up the network manually generally consists of three steps:
+Employing tools from the [sys-apps/net-tools](https://packages.gentoo.org/packages/sys-apps/net-tools) package, setting up the network manually generally consists of three steps:
 
-Assign an IP address using the ifconfig command.
-Set up routing to the gateway using the route command.
+Assign an IP address using the **ifconfig** command.
+Set up routing to the gateway using the **route** command.
 Finish up by placing valid nameserver IPs in the /etc/resolv.conf file.
-To assign an IP address, the IP address, broadcast address, and netmask are needed. Execute the following command, substituting ${IP_ADDR} with the target IP address, ${BROADCAST} with the target broadcast address, and ${NETMASK} with the target netmask:
+To assign an IP address, the IP address, broadcast address, and netmask are needed. Execute the following command, substituting ${IP_ADDR} with the target IP address, *${BROADCAST}* with the target broadcast address, and *${NETMASK}* with the target netmask:
 
-root #ifconfig eth0 ${IP_ADDR} broadcast ${BROADCAST} netmask ${NETMASK} up
-To configure routing using route, substitute the ${GATEWAY} value with the appropriate gateway IP address:
+`root # ifconfig eth0 ${IP_ADDR} broadcast ${BROADCAST} netmask ${NETMASK} up`
 
-root #route add default gw ${GATEWAY}
+To configure routing using **route**, substitute the *${GATEWAY}* value with the appropriate gateway IP address:
+
+`root # route add default gw ${GATEWAY}`
+
 Now open the /etc/resolv.conf file using a text editor:
 
-root #nano -w /etc/resolv.conf
-Fill in the nameserver(s) using the following as a template substituting ${NAMESERVER1} and ${NAMESERVER2} with nameserver IP addresses as necessary. More than one nameserver can be added:
+`root # nano -w /etc/resolv.conf`
 
-FILE /etc/resolv.confDefault resolv.conf template
+Fill in the nameserver(s) using the following as a template substituting *${NAMESERVER1}* and *${NAMESERVER2}* with nameserver IP addresses as necessary. More than one nameserver can be added:
+
+```text title="FILE /etc/resolv.conf **Default resolv.conf template**"
 nameserver ${NAMESERVER1}
 nameserver ${NAMESERVER2}
+```
+
 Now test the network by pinging an Internet server (like Google's 8.8.8.8 or Cloudflare's 1.1.1.1). Once connected, continue with Preparing the disks.
