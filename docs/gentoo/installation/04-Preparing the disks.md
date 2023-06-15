@@ -457,22 +457,28 @@ Also known as FAT32, is supported by Linux but does not support standard UNIX pe
 [NTFS](https://wiki.gentoo.org/wiki/NTFS)
 
 This "New Technology" filesystem is the flagship filesystem of Microsoft Windows since Windows NT 3.1. Similarly to VFAT, it does not store UNIX permission settings or extended attributes necessary for BSD or Linux to function properly, therefore it should not be used as a filesystem for most cases. It should only be used for interoperability/interchange with Microsoft Windows systems (note the emphasis on only).
-Applying a filesystem to a partition
+
+### Applying a filesystem to a partition
+
 To create a filesystem on a partition or volume, there are user space utilities available for each possible filesystem. Click the filesystem's name in the table below for additional information on each filesystem:
 
-### Filesystem	Creation command	On minimal CD?	Package
-btrfs	mkfs.btrfs	 Yes	sys-fs/btrfs-progs
-ext4	mkfs.ext4	 Yes	sys-fs/e2fsprogs
-f2fs	mkfs.f2fs	 Yes	sys-fs/f2fs-tools
-jfs	mkfs.jfs	 Yes	sys-fs/jfsutils
-reiserfs (deprecated)	mkfs.reiserfs	 Yes	sys-fs/reiserfsprogs
-xfs	mkfs.xfs	 Yes	sys-fs/xfsprogs
-vfat	mkfs.vfat	 Yes	sys-fs/dosfstools
-NTFS	mkfs.ntfs	 Yes	sys-fs/ntfs3g
+| Filesystem |	Creation command | On minimal CD? |	Package |
+|------------|------------------|----------------|---------|
+| btrfs	    | mkfs.btrfs	     | Yes            | sys-fs/btrfs-progs |
+| ext4	    | mkfs.ext4	     | Yes	          | sys-fs/e2fsprogs |
+| f2fs	    | mkfs.f2fs        | Yes	          | sys-fs/f2fs-tools |
+| jfs	       | mkfs.jfs	        | Yes	          | sys-fs/jfsutils |
+| reiserfs (deprecated) | mkfs.reiserfs	| Yes	| sys-fs/reiserfsprogs |
+| xfs	mkfs.xfs	|  Yes	| sys-fs/xfsprogs |
+| vfat |	mkfs.vfat	| Yes |	sys-fs/dosfstools |
+| NTFS |	mkfs.ntfs	| Yes	| sys-fs/ntfs3g |
+
 For instance, to have the EFI system partition partition (/dev/sda1) as FAT32 and the root partition (/dev/sda3) as ext4 as used in the example partition structure, the following commands would be used:
 
 root #mkfs.vfat -F 32 /dev/sda1
 root #mkfs.ext4 /dev/sda3
+
+
 When using ext4 on a small partition (less than 8 GiB), then the file system must be created with the proper options to reserve enough inodes. This can be done using one of the following commands, respectively:
 
 root #mkfs.ext4 -T small /dev/<device>
