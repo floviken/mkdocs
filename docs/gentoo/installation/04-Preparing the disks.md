@@ -475,35 +475,45 @@ To create a filesystem on a partition or volume, there are user space utilities 
 
 For instance, to have the EFI system partition partition (/dev/sda1) as FAT32 and the root partition (/dev/sda3) as ext4 as used in the example partition structure, the following commands would be used:
 
-root #mkfs.vfat -F 32 /dev/sda1
-root #mkfs.ext4 /dev/sda3
+`root # mkfs.vfat -F 32 /dev/sda1`
+
+`root # mkfs.ext4 /dev/sda3`
 
 
 When using ext4 on a small partition (less than 8 GiB), then the file system must be created with the proper options to reserve enough inodes. This can be done using one of the following commands, respectively:
 
-root #mkfs.ext4 -T small /dev/<device>
+`root # mkfs.ext4 -T small /dev/<device>`
+
 This will generally quadruple the number of inodes for a given file system as its "bytes-per-inode" reduces from one every 16kB to one every 4kB.
 
 Now create the filesystems on the newly created partitions (or logical volumes).
 
-Activating the swap partition
-mkswap is the command that is used to initialize swap partitions:
+### Activating the swap partition
 
-root #mkswap /dev/sda2
+**mkswap** is the command that is used to initialize swap partitions:
+
+`root #mkswap /dev/sda2`
+
 To activate the swap partition, use swapon:
 
-root #swapon /dev/sda2
+`root # swapon /dev/sda2`
+
 Create and activate the swap with the commands mentioned above.
 
-Mounting the root partition
- Tip
+## Mounting the root partition
+
+!!! Tip
 Users of non-Gentoo installation media will need to create the mount point by running:
-root #mkdir --parents /mnt/gentoo
+
+`root # mkdir --parents /mnt/gentoo`
+
 Now that the partitions have been initialized and are housing a filesystem, it is time to mount those partitions. Use the mount command, but don't forget to create the necessary mount directories for every partition created. As an example we mount the root partition:
 
-root #mount /dev/sda3 /mnt/gentoo
- Note
+`root # mount /dev/sda3 /mnt/gentoo`
+!!! Note
+
 If /tmp/ needs to reside on a separate partition, be sure to change its permissions after mounting:
 root #chmod 1777 /mnt/gentoo/tmp
 This also holds for /var/tmp.
+
 Later in the instructions the proc filesystem (a virtual interface with the kernel) as well as other kernel pseudo-filesystems will be mounted. But first we install the Gentoo installation files.
