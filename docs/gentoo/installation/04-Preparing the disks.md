@@ -346,8 +346,9 @@ Now we're ready to create the partitions.
 
 ### Creating the boot partition
 
-First, create a small partition which will be mounted as /boot. Type n to create a new partition, followed by p for a primary partition and 1 to select the first primary partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit Enter. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:
+First, create a small partition which will be mounted as /boot. Type `n` to create a new partition, followed by `p` for a primary partition and `1` to select the first primary partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit `Enter`. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:
 
+```sh
 Command (m for help):n
 Partition type
    p   primary (0 primary, 0 extended, 4 free)
@@ -358,7 +359,10 @@ First sector (2048-60549119, default 2048):
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-60549119, default 60549119): +256M
  
 Created a new partition 1 of type 'Linux' and of size 256 MiB.
-Creating the swap partition
+```
+
+### Creating the swap partition
+
 Next, to create the swap partition, type n to create a new partition, then p, then type 2 to create the second primary partition, /dev/sda2. When prompted for the first sector, hit Enter. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.
 
 Command (m for help):n
