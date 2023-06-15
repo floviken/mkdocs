@@ -246,8 +246,9 @@ Changed type of partition 'Linux filesystem' to 'Linux swap'.
 
 ### Creating the root partition
 
-Finally, to create the root partition, type n to create a new partition. Then type 3 to create the third partition, /dev/sda3. When prompted for the first sector, hit Enter. When prompted for the last sector, hit Enter to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing p should display a partition table that looks similar to this:
+Finally, to create the root partition, type `n` to create a new partition. Then type `3` to create the third partition, /dev/sda3. When prompted for the first sector, hit `Enter`. When prompted for the last sector, hit Enter to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing `p` should display a partition table that looks similar to this:
 
+``` sh
 Command (m for help):p
 Disk /dev/sda: 28.89 GiB, 31001149440 bytes, 60549120 sectors
 Disk model: DataTraveler 2.0
@@ -261,13 +262,17 @@ Device       Start      End  Sectors  Size Type
 /dev/sda1     2048   526335   524288  256M EFI System
 /dev/sda2   526336  8914943  8388608    4G Linux swap
 /dev/sda3  8914944 60549086 51634143 24.6G Linux filesystem
-Saving the partition layout
-To save the partition layout and exit fdisk, type w.
+```
+### Saving the partition layout
 
-Command (m for help):w
+To save the partition layout and exit fdisk, type `w`.
+
+`Command (m for help):w`
+
 With the partitions created, it is now time to put filesystems on them.
 
-Partitioning the disk with MBR for BIOS / legacy boot
+## Partitioning the disk with MBR for BIOS / legacy boot
+
 The following explains how to create the example partition layout for a MBR / BIOS legacy boot installation. The example partition layout mentioned earlier is now:
 
 Partition	Description
