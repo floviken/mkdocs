@@ -275,18 +275,23 @@ With the partitions created, it is now time to put filesystems on them.
 
 The following explains how to create the example partition layout for a MBR / BIOS legacy boot installation. The example partition layout mentioned earlier is now:
 
-Partition	Description
-/dev/sda1	Boot partition
-/dev/sda2	Swap partition
-/dev/sda3	Root partition
+| Partition	| Description    |
+|-----------|----------------|
+| /dev/sda1	| Boot partition |
+| /dev/sda2	| Swap partition |
+| /dev/sda3 | Root partition |
+
 Change the partition layout according to personal preference.
 
-Viewing the current partition layout
-Fire up fdisk against the disk (in our example, we use /dev/sda):
+### Viewing the current partition layout
 
-root #fdisk /dev/sda
-Use the p key to display the disk's current partition configuration:
+Fire up **fdisk** against the disk (in our example, we use /dev/sda):
 
+`root # fdisk /dev/sda`
+
+Use the `p` key to display the disk's current partition configuration:
+
+``` sh
 Command (m for help):p
 Disk /dev/sda: 28.89 GiB, 31001149440 bytes, 60549120 sectors
 Disk model: DataTraveler 2.0
@@ -301,22 +306,32 @@ Device        Start      End  Sectors  Size Type
 /dev/sda2    526336  2623487  2097152    1G Linux swap
 /dev/sda3   2623488 19400703 16777216    8G Linux filesystem
 /dev/sda4  19400704 60549086 41148383 19.6G Linux filesystem
+```
+
 This particular disk was until now configured to house two Linux filesystems (each with a corresponding partition listed as "Linux") as well as a swap partition (listed as "Linux swap"), using a GPT table.
 
-Creating a new disklabel / removing all partitions
-Type o to create a new MBR disklabel (here also named DOS disklabel) on the disk; this will remove all existing partitions.
+### Creating a new disklabel / removing all partitions
 
+Type `o` to create a new MBR disklabel (here also named DOS disklabel) on the disk; this will remove all existing partitions.
+
+```sh 
 Command (m for help):o
 Created a new DOS disklabel with disk identifier 0xe04e67c4.
 The device contains 'gpt' signature and it will be removed by a write command. See fdisk(8) man page and --wipe option for more details.
-For an existing DOS disklabel (see the output of p above), alternatively consider removing the existing partitions one by one from the disk. Type d to delete a partition. For instance, to delete an existing /dev/sda1:
+```
 
+For an existing DOS disklabel (see the output of p above), alternatively consider removing the existing partitions one by one from the disk. Type `d` to delete a partition. For instance, to delete an existing /dev/sda1:
+
+``` sh
 Command (m for help):d
 Partition number (1-4): 1
-The partition has now been scheduled for deletion. It will no longer show up when printing the list of partitions (p, but it will not be erased until the changes have been saved. This allows users to abort the operation if a mistake was made - in that case, type q immediately and hit Enter and the partition will not be deleted.
+```
 
-Repeatedly type p to print out a partition listing and then type d and the number of the partition to delete it. Eventually, the partition table will be empty:
+The partition has now been scheduled for deletion. It will no longer show up when printing the list of partitions (`p`, but it will not be erased until the changes have been saved. This allows users to abort the operation if a mistake was made - in that case, type `q` immediately and hit `Enter` and the partition will not be deleted.
 
+Repeatedly type `p` to print out a partition listing and then type `d` and the number of the partition to delete it. Eventually, the partition table will be empty:
+
+``` sh
 Command (m for help):p
 Disk /dev/sda: 28.89 GiB, 31001149440 bytes, 60549120 sectors
 Disk model: DataTraveler 2.0
@@ -325,9 +340,12 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: dos
 Disk identifier: 0xe04e67c4
+```
+
 Now we're ready to create the partitions.
 
-Creating the boot partition
+### Creating the boot partition
+
 First, create a small partition which will be mounted as /boot. Type n to create a new partition, followed by p for a primary partition and 1 to select the first primary partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit Enter. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:
 
 Command (m for help):n
