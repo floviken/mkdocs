@@ -44,36 +44,40 @@ In order to support more partitions, one of the primary partitions in the MBR ca
 
 !!! Important
 
-Although still supported by most motherboard manufacturers, MBR boot sectors and their associated partitioning limitations are considered legacy. Unless working with hardware that is pre-2010, it best to partition a disk with GUID Partition Table. Readers who must proceed with setup type should knowingly acknowledge the following information:
+Although still supported by most motherboard manufacturers, MBR boot sectors and their associated partitioning limitations are considered legacy. Unless working with hardware that is pre-2010, it best to partition a disk with [GUID Partition Table](https://en.wikipedia.org/wiki/GUID_Partition_Table). Readers who must proceed with setup type should knowingly acknowledge the following information:
 Most post-2010 motherboards consider using MBR boot sectors a legacy (supported, but not ideal) boot mode.
 Due to using 32-bit identifiers, partition tables in the MBR cannot address storage space that is larger than 2 TiBs in size.
 Unless an extended partition is created, MBR supports a maximum of four partitions.
 This setup does not provide a backup boot sector, so if something overwrites the partition table, all partition information will be lost.
 That said, MBR and BIOS boot is still frequently used in virtualized cloud environments such as AWS.
 
-The Handbook authors suggest using GPT whenever possible for Gentoo installations.
+The Handbook authors suggest using [GPT](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#GPT) whenever possible for Gentoo installations.
 
 ### Advanced storage
 
-The amd64 Installation CDs provide support for Logical Volume Manager (LVM). LVM increases the flexibility offered by the partitioning setup. It allows to combine partitions and disks into volume groups and define RAID groups or caches on fast SSDs for slow HDs. The installation instructions below will focus on "regular" partitions, but it is good to know LVM is supported if that route is desired. Visit the LVM article for more details. Newcomers beware: although fully supported, LVM is outside the scope of this guide.
+The **amd64** Installation CDs provide support for Logical Volume Manager (LVM). LVM increases the flexibility offered by the partitioning setup. It allows to combine partitions and disks into volume groups and define RAID groups or caches on fast SSDs for slow HDs. The installation instructions below will focus on "regular" partitions, but it is good to know LVM is supported if that route is desired. Visit the LVM article for more details. Newcomers beware: although fully supported, LVM is outside the scope of this guide.
 
-Default partitioning scheme
+### Default partitioning scheme
+
 Throughout the remainder of the handbook, we will discuss and explain two cases: 1) GPT partition table and UEFI boot, and 2) MBR partition table and legacy BIOS boot. While it is possible to mix and match, that goes beyond the scope of this manual. As already stated above, installations on modern hardware should use GPT partition table and UEFI boot; as an exception from this rule, MBR and BIOS boot is still frequently used in virtualized (cloud) environments.
 
 The following partitioning scheme will be used as a simple example layout:
 
-Partition	Filesystem	Size	Description
-/dev/sda1	fat32 (UEFI) or ext4 (BIOS - aka Legacy boot)	256M	Boot/EFI system partition
-/dev/sda2	(swap)	RAM size * 2	Swap partition
-/dev/sda3	ext4	Rest of the disk	Root partition
+|Partition	|Filesystem	|Size	|Description|
+|--|--|--|--|
+|/dev/sda1	|fat32 (UEFI) or ext4 (BIOS - aka Legacy boot)	|256M|	Boot/EFI system partition|
+|/dev/sda2	|(swap)	|RAM size * 2	|Swap partition|
+|/dev/sda3	|ext4	|Rest of the disk|	Root partition|
+
 If this suffices as information, the advanced reader can directly skip ahead to the actual partitioning.
 
-Both fdisk and parted are partitioning utilities. fdisk is well known, stable, and recommended for the MBR partition layout. parted was one of the first Linux block device management utilities to support GPT partitions, and provides an alternative. Here, fdisk is used since it has a better text-based user interface.
+Both **fdisk** and **parted** are partitioning utilities. **fdisk** is well known, stable, and recommended for the MBR partition layout. **parted** was one of the first Linux block device management utilities to support GPT partitions, and provides an alternative. Here, **fdisk** is used since it has a better text-based user interface.
 
 Before going to the creation instructions, the first set of sections will describe in more detail how partitioning schemes can be created and mention some common pitfalls.
 
 
-Designing a partition scheme
+## Designing a partition scheme
+
 How many partitions and how big?
 The design of disk partition layout is highly dependent on the demands of the system and the file system(s) applied to the device. If there are lots of users, then it is advised to have /home on a separate partition which will increase security and make backups and other types of maintenance easier. If Gentoo is being installed to perform as a mail server, then /var should be a separate partition as all mails are stored inside the /var directory. Game servers may have a separate /opt partition since most gaming server software is installed therein. The reason for these recommendations is similar to the /home directory: security, backups, and maintenance.
 
