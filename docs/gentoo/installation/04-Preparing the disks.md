@@ -59,7 +59,7 @@ The **amd64** Installation CDs provide support for Logical Volume Manager (LVM).
 
 ### Default partitioning scheme
 
-Throughout the remainder of the handbook, we will discuss and explain two cases: 1) GPT partition table and UEFI boot, and 2) MBR partition table and legacy BIOS boot. While it is possible to mix and match, that goes beyond the scope of this manual. As already stated above, installations on modern hardware should use GPT partition table and UEFI boot; as an exception from this rule, MBR and BIOS boot is still frequently used in virtualized (cloud) environments.
+Throughout the remainder of the handbook, we will discuss and explain two cases: 1) GPT partition table and UEFI boot, and 2) MBR partition table and legacy BIOS boot. While it is possible to mix and match, that goes beyond the scope of this manual. As already stated above, installations on modern hardware should use GPT partition table and UEFI boot; as an excSeption from this rule, MBR and BIOS boot is still frequently used in virtualized (cloud) environments.
 
 The following partitioning scheme will be used as a simple example layout:
 
@@ -78,26 +78,32 @@ Before going to the creation instructions, the first set of sections will descri
 
 ## Designing a partition scheme
 
-How many partitions and how big?
+### How many partitions and how big?
+
 The design of disk partition layout is highly dependent on the demands of the system and the file system(s) applied to the device. If there are lots of users, then it is advised to have /home on a separate partition which will increase security and make backups and other types of maintenance easier. If Gentoo is being installed to perform as a mail server, then /var should be a separate partition as all mails are stored inside the /var directory. Game servers may have a separate /opt partition since most gaming server software is installed therein. The reason for these recommendations is similar to the /home directory: security, backups, and maintenance.
 
 In most situations on Gentoo, /usr and /var should be kept relatively large in size. /usr hosts the majority of applications available on the system and the Linux kernel sources (under /usr/src). By default, /var hosts the Gentoo ebuild repository (located at /var/db/repos/gentoo) which, depending on the file system, generally consumes around 650 MiB of disk space. This space estimate excludes the /var/cache/distfiles and /var/cache/binpkgs directories, which will gradually fill with source files and (optionally) binary packages respectively as they are added to the system.
 
 How many partitions and how big very much depends on considering the trade-offs and choosing the best option for the circumstance. Separate partitions or volumes have the following advantages:
 
-Choose the best performing filesystem for each partition or volume.
-The entire system cannot run out of free space if one defunct tool is continuously writing files to a partition or volume.
-If necessary, file system checks are reduced in time, as multiple checks can be done in parallel (although this advantage is realized more with multiple disks than it is with multiple partitions).
-Security can be enhanced by mounting some partitions or volumes read-only, nosuid (setuid bits are ignored), noexec (executable bits are ignored), etc.
+- Choose the best performing filesystem for each partition or volume.
+- The entire system cannot run out of free space if one defunct tool is continuously writing files to a partition or volume.
+- If necessary, file system checks are reduced in time, as multiple checks can be done in parallel (although this advantage is realized more with multiple disks than it is with multiple partitions).
+- Security can be enhanced by mounting some partitions or volumes read-only, nosuid (setuid bits are ignored), noexec (executable bits are ignored), etc.
 
 However, multiple partitions have certain disadvantages as well:
 
-If not configured properly, the system might have lots of free space on one partition and little free space on another.
-A separate partition for /usr/ may require the administrator to boot with an initramfs to mount the partition before other boot scripts start. Since the generation and maintenance of an initramfs is beyond the scope of this handbook, we recommend that newcomers do not use a separate partition for /usr/.
-There is also a 15-partition limit for SCSI and SATA unless the disk uses GPT labels.
+- If not configured properly, the system might have lots of free space on one partition and little free space on another.
+- A separate partition for /usr/ may require the administrator to boot with an initramfs to mount the partition before other boot scripts start. Since the generation and maintenance of an initramfs is beyond the scope of this handbook, **we recommend that newcomers do not use a separate partition for /usr/**.
+- There is also a 15-partition limit for SCSI and SATA unless the disk uses GPT labels.
+
  Note
+
 Installations that intend to use systemd as the service and init system must have the /usr directory available at boot, either as part of the root filesystem or mounted via an initramfs.
-What about swap space?
+
+
+### What about swap space?
+
 There is no perfect value for swap space size. The purpose of the space is to provide disk storage to the kernel when internal memory (RAM) is under pressure. A swap space allows for the kernel to move memory pages that are not likely to be accessed soon to disk (swap or page-out), which will free memory in RAM for the current task. Of course, if the pages swapped to disk are suddenly needed, they will need to be put back in memory (page-in) which will take considerably longer than reading from RAM (as disks are very slow compared to internal memory).
 
 When a system is not going to run memory intensive applications or has lots of RAM available, then it probably does not need much swap space. However do note in case of hibernation that swap space is used to store the entire contents of memory (likely on desktop and laptop systems rather than on server systems). If the system requires support for hibernation, then swap space larger than or equal to the amount of memory is necessary.
@@ -105,19 +111,23 @@ When a system is not going to run memory intensive applications or has lots of R
 As a general rule, the swap space size is recommended to be twice the internal memory (RAM). For systems with multiple hard disks, it is wise to create one swap partition on each disk so that they can be utilized for parallel read/write operations. The faster a disk can swap, the faster the system will run when data in swap space must be accessed. When choosing between rotational and solid state disks, it is better for performance to put swap on the SSD. Also, swap files can be used as an alternative to swap partitions; this is mostly interesting for systems with very limited disk space.
 
 
-What is the EFI System Partition (ESP)?
-When installing Gentoo on a system that uses UEFI to boot the operating system (instead of BIOS), then it is important that an EFI System Partition (ESP) is created. The instructions below contain the necessary pointers to correctly handle this operation. The EFI system partition is not required when booting in BIOS/Legacy mode.
+### What is the EFI System Partition (ESP)?
 
-The ESP must be a FAT variant (sometimes shown as vfat on Linux systems). The official UEFI specification denotes FAT12, 16, or 32 filesystems will be recognized by the UEFI firmware, although FAT32 is recommended for the ESP. After partitioning, format the ESP accordingly:
+When installing Gentoo on a system that uses UEFI to boot the operating system (instead of BIOS), then it is important that an EFI System Partition (ESP) is created. The instructions below contain the necessary pointers to correctly handle this operation. **The EFI system partition is not required when booting in BIOS/Legacy mode**.
 
-root #mkfs.fat -F 32 /dev/sda1
- Important
+The ESP must be a FAT variant (sometimes shown as vfat on Linux systems). The official [UEFI specification](http://www.uefi.org/sites/default/files/resources/UEFI%202_5.pdf) denotes FAT12, 16, or 32 filesystems will be recognized by the UEFI firmware, although FAT32 is recommended for the ESP. After partitioning, format the ESP accordingly:
+
+`root #mkfs.fat -F 32 /dev/sda1`
+
+!!! Important
+
 If the ESP is not formatted with a FAT variant, the system's UEFI firmware will not find the bootloader (or Linux kernel) and will most likely be unable to boot the system!
 
 What is the BIOS boot partition?
-A BIOS boot partition is only needed when combining a GPT partition layout with GRUB2 in BIOS/Legacy boot mode. It is not required when booting in EFI/UEFI mode, and also not required when using a MBR table. It is a very small (1 to 2 MB) partition in which boot loaders like GRUB2 can put additional data that doesn't fit in the allocated storage. It will not be used in this guide.
+A BIOS boot partition is only needed when combining a GPT partition layout with GRUB2 in BIOS/Legacy boot mode. **It is not required when booting in EFI/UEFI mode, and also not required when using a MBR table**. It is a very small (1 to 2 MB) partition in which boot loaders like GRUB2 can put additional data that doesn't fit in the allocated storage. It will not be used in this guide.
 
-Partitioning the disk with GPT for UEFI
+### Partitioning the disk with GPT for UEFI
+
 The following parts explain how to create the example partition layout for a GPT / UEFI boot installation using fdisk. The example partition layout was mentioned earlier:
 
 Partition	Description
