@@ -123,25 +123,31 @@ The ESP must be a FAT variant (sometimes shown as vfat on Linux systems). The of
 
 If the ESP is not formatted with a FAT variant, the system's UEFI firmware will not find the bootloader (or Linux kernel) and will most likely be unable to boot the system!
 
-What is the BIOS boot partition?
+### What is the BIOS boot partition?
+
 A BIOS boot partition is only needed when combining a GPT partition layout with GRUB2 in BIOS/Legacy boot mode. **It is not required when booting in EFI/UEFI mode, and also not required when using a MBR table**. It is a very small (1 to 2 MB) partition in which boot loaders like GRUB2 can put additional data that doesn't fit in the allocated storage. It will not be used in this guide.
 
-### Partitioning the disk with GPT for UEFI
+## Partitioning the disk with GPT for UEFI
 
-The following parts explain how to create the example partition layout for a GPT / UEFI boot installation using fdisk. The example partition layout was mentioned earlier:
+The following parts explain how to create the example partition layout for a GPT / UEFI boot installation using **fdisk**. The example partition layout was mentioned earlier:
 
-Partition	Description
-/dev/sda1	EFI system (and boot) partition
-/dev/sda2	Swap partition
-/dev/sda3	Root partition
+|Partition	|Description|
+|--|--|
+|/dev/sda1	|EFI system (and boot) partition|
+|/dev/sda2	|Swap partition|
+|/dev/sda3	|Root partition|
+
 Change the partition layout according to personal preference.
 
-Viewing the current partition layout
-fdisk is a popular and powerful tool to split a disk into partitions. Fire up fdisk against the disk (in our example, we use /dev/sda):
+### Viewing the current partition layout
 
-root #fdisk /dev/sda
-Use the p key to display the disk's current partition configuration:
+**fdisk** is a popular and powerful tool to split a disk into partitions. Fire up fdisk against the disk (in our example, we use /dev/sda):
 
+`root #fdisk /dev/sda`
+
+Use the `p` key to display the disk's current partition configuration:
+
+``` sh 
 Command (m for help):p
 Disk /dev/sda: 28.89 GiB, 31001149440 bytes, 60549120 sectors
 Disk model: DataTraveler 2.0
@@ -156,21 +162,31 @@ Device        Start      End  Sectors  Size Type
 /dev/sda2    526336  2623487  2097152    1G Linux swap
 /dev/sda3   2623488 19400703 16777216    8G Linux filesystem
 /dev/sda4  19400704 60549086 41148383 19.6G Linux filesystem
+```
+
 This particular disk was configured to house two Linux filesystems (each with a corresponding partition listed as "Linux") as well as a swap partition (listed as "Linux swap").
 
-Creating a new disklabel / removing all partitions
-Type g to create a new GPT disklabel on the disk; this will remove all existing partitions.
+### Creating a new disklabel / removing all partitions
 
+Type `g` to create a new GPT disklabel on the disk; this will remove all existing partitions.
+
+``` sh
 Command (m for help):g
 Created a new GPT disklabel (GUID: 87EA4497-2722-DF43-A954-368E46AE5C5F).
-For an existing GPT disklabel (see the output of p above), alternatively consider removing the existing partitions one by one from the disk. Type d to delete a partition. For instance, to delete an existing /dev/sda1:
+```
 
+For an existing GPT disklabel (see the output of `p` above), alternatively consider removing the existing partitions one by one from the disk. Type `d` to delete a partition. For instance, to delete an existing /dev/sda1:
+
+``` sh
 Command (m for help):d
 Partition number (1-4): 1
-The partition has now been scheduled for deletion. It will no longer show up when printing the list of partitions (p, but it will not be erased until the changes have been saved. This allows users to abort the operation if a mistake was made - in that case, type q immediately and hit Enter and the partition will not be deleted.
+```
 
-Repeatedly type p to print out a partition listing and then type d and the number of the partition to delete it. Eventually, the partition table will be empty:
+The partition has now been scheduled for deletion. It will no longer show up when printing the list of partitions (`p`, but it will not be erased until the changes have been saved. This allows users to abort the operation if a mistake was made - in that case, type `q` immediately and hit `Enter` and the partition will not be deleted.
 
+Repeatedly type `p` to print out a partition listing and then type `d` and the number of the partition to delete it. Eventually, the partition table will be empty:
+
+``` sh
 Command (m for help):p
 Disk /dev/sda: 28.89 GiB, 31001149440 bytes, 60549120 sectors
 Disk model: DataTraveler 2.0
@@ -179,40 +195,57 @@ Sector size (logical/physical): 512 bytes / 512 bytes
 I/O size (minimum/optimal): 512 bytes / 512 bytes
 Disklabel type: gpt
 Disk identifier: 87EA4497-2722-DF43-A954-368E46AE5C5F
+```
+
 Now that the in-memory partition table is empty, we're ready to create the partitions.
 
-Creating the EFI system partition (ESP)
-First create a small EFI system partition, which will also be mounted as /boot. Type n to create a new partition, followed by 1 to select the first partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit Enter. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:
+### Creating the EFI system partition (ESP)
 
+First create a small EFI system partition, which will also be mounted as /boot. Type `n` to create a new partition, followed by `1` to select the first partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit `Enter`. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:
+
+``` sh
 Command (m for help):n
 Partition number (1-128, default 1): 1
 First sector (2048-60549086, default 2048): 
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (2048-60549086, default 60549086): +256M
  
 Created a new partition 1 of type 'Linux filesystem' and of size 256 MiB.
+```
+
 Mark the partition as EFI system partition:
 
+``` sh
 Command (m for help):t
 Selected partition 1
 Partition type (type L to list all types): 1
 Changed type of partition 'Linux filesystem' to 'EFI System'.
-Creating the swap partition
-Next, to create the swap partition, type n to create a new partition, then type 2 to create the second partition, /dev/sda2. When prompted for the first sector, hit Enter. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.
+```
 
+### Creating the swap partition
+
+Next, to create the swap partition, type `n` to create a new partition, then type `2` to create the second partition, /dev/sda2. When prompted for the first sector, hit `Enter`. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.
+
+``` sh
 Command (m for help):n
 Partition number (2-128, default 2): 
 First sector (526336-60549086, default 526336): 
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (526336-60549086, default 60549086): +4G
  
 Created a new partition 2 of type 'Linux filesystem' and of size 4 GiB.
-After all this is done, type t to set the partition type, 2 to select the partition just created and then type in 19 to set the partition type to "Linux Swap".
+```
 
+After all this is done, type `t` to set the partition type, `2` to select the partition just created and then type in *19* to set the partition type to "Linux Swap".
+
+``` sh
 Command (m for help):t
 Partition number (1,2, default 2): 2
 Partition type (type L to list all types): 19
  
 Changed type of partition 'Linux filesystem' to 'Linux swap'.
-Creating the root partition
+```
+
+### Creating the root partition
+
 Finally, to create the root partition, type n to create a new partition. Then type 3 to create the third partition, /dev/sda3. When prompted for the first sector, hit Enter. When prompted for the last sector, hit Enter to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing p should display a partition table that looks similar to this:
 
 Command (m for help):p
