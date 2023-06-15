@@ -31,45 +31,57 @@ Automatic time sync comes at a price. It will reveal the system's IP address and
 
 #### Manual
 
-For systems that do not have access to a time server, the date command can also be used to set the system clock. It will use the following format as an argument: MMDDhhmmYYYY syntax (Month, Day, hour, minute and Year).
+For systems that do not have access to a time server, the **date** command can also be used to set the system clock. It will use the following format as an argument: MMDDhhmmYYYY syntax (**M**onth, **D**ay, **h**our, **m**inute and **Y**ear).
 
 UTC time is recommended for all Linux systems. A timezone will be defined later in the installation which will modify the clock to display local time.
 
 For instance, to set the date to October 3rd, 13:16 in the year 2021, issue:
 
-root #date 100313162021
-Choosing a stage tarball
- Note
-Not every architecture has a multilib option. Many only run with native code. Multilib is most commonly applied to amd64.
-Multilib (32 and 64-bit)
-Choosing a base tarball for the system can save a considerable amount of time later on in the installation process, specifically when it is time to choose a system profile. The selection of a stage tarball will directly impact future system configuration and can save a headache or two later on down the line. The multilib tarball uses 64-bit libraries when possible, and only falls back to the 32-bit versions when necessary for compatibility. This is an excellent option for the majority of installations because it provides a great amount of flexibility for customization in the future. Those who desire their systems to be capable of easily switching profiles should download the multilib tarball option for their respective processor architecture.
+`root # date 100313162021`
+
+### Choosing a stage tarball
+
+!!! Note
+Not every architecture has a multilib option. Many only run with native code. Multilib is most commonly applied to **amd64**.
+
+#### Multilib (32 and 64-bit)
+
+Choosing a base tarball for the system can save a considerable amount of time later on in the installation process, specifically when it is time to choose a [system profile](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Choosing_the_right_profile). The selection of a stage tarball will directly impact future system configuration and can save a headache or two later on down the line. The multilib tarball uses 64-bit libraries when possible, and only falls back to the 32-bit versions when necessary for compatibility. This is an excellent option for the majority of installations because it provides a great amount of flexibility for customization in the future. Those who desire their systems to be capable of easily switching profiles should download the multilib tarball option for their respective processor architecture.
 
 Most users should not use the 'advanced' tarballs options; they are for specific software or hardware configurations.
 
-No-multilib (pure 64-bit)
+#### No-multilib (pure 64-bit)
+
 Selecting a no-multilib tarball to be the base of the system provides a complete 64-bit operating system environment. This effectively renders the ability to switch to multilib profiles improbable, although still technically possible.
 
- Warning
-Readers who are just starting out with Gentoo should not choose a no-multilib tarball unless it is absolutely necessary. Migrating from a no-multilib to a multilib system requires an extremely well-working knowledge of Gentoo and the lower-level toolchain (it may even cause our Toolchain developers to shudder a little). It is not for the faint of heart and is beyond the scope of this guide.
-OpenRC
-OpenRC is a dependency-based init system (responsible for starting up system services once the kernel has booted) that maintains compatibility with the system provided init program, normally located in /sbin/init. It is Gentoo's native and original init system, but is also deployed by a few other Linux distributions and BSD systems.
+!!! Warning
+Readers who are just starting out with Gentoo should not choose a no-multilib tarball unless it is absolutely necessary. Migrating from a no-multilib to a multilib system requires an extremely well-working knowledge of Gentoo and the lower-level toolchain (it may even cause our [Toolchain developers](https://wiki.gentoo.org/wiki/Project:Toolchain) to shudder a little). It is not for the faint of heart and is beyond the scope of this guide.
+
+#### OpenRC
+
+[OpenRC](https://wiki.gentoo.org/wiki/OpenRC) is a dependency-based init system (responsible for starting up system services once the kernel has booted) that maintains compatibility with the system provided init program, normally located in /sbin/init. It is Gentoo's native and original init system, but is also deployed by a few other Linux distributions and BSD systems.
 
 OpenRC does not function as a replacement for the /sbin/init file by default and is 100% compatible with Gentoo init scripts. This means a solution can be found to run the dozens of daemons in the Gentoo ebuild repository.
 
 systemd
-systemd is a modern SysV-style init and rc replacement for Linux systems. It is used as the primary init system by a majority of Linux distributions. systemd is fully supported in Gentoo and works for its intended purpose. If something seems lacking in the Handbook for a systemd install path, review the systemd article before asking for support.
+systemd is a modern SysV-style init and rc replacement for Linux systems. It is used as the primary init system by a majority of Linux distributions. systemd is fully supported in Gentoo and works for its intended purpose. If something seems lacking in the Handbook for a systemd install path, review the [systemd article](https://wiki.gentoo.org/wiki/Systemd) before asking for support.
 
- Note
+!!! Note
 It is technically possible to switch a running Gentoo installation from OpenRC to systemd and back. However, switching requires some effort and is outside the scope of this installation manual. Before downloading a stage tarball, decide whether OpenRC or systemd will be used as the target init system and download the relevant stage tarball.
-Downloading the stage tarball
+
+### Downloading the stage tarball
+
 Go to the Gentoo mount point where the root file system is mounted (most likely /mnt/gentoo):
 
-root #cd /mnt/gentoo
-Graphical browsers
-Those using environments with fully graphical web browsers will have no problem copying a stage file URL from the main website's download section. Simply select the appropriate tab, right click the link to the stage file, then Copy Link to copy the link to the clipboard, then paste the link to the wget utility on the command-line to download the stage tarball:
+`root # cd /mnt/gentoo`
 
-root #wget <PASTED_STAGE_URL>
-Command-line browsers
+### Graphical browsers
+
+Those using environments with fully graphical web browsers will have no problem copying a stage file URL from the main website's [download section](https://www.gentoo.org/downloads/#other-arches). Simply select the appropriate tab, right click the link to the stage file, then Copy Link to copy the link to the clipboard, then paste the link to the wget utility on the command-line to download the stage tarball:
+
+`root # wget <PASTED_STAGE_URL>` 
+
+#### Command-line browsers
 More traditional readers or 'old timer' Gentoo users, working exclusively from command-line may prefer using links (www-client/links), a non-graphical, menu-driven browser. To download a stage, surf to the Gentoo mirror list like so:
 
 root #links https://www.gentoo.org/downloads/mirrors/
