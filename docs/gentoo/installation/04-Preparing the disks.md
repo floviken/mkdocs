@@ -21,25 +21,29 @@ The block devices above represent an abstract interface to the disk. User progra
 
 ### Partition tables
 
-Although it is theoretically possible to use a raw, unpartitioned disk to house a Linux system (when creating a btrfs RAID for example), this is almost never done in practice. Instead, disk block devices are split up into smaller, more manageable block devices. On amd64 systems, these are called partitions. There are currently two standard partitioning technologies in use: MBR (sometimes also called DOS disklabel) and GPT; these are tied to the two boot process types: legacy BIOS boot and UEFI.
+Although it is theoretically possible to use a raw, unpartitioned disk to house a Linux system (when creating a btrfs RAID for example), this is almost never done in practice. Instead, disk block devices are split up into smaller, more manageable block devices. On **amd64** systems, these are called partitions. There are currently two standard partitioning technologies in use: MBR (sometimes also called DOS disklabel) and GPT; these are tied to the two boot process types: legacy BIOS boot and UEFI.
 
-GUID Partition Table (GPT)
+#### GUID Partition Table (GPT)
 The GUID Partition Table (GPT) setup (also called GPT disklabel) uses 64-bit identifiers for the partitions. The location in which it stores the partition information is much bigger than the 512 bytes of the MBR partition table (DOS disklabel), which means there is practically no limit on the amount of partitions for a GPT disk. Also the size of a partition is bounded by a much greater limit (almost 8 ZiB - yes, zebibytes).
 
 When a system's software interface between the operating system and firmware is UEFI (instead of BIOS), GPT is almost mandatory as compatibility issues will arise with DOS disklabel.
 
 GPT also takes advantage of checksumming and redundancy. It carries CRC32 checksums to detect errors in the header and partition tables and has a backup GPT at the end of the disk. This backup table can be used to recover damage of the primary GPT near the beginning of the disk.
 
- Important
+!!! Important
+
 There are a few caveats regarding GPT:
-Using GPT on a BIOS-based computer works, but then one cannot dual-boot with a Microsoft Windows operating system. The reason is that Microsoft Windows will boot in UEFI mode if it detects a GPT partition label.
-Some buggy (old) motherboard firmware configured to boot in BIOS/CSM/legacy mode might also have problems with booting from GPT labeled disks.
-Master boot record (MBR) or DOS boot sector
-The Master boot record boot sector (also called DOS boot sector or DOS disk label) was first introduced in 1983 with PC DOS 2.x. MBR uses 32-bit identifiers for the start sector and length of the partitions, and supports three partition types: primary, extended, and logical. Primary partitions have their information stored in the master boot record itself - a very small (usually 512 bytes) location at the very beginning of a disk. Due to this small space, only four primary partitions are supported (for instance, /dev/sda1 to /dev/sda4).
+- Using GPT on a BIOS-based computer works, but then one cannot dual-boot with a Microsoft Windows operating system. The reason is that Microsoft Windows will boot in UEFI mode if it detects a GPT partition label.
+- Some buggy (old) motherboard firmware configured to boot in BIOS/CSM/legacy mode might also have problems with booting from GPT labeled disks.
+
+#### Master boot record (MBR) or DOS boot sector
+
+[The Master boot record](https://en.wikipedia.org/wiki/Master_boot_record) boot sector (also called DOS boot sector or DOS disk label) was first introduced in 1983 with PC DOS 2.x. MBR uses 32-bit identifiers for the start sector and length of the partitions, and supports three partition types: primary, extended, and logical. Primary partitions have their information stored in the master boot record itself - a very small (usually 512 bytes) location at the very beginning of a disk. Due to this small space, only four primary partitions are supported (for instance, /dev/sda1 to /dev/sda4).
 
 In order to support more partitions, one of the primary partitions in the MBR can be marked as an extended partition. This partition can then contain additional logical partitions (partitions within a partition).
 
- Important
+!!! Important
+
 Although still supported by most motherboard manufacturers, MBR boot sectors and their associated partitioning limitations are considered legacy. Unless working with hardware that is pre-2010, it best to partition a disk with GUID Partition Table. Readers who must proceed with setup type should knowingly acknowledge the following information:
 Most post-2010 motherboards consider using MBR boot sectors a legacy (supported, but not ideal) boot mode.
 Due to using 32-bit identifiers, partition tables in the MBR cannot address storage space that is larger than 2 TiBs in size.
@@ -49,7 +53,8 @@ That said, MBR and BIOS boot is still frequently used in virtualized cloud envir
 
 The Handbook authors suggest using GPT whenever possible for Gentoo installations.
 
-Advanced storage
+### Advanced storage
+
 The amd64 Installation CDs provide support for Logical Volume Manager (LVM). LVM increases the flexibility offered by the partitioning setup. It allows to combine partitions and disks into volume groups and define RAID groups or caches on fast SSDs for slow HDs. The installation instructions below will focus on "regular" partitions, but it is good to know LVM is supported if that route is desired. Visit the LVM article for more details. Newcomers beware: although fully supported, LVM is outside the scope of this guide.
 
 Default partitioning scheme
