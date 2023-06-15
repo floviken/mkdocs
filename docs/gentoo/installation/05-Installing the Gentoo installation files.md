@@ -22,7 +22,7 @@ Most readers will desire to have their system update the time automatically usin
 !!! Important
 Some motherboards do not include a Real-Time Clock (RTC), which will keep relatively accurate time even while the system is powered off. It is very important for these systems to automatically sync the system clock with a time server at every system start and on a regular internal thereafter. This is just as important for systems that do include a RTC, but have a failed battery.
 
-Official Gentoo live environments include the chronyd command (available through the [net-misc/chrony](https://packages.gentoo.org/packages/net-misc/chrony) package) and a configuration file pointing to ntp.org time servers. It can be used to automatically sync the system clock to UTC time using a time server. Using this method requires a working network configuration and may not be available on all architectures.
+Official Gentoo live environments include the **chronyd** command (available through the [net-misc/chrony](https://packages.gentoo.org/packages/net-misc/chrony) package) and a configuration file pointing to ntp.org time servers. It can be used to automatically sync the system clock to UTC time using a time server. Using this method requires a working network configuration and may not be available on all architectures.
 
 !!! Warning
 Automatic time sync comes at a price. It will reveal the system's IP address and related network information to a time server (in the case of the example below ntp.org). Users with privacy concerns should be aware of this before setting the system clock using the below method.
