@@ -363,8 +363,9 @@ Created a new partition 1 of type 'Linux' and of size 256 MiB.
 
 ### Creating the swap partition
 
-Next, to create the swap partition, type n to create a new partition, then p, then type 2 to create the second primary partition, /dev/sda2. When prompted for the first sector, hit Enter. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.
+Next, to create the swap partition, type `n` to create a new partition, then `p`, then type `2` to create the second primary partition, /dev/sda2. When prompted for the first sector, hit `Enter`. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.
 
+``` sh
 Command (m for help):n
 Partition type
    p   primary (1 primary, 0 extended, 3 free)
@@ -375,17 +376,25 @@ First sector (526336-60549119, default 526336):
 Last sector, +/-sectors or +/-size{K,M,G,T,P} (526336-60549119, default 60549119): +4G
  
 Created a new partition 2 of type 'Linux' and of size 4 GiB.
-After all this is done, type t to set the partition type, 2 to select the partition just created and then type in 82 to set the partition type to "Linux Swap".
+```
 
+After all this is done, type `t` to set the partition type, `2` to select the partition just created and then type in `82` to set the partition type to "Linux Swap".
+
+``` sh
 Command (m for help):t
 Partition number (1,2, default 2): 2
+
 Hex code (type L to list all codes): 82
 
 <!--T:179-->
 Changed type of partition 'Linux' to 'Linux swap / Solaris'.
-Creating the root partition
-Finally, to create the root partition, type n to create a new partition. Then type p and 3 to create the third primary partition, /dev/sda3. When prompted for the first sector, hit Enter. When prompted for the last sector, hit Enter to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing p should display a partition table that looks similar to this:
+```
 
+### Creating the root partition
+
+Finally, to create the root partition, type `n` to create a new partition. Then type `p` and `3` to create the third primary partition, /dev/sda3. When prompted for the first sector, hit `Enter`. When prompted for the last sector, hit `Enter` to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing `p` should display a partition table that looks similar to this:
+
+``` sh
 Command (m for help):p
 Disk /dev/sda: 28.89 GiB, 31001149440 bytes, 60549120 sectors
 Disk model: DataTraveler 2.0
@@ -399,38 +408,59 @@ Device     Boot   Start      End  Sectors  Size Id Type
 /dev/sda1          2048   526335   524288  256M 83 Linux
 /dev/sda2        526336  8914943  8388608    4G 82 Linux swap / Solaris
 /dev/sda3       8914944 60549119 51634176 24.6G 83 Linux
-Saving the partition layout
-To save the partition layout and exit fdisk, type w.
+```
 
-Command (m for help):w
+### Saving the partition layout
+
+To save the partition layout and exit **fdisk**, type `w`.
+
+`Command (m for help):w`
+
+
 Now it is time to put filesystems on the partitions.
 
 
-Creating file systems
-Introduction
-Now that the partitions have been created, it is time to place a filesystem on them. In the next section the various file systems that Linux supports are described. Readers that already know which filesystem to use can continue with Applying a filesystem to a partition. The others should read on to learn about the available filesystems...
+## Creating file systems
 
-Filesystems
-Linux supports several dozen filesystems, although many of them are only wise to deploy for specific purposes. Only certain filesystems may be found stable on the amd64 architecture - it is advised to read up on the filesystems and their support state before selecting a more experimental one for important partitions. ext4 is the recommended all-purpose, all-platform filesystem. The below is a non-exaustive list
+### Introduction
 
-btrfs
-A next generation filesystem that provides many advanced features such as snapshotting, self-healing through checksums, transparent compression, subvolumes, and integrated RAID. Kernels prior to 5.4.y are not guaranteed to be safe to use with btrfs in production because fixes for serious issues are only present in the more recent releases of the LTS kernel branches. Filesystem corruption issues are common on older kernel branches, with anything older than 4.4.y being especially unsafe and prone to corruption. Corruption is more likely on older kernels (than 5.4.y) when compression is enabled. RAID 5/6 and quota groups unsafe on all versions of btrfs. Furthermore, btrfs can counter-intuitively fail filesystem operations with ENOSPC when df reports free space due to internal fragmentation (free space pinned by DATA + SYSTEM chunks, but needed in METADATA chunks). Additionally, a single 4K reference to a 128M extent inside btrfs can cause free space to be present, but unavailable for allocations. This can also cause btrfs to return ENOSPC when free space is reported by df. Installing sys-fs/btrfsmaintenance and configuring the scripts to run periodically can help to reduce the possibility of ENOSPC issues by rebalancing btrfs, but it will not eliminate the risk of ENOSPC when free space is present. Some workloads will never hit ENOSPC while others will. If the risk of ENOSPC in production is unacceptable, you should use something else. If using btrfs, be certain to avoid configurations known to have issues. With the exception of ENOSPC, information on the issues present in btrfs in the latest kernel branches is available at the btrfs status page.
-ext4
+Now that the partitions have been created, it is time to place a filesystem on them. In the next section the various file systems that Linux supports are described. Readers that already know which filesystem to use can continue with [Applying a filesystem to a partition](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking#Applying_a_filesystem_to_a_partition). The others should read on to learn about the available filesystems...
+
+### Filesystems
+
+Linux supports several dozen filesystems, although many of them are only wise to deploy for specific purposes. Only certain filesystems may be found stable on the amd64 architecture - it is advised to read up on the filesystems and their support state before selecting a more experimental one for important partitions. **ext4 is the recommended all-purpose, all-platform filesystem**. The below is a non-exaustive list
+
+[btrfs](https://wiki.gentoo.org/wiki/Btrfs)
+
+A next generation filesystem that provides many advanced features such as snapshotting, self-healing through checksums, transparent compression, subvolumes, and integrated RAID. Kernels prior to 5.4.y are not guaranteed to be safe to use with btrfs in production because fixes for serious issues are only present in the more recent releases of the LTS kernel branches. Filesystem corruption issues are common on older kernel branches, with anything older than 4.4.y being especially unsafe and prone to corruption. Corruption is more likely on older kernels (than 5.4.y) when compression is enabled. RAID 5/6 and quota groups unsafe on all versions of btrfs. Furthermore, btrfs can counter-intuitively fail filesystem operations with ENOSPC when df reports free space due to internal fragmentation (free space pinned by DATA + SYSTEM chunks, but needed in METADATA chunks). Additionally, a single 4K reference to a 128M extent inside btrfs can cause free space to be present, but unavailable for allocations. This can also cause btrfs to return ENOSPC when free space is reported by df. Installing [sys-fs/btrfsmaintenance](https://packages.gentoo.org/packages/sys-fs/btrfsmaintenance) and configuring the scripts to run periodically can help to reduce the possibility of ENOSPC issues by rebalancing btrfs, but it will not eliminate the risk of ENOSPC when free space is present. Some workloads will never hit ENOSPC while others will. If the risk of ENOSPC in production is unacceptable, you should use something else. If using btrfs, be certain to avoid configurations known to have issues. With the exception of ENOSPC, information on the issues present in btrfs in the latest kernel branches is available at the [btrfs status page](https://btrfs.readthedocs.io/en/latest/Status.html).
+
+[ext4](https://wiki.gentoo.org/wiki/Ext4)
+
 Initially created as a fork of ext3, ext4 brings new features, performance improvements, and removal of size limits with moderate changes to the on-disk format. It can span volumes up to 1 EB and with maximum file size of 16TB. Instead of the classic ext2/3 bitmap block allocation, ext4 uses extents, which improve large file performance and reduce fragmentation. Ext4 also provides more sophisticated block allocation algorithms (delayed allocation and multiblock allocation) giving the filesystem driver more ways to optimize the layout of data on the disk. Ext4 is the recommended all-purpose all-platform filesystem.
-f2fs
+
+[f2fs](https://wiki.gentoo.org/wiki/F2fs)
+
 The Flash-Friendly File System was originally created by Samsung for the use with NAND flash memory. As of Q2, 2016, this filesystem is still considered immature, but it is a decent choice when installing Gentoo to microSD cards, USB drives, or other flash-based storage devices.
-JFS
+
+[JFS](https://wiki.gentoo.org/wiki/JFS)
+
 IBM's high-performance journaling filesystem. JFS is a light, fast, and reliable B+tree-based filesystem with good performance in various conditions.
-XFS
+
+[XFS](https://wiki.gentoo.org/wiki/XFS)
+
 A filesystem with metadata journaling which comes with a robust feature-set and is optimized for scalability. XFS seems to be less forgiving to various hardware problems, but has been continuously upgraded to include modern features.
-VFAT
-Also known as FAT32, is supported by Linux but does not support standard UNIX permission settings. It is mostly used for interoperability/interchange with other operating systems (Microsoft Windows or Apple's macOS) but is also a necessity for some system bootloader firmware (like UEFI). Users of UEFI systems will need an EFI System Partition formatted with VFAT in order to boot.
-NTFS
+
+[VFAT](https://wiki.gentoo.org/wiki/VFAT)
+
+Also known as FAT32, is supported by Linux but does not support standard UNIX permission settings. It is mostly used for interoperability/interchange with other operating systems (Microsoft Windows or Apple's macOS) but is also a necessity for some system bootloader firmware (like UEFI). Users of UEFI systems will need an [EFI System Partition](https://wiki.gentoo.org/wiki/EFI_System_Partition) formatted with VFAT in order to boot.
+
+[NTFS](https://wiki.gentoo.org/wiki/NTFS)
+
 This "New Technology" filesystem is the flagship filesystem of Microsoft Windows since Windows NT 3.1. Similarly to VFAT, it does not store UNIX permission settings or extended attributes necessary for BSD or Linux to function properly, therefore it should not be used as a filesystem for most cases. It should only be used for interoperability/interchange with Microsoft Windows systems (note the emphasis on only).
 Applying a filesystem to a partition
 To create a filesystem on a partition or volume, there are user space utilities available for each possible filesystem. Click the filesystem's name in the table below for additional information on each filesystem:
 
-Filesystem	Creation command	On minimal CD?	Package
+### Filesystem	Creation command	On minimal CD?	Package
 btrfs	mkfs.btrfs	 Yes	sys-fs/btrfs-progs
 ext4	mkfs.ext4	 Yes	sys-fs/e2fsprogs
 f2fs	mkfs.f2fs	 Yes	sys-fs/f2fs-tools
