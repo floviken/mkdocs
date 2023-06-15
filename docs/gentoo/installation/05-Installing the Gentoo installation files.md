@@ -82,43 +82,54 @@ Those using environments with fully graphical web browsers will have no problem 
 `root # wget <PASTED_STAGE_URL>` 
 
 #### Command-line browsers
+
 More traditional readers or 'old timer' Gentoo users, working exclusively from command-line may prefer using links (www-client/links), a non-graphical, menu-driven browser. To download a stage, surf to the Gentoo mirror list like so:
 
-root #links https://www.gentoo.org/downloads/mirrors/
+`root # links https://www.gentoo.org/downloads/mirrors/`
+
 To use an HTTP proxy with links, pass on the URL with the -http-proxy option:
 
-root #links -http-proxy proxy.server.com:8080 https://www.gentoo.org/downloads/mirrors/
-Next to links there is also the lynx (www-client/lynx) browser. Like links it is a non-graphical browser but it is not menu-driven.
+`root # links -http-proxy proxy.server.com:8080 https://www.gentoo.org/downloads/mirrors/`
 
-root #lynx https://www.gentoo.org/downloads/mirrors/
-If a proxy needs to be defined, export the http_proxy and/or ftp_proxy variables:
+Next to links there is also the [lynx](https://packages.gentoo.org/packages/www-client/lynx) (www-client/lynx) browser. Like **links** it is a non-graphical browser but it is not menu-driven.
 
-root #export http_proxy="http://proxy.server.com:port"
-root #export ftp_proxy="http://proxy.server.com:port"
+`root # lynx https://www.gentoo.org/downloads/mirrors/`
+
+If a proxy needs to be defined, export the *http_proxy* and/or *ftp_proxy* variables:
+
+```sh
+root # export http_proxy="http://proxy.server.com:port"
+root # export ftp_proxy="http://proxy.server.com:port"
+```
+
 On the mirror list, select a mirror close by. Usually HTTP mirrors suffice, but other protocols are available as well. Move to the releases/amd64/autobuilds/ directory. There all available stage files are displayed (they might be stored within subdirectories named after the individual sub-architectures). Select one and press d to download.
 
 After the stage file download completes, it is possible to verify the integrity and validate the contents of the stage tarball. Those interested should proceed to the next section.
 
-Those not interested in verifying and validating the stage file can close the command-line browser by pressing q and can move directly to the Unpacking the stage tarball section.
+Those not interested in verifying and validating the stage file can close the command-line browser by pressing `q` and can move directly to the Unpacking the stage tarball section.
 
-Verifying and validating
- Note
-Most stages are now explicitly suffixed with the init system type (openrc or systemd), although some architectures may still be missing these for now.
+### Verifying and validating
+
+!!! Note
+Most stages are now explicitly [suffixed](https://www.gentoo.org/news/2021/07/20/more-downloads.html) with the init system type (openrc or systemd), although some architectures may still be missing these for now.
+
 Like with the minimal installation CDs, additional downloads to verify and validate the stage file are available. Although these steps may be skipped, these files are provided for users who care about the legitimacy of the file(s) they just downloaded.
 
 A .CONTENTS file that contains a list of all files inside the stage tarball.
 A .DIGESTS file that contains checksums of the stage file in different algorithms.
-Use openssl and compare the output with the checksums provided by the .DIGESTS file.
+Use **openssl** and compare the output with the checksums provided by the .DIGESTS file.
 
 For instance, to validate the SHA512 checksum:
 
-root #openssl dgst -r -sha512 stage3-amd64-<release>-<init>.tar.xz
-Another way is to use the sha512sum command:
+`root # openssl dgst -r -sha512 stage3-amd64-<release>-<init>.tar.xz`
 
-root #sha512sum stage3-amd64-<release>-<init>.tar.xz
+Another way is to use the **sha512sum** command:
+
+`root # sha512sum stage3-amd64-<release>-<init>.tar.xz`
+
 To validate the Whirlpool checksum:
 
-root #openssl dgst -r -whirlpool stage3-amd64-<release>-<init>.tar.xz
+root # openssl dgst -r -whirlpool stage3-amd64-<release>-<init>.tar.xz
 Compare the output of these commands with the value registered in the .DIGESTS files. The values need to match, otherwise the downloaded file might be corrupt (or the digests file is).
 
 Just like with the ISO file, it is also possible to verify the cryptographic signature of the tar.xz file using gpg to make sure the tarball has not been tampered with:
