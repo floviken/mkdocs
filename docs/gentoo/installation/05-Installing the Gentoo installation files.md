@@ -155,46 +155,53 @@ Now that the stage file is unpacked, proceed with [Configuring compile options](
 
 To optimize the system, it is possible to set variables which impact the behavior of Portage, Gentoo's officially supported package manager. All those variables can be set as environment variables (using export) but setting via export is not permanent.
 
- Note
+!!! Note
 Technically variables can be exported via the shell's profile or rc files, however that is not best practice for basic system administration.
-Portage reads in the make.conf file when it runs, which will change runtime behavior depending on the values saved in the file. make.conf can be considered the primary configuration file for Portage, so treat its content carefully.
 
- Tip
+Portage reads in the [make.conf](https://wiki.gentoo.org/wiki/Make.conf) file when it runs, which will change runtime behavior depending on the values saved in the file. **make.conf** can be considered the primary configuration file for Portage, so treat its content carefully.
+
+!!! Tip
 A commented listing of all possible variables can be found in /mnt/gentoo/usr/share/portage/config/make.conf.example. Additional documentation on make.conf can be found by running man 5 make.conf.
-
 For a successful Gentoo installation only the variables that are mentioned below need to be set.
+
 Fire up an editor (in this guide we use nano) to alter the optimization variables we will discuss hereafter.
 
-root #nano -w /mnt/gentoo/etc/portage/make.conf
-From the make.conf.example file it is obvious how the file should be structured: commented lines start with #, other lines define variables using the VARIABLE="value" syntax. Several of those variables are discussed in the next section.
+`root # nano -w /mnt/gentoo/etc/portage/make.conf`
 
-CFLAGS and CXXFLAGS
-The CFLAGS and CXXFLAGS variables define the optimization flags for GCC C and C++ compilers respectively. Although those are defined generally here, for maximum performance one would need to optimize these flags for each program separately. The reason for this is because every program is different. However, this is not manageable, hence the definition of these flags in the make.conf file.
+From the make.conf.example file it is obvious how the file should be structured: commented lines start with `#`, other lines define variables using the `VARIABLE="value"` syntax. Several of those variables are discussed in the next section.
+
+### CFLAGS and CXXFLAGS
+
+The *CFLAGS* and *CXXFLAGS* variables define the optimization flags for GCC C and C++ compilers respectively. Although those are defined generally here, for maximum performance one would need to optimize these flags for each program separately. The reason for this is because every program is different. However, this is not manageable, hence the definition of these flags in the make.conf file.
 
 In make.conf one should define the optimization flags that will make the system the most responsive generally. Don't place experimental settings in this variable; too much optimization can make programs misbehave (crash, or even worse, malfunction).
 
-We will not explain all possible optimization options. To understand them all, read the GNU Online Manual(s) or the gcc info page (info gcc - only works on a working Linux system). The make.conf.example file itself also contains lots of examples and information; don't forget to read it too.
+We will not explain all possible optimization options. To understand them all, read the [GNU Online Manual(s)](https://gcc.gnu.org/onlinedocs/) or the gcc info page (**info gcc** - only works on a working Linux system). The make.conf.example file itself also contains lots of examples and information; don't forget to read it too.
 
-A first setting is the -march= or -mtune= flag, which specifies the name of the target architecture. Possible options are described in the make.conf.example file (as comments). A commonly used value is native as that tells the compiler to select the target architecture of the current system (the one users are installing Gentoo on).
+A first setting is the `-march=` or `-mtune=` flag, which specifies the name of the target architecture. Possible options are described in the make.conf.example file (as comments). A commonly used value is native as that tells the compiler to select the target architecture of the current system (the one users are installing Gentoo on).
 
-A second one is the -O flag (that is a capital O, not a zero), which specifies the gcc optimization class flag. Possible classes are s (for size-optimized), 0 (zero - for no optimizations), 1, 2 or even 3 for more speed-optimization flags (every class has the same flags as the one before, plus some extras). -O2 is the recommended default. -O3 is known to cause problems when used system-wide, so we recommend to stick to -O2.
+A second one is the `-O` flag (that is a capital O, not a zero), which specifies the gcc optimization class flag. Possible classes are s (for size-optimized), 0 (zero - for no optimizations), 1, 2 or even 3 for more speed-optimization flags (every class has the same flags as the one before, plus some extras). `-O2` is the recommended default. `-O3` is known to cause problems when used system-wide, so we recommend to stick to `-O2`.
 
-Another popular optimization flag is -pipe (use pipes rather than temporary files for communication between the various stages of compilation). It has no impact on the generated code, but uses more memory. On systems with low memory, gcc might get killed. In that case, do not use this flag.
+Another popular optimization flag is `-pipe` (use pipes rather than temporary files for communication between the various stages of compilation). It has no impact on the generated code, but uses more memory. On systems with low memory, gcc might get killed. In that case, do not use this flag.
 
-Using -fomit-frame-pointer (which doesn't keep the frame pointer in a register for functions that don't need one) might have serious repercussions on the debugging of applications.
+Using `-fomit-frame-pointer` (which doesn't keep the frame pointer in a register for functions that don't need one) might have serious repercussions on the debugging of applications.
 
-When the CFLAGS and CXXFLAGS variables are defined, combine the several optimization flags in one string. The default values contained in the stage3 archive that is unpacked should be good enough. The following one is just an example:
+When the *CFLAGS* and *CXXFLAGS* variables are defined, combine the several optimization flags in one string. The default values contained in the stage3 archive that is unpacked should be good enough. The following one is just an example:
 
-CODE Example CFLAGS and CXXFLAGS variables
+```sh title="CODE Example CFLAGS and CXXFLAGS variables"
 # Compiler flags to set for all languages
 COMMON_FLAGS="-march=native -O2 -pipe"
 # Use the same settings for both variables
 CFLAGS="${COMMON_FLAGS}"
 CXXFLAGS="${COMMON_FLAGS}"
- Tip
+```
+
+!!! Tip
 Although the GCC optimization article has more information on how the various compilation options can affect a system, the Safe CFLAGS article may be a more practical place for beginners to start optimizing their systems.
-MAKEOPTS
-The MAKEOPTS variable defines how many parallel compilations should occur when installing a package. As of Portage version 3.0.31[1], if left undefined, Portage's default behavior is to set the MAKEOPTS value to the same number of threads returned by nproc.
+
+### MAKEOPTS
+
+The *MAKEOPTS* variable defines how many parallel compilations should occur when installing a package. As of Portage version 3.0.31[1], if left undefined, Portage's default behavior is to set the *MAKEOPTS* value to the same number of threads returned by nproc.
 
 A good choice is the smaller of: the number of threads the CPU has, or the total amount of system RAM divided by 2 GiB.
 
