@@ -129,24 +129,30 @@ Another way is to use the **sha512sum** command:
 
 To validate the Whirlpool checksum:
 
-root # openssl dgst -r -whirlpool stage3-amd64-<release>-<init>.tar.xz
+`root # openssl dgst -r -whirlpool stage3-amd64-<release>-<init>.tar.xz`
+
 Compare the output of these commands with the value registered in the .DIGESTS files. The values need to match, otherwise the downloaded file might be corrupt (or the digests file is).
 
 Just like with the ISO file, it is also possible to verify the cryptographic signature of the tar.xz file using gpg to make sure the tarball has not been tampered with:
 
-root #gpg --verify stage3-amd64-<release>-<init>.tar.xz{.asc,}
-The fingerprints of the OpenPGP keys used for signing release media can be found on the release media signatures page of the Gentoo webserver.
+`root # gpg --verify stage3-amd64-<release>-<init>.tar.xz{.asc,}`
 
-Unpacking the stage tarball
+The fingerprints of the OpenPGP keys used for signing release media can be found on the [release media signatures page](https://www.gentoo.org/downloads/signatures/) of the Gentoo webserver.
+
+## Unpacking the stage tarball
+
 Now unpack the downloaded stage onto the system. Use the tar utility to proceed:
 
-root #tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner
-Verify the same options (xpf and --xattrs-include='*.*') are used in the command. The x stands for extract, the p for preserve permissions and the f to denote that we want to extract a file (not standard input). --xattrs-include='*.*' is to include preservation of the the extended attributes in all namespaces stored in the archive. Finally, --numeric-owner is used to ensure that the user and group IDs of the files being extracted from the tarball will remain the same as Gentoo's release engineering team intended (even if adventurous users are not using official Gentoo live environments).
+`root # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner`
 
-Now that the stage file is unpacked, proceed with Configuring compile options.
+Verify the same options (`xpf` and `--xattrs-include='*.*'`) are used in the command. The x stands for extract, the p for preserve permissions and the `f` to denote that we want to extract a file (not standard input). `--xattrs-include='*.*'` is to include preservation of the the extended attributes in all namespaces stored in the archive. Finally, `--numeric-owner` is used to ensure that the user and group IDs of the files being extracted from the tarball will remain the same as Gentoo's release engineering team intended (even if adventurous users are not using official Gentoo live environments).
 
-Configuring compile options
-Introduction
+Now that the stage file is unpacked, proceed with [Configuring compile options](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Configuring_compile_options).
+
+## Configuring compile options
+
+### Introduction
+
 To optimize the system, it is possible to set variables which impact the behavior of Portage, Gentoo's officially supported package manager. All those variables can be set as environment variables (using export) but setting via export is not permanent.
 
  Note
