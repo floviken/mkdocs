@@ -201,20 +201,27 @@ Although the GCC optimization article has more information on how the various co
 
 ### MAKEOPTS
 
-The *MAKEOPTS* variable defines how many parallel compilations should occur when installing a package. As of Portage version 3.0.31[1], if left undefined, Portage's default behavior is to set the *MAKEOPTS* value to the same number of threads returned by nproc.
+The *MAKEOPTS* variable defines how many parallel compilations should occur when installing a package. As of Portage version 3.0.31[1], if left undefined, Portage's default behavior is to set the *MAKEOPTS* value to the same number of threads returned by **nproc**.
 
 A good choice is the smaller of: the number of threads the CPU has, or the total amount of system RAM divided by 2 GiB.
 
- Warning
-Using a large number of jobs can significantly impact memory consumption. A good recommendation is to have at least 2 GiB of RAM for every job specified (so, e.g. -j6 requires at least 12 GiB). To avoid running out of memory, lower the number of jobs to fit the available memory.
- Tip
-When using parallel emerges (--jobs), the effective number of jobs run can grow exponentially (up to make jobs multiplied by emerge jobs). This can be worked around by running a localhost-only distcc configuration that will limit the number of compiler instances per host.
-FILE /etc/portage/make.confExample MAKEOPTS declaration
+!!! Warning
+
+Using a large number of jobs can significantly impact memory consumption. A good recommendation is to have at least 2 GiB of RAM for every job specified (so, e.g. `-j6` requires at least 12 GiB). To avoid running out of memory, lower the number of jobs to fit the available memory.
+
+!!! Tip
+
+When using parallel emerges (`--jobs`), the effective number of jobs run can grow exponentially (up to make jobs multiplied by emerge jobs). This can be worked around by running a localhost-only distcc configuration that will limit the number of compiler instances per host.
+
+```sh title="FILE /etc/portage/make.confExample MAKEOPTS declaration"
 # If left undefined, Portage's default behavior is to set the MAKEOPTS value to the same number of threads returned by `nproc` 
 MAKEOPTS="-j4"
-Search for MAKEOPTS in man 5 make.conf for more details.
+```
 
-Ready, set, go!
+Search for *MAKEOPTS* in **man 5 make.conf** for more details.
+
+### Ready, set, go!
+
 Update the /mnt/gentoo/etc/portage/make.conf file to match personal preference and save (nano users would hit Ctrl+o to write the change and then Ctrl+x to quit).
 
-Then continue withInstalling the Gentoo base system.
+Then continue with [Installing the Gentoo base system]().
