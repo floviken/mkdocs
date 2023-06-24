@@ -222,6 +222,6 @@ Search for *MAKEOPTS* in **man 5 make.conf** for more details.
 
 ### Ready, set, go!
 
-Update the /mnt/gentoo/etc/portage/make.conf file to match personal preference and save (nano users would hit Ctrl+o to write the change and then Ctrl+x to quit).
+Update the /mnt/gentoo/etc/portage/make.conf file to match personal preference and save (nano users would hit `Ctrl+o` to write the change and then `Ctrl+x` to quit).
 
 Then continue with [Installing the Gentoo base system]().
