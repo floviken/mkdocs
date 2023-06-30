@@ -127,19 +127,24 @@ Now that the new environment has been entered, it is necessary to mount the boot
 
 ## Configuring Portage
 
-Installing a Gentoo ebuild repository snapshot from the web
+### Installing a Gentoo ebuild repository snapshot from the web
+
 Next step is to install a snapshot of the Gentoo ebuild repository. This snapshot contains a collection of files that informs Portage about available software titles (for installation), which profiles the system administrator can select, package or profile specific news items, etc.
 
-The use of emerge-webrsync is recommended for those who are behind restrictive firewalls (it uses HTTP/FTP protocols for downloading the snapshot) and saves network bandwidth. Readers who have no network or bandwidth restrictions can happily skip down to the next section.
+The use of **emerge-webrsync** is recommended for those who are behind restrictive firewalls (it uses HTTP/FTP protocols for downloading the snapshot) and saves network bandwidth. Readers who have no network or bandwidth restrictions can happily skip down to the next section.
 
 This will fetch the latest snapshot (which is released on a daily basis) from one of Gentoo's mirrors and install it onto the system:
 
-root # emerge-webrsync
- Note
+`root # emerge-webrsync`
+
+!!! Note
 During this operation, emerge-webrsync might complain about a missing /var/db/repos/gentoo/ location. This is to be expected and nothing to worry about - the tool will create the location.
+
+
 From this point onward, Portage might mention that certain updates are recommended to be executed. This is because system packages installed through the stage file might have newer versions available; Portage is now aware of new packages because of the repository snapshot. Package updates can be safely ignored for now; updates can be delayed until after the Gentoo installation has finished.
 
-Optional: Updating the Gentoo ebuild repository
+### Optional: Updating the Gentoo ebuild repository
+
 It is possible to update the Gentoo ebuild repository to the latest version. The previous emerge-webrsync command will have installed a very recent snapshot (usually recent up to 24h) so this step is definitely optional.
 
 Suppose there is a need for the last package updates (up to 1 hour), then use emerge --sync. This command will use the rsync protocol to update the Gentoo ebuild repository (which was fetched earlier on through emerge-webrsync) to the latest state.
