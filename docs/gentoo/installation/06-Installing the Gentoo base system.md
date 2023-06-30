@@ -74,6 +74,7 @@ The filesystems that need to be made available are:
 
 The /proc/ location will be mounted on /mnt/gentoo/proc/ whereas the others are bind-mounted. The latter means that, for instance, /mnt/gentoo/sys/ will actually be /sys/ (it is just a second entry point to the same filesystem) whereas /mnt/gentoo/proc/ is a new mount (instance so to speak) of the filesystem.
 
+``` sh
 root #mount --types proc /proc /mnt/gentoo/proc
 root #mount --rbind /sys /mnt/gentoo/sys
 root #mount --make-rslave /mnt/gentoo/sys
@@ -81,31 +82,45 @@ root #mount --rbind /dev /mnt/gentoo/dev
 root #mount --make-rslave /mnt/gentoo/dev
 root #mount --bind /run /mnt/gentoo/run
 root #mount --make-slave /mnt/gentoo/run
- Note
-The --make-rslave operations are needed for systemd support later in the installation.
- Warning
+```
+
+!!! Note
+The `--make-rslave` operations are needed for systemd support later in the installation.
+
+!!! Warning
 When using non-Gentoo installation media, this might not be sufficient. Some distributions make /dev/shm a symbolic link to /run/shm/ which, after the chroot, becomes invalid. Making /dev/shm/ a proper tmpfs mount up front can fix this:
-root #test -L /dev/shm && rm /dev/shm && mkdir /dev/shm
-root #mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm
+
+`root # test -L /dev/shm && rm /dev/shm && mkdir /dev/shm`
+`root # mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm`
+
 Also ensure that mode 1777 is set:
 
-root #chmod 1777 /dev/shm /run/shm
-Entering the new environment
-Now that all partitions are initialized and the base environment installed, it is time to enter the new installation environment by chrooting into it. This means that the session will change its root (most top-level location that can be accessed) from the current installation environment (installation CD or other installation medium) to the installation system (namely the initialized partitions). Hence the name, change root or chroot.
+`root # chmod 1777 /dev/shm /run/shm`
+
+
+### Entering the new environment
+
+Now that all partitions are initialized and the base environment installed, it is time to enter the new installation environment by chrooting into it. This means that the session will change its root (most top-level location that can be accessed) from the current installation environment (installation CD or other installation medium) to the installation system (namely the initialized partitions). Hence the name, *change root* or *chroot*.
 
 This chrooting is done in three steps:
 
-The root location is changed from / (on the installation medium) to /mnt/gentoo/ (on the partitions) using chroot
-Some settings (those in /etc/profile) are reloaded in memory using the source command
-The primary prompt is changed to help us remember that this session is inside a chroot environment.
-root #chroot /mnt/gentoo /bin/bash
-root #source /etc/profile
-root #export PS1="(chroot) ${PS1}"
+1. The root location is changed from / (on the installation medium) to /mnt/gentoo/ (on the partitions) using chroot
+2. Some settings (those in /etc/profile) are reloaded in memory using the source command
+3. The primary prompt is changed to help us remember that this session is inside a chroot environment.
+
+``` sh
+root # chroot /mnt/gentoo /bin/bash
+root # source /etc/profile
+root # export PS1="(chroot) ${PS1}"
+```
+
 From this point, all actions performed are immediately on the new Gentoo Linux environment.
 
- Tip
+!!! Tip
 If the Gentoo installation is interrupted anywhere after this point, it should be possible to 'resume' the installation at this step. There is no need to repartition the disks again! Simply mount the root partition and run the steps above starting with copying the DNS info to re-enter the working environment. This is also useful for fixing bootloader issues. More information can be found in the chroot article.
-Mounting the boot partition
+
+### Mounting the boot partition
+
 Now that the new environment has been entered, it is necessary to mount the boot partition. This will be important when it is time to compile the kernel and install the bootloader:
 
 root #mount /dev/sda1 /boot
