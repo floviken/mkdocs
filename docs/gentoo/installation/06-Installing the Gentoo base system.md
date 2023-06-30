@@ -123,8 +123,10 @@ If the Gentoo installation is interrupted anywhere after this point, it should b
 
 Now that the new environment has been entered, it is necessary to mount the boot partition. This will be important when it is time to compile the kernel and install the bootloader:
 
-root #mount /dev/sda1 /boot
-Configuring Portage
+`root #mount /dev/sda1 /boot`
+
+## Configuring Portage
+
 Installing a Gentoo ebuild repository snapshot from the web
 Next step is to install a snapshot of the Gentoo ebuild repository. This snapshot contains a collection of files that informs Portage about available software titles (for installation), which profiles the system administrator can select, package or profile specific news items, etc.
 
@@ -132,7 +134,7 @@ The use of emerge-webrsync is recommended for those who are behind restrictive f
 
 This will fetch the latest snapshot (which is released on a daily basis) from one of Gentoo's mirrors and install it onto the system:
 
-root #emerge-webrsync
+root # emerge-webrsync
  Note
 During this operation, emerge-webrsync might complain about a missing /var/db/repos/gentoo/ location. This is to be expected and nothing to worry about - the tool will create the location.
 From this point onward, Portage might mention that certain updates are recommended to be executed. This is because system packages installed through the stage file might have newer versions available; Portage is now aware of new packages because of the repository snapshot. Package updates can be safely ignored for now; updates can be delayed until after the Gentoo installation has finished.
