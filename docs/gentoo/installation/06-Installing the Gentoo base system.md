@@ -186,41 +186,50 @@ More information about the news reader is available through its manual page:
 !!! Tip
 Desktop profiles are not exclusively for desktop environments. They are still suitable for minimal window managers like i3 or sway.
 
-A profile is a building block for any Gentoo system. Not only does it specify default values for USE, CFLAGS, and other important variables, it also locks the system to a certain range of package versions. These settings are all maintained by Gentoo's Portage developers.
+A *profile* is a building block for any Gentoo system. Not only does it specify default values for USE, CFLAGS, and other important variables, it also locks the system to a certain range of package versions. These settings are all maintained by Gentoo's Portage developers.
 
-To see what profile the system is currently using, run eselect using the profile module:
+To see what profile the system is currently using, run **eselect** using the `profile` module:
 
+```sh
 root # eselect profile list
-
 Available profile symlink targets:
   [1]   default/linux/amd64/17.1 *
   [2]   default/linux/amd64/17.1/desktop
   [3]   default/linux/amd64/17.1/desktop/gnome
   [4]   default/linux/amd64/17.1/desktop/kde
- Note
+```
+
+!!! Note
 The output of the command is just an example and evolves over time.
- Note
+
+!!! Note
 To use systemd, select a profile which has "systemd" in the name and vice versa, if not
+
 There are also desktop subprofiles available for some architectures.
 
- Warning
+!!! Warning
 Profile upgrades are not to be taken lightly. When selecting the initial profile, use the profile corresponding to the same version as the one initially used by stage3 (e.g. 17.1). Each new profile version is announced through a news item containing migration instructions. Follow the instructions before switching to a newer profile.
+
 After viewing the available profiles for the amd64 architecture, users can select a different profile for the system:
 
-root #eselect profile set 2
+`root # eselect profile set 2`
 
-No-multilib
+#### No-multilib
+
 In order to select a pure 64-bit environment, with no 32-bit applications or libraries, use a no-multilib profile:
 
-root #eselect profile list
+```sh
+root # eselect profile list
 Available profile symlink targets:
   [1]   default/linux/amd64/17.1 *
   [2]   default/linux/amd64/17.1/desktop
   [3]   default/linux/amd64/17.1/desktop/gnome
   [4]   default/linux/amd64/17.1/desktop/kde
   [5]   default/linux/amd64/17.1/no-multilib
-Next select the no-multilib profile:
+```
+Next select the *no-multilib* profile:
 
+```sh
 root #eselect profile set 5
 root #eselect profile list
 Available profile symlink targets:
@@ -229,11 +238,13 @@ Available profile symlink targets:
   [3]   default/linux/amd64/17.1/desktop/gnome
   [4]   default/linux/amd64/17.1/desktop/kde
   [5]   default/linux/amd64/17.1/no-multilib *
+```
 
+!!! Note
+The `developer` subprofile is specifically for Gentoo Linux development and is not meant to be used by casual users.
 
- Note
-The developer subprofile is specifically for Gentoo Linux development and is not meant to be used by casual users.
-Updating the @world set
+### Updating the @world set
+
 At this point, it is wise to update the system's @world set so that a base can be established.
 
 This following step is necessary so the system can apply any updates or USE flag changes which have appeared since the stage3 was built and from any profile selection:
