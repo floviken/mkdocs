@@ -245,32 +245,39 @@ The `developer` subprofile is specifically for Gentoo Linux development and is n
 
 ### Updating the @world set
 
-At this point, it is wise to update the system's @world set so that a base can be established.
+At this point, it is wise to update the system's [@world](https://wiki.gentoo.org/wiki/World_set_(Portage)) set so that a base can be established.
 
 This following step is necessary so the system can apply any updates or USE flag changes which have appeared since the stage3 was built and from any profile selection:
 
-root #emerge --ask --verbose --update --deep --newuse @world
- Tip
-If a full scale desktop environment profile has been selected this process could greatly extend the amount of time necessary for the install process. Those in a time crunch can work by this 'rule of thumb': the shorter the profile name, the less specific the system's @world set; the less specific the @world set, the fewer packages the system will require. In other words:
+`root #emerge --ask --verbose --update --deep --newuse @world`
+
+!!! Tip
+If a full scale desktop environment profile has been selected this process could greatly extend the amount of time necessary for the install process. Those in a time crunch can work by this 'rule of thumb': the shorter the profile name, the less specific the system's @world set; the less specific the [@world](https://wiki.gentoo.org/wiki/World_set_(Portage)) set, the fewer packages the system will require. In other words:
 Selecting default/linux/amd64/17.1 will require very few packages to be updated, whereas
 Selecting default/linux/amd64/17.1/desktop/gnome/systemd will require many packages to be installed since the init system is changing from OpenRC to systemd, and the GNOME desktop environment framework will be installed.
-Configuring the USE variable
-USE is one of the most powerful variables Gentoo provides to its users. Several programs can be compiled with or without optional support for certain items. For instance, some programs can be compiled with support for GTK+ or with support for Qt. Others can be compiled with or without SSL support. Some programs can even be compiled with framebuffer support (svgalib) instead of X11 support (X-server).
 
-Most distributions compile their packages with support for as much as possible, increasing the size of the programs and startup time, not to mention an enormous amount of dependencies. With Gentoo users can define what options a package should be compiled with. This is where USE comes into play.
+### Configuring the USE variable
 
-In the USE variable users define keywords which are mapped onto compile-options. For instance, ssl will compile SSL support in the programs that support it. -X will remove X-server support (note the minus sign in front). gnome gtk -kde -qt5 will compile programs with GNOME (and GTK+) support, and not with KDE (and Qt) support, making the system fully tweaked for GNOME (if the architecture supports it).
+*USE* is one of the most powerful variables Gentoo provides to its users. Several programs can be compiled with or without optional support for certain items. For instance, some programs can be compiled with support for GTK+ or with support for Qt. Others can be compiled with or without SSL support. Some programs can even be compiled with framebuffer support (svgalib) instead of X11 support (X-server).
 
-The default USE settings are placed in the make.defaults files of the Gentoo profile used by the system. Gentoo uses a (complex) inheritance system for its profiles, which we will not dive into at this stage. The easiest way to check the currently active USE settings is to run emerge --info and select the line that starts with USE:
+Most distributions compile their packages with support for as much as possible, increasing the size of the programs and startup time, not to mention an enormous amount of dependencies. With Gentoo users can define what options a package should be compiled with. This is where *USE* comes into play.
 
-root #emerge --info | grep ^USE
+In the *USE* variable users define keywords which are mapped onto compile-options. For instance, ssl will compile SSL support in the programs that support it. -X will remove X-server support (note the minus sign in front). gnome gtk -kde -qt5 will compile programs with GNOME (and GTK+) support, and not with KDE (and Qt) support, making the system fully tweaked for GNOME (if the architecture supports it).
+
+The default USE settings are placed in the make.defaults files of the Gentoo profile used by the system. Gentoo uses a (complex) inheritance system for its profiles, which we will not dive into at this stage. The easiest way to check the currently active USE settings is to run **emerge --info** and select the line that starts with *USE*:
+
+```sh
+root $ emerge --info | grep ^USE
 USE="X acl alsa amd64 berkdb bindist bzip2 cli cracklib crypt cxx dri ..."
- Note
+```
+
+!!! Note
 The above example is truncated, the actual list of USE values is much, much larger.
 A full description on the available USE flags can be found on the system in /var/db/repos/gentoo/profiles/use.desc.
 
-root #less /var/db/repos/gentoo/profiles/use.desc
-Inside the less command, scrolling can be done using the ↑ and ↓ keys, and exited by pressing q.
+`root $ less /var/db/repos/gentoo/profiles/use.desc`
+
+Inside the **less** command, scrolling can be done using the ↑ and ↓ keys, and exited by pressing q.
 
 As an example we show a USE setting for a KDE-based system with DVD, ALSA, and CD recording support:
 
