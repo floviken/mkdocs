@@ -284,13 +284,18 @@ Inside the **less** command, scrolling can be done using the ↑ and ↓ keys, a
 
 As an example we show a USE setting for a KDE-based system with DVD, ALSA, and CD recording support:
 
-root #nano -w /etc/portage/make.conf
-FILE /etc/portage/make.confEnabling flags for a KDE/Plasma-based system with DVD, ALSA, and CD recording support
-USE="-gtk -gnome qt5 kde dvd alsa cdr"
-When a USE value is defined in /etc/portage/make.conf it is added to the system's USE flag list. USE flags can be globally removed by adding a - minus sign in front of the value in the the list. For example, to disable support for X graphical environments, -X can be set:
+`root $ nano -w /etc/portage/make.conf`
 
-FILE /etc/portage/make.confIgnoring default USE flags
+``` sh title="FILE /etc/portage/make.conf Enabling flags for a KDE/Plasma-based system with DVD, ALSA, and CD recording support"
+USE="-gtk -gnome qt5 kde dvd alsa cdr"
+```
+
+When a *USE* value is defined in /etc/portage/make.conf it is added to the system's USE flag list. USE flags can be globally *removed* by adding a - minus sign in front of the value in the the list. For example, to disable support for X graphical environments, `-X` can be set:
+
+```sh title="FILE /etc/portage/make.confIgnoring default USE flags"
 USE="-X acl alsa"
+```
+
  Warning
 Although possible, setting -* (which will disable all USE values except the ones specified in make.conf) is strongly discouraged and unwise. Ebuild developers choose certain default USE flag values in ebuilds in order to prevent conflicts, enhance security, and avoid errors, and other reasons. Disabling all USE flags will negate default behavior and may cause major issues.
 CPU_FLAGS_*
