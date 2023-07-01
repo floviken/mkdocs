@@ -249,7 +249,9 @@ At this point, it is wise to update the system's [@world](https://wiki.gentoo.or
 
 This following step is necessary so the system can apply any updates or USE flag changes which have appeared since the stage3 was built and from any profile selection:
 
-`root #emerge --ask --verbose --update --deep --newuse @world`
+```sh 
+root $ emerge --ask --verbose --update --deep --newuse @world
+```
 
 !!! Tip
 If a full scale desktop environment profile has been selected this process could greatly extend the amount of time necessary for the install process. Those in a time crunch can work by this 'rule of thumb': the shorter the profile name, the less specific the system's @world set; the less specific the [@world](https://wiki.gentoo.org/wiki/World_set_(Portage)) set, the fewer packages the system will require. In other words:
