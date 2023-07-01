@@ -373,16 +373,18 @@ The license groups defined in the Gentoo repository, managed by the Gentoo Licen
 | @BINARY-REDISTRIBUTABLE | Licenses that at least permit free redistribution of the software in binary form. Includes @FREE                                                           |
 | @EULA                   | License agreements that try to take away your rights. These are more restrictive than "all-rights-reserved" or require explicit approval                   |
 
- https://www.gnu.org/licenses/license-list.html
- https://www.opensource.org/licenses
- https://www.gnu.org/philosophy/free-sw.html
- https://freedomdefined.org/
+- [https://www.gnu.org/licenses/license-list.html](https://www.gnu.org/licenses/license-list.html)
+- [https://www.opensource.org/licenses](https://www.opensource.org/licenses)
+- [https://www.gnu.org/philosophy/free-sw.html](https://www.gnu.org/philosophy/free-sw.html)
+- [https://freedomdefined.org/](https://freedomdefined.org/)
 
-Optional: Using systemd as the init system
-The remainder of the Gentoo handbook will provide systemd steps alongside OpenRC (the traditional Gentoo init system) where separate steps or recommendations are necessary. System administrators should also consult the systemd article for more details on managing systemd as the system and service manager.
+### Optional: Using systemd as the init system
 
-Timezone
- Note
+The remainder of the Gentoo handbook will provide systemd steps alongside [OpenRC](https://wiki.gentoo.org/wiki/OpenRC) (the traditional Gentoo init system) where separate steps or recommendations are necessary. System administrators should also consult the [systemd](https://wiki.gentoo.org/wiki/Systemd) article for more details on managing systemd as the system and service manager.
+
+### Timezone
+
+!!! Note
 This step does not apply to users of the musl libc. Users who do not know what that means should perform this step.
 Select the timezone for the system. Look for the available timezones in /usr/share/zoneinfo/:
 
