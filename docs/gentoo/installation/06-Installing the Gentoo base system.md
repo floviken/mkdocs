@@ -392,7 +392,7 @@ Select the timezone for the system. Look for the available timezones in /usr/sha
 
 Suppose the timezone of choice is Europe/Brussels.
 
-### OpenRC
+#### OpenRC
 
 We write the timezone name into the /etc/timezone file.
 
@@ -402,31 +402,39 @@ Please avoid the /usr/share/zoneinfo/Etc/GMT* timezones as their names do not in
 
 Next, reconfigure the sys-libs/timezone-data package, which will update the /etc/localtime file for us, based on the /etc/timezone entry. The /etc/localtime file is used by the system C library to know the timezone the system is in.
 
-root #emerge --config sys-libs/timezone-data
-systemd
+`root # emerge --config sys-libs/timezone-data`
+
+#### systemd
+
 A slightly different approach is employed when using systemd. A symbolic link is generated:
 
-root #ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime
+`root # ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime`
+
 Later, when systemd is running, the timezone and related settings can be configured with the timedatectl command.
 
-Configure locales
- Note
+### Configure locales
+
+!!! Note
 This step does not apply to users of the musl libc. Users who do not know what that means should perform this step.
 Locale generation
+
 Most users will want to use only one or two locales on their system.
 
 Locales specify not only the language that the user should use to interact with the system, but also the rules for sorting strings, displaying dates and times, etc. Locales are case sensitive and must be represented exactly as described. A full listing of available locales can be found in the /usr/share/i18n/SUPPORTED file.
 
 Supported system locales must be defined in the /etc/locale.gen file.
 
-root #nano -w /etc/locale.gen
+`root # nano -w /etc/locale.gen`
+
 The following locales are an example to get both English (United States) and German (Germany/Deutschland) with the accompanying character formats (like UTF-8).
 
-FILE /etc/locale.genEnabling US and DE locales with the appropriate character formats
+```sh title="FILE /etc/locale.genEnabling US and DE locales with the appropriate character formats"
 en_US ISO-8859-1
 en_US.UTF-8 UTF-8
 de_DE ISO-8859-1
 de_DE.UTF-8 UTF-8
+```
+
  Warning
 Many applications require least one UTF-8 locale to build properly.
 The next step is to run the locale-gen command. This command generates all locales specified in the /etc/locale.gen file.
