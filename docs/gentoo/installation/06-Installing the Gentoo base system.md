@@ -388,13 +388,16 @@ The remainder of the Gentoo handbook will provide systemd steps alongside [OpenR
 This step does not apply to users of the musl libc. Users who do not know what that means should perform this step.
 Select the timezone for the system. Look for the available timezones in /usr/share/zoneinfo/:
 
-root #ls /usr/share/zoneinfo
+`root # ls /usr/share/zoneinfo`
+
 Suppose the timezone of choice is Europe/Brussels.
 
-OpenRC
+### OpenRC
+
 We write the timezone name into the /etc/timezone file.
 
-root #echo "Europe/Brussels" > /etc/timezone
+`root # echo "Europe/Brussels" > /etc/timezone`
+
 Please avoid the /usr/share/zoneinfo/Etc/GMT* timezones as their names do not indicate the expected zones. For instance, GMT-8 is in fact GMT+8.
 
 Next, reconfigure the sys-libs/timezone-data package, which will update the /etc/localtime file for us, based on the /etc/timezone entry. The /etc/localtime file is used by the system C library to know the timezone the system is in.
