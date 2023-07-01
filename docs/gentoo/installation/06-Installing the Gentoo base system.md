@@ -212,14 +212,14 @@ Profile upgrades are not to be taken lightly. When selecting the initial profile
 
 After viewing the available profiles for the amd64 architecture, users can select a different profile for the system:
 
-`root # eselect profile set 2`
+`root $ eselect profile set 2`
 
 #### No-multilib
 
 In order to select a pure 64-bit environment, with no 32-bit applications or libraries, use a no-multilib profile:
 
 ```sh
-root # eselect profile list
+root $ eselect profile list
 Available profile symlink targets:
   [1]   default/linux/amd64/17.1 *
   [2]   default/linux/amd64/17.1/desktop
@@ -227,11 +227,12 @@ Available profile symlink targets:
   [4]   default/linux/amd64/17.1/desktop/kde
   [5]   default/linux/amd64/17.1/no-multilib
 ```
+
 Next select the *no-multilib* profile:
 
 ```sh
-root #eselect profile set 5
-root #eselect profile list
+root $ eselect profile set 5
+root $ eselect profile list
 Available profile symlink targets:
   [1]   default/linux/amd64/17.1
   [2]   default/linux/amd64/17.1/desktop
