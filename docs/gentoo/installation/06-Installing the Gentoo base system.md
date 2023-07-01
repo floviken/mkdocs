@@ -296,65 +296,82 @@ When a *USE* value is defined in /etc/portage/make.conf it is added to the syste
 USE="-X acl alsa"
 ```
 
- Warning
+!!! Warning
 Although possible, setting -* (which will disable all USE values except the ones specified in make.conf) is strongly discouraged and unwise. Ebuild developers choose certain default USE flag values in ebuilds in order to prevent conflicts, enhance security, and avoid errors, and other reasons. Disabling all USE flags will negate default behavior and may cause major issues.
-CPU_FLAGS_*
-Some architectures (including AMD64/X86, ARM, PPC) have a USE_EXPAND variable called CPU_FLAGS_ARCH (replace ARCH with the relevant system architecture as appropriate).
 
-This is used to configure the build to compile in specific assembly code or other intrinsics, usually hand-written or otherwise extra, and is not the same as asking the compiler to output optimized code for a certain CPU feature (e.g. -march=).
+#### CPU_FLAGS_*
 
-Users should set this variable in addition to configuring their COMMON_FLAGS as desired.
+Some architectures (including AMD64/X86, ARM, PPC) have a [USE_EXPAND](https://wiki.gentoo.org/wiki/USE_EXPAND) variable called [CPU_FLAGS_ARCH](https://wiki.gentoo.org/wiki/CPU_FLAGS_X86) (replace ARCH with the relevant system architecture as appropriate).
+
+This is used to configure the build to compile in specific assembly code or other intrinsics, usually hand-written or otherwise extra, and is **not** the same as asking the compiler to output optimized code for a certain CPU feature (e.g. `-march=`).
+
+Users should set this variable in addition to configuring their *COMMON_FLAGS* as desired.
 
 A few steps are needed to set this up:
 
-root #emerge --ask app-portage/cpuid2cpuflags
+`root # emerge --ask app-portage/cpuid2cpuflags`
+
 Inspect the output manually if curious:
 
-root #cpuid2cpuflags
+`root # cpuid2cpuflags`
+
 Then copy the output into package.use:
 
-root #echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags
-VIDEO_CARDS
-The VIDEO_CARDS USE_EXPAND variable should be configured appropriately depending on the available GPU(s). The Xorg guide covers how to do this. Setting VIDEO_CARDS is not required for a console only install.
+`root # echo "*/* $(cpuid2cpuflags)" > /etc/portage/package.use/00cpu-flags`
 
-Optional: Configure the ACCEPT_LICENSE variable
-The licenses of a Gentoo package are stored in the LICENSE variable in the ebuild. The accepted specific licenses or groups of licenses of a system are defined in the following files:
+#### VIDEO_CARDS
 
-System wide in the selected profile.
-System wide in the /etc/portage/make.conf file.
-Per-package in a /etc/portage/package.license file.
-Per-package in a /etc/portage/package.license/ directory of files.
-Portage looks up in the ACCEPT_LICENSE which packages to allow for installation. In order to print the current system wide value run:
+The *VIDEO_CARDS USE_EXPAND* variable should be configured appropriately depending on the available GPU(s). The [Xorg guide](https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf_configuration) covers how to do this. Setting *VIDEO_CARDS* is not required for a console only install.
 
-user $portageq envvar ACCEPT_LICENSE
+### Optional: Configure the ACCEPT_LICENSE variable
+
+The licenses of a Gentoo package are stored in the *LICENSE* variable in the ebuild. The accepted specific licenses or groups of licenses of a system are defined in the following files:
+
+- System wide in the selected profile.
+- System wide in the /etc/portage/make.conf file.
+- Per-package in a /etc/portage/package.license file.
+- Per-package in a /etc/portage/package.license/ directory of files.
+Portage looks up in the *ACCEPT_LICENSE* which packages to allow for installation. In order to print the current system wide value run:
+
+``` sh
+user $ portageq envvar ACCEPT_LICENSE
 @FREE
+```
 Optionally override the system wide accepted default in the profiles by changing /etc/portage/make.conf.
 
-FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide
+```sh title=""FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
+```
+
 Optionally one can also define accepted licenses per-package as shown in the following directory of files example. Note that the package.license directory will need created if it does not already exist:
 
-root #mkdir /etc/portage/package.license
-FILE /etc/portage/package.license/kernelExample how to accept licenses per-package
+`root # mkdir /etc/portage/package.license`
+
+```sh title="FILE /etc/portage/package.license/kernelExample how to accept licenses per-package"
 app-arch/unrar unRAR
 sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
 sys-firmware/intel-microcode intel-ucode
- Important
-The LICENSE variable in an ebuild is only a guideline for Gentoo developers and users. It is not a legal statement, and there is no guarantee that it will reflect reality. So don't rely on it, but check the package itself in depth, including all files that have been installed to the system.
+```
+
+!!! Important
+The *LICENSE* variable in an ebuild is only a guideline for Gentoo developers and users. It is not a legal statement, and there is no guarantee that it will reflect reality. So don't rely on it, but check the package itself in depth, including all files that have been installed to the system.
+
 The license groups defined in the Gentoo repository, managed by the Gentoo Licenses project, are:
 
-Group Name	Description
-@GPL-COMPATIBLE	GPL compatible licenses approved by the Free Software Foundation [a_license 1]
-@FSF-APPROVED	Free software licenses approved by the FSF (includes @GPL-COMPATIBLE)
-@OSI-APPROVED	Licenses approved by the Open Source Initiative [a_license 2]
-@MISC-FREE	Misc licenses that are probably free software, i.e. follow the Free Software Definition [a_license 3] but are not approved by either FSF or OSI
-@FREE-SOFTWARE	Combines @FSF-APPROVED, @OSI-APPROVED and @MISC-FREE
-@FSF-APPROVED-OTHER	FSF-approved licenses for "free documentation" and "works of practical use besides software and documentation" (including fonts)
-@MISC-FREE-DOCS	Misc licenses for free documents and other works (including fonts) that follow the free definition [a_license 4] but are NOT listed in @FSF-APPROVED-OTHER
-@FREE-DOCUMENTS	Combines @FSF-APPROVED-OTHER and @MISC-FREE-DOCS
-@FREE	Metaset of all licenses with the freedom to use, share, modify and share modifications. Combines @FREE-SOFTWARE and @FREE-DOCUMENTS
-@BINARY-REDISTRIBUTABLE	Licenses that at least permit free redistribution of the software in binary form. Includes @FREE
-@EULA	License agreements that try to take away your rights. These are more restrictive than "all-rights-reserved" or require explicit approval
+| Group Name              | Description                                                                                                                                                |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| @GPL-COMPATIBLE         | GPL compatible licenses approved by the Free Software Foundation [a_license 1]                                                                             |
+| @FSF-APPROVED           | Free software licenses approved by the FSF (includes @GPL-COMPATIBLE)                                                                                      |
+| @OSI-APPROVED           | Licenses approved by the Open Source Initiative [a_license 2]                                                                                              |
+| @MISC-FREE              | Misc licenses that are probably free software, i.e. follow the Free Software Definition [a_license 3] but are not approved by either FSF or OSI            |
+| @FREE-SOFTWARE          | Combines @FSF-APPROVED, @OSI-APPROVED and @MISC-FREE                                                                                                       |
+| @FSF-APPROVED-OTHER     | FSF-approved licenses for "free documentation" and "works of practical use besides software and documentation" (including fonts)                           |
+| @MISC-FREE-DOCS         | Misc licenses for free documents and other works (including fonts) that follow the free definition [a_license 4] but are NOT listed in @FSF-APPROVED-OTHER |
+| @FREE-DOCUMENTS         | Combines @FSF-APPROVED-OTHER and @MISC-FREE-DOCS                                                                                                           |
+| @FREE                   | Metaset of all licenses with the freedom to use, share, modify and share modifications. Combines @FREE-SOFTWARE and @FREE-DOCUMENTS                        |
+| @BINARY-REDISTRIBUTABLE | Licenses that at least permit free redistribution of the software in binary form. Includes @FREE                                                           |
+| @EULA                   | License agreements that try to take away your rights. These are more restrictive than "all-rights-reserved" or require explicit approval                   |
+
  https://www.gnu.org/licenses/license-list.html
  https://www.opensource.org/licenses
  https://www.gnu.org/philosophy/free-sw.html
