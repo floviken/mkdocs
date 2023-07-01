@@ -333,13 +333,14 @@ The licenses of a Gentoo package are stored in the *LICENSE* variable in the ebu
 - Per-package in a /etc/portage/package.license/ directory of files.
 Portage looks up in the *ACCEPT_LICENSE* which packages to allow for installation. In order to print the current system wide value run:
 
-``` sh
+```sh
 user $ portageq envvar ACCEPT_LICENSE
 @FREE
 ```
+
 Optionally override the system wide accepted default in the profiles by changing /etc/portage/make.conf.
 
-```sh title="FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide"
+``` sh title="FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
 ```
 
