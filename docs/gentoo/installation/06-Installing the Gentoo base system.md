@@ -416,7 +416,8 @@ Later, when systemd is running, the timezone and related settings can be configu
 
 !!! Note
 This step does not apply to users of the musl libc. Users who do not know what that means should perform this step.
-Locale generation
+
+#### Locale generation
 
 Most users will want to use only one or two locales on their system.
 
@@ -428,23 +429,25 @@ Supported system locales must be defined in the /etc/locale.gen file.
 
 The following locales are an example to get both English (United States) and German (Germany/Deutschland) with the accompanying character formats (like UTF-8).
 
-```sh title="FILE /etc/locale.genEnabling US and DE locales with the appropriate character formats"
+```sh title="FILE /etc/locale.gen Enabling US and DE locales with the appropriate character formats"
 en_US ISO-8859-1
 en_US.UTF-8 UTF-8
 de_DE ISO-8859-1
 de_DE.UTF-8 UTF-8
 ```
 
- Warning
+!!! Warning
 Many applications require least one UTF-8 locale to build properly.
 The next step is to run the locale-gen command. This command generates all locales specified in the /etc/locale.gen file.
 
-root #locale-gen
+`root # locale-gen`
+
 To verify that the selected locales are now available, run locale -a.
 
 On systemd installs, localectl can be used, e.g. localectl set-locale ... or localectl list-locales.
 
-Locale selection
+#### Locale selection
+
 Once done, it is now time to set the system-wide locale settings. Again we use eselect for this, now with the locale module.
 
 With eselect locale list, the available targets are displayed:
