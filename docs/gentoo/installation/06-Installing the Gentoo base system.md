@@ -339,7 +339,7 @@ user $ portageq envvar ACCEPT_LICENSE
 ```
 Optionally override the system wide accepted default in the profiles by changing /etc/portage/make.conf.
 
-```sh title=""FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide"
+```sh title="FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide"
 ACCEPT_LICENSE="-* @FREE @BINARY-REDISTRIBUTABLE"
 ```
 
