@@ -145,39 +145,53 @@ From this point onward, Portage might mention that certain updates are recommend
 
 ### Optional: Updating the Gentoo ebuild repository
 
-It is possible to update the Gentoo ebuild repository to the latest version. The previous emerge-webrsync command will have installed a very recent snapshot (usually recent up to 24h) so this step is definitely optional.
+It is possible to update the Gentoo ebuild repository to the latest version. The previous **emerge-webrsync** command will have installed a very recent snapshot (usually recent up to 24h) so this step is definitely optional.
 
-Suppose there is a need for the last package updates (up to 1 hour), then use emerge --sync. This command will use the rsync protocol to update the Gentoo ebuild repository (which was fetched earlier on through emerge-webrsync) to the latest state.
+Suppose there is a need for the last package updates (up to 1 hour), then use **emerge --sync**. This command will use the rsync protocol to update the Gentoo ebuild repository (which was fetched earlier on through emerge-webrsync) to the latest state.
 
-root #emerge --sync
+`root # emerge --sync`
+
 On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process:
 
-root #emerge --sync --quiet
-Reading news items
+`root # emerge --sync --quiet`
+
+### Reading news items
+
 When the Gentoo ebuild repository is synchronized, Portage may output informational messages similar to the following:
 
+```sh 
 * IMPORTANT: 2 news items need reading for repository 'gentoo'.
 * Use eselect news to read news items.
-News items were created to provide a communication medium to push critical messages to users via the Gentoo ebuild repository. To manage them, use eselect news. The eselect application is a Gentoo-specific utility that allows for a common management interface for system administration. In this case, eselect is asked to use its news module.
+```
 
-For the news module, three operations are most used:
+News items were created to provide a communication medium to push critical messages to users via the Gentoo ebuild repository. To manage them, use **eselect news**. The **eselect** application is a Gentoo-specific utility that allows for a common management interface for system administration. In this case, **eselect** is asked to use its news module.
 
-With list an overview of the available news items is displayed.
-With read the news items can be read.
-With purge news items can be removed once they have been read and will not be reread anymore.
+For the `news` module, three operations are most used:
+
+With `list` an overview of the available news items is displayed.
+With `read` the news items can be read.
+With `purge` news items can be removed once they have been read and will not be reread anymore.
+
+```
 root #eselect news list
 root #eselect news read
+```
+
 More information about the news reader is available through its manual page:
 
-root #man news.eselect
-Choosing the right profile
- Tip
+`root # man news.eselect`
+
+### Choosing the right profile
+ 
+!!! Tip
 Desktop profiles are not exclusively for desktop environments. They are still suitable for minimal window managers like i3 or sway.
+
 A profile is a building block for any Gentoo system. Not only does it specify default values for USE, CFLAGS, and other important variables, it also locks the system to a certain range of package versions. These settings are all maintained by Gentoo's Portage developers.
 
 To see what profile the system is currently using, run eselect using the profile module:
 
-root #eselect profile list
+root # eselect profile list
+
 Available profile symlink targets:
   [1]   default/linux/amd64/17.1 *
   [2]   default/linux/amd64/17.1/desktop
