@@ -52,13 +52,18 @@ Now it is time to configure and compile the kernel sources. For the purposes of 
 
 Ranked from least involved to most involved:
 
-Full automation approach: Distribution kernels
-A Distribution Kernel is used to configure, automatically build, and install the Linux kernel, its associated modules, and (optionally, but enabled by default) an initramfs file. Future kernel updates are fully automated since they are handled through the package manager, just like any other system package. It is possible provide a custom kernel configuration file if customization is necessary. This is the least involved process and is perfect for new Gentoo users due to it working out-of-the-box and offering minimal involvement from the system administrator.
-Hybrid approach: Genkernel
-New kernel sources are installed via the system package manager. System administrators use Gentoo's genkernel tool to generically configure, automatically build and install the Linux kernel, its associated modules, and (optionally, but not enabled by default) an initramfs file. It is possible provide a custom kernel configuration file if customization is necessary. Future kernel configuration, compilation, and installation require the system administrator's involvement in the form of running eselect kernel, genkernel, and potentially other commands for each update.
-Full manual approach
-New kernel sources are installed via the system package manager. The kernel is manually configured, built, and installed using the eselect kernel and a slew of make commands. Future kernel updates repeat the manual process of configuring, building, and installing the kernel files. This is the most involved process, but offers maximum control over the kernel update process.
-The core around which all distributions are built is the Linux kernel. It is the layer between the user's programs and the system hardware. Although the handbook provides its users several possible kernel sources, a more comprehensive listing with more detailed descriptions is available at the Kernel overview page.
+[Full automation approach: Distribution kernels](#distribution-kernels)
+
+    A [Distribution Kernel](https://wiki.gentoo.org/wiki/Project:Distribution_Kernel) is used to configure, automatically build, and install the Linux kernel, its associated modules, and (optionally, but enabled by default) an initramfs file. Future kernel updates are fully automated since they are handled through the package manager, just like any other system package. It is possible provide [a custom kernel configuration file](https://wiki.gentoo.org/wiki/Project:Distribution_Kernel) if customization is necessary. This is the least involved process and is perfect for new Gentoo users due to it working out-of-the-box and offering minimal involvement from the system administrator.
+
+[Hybrid approach: Genkernel](#alternative-genkernel)
+
+    New kernel sources are installed via the system package manager. System administrators use Gentoo's **genkernel** tool to generically configure, automatically build and install the Linux kernel, its associated modules, and (optionally, but **not** enabled by default) an initramfs file. It is possible provide a custom kernel configuration file if customization is necessary. Future kernel configuration, compilation, and installation require the system administrator's involvement in the form of running **eselect kernel, genkernel**, and potentially other commands for each update.
+
+[Full manual approach](#alternative-manual-configuration)
+
+    New kernel sources are installed via the system package manager. The kernel is manually configured, built, and installed using the eselect kernel and a slew of make commands. Future kernel updates repeat the manual process of configuring, building, and installing the kernel files. This is the most involved process, but offers maximum control over the kernel update process.
+    The core around which all distributions are built is the Linux kernel. It is the layer between the user's programs and the system hardware. Although the handbook provides its users several possible kernel sources, a more comprehensive listing with more detailed descriptions is available at the Kernel overview page.
 
 ### Distribution kernels
 
