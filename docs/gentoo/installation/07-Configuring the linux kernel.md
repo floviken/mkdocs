@@ -4,22 +4,25 @@
 
 ### Firmware
 
-Before getting to configuring kernel sections, it is beneficial to be aware that some hardware devices require additional, sometimes non-FOSS compliant, firmware to be installed on the system before they will operate correctly. This is often the case for wireless network interfaces commonly found in both desktop and laptop computers. Modern video chips from vendors like AMD, Nvidia, and Intel, often also require external firmware files to be fully functional. Most firmware for modern hardware devices can be found within the sys-kernel/linux-firmware package.
+Before getting to configuring kernel sections, it is beneficial to be aware that some hardware devices require additional, sometimes non-FOSS compliant, firmware to be installed on the system before they will operate correctly. This is often the case for wireless network interfaces commonly found in both desktop and laptop computers. Modern video chips from vendors like AMD, Nvidia, and Intel, often also require external firmware files to be fully functional. Most firmware for modern hardware devices can be found within the [sys-kernel/linux-firmware](https://packages.gentoo.org/packages/sys-kernel/linux-firmware) package.
 
-It is recommended to have the sys-kernel/linux-firmware package installed before the initial system reboot in order to have the firmware available in the event that it is necessary:
+It is recommended to have the [sys-kernel/linux-firmware](https://packages.gentoo.org/packages/sys-kernel/linux-firmware) package installed before the initial system reboot in order to have the firmware available in the event that it is necessary:
 
-root #emerge --ask sys-kernel/linux-firmware
- Note
+`root # emerge --ask sys-kernel/linux-firmware`
+
+!!! Note
 Installing certain firmware packages often requires accepting the associated firmware licenses. If necessary, visit the license handling section of the Handbook for help on accepting licenses.
+
 It is important to note that kernel symbols that are built as modules (M) will load their associated firmware files from the filesystem when they are loaded by the kernel. It is not necessary to include the device's firmware files into the kernel's binary image for symbols loaded as modules.
 
 ### Microcode
 
 In addition to discrete graphics hardware and network interfaces, CPUs also can require firmware updates. Typically this kind of firmware is referred to as microcode. Newer revisions of microcode are sometimes necessary to patch instability, security concerns, or other miscellaneous bugs in CPU hardware.
 
-Microcode updates for AMD CPUs are distributed within the aforementioned sys-kernel/linux-firmware package. Microcode for Intel CPUs can be found within the sys-firmware/intel-microcode package, which will need to be installed separately. See the Microcode article for more information on how to apply microcode updates.
+Microcode updates for AMD CPUs are distributed within the aforementioned [sys-kernel/linux-firmware](https://packages.gentoo.org/packages/sys-kernel/linux-firmware) package. Microcode for Intel CPUs can be found within the [sys-firmware/intel-microcode](https://packages.gentoo.org/packages/sys-firmware/intel-microcode) package, which will need to be installed separately. See the [Microcode article](https://wiki.gentoo.org/wiki/Microcode) for more information on how to apply microcode updates.
 
-Kernel configuration and compilation
+## Kernel configuration and compilation
+
 Now it is time to configure and compile the kernel sources. For the purposes of the installation, three approaches to kernel management will be presented, however at any point post-installation a new approach can be employed.
 
 Ranked from least involved to most involved:
@@ -32,10 +35,12 @@ Full manual approach
 New kernel sources are installed via the system package manager. The kernel is manually configured, built, and installed using the eselect kernel and a slew of make commands. Future kernel updates repeat the manual process of configuring, building, and installing the kernel files. This is the most involved process, but offers maximum control over the kernel update process.
 The core around which all distributions are built is the Linux kernel. It is the layer between the user's programs and the system hardware. Although the handbook provides its users several possible kernel sources, a more comprehensive listing with more detailed descriptions is available at the Kernel overview page.
 
-Distribution kernels
+### Distribution kernels
+
 Distribution Kernels are ebuilds that cover the complete process of unpacking, configuring, compiling, and installing the kernel. The primary advantage of this method is that the kernels are updated to new versions by the package manager as part of @world upgrade. This requires no more involvement than running an emerge command. Distribution kernels default to a configuration supporting the majority of hardware, however two mechanisms are offered for customization: savedconfig and config snippets. See the project page for more details on configuration.
 
-Installing the correct installkernel package
+#### Installing the correct installkernel package
+
 Before using the distribution kernels, please verify that the correct installkernel package for the system has been installed. When using systemd-boot (formerly gummiboot) as the bootloader, install:
 
 root #emerge --ask sys-kernel/installkernel-systemd-boot
@@ -49,19 +54,24 @@ root #emerge --ask sys-kernel/gentoo-kernel
 System administrators who want to avoid compiling the kernel sources locally can instead use precompiled kernel images:
 
 root #emerge --ask sys-kernel/gentoo-kernel-bin
-Upgrading and cleaning up
+
+#### Upgrading and cleaning up
+
 Once the kernel is installed, the package manager will automatically update it to newer versions. The previous versions will be kept until the package manager is requested to clean up stale packages. To reclaim disk space, stale packages can be trimmed by periodically running emerge with the --depclean option:
 
 root #emerge --depclean
 Alternatively, to specifically clean up old kernel versions:
 
 root #emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
-Post-install/upgrade tasks
+
+#### Post-install/upgrade tasks
+
 Distribution kernels are capable of rebuilding kernel modules installed by other packages. linux-mod.eclass provides the dist-kernel USE flag which controls a subslot dependency on virtual/dist-kernel.
 
 Enabling this USE flag on packages like sys-fs/zfs and sys-fs/zfs-kmod allows them to automatically be rebuilt against a newly updated kernel and, if applicable, will re-generate the initramfs accordingly.
 
-Manually rebuilding the initramfs
+##### Manually rebuilding the initramfs
+
 If required, manually trigger such rebuilds by, after a kernel upgrade, executing:
 
 root #emerge --ask @module-rebuild
@@ -69,8 +79,10 @@ If any kernel modules (e.g. ZFS) are needed at early boot, rebuild the initramfs
 
 root #emerge --config sys-kernel/gentoo-kernel
 root #emerge --config sys-kernel/gentoo-kernel-bin
-Installing the kernel sources
- Note
+
+### Installing the kernel sources
+
+!!! Note
 This section is only relevant when using the following genkernel (hybrid) or manual kernel management approach.
 When installing and compiling the kernel for amd64-based systems, Gentoo recommends the sys-kernel/gentoo-sources package.
 
@@ -93,7 +105,9 @@ In order to create a symbolic link called linux, use:
 root #eselect kernel set 1
 root #ls -l /usr/src/linux
 lrwxrwxrwx    1 root   root    12 Oct 13 11:04 /usr/src/linux -> linux-5.15.52-gentoo
-Alternative: Genkernel
+
+### Alternative: Genkernel
+
 If an entirely manual configuration looks too daunting, system administrators should consider using genkernel as a hybrid approach to kernel maintenance.
 
 Genkernel provides a generic kernel configuration file, automatically generates the kernel, initramfs, and associated modules, and then installs the resulting binaries to the appropriate locations. This results in minimal and generic hardware support for the system's first boot, and allows for additional update control and customization of the kernel's configuration in the future.
@@ -102,7 +116,8 @@ Be informed: while using genkernel to maintain the kernel provides system admini
 
 For additional clarity, it is a misconception to believe genkernel automatically generates a custom kernel configuration for the hardware on which it is run; it uses a predetermined kernel configuration that supports most generic hardware and automatically handles the make commands necessary to assemble and install the kernel, the associate modules, and the initramfs file.
 
-Binary redistributable software license group
+#### Binary redistributable software license group
+
 If the linux-firmware package has been previously installed, then skip onward to the to the installation section.
 
 As a prerequisite, due to the firwmare USE flag being enabled by default for the sys-kernel/genkernel package, the package manager will also attempt to pull in the sys-kernel/linux-firmware package. The binary redistributable software licenses are required to be accepted before the linux-firmware will install.
@@ -116,11 +131,15 @@ If in analysis paralysis, the following will do the trick:
 root #mkdir /etc/portage/package.license
 FILE /etc/portage/package.license/linux-firmwareAccept binary redistributable licenses for the linux-firmware package
 sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
-Installation
+
+#### Installation
+
 Explanations and prerequisites aside, install the sys-kernel/genkernel package:
 
 root #emerge --ask sys-kernel/genkernel
-Generation
+
+#### Generation
+
 Compile the kernel sources by running genkernel all. Be aware though, as genkernel compiles a kernel that supports a wide array of hardware for differing computer architectures, this compilation may take quite a while to finish.
 
  Note
@@ -132,8 +151,11 @@ Once genkernel completes, a kernel and an initial ram filesystem (initramfs) wil
 
 root #ls /boot/vmlinu* /boot/initramfs*
 root #ls /lib/modules
-Alternative: Manual configuration
-Introduction
+
+### Alternative: Manual configuration
+
+#### Introduction
+
 Manually configuring a kernel is often seen as the most difficult procedure a Linux user ever has to perform. Nothing is less true - after configuring a couple of kernels no one remembers that it was difficult!
 
 However, one thing is true: it is vital to know the system when a kernel is configured manually. Most information can be gathered by emerging sys-apps/pciutils which contains the lspci command:
@@ -149,7 +171,8 @@ root #cd /usr/src/linux
 root #make menuconfig
 The Linux kernel configuration has many, many sections. Let's first list some options that must be activated (otherwise Gentoo will not function, or not function properly without additional tweaks). We also have a Gentoo kernel configuration guide on the Gentoo wiki that might help out further.
 
-Enabling required options
+#### Enabling required options
+
 When using sys-kernel/gentoo-sources, it is strongly recommend the Gentoo-specific configuration options be enabled. These ensure that a minimum of kernel features required for proper functioning is available:
 
 KERNEL Enabling Gentoo-specific options
@@ -165,7 +188,8 @@ Naturally the choice in the last two lines depends on the selected init system (
 
 When using sys-kernel/vanilla-sources, the additional selections for init systems will be unavailable. Enabling support is possible, but goes beyond the scope of the handbook.
 
-Enabling support for typical system components
+#### Enabling support for typical system components
+
 Make sure that every driver that is vital to the booting of the system (such as SATA controllers, NVMe block device support, filesystem support, etc.) is compiled in the kernel and not as a module, otherwise the system may not be able to boot completely.
 
 Next select the exact processor type. It is also recommended to enable MCE features (if available) so that users are able to be notified of any hardware problems. On some architectures (such as x86_64), these errors are not printed to dmesg, but to /dev/mcelog. This requires the app-admin/mcelog package.
@@ -266,7 +290,8 @@ Device Drivers --->
     <*>     OHCI HCD (USB 1.1) support
   <*> Unified support for USB4 and Thunderbolt  --->
 
-Architecture specific kernel configuration
+#### Architecture specific kernel configuration
+
 Make sure to select IA32 Emulation if 32-bit programs should be supported (CONFIG_IA32_EMULATION). Gentoo installs a multilib system (mixed 32-bit/64-bit computing) by default, so unless a no-multilib profile is used, this option is required.
 
 KERNEL Selecting processor types and features
@@ -305,7 +330,9 @@ Device Drivers
         Frame buffer Devices  --->
             <*> Support for frame buffer devices  --->
                 [*]   EFI-based Framebuffer Support
-Compiling and installing
+
+#### Compiling and installing
+
 With the configuration now done, it is time to compile and install the kernel. Exit the configuration and start the compilation process:
 
 root #make && make modules_install
@@ -317,7 +344,8 @@ root #make install
 This will copy the kernel image into /boot/ together with the System.map file and the kernel configuration file.
 
 
-Optional: Building an initramfs
+#### Optional: Building an initramfs
+
 In certain cases it is necessary to build an initramfs - an initial ram-based file system. The most common reason is when important file system locations (like /usr/ or /var/) are on separate partitions. With an initramfs, these partitions can be mounted using the tools available inside the initramfs.
 
 Without an initramfs, there is a risk that the system will not boot properly as the tools that are responsible for mounting the file systems require information that resides on unmounted file systems. An initramfs will pull in the necessary files into an archive which is used right after the kernel boots, but before the control is handed over to the init tool. Scripts on the initramfs will then make sure that the partitions are properly mounted before the system continues booting.
@@ -333,16 +361,20 @@ The initramfs will be stored in /boot/. The resulting file can be found by simpl
 root #ls /boot/initramfs*
 Now continue with Kernel modules.
 
-Kernel modules
-Listing available kernel modules
- Note
+## Kernel modules
+
+### Listing available kernel modules
+
+!!! Note
 Hardware modules are optional to be listed manually. udev will normally load all hardware modules that are detected to be connected in most cases. However, it is not harmful for modules that will be automatically loaded to be listed. Modules cannot be loaded twice; they are either loaded or unloaded. Sometimes exotic hardware requires help to load their drivers.
 The modules that need to be loaded during each boot in can be added to /etc/modules-load.d/*.conf files in the format of one module per line. When extra options are needed for the modules, they should be set in /etc/modprobe.d/*.conf files instead.
 
 To view all modules available for a specific kernel version, issue the following find command. Do not forget to substitute "<kernel version>" with the appropriate version of the kernel to search:
 
 root #find /lib/modules/<kernel version>/ -type f -iname '*.o' -or -iname '*.ko' | less
-Force loading particular kernel modules
+
+### Force loading particular kernel modules
+
 To force load the kernel to load the 3c59x.ko module (which is the driver for a specific 3Com network card family), edit the /etc/modules-load.d/network.conf file and enter the module name within it.
 
 root #mkdir -p /etc/modules-load.d
