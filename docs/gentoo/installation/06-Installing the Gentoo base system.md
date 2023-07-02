@@ -421,7 +421,7 @@ This step does not apply to users of the musl libc. Users who do not know what t
 
 Most users will want to use only one or two locales on their system.
 
-Locales specify not only the language that the user should use to interact with the system, but also the rules for sorting strings, displaying dates and times, etc. Locales are case sensitive and must be represented exactly as described. A full listing of available locales can be found in the /usr/share/i18n/SUPPORTED file.
+Locales specify not only the language that the user should use to interact with the system, but also the rules for sorting strings, displaying dates and times, etc. Locales are case *sensitive* and must be represented exactly as described. A full listing of available locales can be found in the /usr/share/i18n/SUPPORTED file.
 
 Supported system locales must be defined in the /etc/locale.gen file.
 
@@ -438,21 +438,22 @@ de_DE.UTF-8 UTF-8
 
 !!! Warning
 Many applications require least one UTF-8 locale to build properly.
-The next step is to run the locale-gen command. This command generates all locales specified in the /etc/locale.gen file.
+The next step is to run the **locale-gen** command. This command generates all locales specified in the /etc/locale.gen file.
 
 `root # locale-gen`
 
-To verify that the selected locales are now available, run locale -a.
+To verify that the selected locales are now available, run **locale -a**.
 
-On systemd installs, localectl can be used, e.g. localectl set-locale ... or localectl list-locales.
+On systemd installs, **localectl** can be used, e.g. **localectl set-locale** ... or **localectl list-locales**.
 
 #### Locale selection
 
 Once done, it is now time to set the system-wide locale settings. Again we use eselect for this, now with the locale module.
 
-With eselect locale list, the available targets are displayed:
+With **eselect locale list**, the available targets are displayed:
 
-root #eselect locale list
+```sh
+root $ eselect locale list
 Available targets for the LANG variable:
   [1]  C
   [2]  C.utf8
@@ -465,17 +466,23 @@ Available targets for the LANG variable:
   [9]  de_DE.utf8
   [10] POSIX
   [ ]  (free form)
-With eselect locale set <NUMBER> the correct locale can be selected:
+```
 
-root #eselect locale set 9
+With **eselect locale set <NUMBER>** the correct locale can be selected:
+
+`root # eselect locale set 9`
+
 Manually, this can still be accomplished through the /etc/env.d/02locale file and for Systemd the /etc/locale.conf file:
 
-FILE /etc/env.d/02localeManually setting system locale definitions
+```sh title="FILE /etc/env.d/02localeManually setting system locale definitions"
 LANG="de_DE.UTF-8"
 LC_COLLATE="C.UTF-8"
+```
+
 Setting the locale will avoid warnings and errors during kernel and software compilations later in the installation.
 
 Now reload the environment:
 
-root #env-update && source /etc/profile && export PS1="(chroot) ${PS1}"
-For additional guidance through the locale selection process read also the Localization guide and the UTF-8 guide.
+`root # env-update && source /etc/profile && export PS1="(chroot) ${PS1}"`
+
+For additional guidance through the locale selection process read also the [Localization guide](https://wiki.gentoo.org/wiki/Localization/Guide) and the [UTF-8](https://wiki.gentoo.org/wiki/UTF-8) guide.
