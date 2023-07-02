@@ -1,29 +1,4 @@
 # Configuring the Linux kernel
-- [Configuring the Linux kernel](#configuring-the-linux-kernel)
-  - [Optional: Installing firmware and/or microcode](#optional-installing-firmware-andor-microcode)
-    - [Firmware](#firmware)
-    - [Microcode](#microcode)
-  - [Kernel configuration and compilation](#kernel-configuration-and-compilation)
-    - [Distribution kernels](#distribution-kernels)
-      - [Installing the correct installkernel package](#installing-the-correct-installkernel-package)
-      - [Upgrading and cleaning up](#upgrading-and-cleaning-up)
-      - [Post-install/upgrade tasks](#post-installupgrade-tasks)
-        - [Manually rebuilding the initramfs](#manually-rebuilding-the-initramfs)
-    - [Installing the kernel sources](#installing-the-kernel-sources)
-    - [Alternative: Genkernel](#alternative-genkernel)
-      - [Binary redistributable software license group](#binary-redistributable-software-license-group)
-      - [Installation](#installation)
-      - [Generation](#generation)
-    - [Alternative: Manual configuration](#alternative-manual-configuration)
-      - [Introduction](#introduction)
-      - [Enabling required options](#enabling-required-options)
-      - [Enabling support for typical system components](#enabling-support-for-typical-system-components)
-      - [Architecture specific kernel configuration](#architecture-specific-kernel-configuration)
-      - [Compiling and installing](#compiling-and-installing)
-      - [Optional: Building an initramfs](#optional-building-an-initramfs)
-  - [Kernel modules](#kernel-modules)
-    - [Listing available kernel modules](#listing-available-kernel-modules)
-    - [Force loading particular kernel modules](#force-loading-particular-kernel-modules)
 
 ## Optional: Installing firmware and/or microcode
 
@@ -73,26 +48,29 @@ Distribution Kernels are ebuilds that cover the complete process of unpacking, c
 
 Before using the distribution kernels, please verify that the correct installkernel package for the system has been installed. When using systemd-boot (formerly gummiboot) as the bootloader, install:
 
-root #emerge --ask sys-kernel/installkernel-systemd-boot
+`root # emerge --ask sys-kernel/installkernel-systemd-boot`
+
 When using a traditional a /boot layout (e.g. GRUB, LILO, etc.), the gentoo variant should be installed by default. If in doubt:
 
-root #emerge --ask sys-kernel/installkernel-gentoo
+`root # emerge --ask sys-kernel/installkernel-gentoo`
+
 Installing a distribution kernel
 To build a kernel with Gentoo patches from source, type:
 
-root #emerge --ask sys-kernel/gentoo-kernel
+`root # emerge --ask sys-kernel/gentoo-kernel`
 System administrators who want to avoid compiling the kernel sources locally can instead use precompiled kernel images:
 
-root #emerge --ask sys-kernel/gentoo-kernel-bin
+root # emerge --ask sys-kernel/gentoo-kernel-bin
 
 #### Upgrading and cleaning up
 
 Once the kernel is installed, the package manager will automatically update it to newer versions. The previous versions will be kept until the package manager is requested to clean up stale packages. To reclaim disk space, stale packages can be trimmed by periodically running emerge with the --depclean option:
 
-root #emerge --depclean
+`root # emerge --depclean`
+
 Alternatively, to specifically clean up old kernel versions:
 
-root #emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin
+`root # emerge --prune sys-kernel/gentoo-kernel sys-kernel/gentoo-kernel-bin`
 
 #### Post-install/upgrade tasks
 
@@ -107,8 +85,8 @@ If required, manually trigger such rebuilds by, after a kernel upgrade, executin
 root #emerge --ask @module-rebuild
 If any kernel modules (e.g. ZFS) are needed at early boot, rebuild the initramfs afterward via:
 
-root #emerge --config sys-kernel/gentoo-kernel
-root #emerge --config sys-kernel/gentoo-kernel-bin
+`root # emerge --config sys-kernel/gentoo-kernel`
+`root # emerge --config sys-kernel/gentoo-kernel-bin`
 
 ### Installing the kernel sources
 
@@ -118,7 +96,8 @@ When installing and compiling the kernel for amd64-based systems, Gentoo recomme
 
 Choose an appropriate kernel source and install it using emerge:
 
-root #emerge --ask sys-kernel/gentoo-sources
+`root # emerge --ask sys-kernel/gentoo-sources`
+
 This will install the Linux kernel sources in /usr/src/ using the specific kernel version in the path. It will not create a symbolic link by itself without USE=symlink being enabled on the chosen kernel sources package.
 
 It is conventional for a /usr/src/linux symlink to be maintained, such that it refers to whichever sources correspond with the currently running kernel. However, this symbolic link will not be created by default. An easy way to create the symbolic link is to utilize eselect's kernel module.
@@ -127,7 +106,8 @@ For further information regarding the purpose of the symlink, and how to manage 
 
 First, list all installed kernels:
 
-root #eselect kernel list
+```sh 
+root # eselect kernel list
 Available kernel symlink targets:
   [1]   linux-5.15.52-gentoo
 In order to create a symbolic link called linux, use:
@@ -135,6 +115,7 @@ In order to create a symbolic link called linux, use:
 root #eselect kernel set 1
 root #ls -l /usr/src/linux
 lrwxrwxrwx    1 root   root    12 Oct 13 11:04 /usr/src/linux -> linux-5.15.52-gentoo
+```
 
 ### Alternative: Genkernel
 
@@ -158,23 +139,26 @@ If necessary, review the methods of accepting software licenses available in the
 
 If in analysis paralysis, the following will do the trick:
 
-root #mkdir /etc/portage/package.license
-FILE /etc/portage/package.license/linux-firmwareAccept binary redistributable licenses for the linux-firmware package
+`root # mkdir /etc/portage/package.license`
+
+```sh title="FILE /etc/portage/package.license/linux-firmwareAccept binary redistributable licenses for the linux-firmware package"
 sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
+```
 
 #### Installation
 
 Explanations and prerequisites aside, install the sys-kernel/genkernel package:
 
-root #emerge --ask sys-kernel/genkernel
+`root # emerge --ask sys-kernel/genkernel`
 
 #### Generation
 
 Compile the kernel sources by running genkernel all. Be aware though, as genkernel compiles a kernel that supports a wide array of hardware for differing computer architectures, this compilation may take quite a while to finish.
 
- Note
+!!! Note
 If the root partition/volume uses a filesystem other than ext4, it may be necessary to manually configure the kernel using genkernel --menuconfig all to add built-in kernel support for the particular filesystem(s) (i.e. not building the filesystem as a module).
- Note
+
+!!! Note
 Users of LVM2 should add --lvm as an argument to the genkernel command below.
 root #genkernel --mountboot --install all
 Once genkernel completes, a kernel and an initial ram filesystem (initramfs) will be generated and installed into the /boot directory. Associated modules will be installed into the /lib/modules directory. The initramfs will be started immediately after loading the kernel to perform hardware auto-detection (just like in the live disk image environments).
