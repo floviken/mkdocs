@@ -113,32 +113,35 @@ First, list all installed kernels:
 root # eselect kernel list
 Available kernel symlink targets:
   [1]   linux-5.15.52-gentoo
+```
+
 In order to create a symbolic link called linux, use:
 
-root #eselect kernel set 1
-root #ls -l /usr/src/linux
+```sh 
+root $ eselect kernel set 1
+root $ ls -l /usr/src/linux
 lrwxrwxrwx    1 root   root    12 Oct 13 11:04 /usr/src/linux -> linux-5.15.52-gentoo
 ```
 
 ### Alternative: Genkernel
 
-If an entirely manual configuration looks too daunting, system administrators should consider using genkernel as a hybrid approach to kernel maintenance.
+If an entirely manual configuration looks too daunting, system administrators should consider using [genkernel](https://wiki.gentoo.org/wiki/Genkernel) as a hybrid approach to kernel maintenance.
 
-Genkernel provides a generic kernel configuration file, automatically generates the kernel, initramfs, and associated modules, and then installs the resulting binaries to the appropriate locations. This results in minimal and generic hardware support for the system's first boot, and allows for additional update control and customization of the kernel's configuration in the future.
+Genkernel provides a generic kernel configuration file, automatically **gen**erates the **kernel**, initramfs, and associated modules, and then installs the resulting binaries to the appropriate locations. This results in minimal and generic hardware support for the system's first boot, and allows for additional update control and customization of the kernel's configuration in the future.
 
-Be informed: while using genkernel to maintain the kernel provides system administrators with more update control over the system's kernel, initramfs, and other options, it will require a time and effort commitment to perform future kernel updates as new sources are released. Those looking for a hands-off approach to kernel maintenance should use a distribution kernel.
+Be informed: while using **genkernel** to maintain the kernel provides system administrators with more update control over the system's kernel, initramfs, and other options, it will require a time and effort commitment to perform future kernel updates as new sources are released. Those looking for a hands-off approach to kernel maintenance should [use a distribution kernel](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel#Alternative:_Using_distribution_kernels).
 
-For additional clarity, it is a misconception to believe genkernel automatically generates a custom kernel configuration for the hardware on which it is run; it uses a predetermined kernel configuration that supports most generic hardware and automatically handles the make commands necessary to assemble and install the kernel, the associate modules, and the initramfs file.
+For additional clarity, it is a *misconception* to believe genkernel automatically generates a custom kernel configuration for the hardware on which it is run; it uses a predetermined kernel configuration that supports most generic hardware and automatically handles the **make** commands necessary to assemble and install the kernel, the associate modules, and the initramfs file.
 
 #### Binary redistributable software license group
 
-If the linux-firmware package has been previously installed, then skip onward to the to the installation section.
+If the linux-firmware package has been previously installed, then skip onward to the to the [installation section](#installation).
 
-As a prerequisite, due to the firwmare USE flag being enabled by default for the sys-kernel/genkernel package, the package manager will also attempt to pull in the sys-kernel/linux-firmware package. The binary redistributable software licenses are required to be accepted before the linux-firmware will install.
+As a prerequisite, due to the `firwmare` USE flag being enabled by default for the [sys-kernel/genkernel](https://packages.gentoo.org/packages/sys-kernel/genkernel) package, the package manager will also attempt to pull in the [sys-kernel/linux-firmware](https://packages.gentoo.org/packages/sys-kernel/linux-firmware) package. The binary redistributable software licenses are required to be accepted before the linux-firmware will install.
 
-This license group can be accepted system-wide for any package by adding the @BINARY-REDISTRIBUTABLE as an ACCEPT_LICENSE value in the /etc/portage/make.conf file. It can be exclusively accepted for the linux-firmware package by adding a specific inclusion via a /etc/portage/package.license/linux-firmware file.
+This license group can be accepted system-wide for any package by adding the `@BINARY-REDISTRIBUTABLE` as an *ACCEPT_LICENSE* value in the /etc/portage/make.conf file. It can be exclusively accepted for the linux-firmware package by adding a specific inclusion via a /etc/portage/package.license/linux-firmware file.
 
-If necessary, review the methods of accepting software licenses available in the Installing the base system chapter of the handbook, then make some changes for acceptable software licenses.
+If necessary, review the [methods of accepting software licenses](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Optional:_Configure_the_ACCEPT_LICENSE_variable) available in the Installing the base system chapter of the handbook, then make some changes for acceptable software licenses.
 
 If in analysis paralysis, the following will do the trick:
 
