@@ -203,9 +203,9 @@ The Linux kernel configuration has many, many sections. Let's first list some op
 
 #### Enabling required options
 
-When using sys-kernel/gentoo-sources, it is strongly recommend the Gentoo-specific configuration options be enabled. These ensure that a minimum of kernel features required for proper functioning is available:
+When using [sys-kernel/gentoo-sources](https://packages.gentoo.org/packages/sys-kernel/gentoo-sources), it is strongly recommend the Gentoo-specific configuration options be enabled. These ensure that a minimum of kernel features required for proper functioning is available:
 
-KERNEL Enabling Gentoo-specific options
+```sh title="KERNEL Enabling Gentoo-specific options"
 Gentoo Linux --->
   Generic Driver Options --->
     [*] Gentoo Linux support
@@ -214,9 +214,11 @@ Gentoo Linux --->
         Support for init systems, system and service managers  --->
           [*] OpenRC, runit and other script based systems and managers
           [*] systemd
-Naturally the choice in the last two lines depends on the selected init system (OpenRC vs. systemd). It does not hurt to have support for both init systems enabled.
+```
 
-When using sys-kernel/vanilla-sources, the additional selections for init systems will be unavailable. Enabling support is possible, but goes beyond the scope of the handbook.
+Naturally the choice in the last two lines depends on the selected init system ([OpenRC](https://wiki.gentoo.org/wiki/OpenRC) vs. [systemd](https://wiki.gentoo.org/wiki/Systemd)). It does not hurt to have support for both init systems enabled.
+
+When using [sys-kernel/vanilla-sources](https://packages.gentoo.org/packages/sys-kernel/vanilla-sources), the additional selections for init systems will be unavailable. Enabling support is possible, but goes beyond the scope of the handbook.
 
 #### Enabling support for typical system components
 
