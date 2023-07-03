@@ -37,30 +37,32 @@ New kernel sources are installed via the system package manager. System administ
 
 [Full manual approach](#alternative-manual-configuration)
 
-New kernel sources are installed via the system package manager. The kernel is manually configured, built, and installed using the eselect kernel and a slew of make commands. Future kernel updates repeat the manual process of configuring, building, and installing the kernel files. This is the most involved process, but offers maximum control over the kernel update process.
-The core around which all distributions are built is the Linux kernel. It is the layer between the user's programs and the system hardware. Although the handbook provides its users several possible kernel sources, a more comprehensive listing with more detailed descriptions is available at the Kernel overview page.
+New kernel sources are installed via the system package manager. The kernel is manually configured, built, and installed using the **eselect kernel** and a slew of **make** commands. Future kernel updates repeat the manual process of configuring, building, and installing the kernel files. This is the most involved process, but offers maximum control over the kernel update process.
+The core around which all distributions are built is the Linux kernel. It is the layer between the user's programs and the system hardware. Although the handbook provides its users several possible kernel sources, a more comprehensive listing with more detailed descriptions is available at the [Kernel overview page](https://wiki.gentoo.org/wiki/Kernel/Overview).
 
 ### Distribution kernels
 
-Distribution Kernels are ebuilds that cover the complete process of unpacking, configuring, compiling, and installing the kernel. The primary advantage of this method is that the kernels are updated to new versions by the package manager as part of @world upgrade. This requires no more involvement than running an emerge command. Distribution kernels default to a configuration supporting the majority of hardware, however two mechanisms are offered for customization: savedconfig and config snippets. See the project page for more details on configuration.
+[Distribution Kernels](https://wiki.gentoo.org/wiki/Project:Distribution_Kernel) are ebuilds that cover the complete process of unpacking, configuring, compiling, and installing the kernel. The primary advantage of this method is that the kernels are updated to new versions by the package manager as part of @world upgrade. This requires no more involvement than running an emerge command. Distribution kernels default to a configuration supporting the majority of hardware, however two mechanisms are offered for customization: savedconfig and config snippets. See the project page for [more details on configuration](https://wiki.gentoo.org/wiki/Project:Distribution_Kernel#Modifying_kernel_configuration).
 
 #### Installing the correct installkernel package
 
-Before using the distribution kernels, please verify that the correct installkernel package for the system has been installed. When using systemd-boot (formerly gummiboot) as the bootloader, install:
+Before using the distribution kernels, please verify that the correct installkernel package for the system has been installed. When using [systemd-boot](https://wiki.gentoo.org/wiki/Systemd-boot) (formerly gummiboot) as the bootloader, install:
 
 `root # emerge --ask sys-kernel/installkernel-systemd-boot`
 
-When using a traditional a /boot layout (e.g. GRUB, LILO, etc.), the gentoo variant should be installed by default. If in doubt:
+When using a traditional a /boot layout (e.g. GRUB, LILO, etc.), the *gentoo* variant should be installed by default. If in doubt:
 
 `root # emerge --ask sys-kernel/installkernel-gentoo`
 
-Installing a distribution kernel
+#### Installing a distribution kernel
+
 To build a kernel with Gentoo patches from source, type:
 
 `root # emerge --ask sys-kernel/gentoo-kernel`
+
 System administrators who want to avoid compiling the kernel sources locally can instead use precompiled kernel images:
 
-root # emerge --ask sys-kernel/gentoo-kernel-bin
+`root # emerge --ask sys-kernel/gentoo-kernel-bin`
 
 #### Upgrading and cleaning up
 
@@ -74,15 +76,16 @@ Alternatively, to specifically clean up old kernel versions:
 
 #### Post-install/upgrade tasks
 
-Distribution kernels are capable of rebuilding kernel modules installed by other packages. linux-mod.eclass provides the dist-kernel USE flag which controls a subslot dependency on virtual/dist-kernel.
+Distribution kernels are capable of rebuilding kernel modules installed by other packages. linux-mod.eclass provides the `dist-kernel` USE flag which controls a subslot dependency on [virtual/dist-kernel](https://packages.gentoo.org/packages/virtual/dist-kernel).
 
-Enabling this USE flag on packages like sys-fs/zfs and sys-fs/zfs-kmod allows them to automatically be rebuilt against a newly updated kernel and, if applicable, will re-generate the initramfs accordingly.
+Enabling this USE flag on packages like [sys-fs/zfs](https://packages.gentoo.org/packages/sys-fs/zfs) and [sys-fs/zfs-kmod](https://packages.gentoo.org/packages/sys-fs/zfs-kmod) allows them to automatically be rebuilt against a newly updated kernel and, if applicable, will re-generate the initramfs accordingly.
 
 ##### Manually rebuilding the initramfs
 
 If required, manually trigger such rebuilds by, after a kernel upgrade, executing:
 
-root #emerge --ask @module-rebuild
+`root # emerge --ask @module-rebuild`
+
 If any kernel modules (e.g. ZFS) are needed at early boot, rebuild the initramfs afterward via:
 
 `root # emerge --config sys-kernel/gentoo-kernel`
@@ -94,15 +97,15 @@ If any kernel modules (e.g. ZFS) are needed at early boot, rebuild the initramfs
 This section is only relevant when using the following genkernel (hybrid) or manual kernel management approach.
 When installing and compiling the kernel for amd64-based systems, Gentoo recommends the sys-kernel/gentoo-sources package.
 
-Choose an appropriate kernel source and install it using emerge:
+Choose an appropriate kernel source and install it using **emerge**:
 
 `root # emerge --ask sys-kernel/gentoo-sources`
 
-This will install the Linux kernel sources in /usr/src/ using the specific kernel version in the path. It will not create a symbolic link by itself without USE=symlink being enabled on the chosen kernel sources package.
+This will install the Linux kernel sources in /usr/src/ using the specific kernel version in the path. It will not create a symbolic link by itself without `USE=symlink` being enabled on the chosen kernel sources package.
 
 It is conventional for a /usr/src/linux symlink to be maintained, such that it refers to whichever sources correspond with the currently running kernel. However, this symbolic link will not be created by default. An easy way to create the symbolic link is to utilize eselect's kernel module.
 
-For further information regarding the purpose of the symlink, and how to manage it, please refer to Kernel/Upgrade.
+For further information regarding the purpose of the symlink, and how to manage it, please refer to [Kernel/Upgrade](https://wiki.gentoo.org/wiki/Kernel/Upgrade).
 
 First, list all installed kernels:
 
