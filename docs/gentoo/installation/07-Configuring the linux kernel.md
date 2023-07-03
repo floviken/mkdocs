@@ -147,7 +147,7 @@ If in analysis paralysis, the following will do the trick:
 
 `root # mkdir /etc/portage/package.license`
 
-```sh title="FILE /etc/portage/package.license/linux-firmwareAccept binary redistributable licenses for the linux-firmware package"
+```sh title="FILE /etc/portage/package.license/linux-firmware Accept binary redistributable licenses for the linux-firmware package"
 sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE
 ```
 
