@@ -159,18 +159,23 @@ Explanations and prerequisites aside, install the sys-kernel/genkernel package:
 
 #### Generation
 
-Compile the kernel sources by running genkernel all. Be aware though, as genkernel compiles a kernel that supports a wide array of hardware for differing computer architectures, this compilation may take quite a while to finish.
+Compile the kernel sources by running **genkernel all**. Be aware though, as **genkernel** compiles a kernel that supports a wide array of hardware for differing computer architectures, this compilation may take quite a while to finish.
 
 !!! Note
 If the root partition/volume uses a filesystem other than ext4, it may be necessary to manually configure the kernel using genkernel --menuconfig all to add built-in kernel support for the particular filesystem(s) (i.e. not building the filesystem as a module).
 
 !!! Note
 Users of LVM2 should add --lvm as an argument to the genkernel command below.
-root #genkernel --mountboot --install all
+
+
+`root # genkernel --mountboot --install all`
+
 Once genkernel completes, a kernel and an initial ram filesystem (initramfs) will be generated and installed into the /boot directory. Associated modules will be installed into the /lib/modules directory. The initramfs will be started immediately after loading the kernel to perform hardware auto-detection (just like in the live disk image environments).
 
-root #ls /boot/vmlinu* /boot/initramfs*
-root #ls /lib/modules
+```sh
+root # ls /boot/vmlinu* /boot/initramfs*
+root # ls /lib/modules
+```
 
 ### Alternative: Manual configuration
 
@@ -178,18 +183,23 @@ root #ls /lib/modules
 
 Manually configuring a kernel is often seen as the most difficult procedure a Linux user ever has to perform. Nothing is less true - after configuring a couple of kernels no one remembers that it was difficult!
 
-However, one thing is true: it is vital to know the system when a kernel is configured manually. Most information can be gathered by emerging sys-apps/pciutils which contains the lspci command:
+However, one thing is true: it is vital to know the system when a kernel is configured manually. Most information can be gathered by emerging [sys-apps/pciutils](https://packages.gentoo.org/packages/sys-apps/pciutils) which contains the **lspci** command:
 
-root #emerge --ask sys-apps/pciutils
- Note
-Inside the chroot, it is safe to ignore any pcilib warnings (like pcilib: cannot open /sys/bus/pci/devices) that lspci might throw out.
-Another source of system information is to run lsmod to see what kernel modules the installation CD uses as it might provide a nice hint on what to enable.
+`root # emerge --ask sys-apps/pciutils`
 
-Now go to the kernel source directory and execute make menuconfig. This will fire up menu-driven configuration screen.
+!!! Note
+Inside the chroot, it is safe to ignore any pcilib warnings (like pcilib: cannot open /sys/bus/pci/devices) that **lspci** might throw out.
 
-root #cd /usr/src/linux
-root #make menuconfig
-The Linux kernel configuration has many, many sections. Let's first list some options that must be activated (otherwise Gentoo will not function, or not function properly without additional tweaks). We also have a Gentoo kernel configuration guide on the Gentoo wiki that might help out further.
+Another source of system information is to run **lsmod** to see what kernel modules the installation CD uses as it might provide a nice hint on what to enable.
+
+Now go to the kernel source directory and execute **make menuconfig**. This will fire up menu-driven configuration screen.
+
+```sh
+root # cd /usr/src/linux
+root # make menuconfig
+```
+
+The Linux kernel configuration has many, many sections. Let's first list some options that must be activated (otherwise Gentoo will not function, or not function properly without additional tweaks). We also have a [Gentoo kernel configuration guide](https://wiki.gentoo.org/wiki/Kernel/Gentoo_Kernel_Configuration_Guide) on the Gentoo wiki that might help out further.
 
 #### Enabling required options
 
