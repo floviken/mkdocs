@@ -228,7 +228,7 @@ Next select the exact processor type. It is also recommended to enable MCE featu
 
 Also select Maintain a devtmpfs file system to mount at /dev so that critical device files are already available early in the boot process (*CONFIG_DEVTMPFS* and *CONFIG_DEVTMPFS_MOUNT*):
 
-```sh title"KERNEL Enabling devtmpfs support (CONFIG_DEVTMPFS)"
+```sh title="KERNEL Enabling devtmpfs support (CONFIG_DEVTMPFS)"
 Device Drivers --->
   Generic Driver Options --->
     [*] Maintain a devtmpfs filesystem to mount at /dev
@@ -254,6 +254,7 @@ Device Drivers --->
     [*] ATA SFF support (for legacy IDE and PATA)
     <*> Intel ESB, ICH, PIIX3, PIIX4 PATA/SATA support (ata_piix)
 ```
+
 Verify basic NVMe support has been enabled:
 
 ```sh title="KERNEL Enable basic NVMe support for Linux 4.4.x (CONFIG_BLK_DEV_NVME)"
