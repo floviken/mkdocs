@@ -342,9 +342,9 @@ Device Drivers --->
 
 #### Architecture specific kernel configuration
 
-Make sure to select IA32 Emulation if 32-bit programs should be supported (CONFIG_IA32_EMULATION). Gentoo installs a multilib system (mixed 32-bit/64-bit computing) by default, so unless a no-multilib profile is used, this option is required.
+Make sure to select IA32 Emulation if 32-bit programs should be supported (*CONFIG_IA32_EMULATION*). Gentoo installs a multilib system (mixed 32-bit/64-bit computing) by default, so unless a no-multilib profile is used, this option is required.
 
-KERNEL Selecting processor types and features
+```sh title="KERNEL Selecting processor types and features"
 Processor type and features  --->
    [ ] Machine Check / overheating reporting 
    [ ]   Intel MCE Features
@@ -357,16 +357,21 @@ Processor type and features  --->
       ( ) Generic-x86-64
 Binary Emulations --->
    [*] IA32 Emulation
-Enable GPT partition label support if that was used previously when partitioning the disk (CONFIG_PARTITION_ADVANCED and CONFIG_EFI_PARTITION):
 
-KERNEL Enable support for GPT
+```
+
+Enable GPT partition label support if that was used previously when partitioning the disk (*CONFIG_PARTITION_ADVANCED* and *CONFIG_EFI_PARTITION*):
+
+```sh title="KERNEL Enable support for GPT"
 -*- Enable the block layer --->
    Partition Types --->
       [*] Advanced partition selection
       [*] EFI GUID Partition support
-Enable EFI stub support, EFI variables and EFI Framebuffer in the Linux kernel if UEFI is used to boot the system (CONFIG_EFI, CONFIG_EFI_STUB, CONFIG_EFI_MIXED, CONFIG_EFI_VARS, and CONFIG_FB_EFI):
+```
 
-KERNEL Enable support for UEFI
+Enable EFI stub support, EFI variables and EFI Framebuffer in the Linux kernel if UEFI is used to boot the system (*CONFIG_EFI*, *CONFIG_EFI_STUB*, *CONFIG_EFI_MIXED*, *CONFIG_EFI_VARS*, and *CONFIG_FB_EFI*):
+
+```sh title="KERNEL Enable support for UEFI"
 Processor type and features  --->
     [*] EFI runtime service support 
     [*]   EFI stub support
@@ -380,6 +385,7 @@ Device Drivers
         Frame buffer Devices  --->
             <*> Support for frame buffer devices  --->
                 [*]   EFI-based Framebuffer Support
+```
 
 #### Compiling and installing
 
