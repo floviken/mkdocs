@@ -316,7 +316,7 @@ Don't forget to include support in the kernel for the network (Ethernet or wirel
 
 Most systems also have multiple cores at their disposal, so it is important to activate Symmetric multi-processing support (CONFIG_SMP):
 
-```sh tirle="KERNEL Activating SMP support (CONFIG_SMP)"
+```sh title="KERNEL Activating SMP support (CONFIG_SMP)"
 Processor type and features  --->
   [*] Symmetric multi-processing support
 ```
