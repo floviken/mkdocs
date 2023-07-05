@@ -339,6 +339,7 @@ Device Drivers --->
     <*>     OHCI HCD (USB 1.1) support
   <*> Unified support for USB4 and Thunderbolt  --->
 ```
+
 #### Architecture specific kernel configuration
 
 Make sure to select IA32 Emulation if 32-bit programs should be supported (CONFIG_IA32_EMULATION). Gentoo installs a multilib system (mixed 32-bit/64-bit computing) by default, so unless a no-multilib profile is used, this option is required.
