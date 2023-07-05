@@ -299,29 +299,33 @@ File systems --->
     [*] Tmpfs virtual memory file system support (former shm fs)
 ```
 
-If PPPoE is used to connect to the Internet, or a dial-up modem, then enable the following options (CONFIG_PPP, CONFIG_PPP_ASYNC, and CONFIG_PPP_SYNC_TTY):
+If PPPoE is used to connect to the Internet, or a dial-up modem, then enable the following options (*CONFIG_PPP, CONFIG_PPP_ASYNC, and CONFIG_PPP_SYNC_TTY*):
 
-KERNEL Enabling PPPoE support (PPPoE, CONFIG_PPPOE, CONFIG_PPP_ASYNC, CONFIG_PPP_SYNC_TTY
+```sh title="KERNEL Enabling PPPoE support (PPPoE, CONFIG_PPPOE, CONFIG_PPP_ASYNC, CONFIG_PPP_SYNC_TTY"
 Device Drivers --->
   Network device support --->
     <*> PPP (point-to-point protocol) support
     <*> PPP over Ethernet
     <*> PPP support for async serial ports
     <*> PPP support for sync tty ports
+```
+
 The two compression options won't harm but are not definitely needed, neither does the PPP over Ethernet option, that might only be used by ppp when configured to do kernel mode PPPoE.
 
 Don't forget to include support in the kernel for the network (Ethernet or wireless) cards.
 
 Most systems also have multiple cores at their disposal, so it is important to activate Symmetric multi-processing support (CONFIG_SMP):
 
-KERNEL Activating SMP support (CONFIG_SMP)
+```sh tirle="KERNEL Activating SMP support (CONFIG_SMP)"
 Processor type and features  --->
   [*] Symmetric multi-processing support
- Note
+```
+
+!!! Note
 In multi-core systems, each core counts as one processor.
 If USB input devices (like keyboard or mouse) or other USB devices will be used, do not forget to enable those as well:
 
-KERNEL Enable USB and human input device support (CONFIG_HID_GENERIC, CONFIG_USB_HID, CONFIG_USB_SUPPORT, CONFIG_USB_XHCI_HCD, CONFIG_USB_EHCI_HCD, CONFIG_USB_OHCI_HCD, (CONFIG_HID_GENERIC, CONFIG_USB_HID, CONFIG_USB_SUPPORT, CONFIG_USB_XHCI_HCD, CONFIG_USB_EHCI_HCD, CONFIG_USB_OHCI_HCD, CONFIG_USB4)
+```sh title="KERNEL Enable USB and human input device support (CONFIG_HID_GENERIC, CONFIG_USB_HID, CONFIG_USB_SUPPORT, CONFIG_USB_XHCI_HCD, CONFIG_USB_EHCI_HCD, CONFIG_USB_OHCI_HCD, (CONFIG_HID_GENERIC, CONFIG_USB_HID, CONFIG_USB_SUPPORT, CONFIG_USB_XHCI_HCD, CONFIG_USB_EHCI_HCD, CONFIG_USB_OHCI_HCD, CONFIG_USB4)"
 Device Drivers --->
   HID support  --->
     -*- HID bus support
@@ -334,7 +338,7 @@ Device Drivers --->
     <*>     EHCI HCD (USB 2.0) support
     <*>     OHCI HCD (USB 1.1) support
   <*> Unified support for USB4 and Thunderbolt  --->
-
+```
 #### Architecture specific kernel configuration
 
 Make sure to select IA32 Emulation if 32-bit programs should be supported (CONFIG_IA32_EMULATION). Gentoo installs a multilib system (mixed 32-bit/64-bit computing) by default, so unless a no-multilib profile is used, this option is required.
