@@ -224,23 +224,27 @@ When using [sys-kernel/vanilla-sources](https://packages.gentoo.org/packages/sys
 
 Make sure that every driver that is vital to the booting of the system (such as SATA controllers, NVMe block device support, filesystem support, etc.) is compiled in the kernel and not as a module, otherwise the system may not be able to boot completely.
 
-Next select the exact processor type. It is also recommended to enable MCE features (if available) so that users are able to be notified of any hardware problems. On some architectures (such as x86_64), these errors are not printed to dmesg, but to /dev/mcelog. This requires the app-admin/mcelog package.
+Next select the exact processor type. It is also recommended to enable MCE features (if available) so that users are able to be notified of any hardware problems. On some architectures (such as x86_64), these errors are not printed to **dmesg**, but to /dev/mcelog. This requires the [app-admin/mcelog](https://packages.gentoo.org/packages/app-admin/mcelog) package.
 
-Also select Maintain a devtmpfs file system to mount at /dev so that critical device files are already available early in the boot process (CONFIG_DEVTMPFS and CONFIG_DEVTMPFS_MOUNT):
+Also select Maintain a devtmpfs file system to mount at /dev so that critical device files are already available early in the boot process (*CONFIG_DEVTMPFS* and *CONFIG_DEVTMPFS_MOUNT*):
 
-KERNEL Enabling devtmpfs support (CONFIG_DEVTMPFS)
+```sh title"KERNEL Enabling devtmpfs support (CONFIG_DEVTMPFS)"
 Device Drivers --->
   Generic Driver Options --->
     [*] Maintain a devtmpfs filesystem to mount at /dev
     [*]   Automount devtmpfs at /dev, after the kernel mounted the rootfs
+```
+
 Verify SCSI disk support has been activated (CONFIG_BLK_DEV_SD):
 
-KERNEL Enabling SCSI disk support (CONFIG_SCSI, CONFIG_BLK_DEV_SD)
+```sh title="KERNEL Enabling SCSI disk support (CONFIG_SCSI, CONFIG_BLK_DEV_SD)"
 Device Drivers --->
   SCSI device support  ---> 
     <*> SCSI device support
     <*> SCSI disk support
-KERNEL Enabling basic SATA and PATA support (CONFIG_ATA_ACPI, CONFIG_SATA_PMP, CONFIG_SATA_AHCI, CONFIG_ATA_BMDMA, CONFIG_ATA_SFF, CONFIG_ATA_PIIX)
+```
+
+```sh title="KERNEL Enabling basic SATA and PATA support (CONFIG_ATA_ACPI, CONFIG_SATA_PMP, CONFIG_SATA_AHCI, CONFIG_ATA_BMDMA, CONFIG_ATA_SFF, CONFIG_ATA_PIIX)"
 Device Drivers --->
   <*> Serial ATA and Parallel ATA drivers (libata)  --->
     [*] ATA ACPI Support
@@ -249,18 +253,22 @@ Device Drivers --->
     [*] ATA BMDMA support
     [*] ATA SFF support (for legacy IDE and PATA)
     <*> Intel ESB, ICH, PIIX3, PIIX4 PATA/SATA support (ata_piix)
+```
 Verify basic NVMe support has been enabled:
 
-KERNEL Enable basic NVMe support for Linux 4.4.x (CONFIG_BLK_DEV_NVME)
+```sh title="KERNEL Enable basic NVMe support for Linux 4.4.x (CONFIG_BLK_DEV_NVME)"
 Device Drivers  --->
   <*> NVM Express block device
-KERNEL Enable basic NVMe support for Linux 5.x.x (CONFIG_DEVTMPFS)
+```
+
+```sh title="KERNEL Enable basic NVMe support for Linux 5.x.x (CONFIG_DEVTMPFS)"
 Device Drivers --->
   NVME Support --->
     <*> NVM Express block device
+```
 It does not hurt to enable the following additional NVMe support:
 
-KERNEL Enabling additional NVMe support (CONFIG_NVME_MULTIPATH, CONFIG_NVME_MULTIPATH, CONFIG_NVME_HWMON, CONFIG_NVME_FC, CONFIG_NVME_TCP, CONFIG_NVME_TARGET, CONFIG_NVME_TARGET_PASSTHRU, CONFIG_NVME_TARGET_LOOP, CONFIG_NVME_TARGET_FC, CONFIG_NVME_TARGET_FCLOOP, CONFIG_NVME_TARGET_TCP
+```sh title=KERNEL Enabling additional NVMe support (CONFIG_NVME_MULTIPATH, CONFIG_NVME_MULTIPATH, CONFIG_NVME_HWMON, CONFIG_NVME_FC, CONFIG_NVME_TCP, CONFIG_NVME_TARGET, CONFIG_NVME_TARGET_PASSTHRU, CONFIG_NVME_TARGET_LOOP, CONFIG_NVME_TARGET_FC, CONFIG_NVME_TARGET_FCLOOP, CONFIG_NVME_TARGET_TCP"
 [*] NVMe multipath support
 [*] NVMe hardware monitoring
 <M> NVM Express over Fabrics FC host driver
@@ -271,6 +279,8 @@ KERNEL Enabling additional NVMe support (CONFIG_NVME_MULTIPATH, CONFIG_NVME_MULT
   <M>   NVMe over Fabrics FC target driver
   < >     NVMe over Fabrics FC Transport Loopback Test driver (NEW)
   <M>   NVMe over Fabrics TCP target support
+```
+
 Now go to File Systems and select support for the filesystems that will be used by the system. Do not compile the file system that is used for the root filesystem as module, otherwise the system may not be able to mount the partition. Also select Virtual memory and /proc file system. Select one or more of the following options as needed by the system:
 
 KERNEL Enable file system support (CONFIG_EXT2_FS, CONFIG_EXT3_FS, CONFIG_EXT4_FS, CONFIG_BTRFS_FS, CONFIG_XFS_FS, CONFIG_MSDOS_FS, CONFIG_VFAT_FS, CONFIG_PROC_FS, and CONFIG_TMPFS)
