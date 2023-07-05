@@ -282,9 +282,9 @@ It does not hurt to enable the following additional NVMe support:
   <M>   NVMe over Fabrics TCP target support
 ```
 
-Now go to File Systems and select support for the filesystems that will be used by the system. Do not compile the file system that is used for the root filesystem as module, otherwise the system may not be able to mount the partition. Also select Virtual memory and /proc file system. Select one or more of the following options as needed by the system:
+Now go to File Systems and select support for the filesystems that will be used by the system. Do not compile the file system that is used for the root filesystem as module, otherwise the system may not be able to mount the partition. Also select *Virtual memory* and */proc file system*. Select one or more of the following options as needed by the system:
 
-KERNEL Enable file system support (CONFIG_EXT2_FS, CONFIG_EXT3_FS, CONFIG_EXT4_FS, CONFIG_BTRFS_FS, CONFIG_XFS_FS, CONFIG_MSDOS_FS, CONFIG_VFAT_FS, CONFIG_PROC_FS, and CONFIG_TMPFS)
+```sh title="KERNEL Enable file system support (CONFIG_EXT2_FS, CONFIG_EXT3_FS, CONFIG_EXT4_FS, CONFIG_BTRFS_FS, CONFIG_XFS_FS, CONFIG_MSDOS_FS, CONFIG_VFAT_FS, CONFIG_PROC_FS, and CONFIG_TMPFS)"
 File systems --->
   <*> Second extended fs support
   <*> The Extended 3 (ext3) filesystem
@@ -297,6 +297,8 @@ File systems --->
   Pseudo Filesystems --->
     [*] /proc file system support
     [*] Tmpfs virtual memory file system support (former shm fs)
+```
+
 If PPPoE is used to connect to the Internet, or a dial-up modem, then enable the following options (CONFIG_PPP, CONFIG_PPP_ASYNC, and CONFIG_PPP_SYNC_TTY):
 
 KERNEL Enabling PPPoE support (PPPoE, CONFIG_PPPOE, CONFIG_PPP_ASYNC, CONFIG_PPP_SYNC_TTY
