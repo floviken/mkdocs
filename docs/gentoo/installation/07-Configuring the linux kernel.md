@@ -394,12 +394,11 @@ With the configuration now done, it is time to compile and install the kernel. E
 `root # make && make modules_install`
 
 !!! Note
-It is possible to enable parallel builds using make `-jX` with X being an integer number of parallel tasks that the build process is allowed to launch. This is similar to the instructions about /etc/portage/make.conf earlier, with the *MAKEOPTS* variable.
+It is possible to enable parallel builds using **make -jX** with `X` being an integer number of parallel tasks that the build process is allowed to launch. This is similar to the instructions about /etc/portage/make.conf earlier, with the *MAKEOPTS* variable.
 
 When the kernel has finished compiling, copy the kernel image to /boot/. This is handled by the make install command:
 
 `root # make install`
-
 
 This will copy the kernel image into /boot/ together with the System.map file and the kernel configuration file.
 
