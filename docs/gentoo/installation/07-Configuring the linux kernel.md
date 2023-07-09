@@ -405,20 +405,24 @@ This will copy the kernel image into /boot/ together with the System.map file an
 
 #### Optional: Building an initramfs
 
-In certain cases it is necessary to build an initramfs - an initial ram-based file system. The most common reason is when important file system locations (like /usr/ or /var/) are on separate partitions. With an initramfs, these partitions can be mounted using the tools available inside the initramfs.
+In certain cases it is necessary to build an initramfs - an initial **ram**-based **f**ile **s**ystem. The most common reason is when important file system locations (like /usr/ or /var/) are on separate partitions. With an initramfs, these partitions can be mounted using the tools available inside the initramfs.
 
 Without an initramfs, there is a risk that the system will not boot properly as the tools that are responsible for mounting the file systems require information that resides on unmounted file systems. An initramfs will pull in the necessary files into an archive which is used right after the kernel boots, but before the control is handed over to the init tool. Scripts on the initramfs will then make sure that the partitions are properly mounted before the system continues booting.
 
- Important
-If using genkernel, it should be used for both building the kernel and the initramfs. When using genkernel only for generating an initramfs, it is crucial to pass --kernel-config=/path/to/kernel.config to genkernel or the generated initramfs may not work with a manually built kernel. Note that manually built kernels go beyond the scope of support for the handbook. See the kernel configuration article for more information.
-To install an initramfs, install sys-kernel/dracut first, then have it generate an initramfs:
+!!! Important
+If using genkernel, it should be used for both building the kernel and the initramfs. When using genkernel only for generating an initramfs, it is crucial to pass `--kernel-config=/path/to/kernel.config` to genkernel or the generated initramfs may not work with a manually built kernel. Note that manually built kernels go beyond the scope of support for the handbook. See the kernel configuration article for more information.
 
-root #emerge --ask sys-kernel/dracut
-root #dracut --kver=5.15.52-gentoo
+To install an initramfs, install [sys-kernel/dracut](https://packages.gentoo.org/packages/sys-kernel/dracut) first, then have it generate an initramfs:
+
+`root # emerge --ask sys-kernel/dracut`
+
+`root # dracut --kver=5.15.52-gentoo`
+
 The initramfs will be stored in /boot/. The resulting file can be found by simply listing the files starting with initramfs:
 
-root #ls /boot/initramfs*
-Now continue with Kernel modules.
+`root # ls /boot/initramfs*`
+
+Now continue with [Kernel modules](#kernel-modules).
 
 ## Kernel modules
 
@@ -426,6 +430,7 @@ Now continue with Kernel modules.
 
 !!! Note
 Hardware modules are optional to be listed manually. udev will normally load all hardware modules that are detected to be connected in most cases. However, it is not harmful for modules that will be automatically loaded to be listed. Modules cannot be loaded twice; they are either loaded or unloaded. Sometimes exotic hardware requires help to load their drivers.
+
 The modules that need to be loaded during each boot in can be added to /etc/modules-load.d/*.conf files in the format of one module per line. When extra options are needed for the modules, they should be set in /etc/modprobe.d/*.conf files instead.
 
 To view all modules available for a specific kernel version, issue the following find command. Do not forget to substitute "<kernel version>" with the appropriate version of the kernel to search:
