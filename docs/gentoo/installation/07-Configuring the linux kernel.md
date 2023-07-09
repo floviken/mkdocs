@@ -433,19 +433,24 @@ Hardware modules are optional to be listed manually. udev will normally load all
 
 The modules that need to be loaded during each boot in can be added to `/etc/modules-load.d/*.conf` files in the format of one module per line. When extra options are needed for the modules, they should be set in `/etc/modprobe.d/*.conf` files instead.
 
-To view all modules available for a specific kernel version, issue the following find command. Do not forget to substitute "<kernel version>" with the appropriate version of the kernel to search:
+To view all modules available for a specific kernel version, issue the following **find** command. Do not forget to substitute "<kernel version>" with the appropriate version of the kernel to search:
 
-root #find /lib/modules/<kernel version>/ -type f -iname '*.o' -or -iname '*.ko' | less
+`root # find /lib/modules/<kernel version>/ -type f -iname '*.o' -or -iname '*.ko' | less`
 
 ### Force loading particular kernel modules
 
 To force load the kernel to load the 3c59x.ko module (which is the driver for a specific 3Com network card family), edit the /etc/modules-load.d/network.conf file and enter the module name within it.
 
+```sh
 root #mkdir -p /etc/modules-load.d
 root #nano -w /etc/modules-load.d/network.conf
+```
+
 Note that the module's .ko file suffix is insignificant to the loading mechanism and left out of the configuration file:
 
-FILE /etc/modules-load.d/network.confForce loading 3c59x module
+```sh title="FILE /etc/modules-load.d/network.confForce loading 3c59x module"
 3c59x
-Continue the installation with Configuring the system.
+```
+
+Continue the installation with [Configuring the system](08-Configuring the system.md).
 
