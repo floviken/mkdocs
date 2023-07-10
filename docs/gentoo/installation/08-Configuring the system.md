@@ -14,12 +14,13 @@ The /etc/fstab file uses a table-like syntax. Every line consists of six fields,
 2. The second field shows the mount point at which the partition should be mounted.
 3.The third field shows the type of filesystem used by the partition.
 4. The fourth field shows the mount options used by **mount** when it wants to mount the partition. As every filesystem has its own mount options, so system admins are encouraged to read the mount man page (**man mount**) for a full listing. Multiple mount options are comma-separated.
-5. The fifth field is used by dump to determine if the partition needs to be dumped or not. This can generally be left as 0 (zero).
+5. The fifth field is used by dump to determine if the partition needs to be dumped or not. This can generally be left as `0` (zero).
 6. The sixth field is used by **fsck** to determine the order in which filesystems should be checked if the system wasn't shut down properly. The root filesystem should have `1` while the rest should have `2` (or `0` if a filesystem check is not necessary).
  
 !!! Important
 The default /etc/fstab file provided in Gentoo stage files is not a valid fstab file but instead a template that can be used to enter in relevant values.
-root #nano /etc/fstab
+
+`root # nano /etc/fstab`
 
 In the remainder of the text, the default /dev/sd* block device files will be used as partition identifiers.
 
