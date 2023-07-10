@@ -26,19 +26,22 @@ In the remainder of the text, the default /dev/sd* block device files will be us
 
 #### Filesystem labels and UUIDs
 
-Both MBR (BIOS) and GPT include support for filesystem labels and filesystem UUIDs. These attributes can be defined in /etc/fstab as alternatives for the mount command to use when attempting to find and mount block devices. Filesystem labels and UUIDs are identified by the LABEL and UUID prefix and can be viewed with the blkid command:
+Both MBR (BIOS) and GPT include support for *filesystem* labels and *filesystem* UUIDs. These attributes can be defined in /etc/fstab as alternatives for the **mount** command to use when attempting to find and mount block devices. Filesystem labels and UUIDs are identified by the LABEL and UUID prefix and can be viewed with the blkid command:
 
-root #blkid
- Warning
+`root # blkid`
+
+
+!!! Warning
 If the filesystem inside a partition is wiped, then the filesystem label and the UUID values will be subsequently altered or removed.
 Because of uniqueness, readers that are using an MBR-style partition table are recommended to use UUIDs over labels to define mountable volumes in /etc/fstab.
 
- Important
+!!! Important
 UUIDs of the filesystem on a LVM volume and its LVM snapshots are identical, therefore using UUIDs to mount LVM volumes should be avoided.
 Partition labels and UUIDs
 Users who have gone the GPT route have a couple more 'robust' options available to define partitions in /etc/fstab. Partition labels and partition UUIDs can be used to identify the block device's individual partition(s), regardless of what filesystem has been chosen for the partition itself. Partition labels and UUIDs are identified by the PARTLABEL and PARTUUID prefixes respectively and can be viewed nicely in the terminal by running the blkid command:
 
-root #blkid
+`root # blkid`
+
 While not always true for partition labels, using a UUID to identify a partition in fstab provides a guarantee that the bootloader will not be confused when looking for a certain volume, even if the filesystem would be changed in the future. Using the older default block device files (/dev/sd*N) for defining the partitions in fstab is risky for systems that are restarted often and have SATA block devices added and removed regularly.
 
 The naming for block device files depends on a number of factors, including how and in what order the disks are attached to the system. They also could show up in a different order depending on which of the devices are detected by the kernel first during the early boot process. With this being stated, unless one intends to constantly fiddle with the disk ordering, using default block device files is a simple and straightforward approach.
