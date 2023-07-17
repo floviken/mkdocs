@@ -158,15 +158,19 @@ If the network connection needs to be configured because of specific DHCP option
 Set both *config_eth0* and *routes_eth0* to enter IP address information and routing information:
 
 !!! Note
-This assumes that the network interface will be called eth0. This is, however, very system dependent. It is recommended to assume that the interface is named the same as the interface name when booted from the installation media if the installation media is sufficiently recent. More information can be found in the Network interface naming section.
+This assumes that the network interface will be called eth0. This is, however, very system dependent. It is recommended to assume that the interface is named the same as the interface name when booted from the installation media if the installation media is sufficiently recent. More information can be found in the [Network interface naming](https://wiki.gentoo.org/wiki/Handbook:AMD64/Networking/Advanced#Network_interface_naming) section.
 
-FILE /etc/conf.d/netStatic IP definition
+```sh title="FILE /etc/conf.d/netStatic IP definition"
 config_eth0="192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255"
 routes_eth0="default via 192.168.0.1"
-To use DHCP, define config_eth0:
+```
 
-FILE /etc/conf.d/netDHCP definition
+To use DHCP, define *config_eth0*:
+
+```sh title="FILE /etc/conf.d/netDHCP definition"
 config_eth0="dhcp"
+```
+
 Please read /usr/share/doc/netifrc-*/net.example.bz2 for a list of additional configuration options. Be sure to also read up on the DHCP client man page if specific DHCP options need to be set.
 
 If the system has several network interfaces, then repeat the above steps for config_eth1, config_eth2, etc.
