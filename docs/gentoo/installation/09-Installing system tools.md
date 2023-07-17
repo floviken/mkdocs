@@ -18,18 +18,21 @@ Gentoo offers several system logger utilities. A few of these include:
 - [app-admin/metalog](https://packages.gentoo.org/packages/app-admin/metalog) - A highly-configurable system logger.
 There may be other system logging utilities available through the Gentoo ebuild repository as well, since the number of available packages increases on a daily basis.
 
- Tip
-If syslog-ng is going to be used, it is recommended to install and configure logrotate. syslog-ng does not provide any rotation mechanism for the log files. Newer versions (>= 2.0) of sysklogd however handle their own log rotation.
-To install the system logger of choice, emerge it. On OpenRC, add it to the default runlevel using rc-update. The following example installs and activates app-admin/sysklogd as the system's syslog utility:
+!!! Tip
+If syslog-ng is going to be used, it is recommended to install and configure [logrotate](https://wiki.gentoo.org/wiki/Logrotate). syslog-ng does not provide any rotation mechanism for the log files. Newer versions (>= 2.0) of sysklogd however handle their own log rotation.
 
-root #emerge --ask app-admin/sysklogd
-root #rc-update add sysklogd default
+To install the system logger of choice, emerge it. On OpenRC, add it to the default runlevel using **rc-update**. The following example installs and activates [app-admin/sysklogd](https://packages.gentoo.org/packages/app-admin/sysklogd) as the system's syslog utility:
+
+``` sh
+root $ emerge --ask app-admin/sysklogd
+root $ rc-update add sysklogd default
+```
 
 ### systemd
 
-While a selection of logging mechanisms are presented for OpenRC-based systems, systemd includes a built-in logger called the systemd-journald service. The systemd-journald service is capable of handling most of the logging functionality outlined in the previous system logger section. That is to say, the majority of installations that will run systemd as the system and service manager can safely skip adding a additional syslog utilities.
+While a selection of logging mechanisms are presented for OpenRC-based systems, systemd includes a built-in logger called the **systemd-journald** service. The systemd-journald service is capable of handling most of the logging functionality outlined in the previous system logger section. That is to say, the majority of installations that will run systemd as the system and service manager can safely skip adding a additional syslog utilities.
 
-See man journalctl for more details on using journalctl to query and review the systems logs.
+See **man journalctl** for more details on using **journalctl** to query and review the systems logs.
 
 For a number of reasons, such as the case of forwarding logs to a central host, it may be important to include redundant system logging mechanisms on a systemd-based system. This is a irregular occurrence for the handbook's typical audience and considered an advanced use case. It is therefore not covered by the handbook.
 
@@ -45,10 +48,10 @@ All cron daemons support high levels of granularity for scheduled tasks, and gen
 
 Gentoo offers several possible cron daemons, including:
 
-sys-process/cronie - cronie is based on the original cron and has security and configuration enhancements like the ability to use PAM and SELinux.
-sys-process/dcron - This lightweight cron daemon aims to be simple and secure, with just enough features to stay useful.
-sys-process/fcron - A command scheduler with extended capabilities over cron and anacron.
-sys-process/bcron - A younger cron system designed with secure operations in mind. To do this, the system is divided into several separate programs, each responsible for a separate task, with strictly controlled communications between parts.
+- sys-process/cronie - cronie is based on the original cron and has security and configuration enhancements like the ability to use PAM and SELinux.
+- sys-process/dcron - This lightweight cron daemon aims to be simple and secure, with just enough features to stay useful.
+- sys-process/fcron - A command scheduler with extended capabilities over cron and anacron.
+- sys-process/bcron - A younger cron system designed with secure operations in mind. To do this, the system is divided into several separate programs, each responsible for a separate task, with strictly controlled communications between parts.
 
 #### cronie
 The following example uses sys-process/cronie:
