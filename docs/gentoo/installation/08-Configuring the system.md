@@ -201,9 +201,10 @@ If, after booting the system, it is discovered the network interface name (which
 
 An important next step may be to inform this new system about other hosts in its network environment. Network host names can be defined in the /etc/hosts file. Adding host names here will enable host name to IP addresses resolution for hosts that are not resolved by the nameserver.
 
-``` sh
-root #nano /etc/hosts
-FILE /etc/hostsFilling in the networking information
+
+`root #nano /etc/hosts`
+
+``` sh title="FILE /etc/hostsFilling in the networking information"
 # This defines the current system and must be set
 127.0.0.1     tux.homenetwork tux localhost
   
