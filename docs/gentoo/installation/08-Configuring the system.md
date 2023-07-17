@@ -173,7 +173,7 @@ config_eth0="dhcp"
 
 Please read /usr/share/doc/netifrc-*/net.example.bz2 for a list of additional configuration options. Be sure to also read up on the DHCP client man page if specific DHCP options need to be set.
 
-If the system has several network interfaces, then repeat the above steps for config_eth1, config_eth2, etc.
+If the system has several network interfaces, then repeat the above steps for *config_eth1*, *config_eth2*, etc.
 
 Now save the configuration and exit to continue.
 
@@ -181,23 +181,27 @@ Now save the configuration and exit to continue.
 
 To have the network interfaces activated at boot, they need to be added to the default runlevel.
 
+``` sh 
 root #cd /etc/init.d
 root #ln -s net.lo net.eth0
 root #rc-update add net.eth0 default
+```
+
 If the system has several network interfaces, then the appropriate net.* files need to be created just like we did with net.eth0.
 
 If, after booting the system, it is discovered the network interface name (which is currently documented as eth0) was wrong, then execute the following steps to rectify:
 
-Update the /etc/conf.d/net file with the correct interface name (like enp3s0 or enp5s0, instead of eth0).
-Create new symbolic link (like /etc/init.d/net.enp3s0).
-Remove the old symbolic link (rm /etc/init.d/net.eth0).
-Add the new one to the default runlevel.
-Remove the old one using rc-update del net.eth0 default.
+1. Update the /etc/conf.d/net file with the correct interface name (like enp3s0 or enp5s0, instead of eth0).
+2. Create new symbolic link (like /etc/init.d/net.enp3s0).
+3. Remove the old symbolic link (**rm /etc/init.d/net.eth0**).
+4. Add the new one to the default runlevel.
+5. Remove the old one using **rc-update del net.eth0 default**.
 
 ### The hosts file
 
 An important next step may be to inform this new system about other hosts in its network environment. Network host names can be defined in the /etc/hosts file. Adding host names here will enable host name to IP addresses resolution for hosts that are not resolved by the nameserver.
 
+``` sh
 root #nano /etc/hosts
 FILE /etc/hostsFilling in the networking information
 # This defines the current system and must be set
@@ -206,6 +210,8 @@ FILE /etc/hostsFilling in the networking information
 # Optional definition of extra systems on the network
 192.168.0.5   jenny.homenetwork jenny
 192.168.0.6   benny.homenetwork benny
+```
+
 Save and exit the editor to continue.
 
 
@@ -215,7 +221,8 @@ Save and exit the editor to continue.
 
 Set the root password using the passwd command.
 
-root #passwd
+`root # passwd`
+
 Later an additional regular user account will be created for daily operations.
 
 ### Init and boot configuration
