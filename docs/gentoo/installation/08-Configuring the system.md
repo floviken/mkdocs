@@ -232,27 +232,33 @@ Later an additional regular user account will be created for daily operations.
 
 When using OpenRC with Gentoo, it uses /etc/rc.conf to configure the services, startup, and shutdown of a system. Open up /etc/rc.conf and enjoy all the comments in the file. Review the settings and change where needed.
 
-root #nano /etc/rc.conf
+`root # nano /etc/rc.conf`
+
 Next, open /etc/conf.d/keymaps to handle keyboard configuration. Edit it to configure and select the right keyboard.
 
-root #nano /etc/conf.d/keymaps
+`root # nano /etc/conf.d/keymaps`
+
 Take special care with the keymap variable. If the wrong keymap is selected, then weird results will come up when typing on the keyboard.
 
 Finally, edit /etc/conf.d/hwclock to set the clock options. Edit it according to personal preference.
 
-root #nano /etc/conf.d/hwclock
+`root # nano /etc/conf.d/hwclock`
+
 If the hardware clock is not using UTC, then it is necessary to set clock="local" in the file. Otherwise the system might show clock skew behavior.
 
 #### systemd
 
-First, it is recommended to run systemd-firstboot which will prepare various components of the system are set correctly for the first boot into the new systemd environment. The passing the following options will include a prompt for the user to set a locale, timezone, hostname, root password, and root shell values. It will also assign a random machine ID to the installation:
+First, it is recommended to run **systemd-firstboot** which will prepare various components of the system are set correctly for the first boot into the new systemd environment. The passing the following options will include a prompt for the user to set a locale, timezone, hostname, root password, and root shell values. It will also assign a random machine ID to the installation:
 
-root #systemd-firstboot --prompt --setup-machine-id
+`root # systemd-firstboot --prompt --setup-machine-id`
+
 Next users should run systemctl to reset all installed unit files to the preset policy values:
 
-root #systemctl preset-all --preset-mode=enable-only
+`root # systemctl preset-all --preset-mode=enable-only`
+
 It's possible to run the full preset changes but this may reset any services which were already configured during the process:
 
-root #systemctl preset-all
+`root # systemctl preset-all`
+
 These two steps will help ensure a smooth transition from the live environment to the installation's first boot.
 
