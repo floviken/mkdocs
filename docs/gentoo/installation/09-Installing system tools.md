@@ -48,51 +48,58 @@ All cron daemons support high levels of granularity for scheduled tasks, and gen
 
 Gentoo offers several possible cron daemons, including:
 
-- sys-process/cronie - cronie is based on the original cron and has security and configuration enhancements like the ability to use PAM and SELinux.
-- sys-process/dcron - This lightweight cron daemon aims to be simple and secure, with just enough features to stay useful.
-- sys-process/fcron - A command scheduler with extended capabilities over cron and anacron.
-- sys-process/bcron - A younger cron system designed with secure operations in mind. To do this, the system is divided into several separate programs, each responsible for a separate task, with strictly controlled communications between parts.
+- [sys-process/cronie](https://packages.gentoo.org/packages/sys-process/cronie) - cronie is based on the original cron and has security and configuration enhancements like the ability to use PAM and SELinux.
+- [sys-process/dcron](https://packages.gentoo.org/packages/sys-process/dcron) - This lightweight cron daemon aims to be simple and secure, with just enough features to stay useful.
+- [sys-process/fcron](https://packages.gentoo.org/packages/sys-process/fcron) - A command scheduler with extended capabilities over cron and anacron.
+- [sys-process/bcron](https://packages.gentoo.org/packages/sys-process/bcron) - A younger cron system designed with secure operations in mind. To do this, the system is divided into several separate programs, each responsible for a separate task, with strictly controlled communications between parts.
 
 #### cronie
-The following example uses sys-process/cronie:
 
-root #emerge --ask sys-process/cronie
+The following example uses [sys-process/cronie](https://packages.gentoo.org/packages/sys-process/cronie):
+
+`root $ emerge --ask sys-process/cronie`
+
 Add cronie to the default system runlevel, which will automatically start it on power up:
 
-root #rc-update add cronie default
+`root $ rc-update add cronie default`
 
 #### Alternative: dcron
 
-root #emerge --ask sys-process/dcron
+`root $ emerge --ask sys-process/dcron`
+
 If dcron is the go forward cron agent, an additional initialization command needs to be executed:
 
-root #crontab /etc/crontab
+`root $ crontab /etc/crontab`
 
 #### Alternative: fcron
 
-root #emerge --ask sys-process/fcron
+`root $ emerge --ask sys-process/fcron`
+
 If fcron is the selected scheduled task handler, an additional emerge step is required:
 
-root #emerge --config sys-process/fcron
+`root $ emerge --config sys-process/fcron`
 
 #### Alternative: bcron
 
 bcron is a younger cron agent with built-in privilege separation.
 
-root # emerge --ask sys-process/bcron
+`root $ emerge --ask sys-process/bcron`
 
 ### systemd
 
 Similar to system logging, systemd-based systems include support for scheduled tasks out-of-the-box in the form of timers. systemd timers can run at a system-level or a user-level and include the same functionality that a traditional cron daemon would provide. Unless redundant capabilities are necessary, installing an additional task scheduler such as a cron daemon is generally unnecessary and can be safely skipped.
 
-Optional: File indexing
-In order to index the file system to provide faster file location capabilities, install sys-apps/mlocate.
+## Optional: File indexing
+In order to index the file system to provide faster file location capabilities, install [sys-apps/mlocate](https://packages.gentoo.org/packages/sys-apps/mlocate).
 
-root #emerge --ask sys-apps/mlocate
-Optional: Remote shell access
- Tip
+`root $ emerge --ask sys-apps/mlocate`
+
+### Optional: Remote shell access
+
+!!! Tip
 opensshd's default configuration does not allow root to login as a remote user. Please create a non-root user and configure it appropriately to allow access post-installation if required, or adjust /etc/ssh/sshd_config to allow root.
-To be able to access the system remotely after installation, sshd must be configured to start on boot.
+
+To be able to access the system remotely after installation, **sshd** must be configured to start on boot.
 
 OpenRC
 To add the sshd init script to the default runlevel on OpenRC:
