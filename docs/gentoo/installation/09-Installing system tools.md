@@ -101,22 +101,28 @@ opensshd's default configuration does not allow root to login as a remote user. 
 
 To be able to access the system remotely after installation, **sshd** must be configured to start on boot.
 
-OpenRC
+#### OpenRC
+
 To add the sshd init script to the default runlevel on OpenRC:
 
-root #rc-update add sshd default
-If serial console access is needed (which is possible in case of remote servers), agetty must be configured.
+root # rc-update add sshd default
+If serial console access is needed (which is possible in case of remote servers), **agetty** must be configured.
 
 Uncomment the serial console section in /etc/inittab:
 
-root #nano -w /etc/inittab
+```sh
+root $ nano -w /etc/inittab
 # SERIAL CONSOLES
 s0:12345:respawn:/sbin/agetty 9600 ttyS0 vt100
 s1:12345:respawn:/sbin/agetty 9600 ttyS1 vt100
-systemd
+```
+
+#### systemd
+
 To enable the SSH server, run:
 
-root #systemctl enable sshd
+`root $ systemctl enable sshd`
+
 To enable serial console support, run:
 
 root #systemctl enable getty@tty1.service
