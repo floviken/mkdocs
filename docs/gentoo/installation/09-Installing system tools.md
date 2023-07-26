@@ -105,7 +105,8 @@ To be able to access the system remotely after installation, **sshd** must be co
 
 To add the sshd init script to the default runlevel on OpenRC:
 
-root # rc-update add sshd default
+`root # rc-update add sshd default`
+
 If serial console access is needed (which is possible in case of remote servers), **agetty** must be configured.
 
 Uncomment the serial console section in /etc/inittab:
@@ -125,44 +126,59 @@ To enable the SSH server, run:
 
 To enable serial console support, run:
 
-root #systemctl enable getty@tty1.service
-Optional: Shell completion
-Bash
-Bash is the default shell for Gentoo systems, and therefore installing completion extensions can aid in efficiency and convenience to managing the system. The app-shells/bash-completion package will install completions available for Gentoo specific commands, as well as many other common commands and utilities:
+`root # systemctl enable getty@tty1.service`
 
-root #emerge --ask app-shells/bash-completion
-Post installation, bash completion for specific commands can managed through eselect. See the Shell completion integrations section of the bash article for more details.
+## Optional: Shell completion
 
-Time synchronization
-It is important to use some method of synchronizing the system clock. This is usually done via the NTP protocol and software. Other implementations using the NTP protocol exist, like Chrony.
+### Bash
+
+Bash is the default shell for Gentoo systems, and therefore installing completion extensions can aid in efficiency and convenience to managing the system. The [app-shells/bash-completion](https://packages.gentoo.org/packages/app-shells/bash-completion) package will install completions available for Gentoo specific commands, as well as many other common commands and utilities:
+
+`root # emerge --ask app-shells/bash-completion`
+
+Post installation, bash completion for specific commands can managed through **eselect**. See the [Shell completion integrations section](https://wiki.gentoo.org/wiki/Bash#Shell_completion_integrations) of the bash article for more details.
+
+### Time synchronization
+
+It is important to use some method of synchronizing the system clock. This is usually done via the [NTP](https://wiki.gentoo.org/wiki/NTP) protocol and software. Other implementations using the NTP protocol exist, like [Chrony](https://wiki.gentoo.org/wiki/Chrony).
 
 To set up Chrony, for example:
 
-root #emerge --ask net-misc/chrony
-OpenRC
+`root # emerge --ask net-misc/chrony`
+
+### OpenRC
+
 On OpenRC, run:
 
-root #rc-update add chronyd default
-systemd
+`root $ rc-update add chronyd default`
+
+### systemd
+
 On systemd, run:
 
-root #systemctl enable chronyd.service
-Alternatively, systemd users may wish to use the simpler systemd-timesyncd SNTP client which is installed by default.
+`root $ systemctl enable chronyd.service`
 
-root #systemctl enable systemd-timesyncd.service
-Filesystem tools
-Depending on the filesystems used, it may be necessary to install the required file system utilities (for checking the filesystem integrity, (re)formatting file systems, etc.). Note that ext4 user space tools (sys-fs/e2fsprogs are already installed as a part of the @system set.
+Alternatively, systemd users may wish to use the simpler **systemd-timesyncd** SNTP client which is installed by default.
+
+`root # systemctl enable systemd-timesyncd.service`
+
+## Filesystem tools
+
+Depending on the filesystems used, it may be necessary to install the required file system utilities (for checking the filesystem integrity, (re)formatting file systems, etc.). Note that ext4 user space tools ([sys-fs/e2fsprogs](https://packages.gentoo.org/packages/sys-fs/e2fsprogs) are already installed as a part of the [@system set](https://wiki.gentoo.org/wiki/System_set_(Portage)).
 
 The following table lists the tools to install if a certain filesystem tools will be needed in the installed environment.
 
-Filesystem	Package
-XFS	sys-fs/xfsprogs
-ext4	sys-fs/e2fsprogs
-VFAT (FAT32, ...)	sys-fs/dosfstools
-Btrfs	sys-fs/btrfs-progs
-ZFS	sys-fs/zfs
-JFS	sys-fs/jfsutils
-ReiserFS	sys-fs/reiserfsprogs
+|Filesystem	|Package |
+|---|---|
+|XFS| 	sys-fs/xfsprogs |
+|ext4|	sys-fs/e2fsprogs |
+|VFAT |(FAT32, ...)	sys-fs/dosfstools|
+|Btrfs	| sys-fs/btrfs-progs|
+|ZFS	| sys-fs/zfs|
+|JFS	| sys-fs/jfsutils|
+|ReiserFS	|sys-fs/reiserfsprogs|
+
+
 It's recommended that sys-block/io-scheduler-udev-rules is installed for the correct scheduler behavior with e.g. nvme devices:
 
 root #emerge --ask sys-block/io-scheduler-udev-rules
