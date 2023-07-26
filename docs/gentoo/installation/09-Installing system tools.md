@@ -179,27 +179,37 @@ The following table lists the tools to install if a certain filesystem tools wil
 |ReiserFS	|sys-fs/reiserfsprogs|
 
 
-It's recommended that sys-block/io-scheduler-udev-rules is installed for the correct scheduler behavior with e.g. nvme devices:
+It's recommended that [sys-block/io-scheduler-udev-rules](https://packages.gentoo.org/packages/sys-block/io-scheduler-udev-rules) is installed for the correct scheduler behavior with e.g. nvme devices:
 
-root #emerge --ask sys-block/io-scheduler-udev-rules
- Tip
+`root $ emerge --ask sys-block/io-scheduler-udev-rules`
+ 
+!!! Tip
 For more information on filesystems in Gentoo see the filesystem article.
-Networking tools
-If networking was previously configured in the Configuring the system step and network setup is complete, then this 'networking tools' section can be safely skipped. In this case, proceed with the section on Configuring a bootloader.
 
-Installing a DHCP client
- Important
+## Networking tools
+
+If networking was previously configured in the [Configuring the system](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/System) step and network setup is complete, then this 'networking tools' section can be safely skipped. In this case, proceed with the section on [Configuring a bootloader](https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Bootloader).
+
+### Installing a DHCP client
+
+!!! Important
 Most users will need a DHCP client to connect to their network. If none was installed, then the system might not be able to get on the network thus making it impossible to download a DHCP client afterwards.
-A DHCP client obtains automatically an IP address for one or more network interface(s) using netifrc scripts. We recommend the use of net-misc/dhcpcd (see also dhcpcd):
 
-root #emerge --ask net-misc/dhcpcd
-Optional: Installing a PPPoE client
-If PPP is used to connect to the internet, install the net-dialup/ppp package:
+A DHCP client obtains automatically an IP address for one or more network interface(s) using netifrc scripts. We recommend the use of [net-misc/dhcpcd](https://packages.gentoo.org/packages/net-misc/dhcpcd) (see also [dhcpcd](https://wiki.gentoo.org/wiki/Dhcpcd)):
 
-root #emerge --ask net-dialup/ppp
-Optional: Install wireless networking tools
-If the system will be connecting to wireless networks, install the net-wireless/iw package for Open or WEP networks and/or the net-wireless/wpa_supplicant package for WPA or WPA2 networks. iw is also a useful basic diagnostic tool for scanning wireless networks.
+`root $ emerge --ask net-misc/dhcpcd`
 
-root #emerge --ask net-wireless/iw net-wireless/wpa_supplicant
+### Optional: Installing a PPPoE client
+
+If PPP is used to connect to the internet, install the [net-dialup/ppp](https://packages.gentoo.org/packages/net-dialup/ppp) package:
+
+`root $ emerge --ask net-dialup/ppp`
+
+### Optional: Install wireless networking tools
+
+If the system will be connecting to wireless networks, install the [net-wireless/iw](https://packages.gentoo.org/packages/net-wireless/iw) package for Open or WEP networks and/or the [net-wireless/wpa_supplicant](https://packages.gentoo.org/packages/net-wireless/wpa_supplicant) package for WPA or WPA2 networks. iw is also a useful basic diagnostic tool for scanning wireless networks.
+
+`root $ emerge --ask net-wireless/iw net-wireless/wpa_supplicant`
+
 Now continue with Configuring the bootloader.
 
