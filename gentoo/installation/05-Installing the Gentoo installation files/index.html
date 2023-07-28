@@ -1,0 +1,1102 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://floviken.github.io/mkdocs/gentoo/installation/05-Installing%20the%20Gentoo%20installation%20files/">
+      
+      
+        <link rel="prev" href="../04-Preparing%20the%20disks/">
+      
+      
+        <link rel="next" href="../06-Installing%20the%20Gentoo%20base%20system/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Installing the Gentoo installation files - KaboliDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Installing the Gentoo installation files - KaboliDocs" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/installation/05-Installing the Gentoo installation files.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://floviken.github.io/mkdocs/gentoo/installation/05-Installing%20the%20Gentoo%20installation%20files/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Installing the Gentoo installation files - KaboliDocs" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/installation/05-Installing the Gentoo installation files.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-the-gentoo-installation-files" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KaboliDocs" class="md-header__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KaboliDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installing the Gentoo installation files
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../ssh/" class="md-tabs__link">
+      SSH setup
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Gentoo
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KaboliDocs" class="md-nav__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    KaboliDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ssh/" class="md-nav__link">
+        SSH setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        gentoo handbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-About%20the%20Gentoo%20Linux%20Installation/" class="md-nav__link">
+        About the Gentoo Linux Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../010-Configuring%20the%20bootloader/" class="md-nav__link">
+        Configuring the bootloader
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Choosing%20the%20right%20installation%20medium/" class="md-nav__link">
+        Choosing the right installation medium
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Configuring%20the%20network/" class="md-nav__link">
+        Configuring the network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Preparing%20the%20disks/" class="md-nav__link">
+        Preparing the disks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Installing the Gentoo installation files
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Installing the Gentoo installation files
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#installing-a-stage-tarball" class="md-nav__link">
+    Installing a stage tarball
+  </a>
+  
+    <nav class="md-nav" aria-label="Installing a stage tarball">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-the-date-and-time" class="md-nav__link">
+    Setting the date and time
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting the date and time">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automatic" class="md-nav__link">
+    Automatic
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#manual" class="md-nav__link">
+    Manual
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-a-stage-tarball" class="md-nav__link">
+    Choosing a stage tarball
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing a stage tarball">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multilib-32-and-64-bit" class="md-nav__link">
+    Multilib (32 and 64-bit)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#no-multilib-pure-64-bit" class="md-nav__link">
+    No-multilib (pure 64-bit)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#openrc" class="md-nav__link">
+    OpenRC
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloading-the-stage-tarball" class="md-nav__link">
+    Downloading the stage tarball
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-browsers" class="md-nav__link">
+    Graphical browsers
+  </a>
+  
+    <nav class="md-nav" aria-label="Graphical browsers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#command-line-browsers" class="md-nav__link">
+    Command-line browsers
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-and-validating" class="md-nav__link">
+    Verifying and validating
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unpacking-the-stage-tarball" class="md-nav__link">
+    Unpacking the stage tarball
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-compile-options" class="md-nav__link">
+    Configuring compile options
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring compile options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cflags-and-cxxflags" class="md-nav__link">
+    CFLAGS and CXXFLAGS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#makeopts" class="md-nav__link">
+    MAKEOPTS
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ready-set-go" class="md-nav__link">
+    Ready, set, go!
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Installing%20the%20Gentoo%20base%20system/" class="md-nav__link">
+        Installing the Gentoo base system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-Configuring%20the%20linux%20kernel/" class="md-nav__link">
+        Configuring the Linux kernel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Configuring%20the%20system/" class="md-nav__link">
+        Configuring the system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Installing%20system%20tools/" class="md-nav__link">
+        Installing system tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Working with gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Working with gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/01-Portage/" class="md-nav__link">
+        Working with Gentoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/02-Use/" class="md-nav__link">
+        What are USE flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/03-Features/" class="md-nav__link">
+        Portage features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/04-Initscripts/" class="md-nav__link">
+        Runlevels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/05-EnvVar/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Working with portage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Working with portage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_portage/01-Files/" class="md-nav__link">
+        01 Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="installing-the-gentoo-installation-files">Installing the Gentoo installation files</h1>
+<h2 id="installing-a-stage-tarball">Installing a stage tarball</h2>
+<h3 id="setting-the-date-and-time">Setting the date and time</h3>
+<p>Before installing Gentoo the clock must be set correctly. Due to Gentoo's web based services using security certificates, it might not be possible to download the installation files if the system clock is too far skewed. Also, files saved with a date in the future may cause strange errors after the initial installation has completed if the clock is corrected later.</p>
+<p>Verify the current date and time by running the <strong>date</strong> command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>root<span class="w"> </span><span class="c1">#date</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Mon<span class="w"> </span>Oct<span class="w">  </span><span class="m">3</span><span class="w"> </span><span class="m">13</span>:16:22<span class="w"> </span>PDT<span class="w"> </span><span class="m">2021</span>
+</code></pre></div>
+<p>If the date/time displayed is more than few minutes off, it should be updated in accuracy using one of the methods below.</p>
+<h4 id="automatic">Automatic</h4>
+<p>Most readers will desire to have their system update the time automatically using a time server.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+</div>
+<p>Some motherboards do not include a Real-Time Clock (RTC), which will keep relatively accurate time even while the system is powered off. It is very important for these systems to automatically sync the system clock with a time server at every system start and on a regular internal thereafter. This is just as important for systems that do include a RTC, but have a failed battery.</p>
+<p>Official Gentoo live environments include the <strong>chronyd</strong> command (available through the <a href="https://packages.gentoo.org/packages/net-misc/chrony">net-misc/chrony</a> package) and a configuration file pointing to ntp.org time servers. It can be used to automatically sync the system clock to UTC time using a time server. Using this method requires a working network configuration and may not be available on all architectures.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Automatic time sync comes at a price. It will reveal the system's IP address and related network information to a time server (in the case of the example below ntp.org). Users with privacy concerns should be aware of this before setting the system clock using the below method.</p>
+<p><code>root # chronyd -q</code></p>
+<h4 id="manual">Manual</h4>
+<p>For systems that do not have access to a time server, the <strong>date</strong> command can also be used to set the system clock. It will use the following format as an argument: MMDDhhmmYYYY syntax (<strong>M</strong>onth, <strong>D</strong>ay, <strong>h</strong>our, <strong>m</strong>inute and <strong>Y</strong>ear).</p>
+<p>UTC time is recommended for all Linux systems. A timezone will be defined later in the installation which will modify the clock to display local time.</p>
+<p>For instance, to set the date to October 3rd, 13:16 in the year 2021, issue:</p>
+<p><code>root # date 100313162021</code></p>
+<h3 id="choosing-a-stage-tarball">Choosing a stage tarball</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Not every architecture has a multilib option. Many only run with native code. Multilib is most commonly applied to <strong>amd64</strong>.</p>
+<h4 id="multilib-32-and-64-bit">Multilib (32 and 64-bit)</h4>
+<p>Choosing a base tarball for the system can save a considerable amount of time later on in the installation process, specifically when it is time to choose a <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Choosing_the_right_profile">system profile</a>. The selection of a stage tarball will directly impact future system configuration and can save a headache or two later on down the line. The multilib tarball uses 64-bit libraries when possible, and only falls back to the 32-bit versions when necessary for compatibility. This is an excellent option for the majority of installations because it provides a great amount of flexibility for customization in the future. Those who desire their systems to be capable of easily switching profiles should download the multilib tarball option for their respective processor architecture.</p>
+<p>Most users should not use the 'advanced' tarballs options; they are for specific software or hardware configurations.</p>
+<h4 id="no-multilib-pure-64-bit">No-multilib (pure 64-bit)</h4>
+<p>Selecting a no-multilib tarball to be the base of the system provides a complete 64-bit operating system environment. This effectively renders the ability to switch to multilib profiles improbable, although still technically possible.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Readers who are just starting out with Gentoo should not choose a no-multilib tarball unless it is absolutely necessary. Migrating from a no-multilib to a multilib system requires an extremely well-working knowledge of Gentoo and the lower-level toolchain (it may even cause our <a href="https://wiki.gentoo.org/wiki/Project:Toolchain">Toolchain developers</a> to shudder a little). It is not for the faint of heart and is beyond the scope of this guide.</p>
+<h4 id="openrc">OpenRC</h4>
+<p><a href="https://wiki.gentoo.org/wiki/OpenRC">OpenRC</a> is a dependency-based init system (responsible for starting up system services once the kernel has booted) that maintains compatibility with the system provided init program, normally located in /sbin/init. It is Gentoo's native and original init system, but is also deployed by a few other Linux distributions and BSD systems.</p>
+<p>OpenRC does not function as a replacement for the /sbin/init file by default and is 100% compatible with Gentoo init scripts. This means a solution can be found to run the dozens of daemons in the Gentoo ebuild repository.</p>
+<p>systemd
+systemd is a modern SysV-style init and rc replacement for Linux systems. It is used as the primary init system by a majority of Linux distributions. systemd is fully supported in Gentoo and works for its intended purpose. If something seems lacking in the Handbook for a systemd install path, review the <a href="https://wiki.gentoo.org/wiki/Systemd">systemd article</a> before asking for support.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>It is technically possible to switch a running Gentoo installation from OpenRC to systemd and back. However, switching requires some effort and is outside the scope of this installation manual. Before downloading a stage tarball, decide whether OpenRC or systemd will be used as the target init system and download the relevant stage tarball.</p>
+<h3 id="downloading-the-stage-tarball">Downloading the stage tarball</h3>
+<p>Go to the Gentoo mount point where the root file system is mounted (most likely /mnt/gentoo):</p>
+<p><code>root # cd /mnt/gentoo</code></p>
+<h3 id="graphical-browsers">Graphical browsers</h3>
+<p>Those using environments with fully graphical web browsers will have no problem copying a stage file URL from the main website's <a href="https://www.gentoo.org/downloads/#other-arches">download section</a>. Simply select the appropriate tab, right click the link to the stage file, then Copy Link to copy the link to the clipboard, then paste the link to the wget utility on the command-line to download the stage tarball:</p>
+<p><code>root # wget &lt;PASTED_STAGE_URL&gt;</code> </p>
+<h4 id="command-line-browsers">Command-line browsers</h4>
+<p>More traditional readers or 'old timer' Gentoo users, working exclusively from command-line may prefer using links (www-client/links), a non-graphical, menu-driven browser. To download a stage, surf to the Gentoo mirror list like so:</p>
+<p><code>root # links https://www.gentoo.org/downloads/mirrors/</code></p>
+<p>To use an HTTP proxy with links, pass on the URL with the -http-proxy option:</p>
+<p><code>root # links -http-proxy proxy.server.com:8080 https://www.gentoo.org/downloads/mirrors/</code></p>
+<p>Next to links there is also the <a href="https://packages.gentoo.org/packages/www-client/lynx">lynx</a> (www-client/lynx) browser. Like <strong>links</strong> it is a non-graphical browser but it is not menu-driven.</p>
+<p><code>root # lynx https://www.gentoo.org/downloads/mirrors/</code></p>
+<p>If a proxy needs to be defined, export the <em>http_proxy</em> and/or <em>ftp_proxy</em> variables:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>root<span class="w"> </span><span class="c1"># export http_proxy=&quot;http://proxy.server.com:port&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>root<span class="w"> </span><span class="c1"># export ftp_proxy=&quot;http://proxy.server.com:port&quot;</span>
+</code></pre></div>
+<p>On the mirror list, select a mirror close by. Usually HTTP mirrors suffice, but other protocols are available as well. Move to the releases/amd64/autobuilds/ directory. There all available stage files are displayed (they might be stored within subdirectories named after the individual sub-architectures). Select one and press d to download.</p>
+<p>After the stage file download completes, it is possible to verify the integrity and validate the contents of the stage tarball. Those interested should proceed to the next section.</p>
+<p>Those not interested in verifying and validating the stage file can close the command-line browser by pressing <code>q</code> and can move directly to the Unpacking the stage tarball section.</p>
+<h3 id="verifying-and-validating">Verifying and validating</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Most stages are now explicitly <a href="https://www.gentoo.org/news/2021/07/20/more-downloads.html">suffixed</a> with the init system type (openrc or systemd), although some architectures may still be missing these for now.</p>
+<p>Like with the minimal installation CDs, additional downloads to verify and validate the stage file are available. Although these steps may be skipped, these files are provided for users who care about the legitimacy of the file(s) they just downloaded.</p>
+<p>A .CONTENTS file that contains a list of all files inside the stage tarball.
+A .DIGESTS file that contains checksums of the stage file in different algorithms.
+Use <strong>openssl</strong> and compare the output with the checksums provided by the .DIGESTS file.</p>
+<p>For instance, to validate the SHA512 checksum:</p>
+<p><code>root # openssl dgst -r -sha512 stage3-amd64-&lt;release&gt;-&lt;init&gt;.tar.xz</code></p>
+<p>Another way is to use the <strong>sha512sum</strong> command:</p>
+<p><code>root # sha512sum stage3-amd64-&lt;release&gt;-&lt;init&gt;.tar.xz</code></p>
+<p>To validate the Whirlpool checksum:</p>
+<p><code>root # openssl dgst -r -whirlpool stage3-amd64-&lt;release&gt;-&lt;init&gt;.tar.xz</code></p>
+<p>Compare the output of these commands with the value registered in the .DIGESTS files. The values need to match, otherwise the downloaded file might be corrupt (or the digests file is).</p>
+<p>Just like with the ISO file, it is also possible to verify the cryptographic signature of the tar.xz file using gpg to make sure the tarball has not been tampered with:</p>
+<p><code>root # gpg --verify stage3-amd64-&lt;release&gt;-&lt;init&gt;.tar.xz{.asc,}</code></p>
+<p>The fingerprints of the OpenPGP keys used for signing release media can be found on the <a href="https://www.gentoo.org/downloads/signatures/">release media signatures page</a> of the Gentoo webserver.</p>
+<h2 id="unpacking-the-stage-tarball">Unpacking the stage tarball</h2>
+<p>Now unpack the downloaded stage onto the system. Use the tar utility to proceed:</p>
+<p><code>root # tar xpvf stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner</code></p>
+<p>Verify the same options (<code>xpf</code> and <code>--xattrs-include='*.*'</code>) are used in the command. The x stands for extract, the p for preserve permissions and the <code>f</code> to denote that we want to extract a file (not standard input). <code>--xattrs-include='*.*'</code> is to include preservation of the the extended attributes in all namespaces stored in the archive. Finally, <code>--numeric-owner</code> is used to ensure that the user and group IDs of the files being extracted from the tarball will remain the same as Gentoo's release engineering team intended (even if adventurous users are not using official Gentoo live environments).</p>
+<p>Now that the stage file is unpacked, proceed with <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Stage#Configuring_compile_options">Configuring compile options</a>.</p>
+<h2 id="configuring-compile-options">Configuring compile options</h2>
+<h3 id="introduction">Introduction</h3>
+<p>To optimize the system, it is possible to set variables which impact the behavior of Portage, Gentoo's officially supported package manager. All those variables can be set as environment variables (using export) but setting via export is not permanent.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>Technically variables can be exported via the shell's profile or rc files, however that is not best practice for basic system administration.</p>
+<p>Portage reads in the <a href="https://wiki.gentoo.org/wiki/Make.conf">make.conf</a> file when it runs, which will change runtime behavior depending on the values saved in the file. <strong>make.conf</strong> can be considered the primary configuration file for Portage, so treat its content carefully.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>A commented listing of all possible variables can be found in /mnt/gentoo/usr/share/portage/config/make.conf.example. Additional documentation on make.conf can be found by running man 5 make.conf.
+For a successful Gentoo installation only the variables that are mentioned below need to be set.</p>
+<p>Fire up an editor (in this guide we use nano) to alter the optimization variables we will discuss hereafter.</p>
+<p><code>root # nano -w /mnt/gentoo/etc/portage/make.conf</code></p>
+<p>From the make.conf.example file it is obvious how the file should be structured: commented lines start with <code>#</code>, other lines define variables using the <code>VARIABLE="value"</code> syntax. Several of those variables are discussed in the next section.</p>
+<h3 id="cflags-and-cxxflags">CFLAGS and CXXFLAGS</h3>
+<p>The <em>CFLAGS</em> and <em>CXXFLAGS</em> variables define the optimization flags for GCC C and C++ compilers respectively. Although those are defined generally here, for maximum performance one would need to optimize these flags for each program separately. The reason for this is because every program is different. However, this is not manageable, hence the definition of these flags in the make.conf file.</p>
+<p>In make.conf one should define the optimization flags that will make the system the most responsive generally. Don't place experimental settings in this variable; too much optimization can make programs misbehave (crash, or even worse, malfunction).</p>
+<p>We will not explain all possible optimization options. To understand them all, read the <a href="https://gcc.gnu.org/onlinedocs/">GNU Online Manual(s)</a> or the gcc info page (<strong>info gcc</strong> - only works on a working Linux system). The make.conf.example file itself also contains lots of examples and information; don't forget to read it too.</p>
+<p>A first setting is the <code>-march=</code> or <code>-mtune=</code> flag, which specifies the name of the target architecture. Possible options are described in the make.conf.example file (as comments). A commonly used value is native as that tells the compiler to select the target architecture of the current system (the one users are installing Gentoo on).</p>
+<p>A second one is the <code>-O</code> flag (that is a capital O, not a zero), which specifies the gcc optimization class flag. Possible classes are s (for size-optimized), 0 (zero - for no optimizations), 1, 2 or even 3 for more speed-optimization flags (every class has the same flags as the one before, plus some extras). <code>-O2</code> is the recommended default. <code>-O3</code> is known to cause problems when used system-wide, so we recommend to stick to <code>-O2</code>.</p>
+<p>Another popular optimization flag is <code>-pipe</code> (use pipes rather than temporary files for communication between the various stages of compilation). It has no impact on the generated code, but uses more memory. On systems with low memory, gcc might get killed. In that case, do not use this flag.</p>
+<p>Using <code>-fomit-frame-pointer</code> (which doesn't keep the frame pointer in a register for functions that don't need one) might have serious repercussions on the debugging of applications.</p>
+<p>When the <em>CFLAGS</em> and <em>CXXFLAGS</em> variables are defined, combine the several optimization flags in one string. The default values contained in the stage3 archive that is unpacked should be good enough. The following one is just an example:</p>
+<div class="highlight"><span class="filename">CODE Example CFLAGS and CXXFLAGS variables</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># Compiler flags to set for all languages</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">COMMON_FLAGS</span><span class="o">=</span><span class="s2">&quot;-march=native -O2 -pipe&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Use the same settings for both variables</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">CFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">COMMON_FLAGS</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">CXXFLAGS</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">COMMON_FLAGS</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>Although the GCC optimization article has more information on how the various compilation options can affect a system, the Safe CFLAGS article may be a more practical place for beginners to start optimizing their systems.</p>
+<h3 id="makeopts">MAKEOPTS</h3>
+<p>The <em>MAKEOPTS</em> variable defines how many parallel compilations should occur when installing a package. As of Portage version 3.0.31[1], if left undefined, Portage's default behavior is to set the <em>MAKEOPTS</em> value to the same number of threads returned by <strong>nproc</strong>.</p>
+<p>A good choice is the smaller of: the number of threads the CPU has, or the total amount of system RAM divided by 2 GiB.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Using a large number of jobs can significantly impact memory consumption. A good recommendation is to have at least 2 GiB of RAM for every job specified (so, e.g. <code>-j6</code> requires at least 12 GiB). To avoid running out of memory, lower the number of jobs to fit the available memory.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>When using parallel emerges (<code>--jobs</code>), the effective number of jobs run can grow exponentially (up to make jobs multiplied by emerge jobs). This can be worked around by running a localhost-only distcc configuration that will limit the number of compiler instances per host.</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/make.confExample MAKEOPTS declaration</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># If left undefined, Portage&#39;s default behavior is to set the MAKEOPTS value to the same number of threads returned by `nproc` </span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">MAKEOPTS</span><span class="o">=</span><span class="s2">&quot;-j4&quot;</span>
+</code></pre></div>
+<p>Search for <em>MAKEOPTS</em> in <strong>man 5 make.conf</strong> for more details.</p>
+<h3 id="ready-set-go">Ready, set, go!</h3>
+<p>Update the /mnt/gentoo/etc/portage/make.conf file to match personal preference and save (nano users would hit <code>Ctrl+o</code> to write the change and then <code>Ctrl+x</code> to quit).</p>
+<p>Then continue with <a href="">Installing the Gentoo base system</a>.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/floviken"  target="_blank" rel="noopener">kaboli</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/floviken" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

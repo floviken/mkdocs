@@ -1,0 +1,1258 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://floviken.github.io/mkdocs/gentoo/working_with_gentoo/01-Portage/">
+      
+      
+        <link rel="prev" href="../../installation/09-Installing%20system%20tools/">
+      
+      
+        <link rel="next" href="../02-Use/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Working with Gentoo - KaboliDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Working with Gentoo - KaboliDocs" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/working_with_gentoo/01-Portage.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://floviken.github.io/mkdocs/gentoo/working_with_gentoo/01-Portage/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Working with Gentoo - KaboliDocs" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/working_with_gentoo/01-Portage.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#working-with-gentoo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KaboliDocs" class="md-header__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KaboliDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Working with Gentoo
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../ssh/" class="md-tabs__link">
+      SSH setup
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Gentoo
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KaboliDocs" class="md-nav__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    KaboliDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ssh/" class="md-nav__link">
+        SSH setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        gentoo handbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/01-About%20the%20Gentoo%20Linux%20Installation/" class="md-nav__link">
+        About the Gentoo Linux Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/010-Configuring%20the%20bootloader/" class="md-nav__link">
+        Configuring the bootloader
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/02-Choosing%20the%20right%20installation%20medium/" class="md-nav__link">
+        Choosing the right installation medium
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/03-Configuring%20the%20network/" class="md-nav__link">
+        Configuring the network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/04-Preparing%20the%20disks/" class="md-nav__link">
+        Preparing the disks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/05-Installing%20the%20Gentoo%20installation%20files/" class="md-nav__link">
+        Installing the Gentoo installation files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/06-Installing%20the%20Gentoo%20base%20system/" class="md-nav__link">
+        Installing the Gentoo base system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/07-Configuring%20the%20linux%20kernel/" class="md-nav__link">
+        Configuring the Linux kernel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/08-Configuring%20the%20system/" class="md-nav__link">
+        Configuring the system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/09-Installing%20system%20tools/" class="md-nav__link">
+        Installing system tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Working with gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Working with gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Working with Gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Working with Gentoo
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#welcome-to-portage" class="md-nav__link">
+    Welcome to Portage
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gentoo-repository" class="md-nav__link">
+    Gentoo repository
+  </a>
+  
+    <nav class="md-nav" aria-label="Gentoo repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ebuilds" class="md-nav__link">
+    Ebuilds
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-the-gentoo-repository" class="md-nav__link">
+    Updating the Gentoo repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#maintaining-software" class="md-nav__link">
+    Maintaining software
+  </a>
+  
+    <nav class="md-nav" aria-label="Maintaining software">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#searching-for-software" class="md-nav__link">
+    Searching for software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installing-software" class="md-nav__link">
+    Installing software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-installed-package-documentation" class="md-nav__link">
+    Finding installed package documentation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-software" class="md-nav__link">
+    Removing software
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-the-system" class="md-nav__link">
+    Updating the system
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#metapackages" class="md-nav__link">
+    Metapackages
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#licenses" class="md-nav__link">
+    Licenses
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-portage-is-complaining" class="md-nav__link">
+    When Portage is complaining
+  </a>
+  
+    <nav class="md-nav" aria-label="When Portage is complaining">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#terminology" class="md-nav__link">
+    Terminology
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blocked-packages" class="md-nav__link">
+    Blocked packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#masked-packages" class="md-nav__link">
+    Masked packages
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#necessary-use-flag-changes" class="md-nav__link">
+    Necessary USE flag changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#missing-dependencies" class="md-nav__link">
+    Missing dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ambiguous-ebuild-name" class="md-nav__link">
+    Ambiguous ebuild name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#circular-dependencies" class="md-nav__link">
+    Circular dependencies
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fetch-failed" class="md-nav__link">
+    Fetch failed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-profile-protection" class="md-nav__link">
+    System profile protection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#digest-verification-failure" class="md-nav__link">
+    Digest verification failure
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Use/" class="md-nav__link">
+        What are USE flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Features/" class="md-nav__link">
+        Portage features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Initscripts/" class="md-nav__link">
+        Runlevels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-EnvVar/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Working with portage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Working with portage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_portage/01-Files/" class="md-nav__link">
+        01 Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="working-with-gentoo">Working with Gentoo</h1>
+<h2 id="welcome-to-portage">Welcome to Portage</h2>
+<p>Portage is one of Gentoo's most notable innovations in software management. With its high flexibility and enormous amount of features it is frequently seen as the best software management tool available for Linux.</p>
+<p>Portage is completely written in <a href="https://www.python.org/">Python</a> and <a href="https://www.gnu.org/software/bash">Bash</a> and therefore fully visible to the users as both are scripting languages.</p>
+<p>Most users will work with Portage through the <strong>emerge</strong> tool. This chapter is not meant to duplicate the information available from the emerge man page. For a complete rundown of emerge's options, please consult the man page:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>user<span class="w"> </span>$<span class="w"> </span>man<span class="w"> </span>emerge
+</code></pre></div>
+<h2 id="gentoo-repository">Gentoo repository</h2>
+<h3 id="ebuilds">Ebuilds</h3>
+<p>When Gentoo's documentation talks about packages, it means software titles that are available to the Gentoo users through the Gentoo repository. This repository is a collection of ebuilds, files that contain all information Portage needs to maintain software (install, search, query, etc.). These ebuilds reside in <code>/var/db/repos/gentoo</code> by default.</p>
+<p>Whenever someone asks Portage to perform some action regarding software titles, it will use the ebuilds on the system as a base. It is therefore important to regularly update the ebuilds on the system so Portage knows about new software, security updates, etc.</p>
+<h3 id="updating-the-gentoo-repository">Updating the Gentoo repository</h3>
+<p>The Gentoo repository is usually updated with <strong>rsync</strong>, a fast incremental file transfer utility. Updating is fairly simple as the <strong>emerge</strong> command provides a front-end for <strong>rsync</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>root<span class="w"> </span><span class="c1"># emerge --sync</span>
+</code></pre></div>
+<p>Sometimes firewall restrictions apply that prevent <strong>rsync</strong> from contacting the mirrors. In this case, update the Gentoo repository through Gentoo's daily generated snapshots. The <strong>emerge-webrsync</strong> tool automatically fetches and installs the latest snapshot on the system:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>root<span class="w"> </span><span class="c1"># emerge-webrsync</span>
+</code></pre></div>
+<p>An additional advantage of using emerge-webrsync is that it allows the administrator to only pull in Gentoo repository snapshots that are signed by the Gentoo release engineering GPG key. More information on this can be found in the Portage features section on <a href="##Portage features">fetching validated Gentoo repository snapshots</a>.</p>
+<h2 id="maintaining-software">Maintaining software</h2>
+<h3 id="searching-for-software">Searching for software</h3>
+<p>There are multiple ways to search through the Gentoo repository for software. One way is through <strong>emerge</strong> itself. By default,  <strong>emerge --search</strong> returns the names of packages whose title matches (either fully or partially) the given search term.</p>
+<p>For instance, to search for all packages who have "pdf" in their name:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>user<span class="w"> </span>$<span class="w"> </span>emerge<span class="w"> </span>--search<span class="w"> </span>pdf
+</code></pre></div>
+<p>To search through the descriptions as well, use the <code>--searchdesc</code> (or <code>-S</code>) option:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>user<span class="w"> </span>$<span class="w"> </span>emerge<span class="w"> </span>--searchdesc<span class="w"> </span>pdf
+</code></pre></div>
+<p>Notice that the output returns a lot of information. The fields are clearly labelled so we won't go further into their meanings:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>CODE<span class="w"> </span>Example<span class="w"> </span>output<span class="w"> </span><span class="k">for</span><span class="w"> </span>a<span class="w"> </span>search<span class="w"> </span><span class="nb">command</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>*<span class="w">  </span>net-print/cups-pdf
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">      </span>Latest<span class="w"> </span>version<span class="w"> </span>available:<span class="w"> </span><span class="m">1</span>.5.2
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">      </span>Latest<span class="w"> </span>version<span class="w"> </span>installed:<span class="w"> </span><span class="o">[</span><span class="w"> </span>Not<span class="w"> </span>Installed<span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">      </span>Size<span class="w"> </span>of<span class="w"> </span>downloaded<span class="w"> </span>files:<span class="w"> </span><span class="m">15</span><span class="w"> </span>kB
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">      </span>Homepage:<span class="w">    </span>http://cip.physik.uni-wuerzburg.de/~vrbehr/cups-pdf/
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">      </span>Description:<span class="w"> </span>Provides<span class="w"> </span>a<span class="w"> </span>virtual<span class="w"> </span>printer<span class="w"> </span><span class="k">for</span><span class="w"> </span>CUPS<span class="w"> </span>to<span class="w"> </span>produce<span class="w"> </span>PDF<span class="w"> </span>files.
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">      </span>License:<span class="w">     </span>GPL-2
+</code></pre></div>
+<h3 id="installing-software">Installing software</h3>
+<p>When a software title has been found, then the installation is just one <strong>emerge</strong> command away. For instance, to install gnumeric:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>root<span class="w"> </span><span class="c1"># emerge --ask app-office/gnumeric</span>
+</code></pre></div>
+<p>Since many applications depend on each other, any attempt to install a certain software package might result in the installation of several dependencies as well. Don't worry, Portage handles dependencies well. To find out what Portage would install, add the <code>--pretend</code> option. For instance:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>root<span class="w"> </span><span class="c1"># emerge --pretend gnumeric</span>
+</code></pre></div>
+To do the same, but interactively choose whether or not to proceed with the installation, add the <code>--ask</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>root<span class="w"> </span><span class="c1"># emerge --ask gnumeric</span>
+</code></pre></div>
+<p>During the installation of a package, Portage will download the necessary source code from the Internet (if necessary) and store it by default in <code>/var/cache/distfiles/</code>. After this it will unpack, compile and install the package. To tell Portage to only download the sources without installing them, add the <code>--fetchonly</code> option to the emerge command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>root<span class="w"> </span><span class="c1"># emerge --fetchonly gnumeric</span>
+</code></pre></div>
+<h3 id="finding-installed-package-documentation">Finding installed package documentation</h3>
+<p>Many packages come with their own documentation. Sometimes, the doc USE flag determines whether the package documentation should   be installed or not. To see if the doc USE flag is used by a package, use <strong>emerge -vp category/package</strong>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>root<span class="w"> </span><span class="c1"># emerge -vp media-libs/alsa-lib</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>These<span class="w"> </span>are<span class="w"> </span>the<span class="w"> </span>packages<span class="w"> </span>that<span class="w"> </span>would<span class="w"> </span>be<span class="w"> </span>merged,<span class="w"> </span><span class="k">in</span><span class="w"> </span>order:
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>Calculating<span class="w"> </span>dependencies...<span class="w"> </span><span class="k">done</span>!
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="o">[</span>ebuild<span class="w">   </span>R<span class="w">    </span><span class="o">]</span><span class="w"> </span>media-libs/alsa-lib-1.1.3::gentoo<span class="w">  </span><span class="nv">USE</span><span class="o">=</span><span class="s2">&quot;python -alisp -debug -doc&quot;</span><span class="w"> </span><span class="nv">ABI_X86</span><span class="o">=</span><span class="s2">&quot;(64) -32 (-x32)&quot;</span><span class="w"> </span><span class="nv">PYTHON_TARGETS</span><span class="o">=</span><span class="s2">&quot;python2_7&quot;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>KiB
+</code></pre></div>
+<p>The best way of enabling the <code>doc</code> USE flag is doing it on a per-package basis via <code>/etc/portage/package.use</code>, so that only the documentation for the wanted packages is installed. For more information read the <a href="/docs/gentoo/working/02-useflags.md">USE flags</a> section.</p>
+<p>Once the package installed, its documentation is generally found in a subdirectory named after the package in the <code>/usr/share/doc/</code> directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>user<span class="w"> </span>$<span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/usr/share/doc/alsa-lib-1.1.3
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>total<span class="w"> </span><span class="m">16</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">3098</span><span class="w"> </span>Mar<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>:36<span class="w"> </span>asoundrc.txt.bz2
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">672</span><span class="w"> </span>Mar<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>:36<span class="w"> </span>ChangeLog.bz2
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w"> </span><span class="m">1083</span><span class="w"> </span>Mar<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>:36<span class="w"> </span>NOTES.bz2
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>root<span class="w">  </span><span class="m">220</span><span class="w"> </span>Mar<span class="w">  </span><span class="m">9</span><span class="w"> </span><span class="m">15</span>:36<span class="w"> </span>TODO.bz2
+</code></pre></div>
+<p>A more sure way to list installed documentation files is to use <strong>equery</strong>'s <code>--filter</code> option. <strong>equery</strong> is used to query Portage's database and comes as part of the <a href="https://packages.gentoo.org/packages/app-portage/gentoolkit">app-portage/gentoolkit</a> package:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>user<span class="w"> </span>$<span class="w"> </span>equery<span class="w"> </span>files<span class="w"> </span>--filter<span class="o">=</span>doc<span class="w"> </span>alsa-lib
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w"> </span>*<span class="w"> </span>Searching<span class="w"> </span><span class="k">for</span><span class="w"> </span>alsa-lib<span class="w"> </span><span class="k">in</span><span class="w"> </span>media-libs<span class="w"> </span>...
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w"> </span>*<span class="w"> </span>Contents<span class="w"> </span>of<span class="w"> </span>media-libs/alsa-lib-1.1.3:
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>/usr/share/doc/alsa-lib-1.1.3/ChangeLog.bz2
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>/usr/share/doc/alsa-lib-1.1.3/NOTES.bz2
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>/usr/share/doc/alsa-lib-1.1.3/TODO.bz2
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>/usr/share/doc/alsa-lib-1.1.3/asoundrc.txt.bz2
+</code></pre></div>
+<p>The <code>--filter</code> option can be used with other rules to view the install locations for many other types of files. Additional functionality can be reviewed in equery's man page: <strong>man 1 equery</strong>.</p>
+<h3 id="removing-software">Removing software</h3>
+<p>To safely remove software from a system, use <code>emerge --deselect</code>. This will tell Portage a package is no longer required and it is eligible for cleaning through <code>--depclean</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>root<span class="w"> </span><span class="c1">#emerge --deselect gnumeric</span>
+</code></pre></div>
+<p>When a package is no longer selected, the package and its dependencies that were installed automatically when it was installed are still left on the system. To have Portage locate all dependencies that can now be removed, use <strong>emerge</strong>'s <code>--depclean</code> functionality, which is documented later.</p>
+<h3 id="updating-the-system">Updating the system</h3>
+<p>To keep the system in perfect shape (and not to mention install the latest security updates) it is necessary to update the system regularly. Since Portage only checks the ebuilds in the Gentoo repository, the first thing to do is to update this repository using <code>emerge --sync</code>. Then the system can be updated using <code>emerge --deep --update @world</code>.</p>
+<p>Portage will, with <code>--deep</code>, search for newer version of the applications that are installed. Without <code>--deep</code>, it will only verify the versions for the applications that are explicitly installed (the applications listed in <code>/var/lib/portage/world</code>) - it does not thoroughly check their dependencies. This option should almost always therefore be used:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>root<span class="w"> </span><span class="c1"># emerge --update --deep @world</span>
+</code></pre></div>
+<p>The standard upgrade command should include <code>--changed-use</code> or <code>--newuse</code> because of possible changes within the repository's profiles, or if the USE settings of the system have been altered. Portage will then verify if the change requires the installation of new packages or recompilation of existing ones:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>root<span class="w"> </span><span class="c1">#emerge --update --deep --newuse @world</span>
+</code></pre></div>
+<h3 id="metapackages">Metapackages</h3>
+<p>Some packages in the Gentoo repository don't have any real content but are used to install a collection of packages. For instance, the <a href="https://packages.gentoo.org/packages/kde-plasma/plasma-meta">kde-plasma/plasma-meta</a> package will install the KDE Plasma desktop on the system by pulling in various Plasma-related packages as dependencies.</p>
+<p>To remove such a package from the system, running <strong>emerge --deselect</strong> on the package will not have much effect since the dependencies for the package remain on the system.</p>
+<p>Portage has the functionality to remove orphaned dependencies as well, but since the availability of software is dynamically dependent it is important to first update the entire system fully, including the new changes applied when changing USE flags. After this one can run <strong>emerge --depclean</strong> to remove the orphaned dependencies. When this is done, it might be necessary to rebuild the applications that were dynamically linked to the now-removed software titles but don't require them anymore, although recently support for this has been added to Portage.</p>
+<p>All this is handled with the following two commands:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>root<span class="w"> </span><span class="c1"># emerge --update --deep --newuse @world</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>root<span class="w"> </span><span class="c1"># emerge --ask --depclean</span>
+</code></pre></div>
+<h2 id="licenses">Licenses</h2>
+<p>Beginning with Portage version 2.1.7, it is possible to accept or reject software installation based on its license. All packages in the tree contain a <em>LICENSE</em> entry in their ebuilds. Running <strong>emerge --search category/package</strong> will show the package's license.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>As a disclaimer and limitation of liability, the LICENSE variable in an ebuild is merely a guideline for Gentoo developers and users. It is <span class="ge">*not*</span> a legal statement or a guarantee that it will reflect the license of every file installed by an ebuild. It should not be relied upon for a completely accurate legal representation of all files provided by a package. To gain assurance, system administrators should perform an in-depth check of each file installed by a package for proper licensing alignment and/or compliance. If a discrepancies is found in the ebuild, please file a bug to suggest a change to the value(s) assigned to the ebuild&#39;s LICENSE variable.
+</code></pre></div>
+<p>By default, Portage permits licenses that are explicitly approved by the <a href="https://www.gnu.org/licenses/license-list.html">Free Software Foundation</a>, the <a href="https://opensource.org/licenses">Open Source Initiative</a>, or that follow the <a href="https://www.gnu.org/philosophy/free-sw.html">Free Software Definition</a>.</p>
+<p>The variable that controls permitted licenses is called <em>ACCEPT_LICENSE</em>, which can be set in the <code>/etc/portage/make.conf</code> file. In the next example, this default value is shown:</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/make.conf  The default ACCEPT_LICENSE setting</span><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">ACCEPT_LICENSE</span><span class="o">=</span><span class="s2">&quot;-* @FREE&quot;</span>
+</code></pre></div>
+<p>With this configuration, packages with a free software or documentation license will be installable. Non-free software will not be installable.</p>
+<p>It is possible to set <em>ACCEPT_LICENSE</em> globally in /etc/portage/make.conf, or to specify it on a per-package basis in the /etc/portage/package.license file.</p>
+<p>For example, to allow the google-chrome license for the www-client/google-chrome package, add the following to /etc/portage/package.license:</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/package.license  Accepting the google-chrome license for the google-chrome package</span><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>www-client/google-chrome<span class="w"> </span>google-chrome
+</code></pre></div>
+<p>This permits the installation of the www-client/google-chrome package, but prohibits the installation of the www-plugins/chrome-binary-plugins package, even though it has the same license.</p>
+<p>Or to allow the often-needed sys-kernel/linux-firmware:</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/package.licenseAccepting the licenses for the linux-firmware package</span><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># Accepting the license for linux-firmware</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>sys-kernel/linux-firmware<span class="w"> </span>linux-fw-redistributable
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="c1"># Accepting any license that permits redistribution</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>sys-kernel/linux-firmware<span class="w"> </span>@BINARY-REDISTRIBUTABLE
+</code></pre></div>
+<div class="highlight"><span class="filename">Important</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>Licenses are stored in /var/db/repos/gentoo/licenses/ directory, and license groups are kept in /var/db/repos/gentoo/profiles/license_groups file. The first entry of each line in CAPITAL letters is the name of the license group, and every entry after that is an individual license.
+</code></pre></div>
+<p>License groups defined in the <em>ACCEPT_LICENSE</em> variable are prefixed with an @ sign. A possible setting (which was the previous Portage default) is to allow all licenses, except End User License Agreements (EULAs) that require reading and signing an acceptance agreement. To accomplish this, accept all licenses (using *) and then remove the licenses in the EULA group as follows:</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/make.confAccept all licenses except EULAs</span><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ACCEPT_LICENSE=&quot;* -@EULA&quot;
+</code></pre></div>
+<p>Note that this setting will also accept non-free software and documentation.</p>
+<h2 id="when-portage-is-complaining">When Portage is complaining</h2>
+<h3 id="terminology">Terminology</h3>
+<p>As stated before, Portage is extremely powerful and supports many features that other software management tools lack. To understand this, we explain a few aspects of Portage without going into too much detail.</p>
+<p>With Portage different versions of a single package can coexist on a system. While other distributions tend to name their package to those versions (like gtk+2 and gtk+3) Portage uses a technology called <em>SLOT</em>s. An ebuild declares a certain SLOT for its version. Ebuilds with different SLOTs can coexist on the same system. For instance, the gtk+ package has ebuilds with SLOT="2" and SLOT="3".</p>
+<p>There are also packages that provide the same functionality but are implemented differently. For instance, metalogd, sysklogd, and syslog-ng are all system loggers. Applications that rely on the availability of "a system logger" cannot depend on, for instance, metalogd, as the other system loggers are as good a choice as any. Portage allows for virtuals: each system logger is listed as an "exclusive" dependency of the logging service in the logger virtual package of the virtual category, so that applications can depend on the <a href="https://packages.gentoo.org/packages/virtual/logger">virtual/logger</a> package. When installed, the package will pull in the first logging package mentioned in the package, unless a logging package was already installed (in which case the virtual is satisfied).</p>
+<p>Software in the Gentoo repository can reside in different branches. By default the system only accepts packages that Gentoo deems stable. Most new software titles, when committed, are added to the testing branch, meaning more testing needs to be done before it is marked as stable. Although the ebuilds for those software are in the Gentoo repository, Portage will not update them before they are placed in the stable branch.</p>
+<p>Some software is only available for a few architectures. Or the software doesn't work on the other architectures, or it needs more testing, or the developer that committed the software to the Gentoo repository is unable to verify if the package works on different architectures.</p>
+<p>Each Gentoo installation also adheres to a certain profile which contains, amongst other information, the list of packages that are required for a system to function normally.</p>
+<h3 id="blocked-packages">Blocked packages</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about blocked packages</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>[ebuild  N     ] x11-wm/i3-4.20.1  USE=&quot;-doc -test&quot;
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>[blocks B      ] x11-wm/i3 (&quot;x11-wm/i3&quot; is soft blocking x11-wm/i3-gaps-4.20.1)
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a> * Error: The above package list contains packages which cannot be
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a> * installed at the same time on the same system.
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>  (x11-wm/i3-4.20.1:0/0::gentoo, ebuild scheduled for merge) pulled in by
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>    x11-wm/i3
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>  (x11-wm/i3-gaps-4.20.1-1:0/0::gentoo, installed) pulled in by
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>    x11-wm/i3-gaps required by @selected
+</code></pre></div>
+<p>Ebuilds contain specific fields that inform Portage about its dependencies. There are two possible dependencies: build dependencies, declared in the <em>DEPEND</em> variable and run-time dependencies, likewise declared in <em>RDEPEND</em>. When one of these dependencies explicitly marks a package or virtual as being not compatible, it triggers a blockage.</p>
+<p>While recent versions of Portage are smart enough to work around minor blockages without user intervention, occasionally such blockages need to be resolved manually.</p>
+<p>To fix a blockage, users can choose to not install the package or unmerge the conflicting package first. In the given example, one can opt not to install x11-wm/i3 or to remove x11-wm/i3-gaps first. It is usually best to simply tell Portage the package is no longer desired, with <strong>emerge --deselect x11-wm/i3-gaps</strong>, for example, to remove it from the world file rather than removing the package itself forcefully.</p>
+<p>Sometimes there are also blocking packages with specific atoms, such as <code>&lt;media-video/mplayer-1.0_rc1-r2</code>. In this case, updating to a more recent version of the blocking package could remove the block.</p>
+<p>It is also possible that two packages that are yet to be installed are blocking each other. In this rare case, try to find out why both would need to be installed. In most cases it is sufficient to do with one of the packages alone. If not, please file a bug on <a href="https://bugs.gentoo.org/">Gentoo's bug tracking system</a>.</p>
+<h3 id="masked-packages">Masked packages</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about masked packages</span><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>!!! all ebuilds that could satisfy &quot;bootsplash&quot; have been masked.
+</code></pre></div>
+<div class="highlight"><span class="filename">CODE Portage warning about masked packages - reason</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>!!! possible candidates are:
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>- gnome-base/gnome-2.8.0_pre1 (masked by: ~x86 keyword)
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a>- lm-sensors/lm-sensors-2.8.7 (masked by: -sparc keyword)
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>- sys-libs/glibc-2.3.4.20040808 (masked by: -* keyword)
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>- dev-util/cvsd-1.0.2 (masked by: missing keyword)
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a>- games-fps/unreal-tournament-451 (masked by: package.mask)
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>- sys-libs/glibc-2.3.2-r11 (masked by: profile)
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>- net-im/skype-2.1.0.81 (masked by: skype-eula license(s))
+</code></pre></div>
+<p>When trying to install a package that isn't available for the system, this masking error occurs. Users should try installing a different application that is available for the system or wait until the package is marked as available. There is always a reason why a package is masked:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Reason for mask</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">~arch keyword</td>
+<td>The application is not tested sufficiently to be put in the stable branch. Wait a few days or weeks and try again.</td>
+</tr>
+<tr>
+<td style="text-align: left;">-arch keyword or -* keyword</td>
+<td>The application does not work on the target architecture. If this is not the case, then please file a bug.</td>
+</tr>
+<tr>
+<td style="text-align: left;">missing keyword</td>
+<td>The application has not yet been tested on the target architecture. Ask the architecture porting team to test the package or test it for them and report the findings on Gentoo's Bugzilla website. See /etc/portage/package.accept_keywords and Accepting a keyword for a single package.</td>
+</tr>
+<tr>
+<td style="text-align: left;">package.mask</td>
+<td>The package has been found corrupt, unstable or worse and has been deliberately marked as do-not-use.</td>
+</tr>
+<tr>
+<td style="text-align: left;">profile</td>
+<td>The package has been found not suitable for the current profile. The application might break the system if it is installed or is just not compatible with the profile currently in use.</td>
+</tr>
+<tr>
+<td style="text-align: left;">license</td>
+<td>The package's license is not compatible with the ACCEPT_LICENSE value. Permit its license or the right license group by setting it in /etc/portage/make.conf or in /etc/portage/package.license.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="necessary-use-flag-changes">Necessary USE flag changes</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about USE flag change requirement</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>The following USE changes are necessary to proceed:
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>#required by app-text/happypackage-2.0, required by happypackage (argument)
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>&gt;=app-text/feelings-1.0.0 test```
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>The error message might also be displayed as follows, if `--autounmask` isn&#39;t set:
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>```title=&quot;CODE Portage error about USE flag change requirement
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>emerge: there are no ebuilds built with USE flags to satisfy &quot;app-text/feelings[test]&quot;.
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>!!! One of the following packages is required to complete your request:
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>- app-text/feelings-1.0.0 (Change USE: +test)
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>(dependency required by &quot;app-text/happypackage-2.0&quot; [ebuild])
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>(dependency required by &quot;happypackage&quot; [argument])
+</code></pre></div>
+<p>Such warning or error occurs when a package is requested for installation which not only depends on another package, but also requires that that package is built with a particular USE flag (or set of USE flags). In the given example, the package app-text/feelings needs to be built with USE="test", but this USE flag is not set on the system.</p>
+<p>To resolve this, either add the requested USE flag to the global USE flags in /etc/portage/make.conf, or set it for the specific package in /etc/portage/package.use.</p>
+<h3 id="missing-dependencies">Missing dependencies</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about missing dependency</span><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>emerge:<span class="w"> </span>there<span class="w"> </span>are<span class="w"> </span>no<span class="w"> </span>ebuilds<span class="w"> </span>to<span class="w"> </span>satisfy<span class="w"> </span><span class="s2">&quot;&gt;=sys-devel/gcc-3.4.2-r4&quot;</span>.
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>!!!<span class="w"> </span>Problem<span class="w"> </span>with<span class="w"> </span>ebuild<span class="w"> </span>sys-devel/gcc-3.4.2-r2
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>!!!<span class="w"> </span>Possibly<span class="w"> </span>a<span class="w"> </span>DEPEND/*DEPEND<span class="w"> </span>problem.
+</code></pre></div>
+<p>The application to install depends on another package that is not available for the system. Please check Bugzilla if the issue is known and if not, please report it. Unless the system is configured to mix branches, this should not occur and is therefore a bug.</p>
+<h3 id="ambiguous-ebuild-name">Ambiguous ebuild name</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about ambiguous ebuild names</span><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="o">[</span><span class="w"> </span>Results<span class="w"> </span><span class="k">for</span><span class="w"> </span>search<span class="w"> </span>key<span class="w"> </span>:<span class="w"> </span>listen<span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="o">[</span><span class="w"> </span>Applications<span class="w"> </span>found<span class="w"> </span>:<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>*<span class="w">  </span>dev-tinyos/listen<span class="w"> </span><span class="o">[</span><span class="w"> </span>Masked<span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">      </span>Latest<span class="w"> </span>version<span class="w"> </span>available:<span class="w"> </span><span class="m">1</span>.1.15
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">      </span>Latest<span class="w"> </span>version<span class="w"> </span>installed:<span class="w"> </span><span class="o">[</span><span class="w"> </span>Not<span class="w"> </span>Installed<span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">      </span>Size<span class="w"> </span>of<span class="w"> </span>files:<span class="w"> </span><span class="m">10</span>,032<span class="w"> </span>kB
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a><span class="w">      </span>Homepage:<span class="w">      </span>http://www.tinyos.net/
+<a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="w">      </span>Description:<span class="w">   </span>Raw<span class="w"> </span>listen<span class="w"> </span><span class="k">for</span><span class="w"> </span>TinyOS
+<a id="__codelineno-28-10" name="__codelineno-28-10" href="#__codelineno-28-10"></a><span class="w">      </span>License:<span class="w">       </span>BSD
+<a id="__codelineno-28-11" name="__codelineno-28-11" href="#__codelineno-28-11"></a>
+<a id="__codelineno-28-12" name="__codelineno-28-12" href="#__codelineno-28-12"></a>*<span class="w">  </span>media-sound/listen<span class="w"> </span><span class="o">[</span><span class="w"> </span>Masked<span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-28-13" name="__codelineno-28-13" href="#__codelineno-28-13"></a><span class="w">      </span>Latest<span class="w"> </span>version<span class="w"> </span>available:<span class="w"> </span><span class="m">0</span>.6.3
+<a id="__codelineno-28-14" name="__codelineno-28-14" href="#__codelineno-28-14"></a><span class="w">      </span>Latest<span class="w"> </span>version<span class="w"> </span>installed:<span class="w"> </span><span class="o">[</span><span class="w"> </span>Not<span class="w"> </span>Installed<span class="w"> </span><span class="o">]</span>
+<a id="__codelineno-28-15" name="__codelineno-28-15" href="#__codelineno-28-15"></a><span class="w">      </span>Size<span class="w"> </span>of<span class="w"> </span>files:<span class="w"> </span><span class="m">859</span><span class="w"> </span>kB
+<a id="__codelineno-28-16" name="__codelineno-28-16" href="#__codelineno-28-16"></a><span class="w">      </span>Homepage:<span class="w">      </span>http://www.listen-project.org
+<a id="__codelineno-28-17" name="__codelineno-28-17" href="#__codelineno-28-17"></a><span class="w">      </span>Description:<span class="w">   </span>A<span class="w"> </span>Music<span class="w"> </span>player<span class="w"> </span>and<span class="w"> </span>management<span class="w"> </span><span class="k">for</span><span class="w"> </span>GNOME
+<a id="__codelineno-28-18" name="__codelineno-28-18" href="#__codelineno-28-18"></a><span class="w">      </span>License:<span class="w">       </span>GPL-2
+<a id="__codelineno-28-19" name="__codelineno-28-19" href="#__codelineno-28-19"></a>
+<a id="__codelineno-28-20" name="__codelineno-28-20" href="#__codelineno-28-20"></a>!!!<span class="w"> </span>The<span class="w"> </span>short<span class="w"> </span>ebuild<span class="w"> </span>name<span class="w"> </span><span class="s2">&quot;listen&quot;</span><span class="w"> </span>is<span class="w"> </span>ambiguous.<span class="w"> </span>Please<span class="w"> </span>specify
+<a id="__codelineno-28-21" name="__codelineno-28-21" href="#__codelineno-28-21"></a>!!!<span class="w"> </span>one<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>above<span class="w"> </span>fully-qualified<span class="w"> </span>ebuild<span class="w"> </span>names<span class="w"> </span>instead.
+</code></pre></div>
+<p>The application that is selected for installation has a name that corresponds with more than one package. Supply the category name as well to resolve this. Portage will inform the user about possible matches to choose from.</p>
+<h3 id="circular-dependencies">Circular dependencies</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about circular dependencies</span><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>!!!<span class="w"> </span>Error:<span class="w"> </span>circular<span class="w"> </span>dependencies:<span class="w"> </span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>ebuild<span class="w"> </span>/<span class="w"> </span>net-print/cups-1.1.15-r2<span class="w"> </span>depends<span class="w"> </span>on<span class="w"> </span>ebuild<span class="w"> </span>/<span class="w"> </span>app-text/ghostscript-7.05.3-r1
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>ebuild<span class="w"> </span>/<span class="w"> </span>app-text/ghostscript-7.05.3-r1<span class="w"> </span>depends<span class="w"> </span>on<span class="w"> </span>ebuild<span class="w"> </span>/<span class="w"> </span>net-print/cups-1.1.15-r2
+</code></pre></div>
+<p>Two (or more) packages to install depend on each other and can therefore not be installed. This is most likely a bug in one of the packages in the Gentoo repository. Please re-sync after a while and try again. It might also be beneficial to check <a href="https://bugs.gentoo.org/">Bugzilla</a> to see if the issue is known and if not, report it.</p>
+<h3 id="fetch-failed">Fetch failed</h3>
+<div class="highlight"><span class="filename">CODE Portage warning about fetch failed</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>!!!<span class="w"> </span>Fetch<span class="w"> </span>failed<span class="w"> </span><span class="k">for</span><span class="w"> </span>sys-libs/ncurses-5.4-r5,<span class="w"> </span>continuing...
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="o">(</span>...<span class="o">)</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>!!!<span class="w"> </span>Some<span class="w"> </span>fetch<span class="w"> </span>errors<span class="w"> </span>were<span class="w"> </span>encountered.<span class="w">  </span>Please<span class="w"> </span>see<span class="w"> </span>above<span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
+</code></pre></div>
+<p>Portage was unable to download the sources for the given application and will try to continue installing the other applications (if applicable). This failure can be due to a mirror that has not synchronized correctly or because the ebuild points to an incorrect location. The server where the sources reside can also be down for some reason.</p>
+<p>Retry after one hour to see if the issue still persists.</p>
+<h3 id="system-profile-protection">System profile protection</h3>
+<p><div class="highlight"><span class="filename">CODE Portage warning about profile-protected package</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>!!!<span class="w"> </span>Trying<span class="w"> </span>to<span class="w"> </span>unmerge<span class="w"> </span>package<span class="o">(</span>s<span class="o">)</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>system<span class="w"> </span>profile.<span class="w"> </span><span class="s1">&#39;sys-apps/portage&#39;</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>!!!<span class="w"> </span>This<span class="w"> </span>could<span class="w"> </span>be<span class="w"> </span>damaging<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>system.
+</code></pre></div>
+The user has asked to remove a package that is part of the system's core packages. It is listed in the profile as required and should therefore not be removed from the system.</p>
+<h3 id="digest-verification-failure">Digest verification failure</h3>
+<div class="highlight"><span class="filename">CODE Digest verification failure</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>&gt;&gt;&gt;<span class="w"> </span>checking<span class="w"> </span>ebuild<span class="w"> </span>checksums
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>!!!<span class="w"> </span>Digest<span class="w"> </span>verification<span class="w"> </span>failed:
+</code></pre></div>
+<p>This is a sign that something is wrong with the Gentoo repository - often, caused by a mistake made when committing an ebuild to the Gentoo ebuild repository.</p>
+<p>When the digest verification fails, do not try to re-digest the package personally. Running <strong>ebuild foo manifest</strong> will not fix the problem; it quite possibly could make it worse.</p>
+<p>Instead, wait an hour or two for the repository to settle down. It is likely that the error was noticed right away, but it can take a little time for the fix to trickle down the rsync mirrors. Check <a href="https://bugs.gentoo.org/">Bugzilla</a> and see if anyone has reported the problem yet or ask around on <a href="ircs://irc.libera.chat/#gentoo">#gentoo </a> <a href="https://web.libera.chat/#gentoo">(webchat)</a> (IRC). If not, go ahead and file a bug for the broken ebuild.</p>
+<p>Once the bug has been fixed, re-sync the Gentoo ebuild repository to pick up the fixed digest.</p>
+<div class="highlight"><span class="filename">Important</span><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>Be careful to not sync the Gentoo ebuild repository more than once a day. As stated in the official Gentoo netiquette policy (as well as when running emerge --sync), users who sync too often will be soft-banned from additional syncs for a time. Abusers who repeatedly fail to follow this policy may be hard-banned. Unless absolutely necessary it is often best to wait for a 24 hours period to sync so that re-synchronization does not overload Gentoo&#39;s rsync mirrors.
+</code></pre></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/floviken"  target="_blank" rel="noopener">kaboli</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/floviken" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

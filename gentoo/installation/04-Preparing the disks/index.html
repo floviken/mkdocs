@@ -1,0 +1,1537 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://floviken.github.io/mkdocs/gentoo/installation/04-Preparing%20the%20disks/">
+      
+      
+        <link rel="prev" href="../03-Configuring%20the%20network/">
+      
+      
+        <link rel="next" href="../05-Installing%20the%20Gentoo%20installation%20files/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Preparing the disks - KaboliDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Preparing the disks - KaboliDocs" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/installation/04-Preparing the disks.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://floviken.github.io/mkdocs/gentoo/installation/04-Preparing%20the%20disks/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Preparing the disks - KaboliDocs" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/installation/04-Preparing the disks.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#preparing-the-disks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KaboliDocs" class="md-header__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KaboliDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Preparing the disks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../ssh/" class="md-tabs__link">
+      SSH setup
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Gentoo
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KaboliDocs" class="md-nav__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    KaboliDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ssh/" class="md-nav__link">
+        SSH setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        gentoo handbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-About%20the%20Gentoo%20Linux%20Installation/" class="md-nav__link">
+        About the Gentoo Linux Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../010-Configuring%20the%20bootloader/" class="md-nav__link">
+        Configuring the bootloader
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Choosing%20the%20right%20installation%20medium/" class="md-nav__link">
+        Choosing the right installation medium
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Configuring%20the%20network/" class="md-nav__link">
+        Configuring the network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Preparing the disks
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Preparing the disks
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-to-block-devices" class="md-nav__link">
+    Introduction to block devices
+  </a>
+  
+    <nav class="md-nav" aria-label="Introduction to block devices">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#block-devices" class="md-nav__link">
+    Block devices
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#partition-tables" class="md-nav__link">
+    Partition tables
+  </a>
+  
+    <nav class="md-nav" aria-label="Partition tables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#guid-partition-table-gpt" class="md-nav__link">
+    GUID Partition Table (GPT)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#master-boot-record-mbr-or-dos-boot-sector" class="md-nav__link">
+    Master boot record (MBR) or DOS boot sector
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#advanced-storage" class="md-nav__link">
+    Advanced storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#default-partitioning-scheme" class="md-nav__link">
+    Default partitioning scheme
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#designing-a-partition-scheme" class="md-nav__link">
+    Designing a partition scheme
+  </a>
+  
+    <nav class="md-nav" aria-label="Designing a partition scheme">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-many-partitions-and-how-big" class="md-nav__link">
+    How many partitions and how big?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-about-swap-space" class="md-nav__link">
+    What about swap space?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-efi-system-partition-esp" class="md-nav__link">
+    What is the EFI System Partition (ESP)?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-is-the-bios-boot-partition" class="md-nav__link">
+    What is the BIOS boot partition?
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partitioning-the-disk-with-gpt-for-uefi" class="md-nav__link">
+    Partitioning the disk with GPT for UEFI
+  </a>
+  
+    <nav class="md-nav" aria-label="Partitioning the disk with GPT for UEFI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-current-partition-layout" class="md-nav__link">
+    Viewing the current partition layout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-disklabel-removing-all-partitions" class="md-nav__link">
+    Creating a new disklabel / removing all partitions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-efi-system-partition-esp" class="md-nav__link">
+    Creating the EFI system partition (ESP)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-swap-partition" class="md-nav__link">
+    Creating the swap partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-root-partition" class="md-nav__link">
+    Creating the root partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saving-the-partition-layout" class="md-nav__link">
+    Saving the partition layout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#partitioning-the-disk-with-mbr-for-bios-legacy-boot" class="md-nav__link">
+    Partitioning the disk with MBR for BIOS / legacy boot
+  </a>
+  
+    <nav class="md-nav" aria-label="Partitioning the disk with MBR for BIOS / legacy boot">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-the-current-partition-layout_1" class="md-nav__link">
+    Viewing the current partition layout
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-disklabel-removing-all-partitions_1" class="md-nav__link">
+    Creating a new disklabel / removing all partitions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-boot-partition" class="md-nav__link">
+    Creating the boot partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-swap-partition_1" class="md-nav__link">
+    Creating the swap partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-the-root-partition_1" class="md-nav__link">
+    Creating the root partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#saving-the-partition-layout_1" class="md-nav__link">
+    Saving the partition layout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-file-systems" class="md-nav__link">
+    Creating file systems
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating file systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filesystems" class="md-nav__link">
+    Filesystems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applying-a-filesystem-to-a-partition" class="md-nav__link">
+    Applying a filesystem to a partition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activating-the-swap-partition" class="md-nav__link">
+    Activating the swap partition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mounting-the-root-partition" class="md-nav__link">
+    Mounting the root partition
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Installing%20the%20Gentoo%20installation%20files/" class="md-nav__link">
+        Installing the Gentoo installation files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-Installing%20the%20Gentoo%20base%20system/" class="md-nav__link">
+        Installing the Gentoo base system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-Configuring%20the%20linux%20kernel/" class="md-nav__link">
+        Configuring the Linux kernel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Configuring%20the%20system/" class="md-nav__link">
+        Configuring the system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Installing%20system%20tools/" class="md-nav__link">
+        Installing system tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Working with gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Working with gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/01-Portage/" class="md-nav__link">
+        Working with Gentoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/02-Use/" class="md-nav__link">
+        What are USE flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/03-Features/" class="md-nav__link">
+        Portage features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/04-Initscripts/" class="md-nav__link">
+        Runlevels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/05-EnvVar/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Working with portage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Working with portage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_portage/01-Files/" class="md-nav__link">
+        01 Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="preparing-the-disks">Preparing the disks</h1>
+<h2 id="introduction-to-block-devices">Introduction to block devices</h2>
+<h3 id="block-devices">Block devices</h3>
+<p>Let's take a good look at disk-oriented aspects of Gentoo Linux and Linux in general, including block devices, partitions, and Linux filesystems. Once the ins and outs of disks are understood, partitions and filesystems can be established for installation.</p>
+<p>To begin, let's look at block devices. SCSI and Serial ATA drives are both labeled under device handles such as: /dev/sda, /dev/sdb, /dev/sdc, etc. On more modern machines, PCI Express based NVMe solid state disks have device handles such as /dev/nvme0n1, /dev/nvme0n2, etc.</p>
+<p>The following table will help readers determine where to find a certain type of block device on the system:</p>
+<table>
+<thead>
+<tr>
+<th>Type of device</th>
+<th>Default device handle</th>
+<th>Editorial notes and considerations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SATA, SAS, SCSI, or USB flash</td>
+<td>/dev/sda</td>
+<td>Found on hardware from roughly 2007 until the present, this device handle is perhaps the most commonly used in Linux. These types of devices can be connected via the SATA bus, SCSI, USB bus as block storage. As example, the first partition on the first SATA device is called /dev/sda1.</td>
+</tr>
+<tr>
+<td>NVM Express (NVMe)</td>
+<td>/dev/nvme0n1</td>
+<td>The latest in solid state technology, NVMe drives are connected to the PCI Express bus and have the fastest transfer block speeds on the market. Systems from around 2014 and newer may have support for NVMe hardware. The first partition on the first NVMe device is called /dev/nvme0n1p1.</td>
+</tr>
+<tr>
+<td>MMC, eMMC, and SD</td>
+<td>/dev/mmcblk0</td>
+<td>embedded MMC devices, SD cards, and other types of memory cards can be useful for data storage. That said, many systems may not permit booting from these types of devices. It is suggested to not use these devices for active Linux installations; rather consider using them to transfer files, which is their design goal. Alternatively they could be useful for short-term backups.</td>
+</tr>
+</tbody>
+</table>
+<p>The block devices above represent an abstract interface to the disk. User programs can use these block devices to interact with the disk without worrying about whether the drives are SATA, SCSI, or something else. The program can simply address the storage on the disk as a bunch of contiguous, randomly-accessible 4096-byte (4K) blocks.</p>
+<h3 id="partition-tables">Partition tables</h3>
+<p>Although it is theoretically possible to use a raw, unpartitioned disk to house a Linux system (when creating a btrfs RAID for example), this is almost never done in practice. Instead, disk block devices are split up into smaller, more manageable block devices. On <strong>amd64</strong> systems, these are called partitions. There are currently two standard partitioning technologies in use: MBR (sometimes also called DOS disklabel) and GPT; these are tied to the two boot process types: legacy BIOS boot and UEFI.</p>
+<h4 id="guid-partition-table-gpt">GUID Partition Table (GPT)</h4>
+<p>The GUID Partition Table (GPT) setup (also called GPT disklabel) uses 64-bit identifiers for the partitions. The location in which it stores the partition information is much bigger than the 512 bytes of the MBR partition table (DOS disklabel), which means there is practically no limit on the amount of partitions for a GPT disk. Also the size of a partition is bounded by a much greater limit (almost 8 ZiB - yes, zebibytes).</p>
+<p>When a system's software interface between the operating system and firmware is UEFI (instead of BIOS), GPT is almost mandatory as compatibility issues will arise with DOS disklabel.</p>
+<p>GPT also takes advantage of checksumming and redundancy. It carries CRC32 checksums to detect errors in the header and partition tables and has a backup GPT at the end of the disk. This backup table can be used to recover damage of the primary GPT near the beginning of the disk.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+</div>
+<p>There are a few caveats regarding GPT:
+- Using GPT on a BIOS-based computer works, but then one cannot dual-boot with a Microsoft Windows operating system. The reason is that Microsoft Windows will boot in UEFI mode if it detects a GPT partition label.
+- Some buggy (old) motherboard firmware configured to boot in BIOS/CSM/legacy mode might also have problems with booting from GPT labeled disks.</p>
+<h4 id="master-boot-record-mbr-or-dos-boot-sector">Master boot record (MBR) or DOS boot sector</h4>
+<p><a href="https://en.wikipedia.org/wiki/Master_boot_record">The Master boot record</a> boot sector (also called DOS boot sector or DOS disk label) was first introduced in 1983 with PC DOS 2.x. MBR uses 32-bit identifiers for the start sector and length of the partitions, and supports three partition types: primary, extended, and logical. Primary partitions have their information stored in the master boot record itself - a very small (usually 512 bytes) location at the very beginning of a disk. Due to this small space, only four primary partitions are supported (for instance, /dev/sda1 to /dev/sda4).</p>
+<p>In order to support more partitions, one of the primary partitions in the MBR can be marked as an extended partition. This partition can then contain additional logical partitions (partitions within a partition).</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+</div>
+<p>Although still supported by most motherboard manufacturers, MBR boot sectors and their associated partitioning limitations are considered legacy. Unless working with hardware that is pre-2010, it best to partition a disk with <a href="https://en.wikipedia.org/wiki/GUID_Partition_Table">GUID Partition Table</a>. Readers who must proceed with setup type should knowingly acknowledge the following information:
+Most post-2010 motherboards consider using MBR boot sectors a legacy (supported, but not ideal) boot mode.
+Due to using 32-bit identifiers, partition tables in the MBR cannot address storage space that is larger than 2 TiBs in size.
+Unless an extended partition is created, MBR supports a maximum of four partitions.
+This setup does not provide a backup boot sector, so if something overwrites the partition table, all partition information will be lost.
+That said, MBR and BIOS boot is still frequently used in virtualized cloud environments such as AWS.</p>
+<p>The Handbook authors suggest using <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Disks#GPT">GPT</a> whenever possible for Gentoo installations.</p>
+<h3 id="advanced-storage">Advanced storage</h3>
+<p>The <strong>amd64</strong> Installation CDs provide support for Logical Volume Manager (LVM). LVM increases the flexibility offered by the partitioning setup. It allows to combine partitions and disks into volume groups and define RAID groups or caches on fast SSDs for slow HDs. The installation instructions below will focus on "regular" partitions, but it is good to know LVM is supported if that route is desired. Visit the LVM article for more details. Newcomers beware: although fully supported, LVM is outside the scope of this guide.</p>
+<h3 id="default-partitioning-scheme">Default partitioning scheme</h3>
+<p>Throughout the remainder of the handbook, we will discuss and explain two cases: 1) GPT partition table and UEFI boot, and 2) MBR partition table and legacy BIOS boot. While it is possible to mix and match, that goes beyond the scope of this manual. As already stated above, installations on modern hardware should use GPT partition table and UEFI boot; as an excSeption from this rule, MBR and BIOS boot is still frequently used in virtualized (cloud) environments.</p>
+<p>The following partitioning scheme will be used as a simple example layout:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Filesystem</th>
+<th>Size</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sda1</td>
+<td>fat32 (UEFI) or ext4 (BIOS - aka Legacy boot)</td>
+<td>256M</td>
+<td>Boot/EFI system partition</td>
+</tr>
+<tr>
+<td>/dev/sda2</td>
+<td>(swap)</td>
+<td>RAM size * 2</td>
+<td>Swap partition</td>
+</tr>
+<tr>
+<td>/dev/sda3</td>
+<td>ext4</td>
+<td>Rest of the disk</td>
+<td>Root partition</td>
+</tr>
+</tbody>
+</table>
+<p>If this suffices as information, the advanced reader can directly skip ahead to the actual partitioning.</p>
+<p>Both <strong>fdisk</strong> and <strong>parted</strong> are partitioning utilities. <strong>fdisk</strong> is well known, stable, and recommended for the MBR partition layout. <strong>parted</strong> was one of the first Linux block device management utilities to support GPT partitions, and provides an alternative. Here, <strong>fdisk</strong> is used since it has a better text-based user interface.</p>
+<p>Before going to the creation instructions, the first set of sections will describe in more detail how partitioning schemes can be created and mention some common pitfalls.</p>
+<h2 id="designing-a-partition-scheme">Designing a partition scheme</h2>
+<h3 id="how-many-partitions-and-how-big">How many partitions and how big?</h3>
+<p>The design of disk partition layout is highly dependent on the demands of the system and the file system(s) applied to the device. If there are lots of users, then it is advised to have /home on a separate partition which will increase security and make backups and other types of maintenance easier. If Gentoo is being installed to perform as a mail server, then /var should be a separate partition as all mails are stored inside the /var directory. Game servers may have a separate /opt partition since most gaming server software is installed therein. The reason for these recommendations is similar to the /home directory: security, backups, and maintenance.</p>
+<p>In most situations on Gentoo, /usr and /var should be kept relatively large in size. /usr hosts the majority of applications available on the system and the Linux kernel sources (under /usr/src). By default, /var hosts the Gentoo ebuild repository (located at /var/db/repos/gentoo) which, depending on the file system, generally consumes around 650 MiB of disk space. This space estimate excludes the /var/cache/distfiles and /var/cache/binpkgs directories, which will gradually fill with source files and (optionally) binary packages respectively as they are added to the system.</p>
+<p>How many partitions and how big very much depends on considering the trade-offs and choosing the best option for the circumstance. Separate partitions or volumes have the following advantages:</p>
+<ul>
+<li>Choose the best performing filesystem for each partition or volume.</li>
+<li>The entire system cannot run out of free space if one defunct tool is continuously writing files to a partition or volume.</li>
+<li>If necessary, file system checks are reduced in time, as multiple checks can be done in parallel (although this advantage is realized more with multiple disks than it is with multiple partitions).</li>
+<li>Security can be enhanced by mounting some partitions or volumes read-only, nosuid (setuid bits are ignored), noexec (executable bits are ignored), etc.</li>
+</ul>
+<p>However, multiple partitions have certain disadvantages as well:</p>
+<ul>
+<li>If not configured properly, the system might have lots of free space on one partition and little free space on another.</li>
+<li>A separate partition for /usr/ may require the administrator to boot with an initramfs to mount the partition before other boot scripts start. Since the generation and maintenance of an initramfs is beyond the scope of this handbook, <strong>we recommend that newcomers do not use a separate partition for /usr/</strong>.</li>
+<li>There is also a 15-partition limit for SCSI and SATA unless the disk uses GPT labels.</li>
+</ul>
+<p>Note</p>
+<p>Installations that intend to use systemd as the service and init system must have the /usr directory available at boot, either as part of the root filesystem or mounted via an initramfs.</p>
+<h3 id="what-about-swap-space">What about swap space?</h3>
+<p>There is no perfect value for swap space size. The purpose of the space is to provide disk storage to the kernel when internal memory (RAM) is under pressure. A swap space allows for the kernel to move memory pages that are not likely to be accessed soon to disk (swap or page-out), which will free memory in RAM for the current task. Of course, if the pages swapped to disk are suddenly needed, they will need to be put back in memory (page-in) which will take considerably longer than reading from RAM (as disks are very slow compared to internal memory).</p>
+<p>When a system is not going to run memory intensive applications or has lots of RAM available, then it probably does not need much swap space. However do note in case of hibernation that swap space is used to store the entire contents of memory (likely on desktop and laptop systems rather than on server systems). If the system requires support for hibernation, then swap space larger than or equal to the amount of memory is necessary.</p>
+<p>As a general rule, the swap space size is recommended to be twice the internal memory (RAM). For systems with multiple hard disks, it is wise to create one swap partition on each disk so that they can be utilized for parallel read/write operations. The faster a disk can swap, the faster the system will run when data in swap space must be accessed. When choosing between rotational and solid state disks, it is better for performance to put swap on the SSD. Also, swap files can be used as an alternative to swap partitions; this is mostly interesting for systems with very limited disk space.</p>
+<h3 id="what-is-the-efi-system-partition-esp">What is the EFI System Partition (ESP)?</h3>
+<p>When installing Gentoo on a system that uses UEFI to boot the operating system (instead of BIOS), then it is important that an EFI System Partition (ESP) is created. The instructions below contain the necessary pointers to correctly handle this operation. <strong>The EFI system partition is not required when booting in BIOS/Legacy mode</strong>.</p>
+<p>The ESP must be a FAT variant (sometimes shown as vfat on Linux systems). The official <a href="http://www.uefi.org/sites/default/files/resources/UEFI%202_5.pdf">UEFI specification</a> denotes FAT12, 16, or 32 filesystems will be recognized by the UEFI firmware, although FAT32 is recommended for the ESP. After partitioning, format the ESP accordingly:</p>
+<p><code>root #mkfs.fat -F 32 /dev/sda1</code></p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+</div>
+<p>If the ESP is not formatted with a FAT variant, the system's UEFI firmware will not find the bootloader (or Linux kernel) and will most likely be unable to boot the system!</p>
+<h3 id="what-is-the-bios-boot-partition">What is the BIOS boot partition?</h3>
+<p>A BIOS boot partition is only needed when combining a GPT partition layout with GRUB2 in BIOS/Legacy boot mode. <strong>It is not required when booting in EFI/UEFI mode, and also not required when using a MBR table</strong>. It is a very small (1 to 2 MB) partition in which boot loaders like GRUB2 can put additional data that doesn't fit in the allocated storage. It will not be used in this guide.</p>
+<h2 id="partitioning-the-disk-with-gpt-for-uefi">Partitioning the disk with GPT for UEFI</h2>
+<p>The following parts explain how to create the example partition layout for a GPT / UEFI boot installation using <strong>fdisk</strong>. The example partition layout was mentioned earlier:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sda1</td>
+<td>EFI system (and boot) partition</td>
+</tr>
+<tr>
+<td>/dev/sda2</td>
+<td>Swap partition</td>
+</tr>
+<tr>
+<td>/dev/sda3</td>
+<td>Root partition</td>
+</tr>
+</tbody>
+</table>
+<p>Change the partition layout according to personal preference.</p>
+<h3 id="viewing-the-current-partition-layout">Viewing the current partition layout</h3>
+<p><strong>fdisk</strong> is a popular and powerful tool to split a disk into partitions. Fire up fdisk against the disk (in our example, we use /dev/sda):</p>
+<p><code>root #fdisk /dev/sda</code></p>
+<p>Use the <code>p</code> key to display the disk's current partition configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:p
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>Disk<span class="w"> </span>/dev/sda:<span class="w"> </span><span class="m">28</span>.89<span class="w"> </span>GiB,<span class="w"> </span><span class="m">31001149440</span><span class="w"> </span>bytes,<span class="w"> </span><span class="m">60549120</span><span class="w"> </span>sectors
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Disk<span class="w"> </span>model:<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">2</span>.0
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>Units:<span class="w"> </span>sectors<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>I/O<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>minimum/optimal<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Disklabel<span class="w"> </span>type:<span class="w"> </span>gpt
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Disk<span class="w"> </span>identifier:<span class="w"> </span>21AAD8CF-DB67-0F43-9374-416C7A4E31EA
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Device<span class="w">        </span>Start<span class="w">      </span>End<span class="w">  </span>Sectors<span class="w">  </span>Size<span class="w"> </span>Type
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>/dev/sda1<span class="w">      </span><span class="m">2048</span><span class="w">   </span><span class="m">526335</span><span class="w">   </span><span class="m">524288</span><span class="w">  </span>256M<span class="w"> </span>EFI<span class="w"> </span>System
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>/dev/sda2<span class="w">    </span><span class="m">526336</span><span class="w">  </span><span class="m">2623487</span><span class="w">  </span><span class="m">2097152</span><span class="w">    </span>1G<span class="w"> </span>Linux<span class="w"> </span>swap
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>/dev/sda3<span class="w">   </span><span class="m">2623488</span><span class="w"> </span><span class="m">19400703</span><span class="w"> </span><span class="m">16777216</span><span class="w">    </span>8G<span class="w"> </span>Linux<span class="w"> </span>filesystem
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>/dev/sda4<span class="w">  </span><span class="m">19400704</span><span class="w"> </span><span class="m">60549086</span><span class="w"> </span><span class="m">41148383</span><span class="w"> </span><span class="m">19</span>.6G<span class="w"> </span>Linux<span class="w"> </span>filesystem
+</code></pre></div>
+<p>This particular disk was configured to house two Linux filesystems (each with a corresponding partition listed as "Linux") as well as a swap partition (listed as "Linux swap").</p>
+<h3 id="creating-a-new-disklabel-removing-all-partitions">Creating a new disklabel / removing all partitions</h3>
+<p>Type <code>g</code> to create a new GPT disklabel on the disk; this will remove all existing partitions.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:g
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>GPT<span class="w"> </span>disklabel<span class="w"> </span><span class="o">(</span>GUID:<span class="w"> </span>87EA4497-2722-DF43-A954-368E46AE5C5F<span class="o">)</span>.
+</code></pre></div>
+<p>For an existing GPT disklabel (see the output of <code>p</code> above), alternatively consider removing the existing partitions one by one from the disk. Type <code>d</code> to delete a partition. For instance, to delete an existing /dev/sda1:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:d
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">1</span>-4<span class="o">)</span>:<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>The partition has now been scheduled for deletion. It will no longer show up when printing the list of partitions (<code>p</code>, but it will not be erased until the changes have been saved. This allows users to abort the operation if a mistake was made - in that case, type <code>q</code> immediately and hit <code>Enter</code> and the partition will not be deleted.</p>
+<p>Repeatedly type <code>p</code> to print out a partition listing and then type <code>d</code> and the number of the partition to delete it. Eventually, the partition table will be empty:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:p
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>Disk<span class="w"> </span>/dev/sda:<span class="w"> </span><span class="m">28</span>.89<span class="w"> </span>GiB,<span class="w"> </span><span class="m">31001149440</span><span class="w"> </span>bytes,<span class="w"> </span><span class="m">60549120</span><span class="w"> </span>sectors
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>Disk<span class="w"> </span>model:<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">2</span>.0
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>Units:<span class="w"> </span>sectors<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>I/O<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>minimum/optimal<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>Disklabel<span class="w"> </span>type:<span class="w"> </span>gpt
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>Disk<span class="w"> </span>identifier:<span class="w"> </span>87EA4497-2722-DF43-A954-368E46AE5C5F
+</code></pre></div>
+<p>Now that the in-memory partition table is empty, we're ready to create the partitions.</p>
+<h3 id="creating-the-efi-system-partition-esp">Creating the EFI system partition (ESP)</h3>
+<p>First create a small EFI system partition, which will also be mounted as /boot. Type <code>n</code> to create a new partition, followed by <code>1</code> to select the first partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit <code>Enter</code>. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:n
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">1</span>-128,<span class="w"> </span>default<span class="w"> </span><span class="m">1</span><span class="o">)</span>:<span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>First<span class="w"> </span>sector<span class="w"> </span><span class="o">(</span><span class="m">2048</span>-60549086,<span class="w"> </span>default<span class="w"> </span><span class="m">2048</span><span class="o">)</span>:<span class="w"> </span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>Last<span class="w"> </span>sector,<span class="w"> </span>+/-sectors<span class="w"> </span>or<span class="w"> </span>+/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="m">2048</span>-60549086,<span class="w"> </span>default<span class="w"> </span><span class="m">60549086</span><span class="o">)</span>:<span class="w"> </span>+256M
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>Created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>partition<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s1">&#39;Linux filesystem&#39;</span><span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">256</span><span class="w"> </span>MiB.
+</code></pre></div>
+<p>Mark the partition as EFI system partition:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:t
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Selected<span class="w"> </span>partition<span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>Partition<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span>L<span class="w"> </span>to<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span>types<span class="o">)</span>:<span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>Changed<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>partition<span class="w"> </span><span class="s1">&#39;Linux filesystem&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;EFI System&#39;</span>.
+</code></pre></div>
+<h3 id="creating-the-swap-partition">Creating the swap partition</h3>
+<p>Next, to create the swap partition, type <code>n</code> to create a new partition, then type <code>2</code> to create the second partition, /dev/sda2. When prompted for the first sector, hit <code>Enter</code>. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:n
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">2</span>-128,<span class="w"> </span>default<span class="w"> </span><span class="m">2</span><span class="o">)</span>:<span class="w"> </span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>First<span class="w"> </span>sector<span class="w"> </span><span class="o">(</span><span class="m">526336</span>-60549086,<span class="w"> </span>default<span class="w"> </span><span class="m">526336</span><span class="o">)</span>:<span class="w"> </span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>Last<span class="w"> </span>sector,<span class="w"> </span>+/-sectors<span class="w"> </span>or<span class="w"> </span>+/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="m">526336</span>-60549086,<span class="w"> </span>default<span class="w"> </span><span class="m">60549086</span><span class="o">)</span>:<span class="w"> </span>+4G
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>Created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>partition<span class="w"> </span><span class="m">2</span><span class="w"> </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s1">&#39;Linux filesystem&#39;</span><span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">4</span><span class="w"> </span>GiB.
+</code></pre></div>
+<p>After all this is done, type <code>t</code> to set the partition type, <code>2</code> to select the partition just created and then type in <em>19</em> to set the partition type to "Linux Swap".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:t
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">1</span>,2,<span class="w"> </span>default<span class="w"> </span><span class="m">2</span><span class="o">)</span>:<span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Partition<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span>L<span class="w"> </span>to<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span>types<span class="o">)</span>:<span class="w"> </span><span class="m">19</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>Changed<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>partition<span class="w"> </span><span class="s1">&#39;Linux filesystem&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;Linux swap&#39;</span>.
+</code></pre></div>
+<h3 id="creating-the-root-partition">Creating the root partition</h3>
+<p>Finally, to create the root partition, type <code>n</code> to create a new partition. Then type <code>3</code> to create the third partition, /dev/sda3. When prompted for the first sector, hit <code>Enter</code>. When prompted for the last sector, hit Enter to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing <code>p</code> should display a partition table that looks similar to this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:p
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>Disk<span class="w"> </span>/dev/sda:<span class="w"> </span><span class="m">28</span>.89<span class="w"> </span>GiB,<span class="w"> </span><span class="m">31001149440</span><span class="w"> </span>bytes,<span class="w"> </span><span class="m">60549120</span><span class="w"> </span>sectors
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>Disk<span class="w"> </span>model:<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">2</span>.0
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>Units:<span class="w"> </span>sectors<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>I/O<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>minimum/optimal<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>Disklabel<span class="w"> </span>type:<span class="w"> </span>gpt
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>Disk<span class="w"> </span>identifier:<span class="w"> </span>87EA4497-2722-DF43-A954-368E46AE5C5F
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>Device<span class="w">       </span>Start<span class="w">      </span>End<span class="w">  </span>Sectors<span class="w">  </span>Size<span class="w"> </span>Type
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>/dev/sda1<span class="w">     </span><span class="m">2048</span><span class="w">   </span><span class="m">526335</span><span class="w">   </span><span class="m">524288</span><span class="w">  </span>256M<span class="w"> </span>EFI<span class="w"> </span>System
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>/dev/sda2<span class="w">   </span><span class="m">526336</span><span class="w">  </span><span class="m">8914943</span><span class="w">  </span><span class="m">8388608</span><span class="w">    </span>4G<span class="w"> </span>Linux<span class="w"> </span>swap
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>/dev/sda3<span class="w">  </span><span class="m">8914944</span><span class="w"> </span><span class="m">60549086</span><span class="w"> </span><span class="m">51634143</span><span class="w"> </span><span class="m">24</span>.6G<span class="w"> </span>Linux<span class="w"> </span>filesystem
+</code></pre></div>
+<h3 id="saving-the-partition-layout">Saving the partition layout</h3>
+<p>To save the partition layout and exit fdisk, type <code>w</code>.</p>
+<p><code>Command (m for help):w</code></p>
+<p>With the partitions created, it is now time to put filesystems on them.</p>
+<h2 id="partitioning-the-disk-with-mbr-for-bios-legacy-boot">Partitioning the disk with MBR for BIOS / legacy boot</h2>
+<p>The following explains how to create the example partition layout for a MBR / BIOS legacy boot installation. The example partition layout mentioned earlier is now:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/dev/sda1</td>
+<td>Boot partition</td>
+</tr>
+<tr>
+<td>/dev/sda2</td>
+<td>Swap partition</td>
+</tr>
+<tr>
+<td>/dev/sda3</td>
+<td>Root partition</td>
+</tr>
+</tbody>
+</table>
+<p>Change the partition layout according to personal preference.</p>
+<h3 id="viewing-the-current-partition-layout_1">Viewing the current partition layout</h3>
+<p>Fire up <strong>fdisk</strong> against the disk (in our example, we use /dev/sda):</p>
+<p><code>root # fdisk /dev/sda</code></p>
+<p>Use the <code>p</code> key to display the disk's current partition configuration:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:p
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Disk<span class="w"> </span>/dev/sda:<span class="w"> </span><span class="m">28</span>.89<span class="w"> </span>GiB,<span class="w"> </span><span class="m">31001149440</span><span class="w"> </span>bytes,<span class="w"> </span><span class="m">60549120</span><span class="w"> </span>sectors
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Disk<span class="w"> </span>model:<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">2</span>.0
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>Units:<span class="w"> </span>sectors<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>I/O<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>minimum/optimal<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>Disklabel<span class="w"> </span>type:<span class="w"> </span>gpt
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>Disk<span class="w"> </span>identifier:<span class="w"> </span>21AAD8CF-DB67-0F43-9374-416C7A4E31EA
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>Device<span class="w">        </span>Start<span class="w">      </span>End<span class="w">  </span>Sectors<span class="w">  </span>Size<span class="w"> </span>Type
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>/dev/sda1<span class="w">      </span><span class="m">2048</span><span class="w">   </span><span class="m">526335</span><span class="w">   </span><span class="m">524288</span><span class="w">  </span>256M<span class="w"> </span>EFI<span class="w"> </span>System
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>/dev/sda2<span class="w">    </span><span class="m">526336</span><span class="w">  </span><span class="m">2623487</span><span class="w">  </span><span class="m">2097152</span><span class="w">    </span>1G<span class="w"> </span>Linux<span class="w"> </span>swap
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>/dev/sda3<span class="w">   </span><span class="m">2623488</span><span class="w"> </span><span class="m">19400703</span><span class="w"> </span><span class="m">16777216</span><span class="w">    </span>8G<span class="w"> </span>Linux<span class="w"> </span>filesystem
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>/dev/sda4<span class="w">  </span><span class="m">19400704</span><span class="w"> </span><span class="m">60549086</span><span class="w"> </span><span class="m">41148383</span><span class="w"> </span><span class="m">19</span>.6G<span class="w"> </span>Linux<span class="w"> </span>filesystem
+</code></pre></div>
+<p>This particular disk was until now configured to house two Linux filesystems (each with a corresponding partition listed as "Linux") as well as a swap partition (listed as "Linux swap"), using a GPT table.</p>
+<h3 id="creating-a-new-disklabel-removing-all-partitions_1">Creating a new disklabel / removing all partitions</h3>
+<p>Type <code>o</code> to create a new MBR disklabel (here also named DOS disklabel) on the disk; this will remove all existing partitions.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:o
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>Created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>DOS<span class="w"> </span>disklabel<span class="w"> </span>with<span class="w"> </span>disk<span class="w"> </span>identifier<span class="w"> </span>0xe04e67c4.
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>The<span class="w"> </span>device<span class="w"> </span>contains<span class="w"> </span><span class="s1">&#39;gpt&#39;</span><span class="w"> </span>signature<span class="w"> </span>and<span class="w"> </span>it<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>removed<span class="w"> </span>by<span class="w"> </span>a<span class="w"> </span>write<span class="w"> </span>command.<span class="w"> </span>See<span class="w"> </span>fdisk<span class="o">(</span><span class="m">8</span><span class="o">)</span><span class="w"> </span>man<span class="w"> </span>page<span class="w"> </span>and<span class="w"> </span>--wipe<span class="w"> </span>option<span class="w"> </span><span class="k">for</span><span class="w"> </span>more<span class="w"> </span>details.
+</code></pre></div>
+<p>For an existing DOS disklabel (see the output of p above), alternatively consider removing the existing partitions one by one from the disk. Type <code>d</code> to delete a partition. For instance, to delete an existing /dev/sda1:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:d
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">1</span>-4<span class="o">)</span>:<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>The partition has now been scheduled for deletion. It will no longer show up when printing the list of partitions (<code>p</code>, but it will not be erased until the changes have been saved. This allows users to abort the operation if a mistake was made - in that case, type <code>q</code> immediately and hit <code>Enter</code> and the partition will not be deleted.</p>
+<p>Repeatedly type <code>p</code> to print out a partition listing and then type <code>d</code> and the number of the partition to delete it. Eventually, the partition table will be empty:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:p
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>Disk<span class="w"> </span>/dev/sda:<span class="w"> </span><span class="m">28</span>.89<span class="w"> </span>GiB,<span class="w"> </span><span class="m">31001149440</span><span class="w"> </span>bytes,<span class="w"> </span><span class="m">60549120</span><span class="w"> </span>sectors
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>Disk<span class="w"> </span>model:<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">2</span>.0
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>Units:<span class="w"> </span>sectors<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>I/O<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>minimum/optimal<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>Disklabel<span class="w"> </span>type:<span class="w"> </span>dos
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>Disk<span class="w"> </span>identifier:<span class="w"> </span>0xe04e67c4
+</code></pre></div>
+<p>Now we're ready to create the partitions.</p>
+<h3 id="creating-the-boot-partition">Creating the boot partition</h3>
+<p>First, create a small partition which will be mounted as /boot. Type <code>n</code> to create a new partition, followed by <code>p</code> for a primary partition and <code>1</code> to select the first primary partition. When prompted for the first sector, make sure it starts from 2048 (which may be needed for the boot loader) and hit <code>Enter</code>. When prompted for the last sector, type +256M to create a partition 256 Mbyte in size:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:n
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>Partition<span class="w"> </span><span class="nb">type</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">   </span>p<span class="w">   </span>primary<span class="w"> </span><span class="o">(</span><span class="m">0</span><span class="w"> </span>primary,<span class="w"> </span><span class="m">0</span><span class="w"> </span>extended,<span class="w"> </span><span class="m">4</span><span class="w"> </span>free<span class="o">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="w">   </span>e<span class="w">   </span>extended<span class="w"> </span><span class="o">(</span>container<span class="w"> </span><span class="k">for</span><span class="w"> </span>logical<span class="w"> </span>partitions<span class="o">)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>Select<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>p<span class="o">)</span>:<span class="w"> </span>p
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">1</span>-4,<span class="w"> </span>default<span class="w"> </span><span class="m">1</span><span class="o">)</span>:<span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>First<span class="w"> </span>sector<span class="w"> </span><span class="o">(</span><span class="m">2048</span>-60549119,<span class="w"> </span>default<span class="w"> </span><span class="m">2048</span><span class="o">)</span>:<span class="w"> </span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>Last<span class="w"> </span>sector,<span class="w"> </span>+/-sectors<span class="w"> </span>or<span class="w"> </span>+/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="m">2048</span>-60549119,<span class="w"> </span>default<span class="w"> </span><span class="m">60549119</span><span class="o">)</span>:<span class="w"> </span>+256M
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a>Created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>partition<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s1">&#39;Linux&#39;</span><span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">256</span><span class="w"> </span>MiB.
+</code></pre></div>
+<h3 id="creating-the-swap-partition_1">Creating the swap partition</h3>
+<p>Next, to create the swap partition, type <code>n</code> to create a new partition, then <code>p</code>, then type <code>2</code> to create the second primary partition, /dev/sda2. When prompted for the first sector, hit <code>Enter</code>. When prompted for the last sector, type +4G (or any other size needed for the swap space) to create a partition 4GB in size.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:n
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>Partition<span class="w"> </span><span class="nb">type</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">   </span>p<span class="w">   </span>primary<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="w"> </span>primary,<span class="w"> </span><span class="m">0</span><span class="w"> </span>extended,<span class="w"> </span><span class="m">3</span><span class="w"> </span>free<span class="o">)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">   </span>e<span class="w">   </span>extended<span class="w"> </span><span class="o">(</span>container<span class="w"> </span><span class="k">for</span><span class="w"> </span>logical<span class="w"> </span>partitions<span class="o">)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>Select<span class="w"> </span><span class="o">(</span>default<span class="w"> </span>p<span class="o">)</span>:<span class="w"> </span>p
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">2</span>-4,<span class="w"> </span>default<span class="w"> </span><span class="m">2</span><span class="o">)</span>:<span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>First<span class="w"> </span>sector<span class="w"> </span><span class="o">(</span><span class="m">526336</span>-60549119,<span class="w"> </span>default<span class="w"> </span><span class="m">526336</span><span class="o">)</span>:<span class="w"> </span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a>Last<span class="w"> </span>sector,<span class="w"> </span>+/-sectors<span class="w"> </span>or<span class="w"> </span>+/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span><span class="w"> </span><span class="o">(</span><span class="m">526336</span>-60549119,<span class="w"> </span>default<span class="w"> </span><span class="m">60549119</span><span class="o">)</span>:<span class="w"> </span>+4G
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a>Created<span class="w"> </span>a<span class="w"> </span>new<span class="w"> </span>partition<span class="w"> </span><span class="m">2</span><span class="w"> </span>of<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="s1">&#39;Linux&#39;</span><span class="w"> </span>and<span class="w"> </span>of<span class="w"> </span>size<span class="w"> </span><span class="m">4</span><span class="w"> </span>GiB.
+</code></pre></div>
+<p>After all this is done, type <code>t</code> to set the partition type, <code>2</code> to select the partition just created and then type in <code>82</code> to set the partition type to "Linux Swap".</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:t
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>Partition<span class="w"> </span>number<span class="w"> </span><span class="o">(</span><span class="m">1</span>,2,<span class="w"> </span>default<span class="w"> </span><span class="m">2</span><span class="o">)</span>:<span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>Hex<span class="w"> </span>code<span class="w"> </span><span class="o">(</span><span class="nb">type</span><span class="w"> </span>L<span class="w"> </span>to<span class="w"> </span>list<span class="w"> </span>all<span class="w"> </span>codes<span class="o">)</span>:<span class="w"> </span><span class="m">82</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>&lt;!--T:179--&gt;
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>Changed<span class="w"> </span><span class="nb">type</span><span class="w"> </span>of<span class="w"> </span>partition<span class="w"> </span><span class="s1">&#39;Linux&#39;</span><span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;Linux swap / Solaris&#39;</span>.
+</code></pre></div>
+<h3 id="creating-the-root-partition_1">Creating the root partition</h3>
+<p>Finally, to create the root partition, type <code>n</code> to create a new partition. Then type <code>p</code> and <code>3</code> to create the third primary partition, /dev/sda3. When prompted for the first sector, hit <code>Enter</code>. When prompted for the last sector, hit <code>Enter</code> to create a partition that takes up the rest of the remaining space on the disk. After completing these steps, typing <code>p</code> should display a partition table that looks similar to this:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>Command<span class="w"> </span><span class="o">(</span>m<span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nb">help</span><span class="o">)</span>:p
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Disk<span class="w"> </span>/dev/sda:<span class="w"> </span><span class="m">28</span>.89<span class="w"> </span>GiB,<span class="w"> </span><span class="m">31001149440</span><span class="w"> </span>bytes,<span class="w"> </span><span class="m">60549120</span><span class="w"> </span>sectors
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>Disk<span class="w"> </span>model:<span class="w"> </span>DataTraveler<span class="w"> </span><span class="m">2</span>.0
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>Units:<span class="w"> </span>sectors<span class="w"> </span>of<span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span><span class="nv">512</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Sector<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>logical/physical<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>I/O<span class="w"> </span>size<span class="w"> </span><span class="o">(</span>minimum/optimal<span class="o">)</span>:<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes<span class="w"> </span>/<span class="w"> </span><span class="m">512</span><span class="w"> </span>bytes
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>Disklabel<span class="w"> </span>type:<span class="w"> </span>dos
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>Disk<span class="w"> </span>identifier:<span class="w"> </span>0xe04e67c4
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>Device<span class="w">     </span>Boot<span class="w">   </span>Start<span class="w">      </span>End<span class="w">  </span>Sectors<span class="w">  </span>Size<span class="w"> </span>Id<span class="w"> </span>Type
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>/dev/sda1<span class="w">          </span><span class="m">2048</span><span class="w">   </span><span class="m">526335</span><span class="w">   </span><span class="m">524288</span><span class="w">  </span>256M<span class="w"> </span><span class="m">83</span><span class="w"> </span>Linux
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>/dev/sda2<span class="w">        </span><span class="m">526336</span><span class="w">  </span><span class="m">8914943</span><span class="w">  </span><span class="m">8388608</span><span class="w">    </span>4G<span class="w"> </span><span class="m">82</span><span class="w"> </span>Linux<span class="w"> </span>swap<span class="w"> </span>/<span class="w"> </span>Solaris
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>/dev/sda3<span class="w">       </span><span class="m">8914944</span><span class="w"> </span><span class="m">60549119</span><span class="w"> </span><span class="m">51634176</span><span class="w"> </span><span class="m">24</span>.6G<span class="w"> </span><span class="m">83</span><span class="w"> </span>Linux
+</code></pre></div>
+<h3 id="saving-the-partition-layout_1">Saving the partition layout</h3>
+<p>To save the partition layout and exit <strong>fdisk</strong>, type <code>w</code>.</p>
+<p><code>Command (m for help):w</code></p>
+<p>Now it is time to put filesystems on the partitions.</p>
+<h2 id="creating-file-systems">Creating file systems</h2>
+<h3 id="introduction">Introduction</h3>
+<p>Now that the partitions have been created, it is time to place a filesystem on them. In the next section the various file systems that Linux supports are described. Readers that already know which filesystem to use can continue with <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Networking#Applying_a_filesystem_to_a_partition">Applying a filesystem to a partition</a>. The others should read on to learn about the available filesystems...</p>
+<h3 id="filesystems">Filesystems</h3>
+<p>Linux supports several dozen filesystems, although many of them are only wise to deploy for specific purposes. Only certain filesystems may be found stable on the amd64 architecture - it is advised to read up on the filesystems and their support state before selecting a more experimental one for important partitions. <strong>ext4 is the recommended all-purpose, all-platform filesystem</strong>. The below is a non-exaustive list</p>
+<p><a href="https://wiki.gentoo.org/wiki/Btrfs">btrfs</a></p>
+<p>A next generation filesystem that provides many advanced features such as snapshotting, self-healing through checksums, transparent compression, subvolumes, and integrated RAID. Kernels prior to 5.4.y are not guaranteed to be safe to use with btrfs in production because fixes for serious issues are only present in the more recent releases of the LTS kernel branches. Filesystem corruption issues are common on older kernel branches, with anything older than 4.4.y being especially unsafe and prone to corruption. Corruption is more likely on older kernels (than 5.4.y) when compression is enabled. RAID 5/6 and quota groups unsafe on all versions of btrfs. Furthermore, btrfs can counter-intuitively fail filesystem operations with ENOSPC when df reports free space due to internal fragmentation (free space pinned by DATA + SYSTEM chunks, but needed in METADATA chunks). Additionally, a single 4K reference to a 128M extent inside btrfs can cause free space to be present, but unavailable for allocations. This can also cause btrfs to return ENOSPC when free space is reported by df. Installing <a href="https://packages.gentoo.org/packages/sys-fs/btrfsmaintenance">sys-fs/btrfsmaintenance</a> and configuring the scripts to run periodically can help to reduce the possibility of ENOSPC issues by rebalancing btrfs, but it will not eliminate the risk of ENOSPC when free space is present. Some workloads will never hit ENOSPC while others will. If the risk of ENOSPC in production is unacceptable, you should use something else. If using btrfs, be certain to avoid configurations known to have issues. With the exception of ENOSPC, information on the issues present in btrfs in the latest kernel branches is available at the <a href="https://btrfs.readthedocs.io/en/latest/Status.html">btrfs status page</a>.</p>
+<p><a href="https://wiki.gentoo.org/wiki/Ext4">ext4</a></p>
+<p>Initially created as a fork of ext3, ext4 brings new features, performance improvements, and removal of size limits with moderate changes to the on-disk format. It can span volumes up to 1 EB and with maximum file size of 16TB. Instead of the classic ext2/3 bitmap block allocation, ext4 uses extents, which improve large file performance and reduce fragmentation. Ext4 also provides more sophisticated block allocation algorithms (delayed allocation and multiblock allocation) giving the filesystem driver more ways to optimize the layout of data on the disk. Ext4 is the recommended all-purpose all-platform filesystem.</p>
+<p><a href="https://wiki.gentoo.org/wiki/F2fs">f2fs</a></p>
+<p>The Flash-Friendly File System was originally created by Samsung for the use with NAND flash memory. As of Q2, 2016, this filesystem is still considered immature, but it is a decent choice when installing Gentoo to microSD cards, USB drives, or other flash-based storage devices.</p>
+<p><a href="https://wiki.gentoo.org/wiki/JFS">JFS</a></p>
+<p>IBM's high-performance journaling filesystem. JFS is a light, fast, and reliable B+tree-based filesystem with good performance in various conditions.</p>
+<p><a href="https://wiki.gentoo.org/wiki/XFS">XFS</a></p>
+<p>A filesystem with metadata journaling which comes with a robust feature-set and is optimized for scalability. XFS seems to be less forgiving to various hardware problems, but has been continuously upgraded to include modern features.</p>
+<p><a href="https://wiki.gentoo.org/wiki/VFAT">VFAT</a></p>
+<p>Also known as FAT32, is supported by Linux but does not support standard UNIX permission settings. It is mostly used for interoperability/interchange with other operating systems (Microsoft Windows or Apple's macOS) but is also a necessity for some system bootloader firmware (like UEFI). Users of UEFI systems will need an <a href="https://wiki.gentoo.org/wiki/EFI_System_Partition">EFI System Partition</a> formatted with VFAT in order to boot.</p>
+<p><a href="https://wiki.gentoo.org/wiki/NTFS">NTFS</a></p>
+<p>This "New Technology" filesystem is the flagship filesystem of Microsoft Windows since Windows NT 3.1. Similarly to VFAT, it does not store UNIX permission settings or extended attributes necessary for BSD or Linux to function properly, therefore it should not be used as a filesystem for most cases. It should only be used for interoperability/interchange with Microsoft Windows systems (note the emphasis on only).</p>
+<h3 id="applying-a-filesystem-to-a-partition">Applying a filesystem to a partition</h3>
+<p>To create a filesystem on a partition or volume, there are user space utilities available for each possible filesystem. Click the filesystem's name in the table below for additional information on each filesystem:</p>
+<table>
+<thead>
+<tr>
+<th>Filesystem</th>
+<th>Creation command</th>
+<th>On minimal CD?</th>
+<th>Package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>btrfs</td>
+<td>mkfs.btrfs</td>
+<td>Yes</td>
+<td>sys-fs/btrfs-progs</td>
+</tr>
+<tr>
+<td>ext4</td>
+<td>mkfs.ext4</td>
+<td>Yes</td>
+<td>sys-fs/e2fsprogs</td>
+</tr>
+<tr>
+<td>f2fs</td>
+<td>mkfs.f2fs</td>
+<td>Yes</td>
+<td>sys-fs/f2fs-tools</td>
+</tr>
+<tr>
+<td>jfs</td>
+<td>mkfs.jfs</td>
+<td>Yes</td>
+<td>sys-fs/jfsutils</td>
+</tr>
+<tr>
+<td>reiserfs (deprecated)</td>
+<td>mkfs.reiserfs</td>
+<td>Yes</td>
+<td>sys-fs/reiserfsprogs</td>
+</tr>
+<tr>
+<td>xfs   mkfs.xfs</td>
+<td>Yes</td>
+<td>sys-fs/xfsprogs</td>
+<td></td>
+</tr>
+<tr>
+<td>vfat</td>
+<td>mkfs.vfat</td>
+<td>Yes</td>
+<td>sys-fs/dosfstools</td>
+</tr>
+<tr>
+<td>NTFS</td>
+<td>mkfs.ntfs</td>
+<td>Yes</td>
+<td>sys-fs/ntfs3g</td>
+</tr>
+</tbody>
+</table>
+<p>For instance, to have the EFI system partition partition (/dev/sda1) as FAT32 and the root partition (/dev/sda3) as ext4 as used in the example partition structure, the following commands would be used:</p>
+<p><code>root # mkfs.vfat -F 32 /dev/sda1</code></p>
+<p><code>root # mkfs.ext4 /dev/sda3</code></p>
+<p>When using ext4 on a small partition (less than 8 GiB), then the file system must be created with the proper options to reserve enough inodes. This can be done using one of the following commands, respectively:</p>
+<p><code>root # mkfs.ext4 -T small /dev/&lt;device&gt;</code></p>
+<p>This will generally quadruple the number of inodes for a given file system as its "bytes-per-inode" reduces from one every 16kB to one every 4kB.</p>
+<p>Now create the filesystems on the newly created partitions (or logical volumes).</p>
+<h3 id="activating-the-swap-partition">Activating the swap partition</h3>
+<p><strong>mkswap</strong> is the command that is used to initialize swap partitions:</p>
+<p><code>root #mkswap /dev/sda2</code></p>
+<p>To activate the swap partition, use swapon:</p>
+<p><code>root # swapon /dev/sda2</code></p>
+<p>Create and activate the swap with the commands mentioned above.</p>
+<h2 id="mounting-the-root-partition">Mounting the root partition</h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>Users of non-Gentoo installation media will need to create the mount point by running:</p>
+<p><code>root # mkdir --parents /mnt/gentoo</code></p>
+<p>Now that the partitions have been initialized and are housing a filesystem, it is time to mount those partitions. Use the mount command, but don't forget to create the necessary mount directories for every partition created. As an example we mount the root partition:</p>
+<p><code>root # mount /dev/sda3 /mnt/gentoo</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>If /tmp/ needs to reside on a separate partition, be sure to change its permissions after mounting:
+root #chmod 1777 /mnt/gentoo/tmp
+This also holds for /var/tmp.</p>
+<p>Later in the instructions the proc filesystem (a virtual interface with the kernel) as well as other kernel pseudo-filesystems will be mounted. But first we install the Gentoo installation files.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/floviken"  target="_blank" rel="noopener">kaboli</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/floviken" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

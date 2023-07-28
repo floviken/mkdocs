@@ -1,0 +1,1409 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://floviken.github.io/mkdocs/gentoo/installation/06-Installing%20the%20Gentoo%20base%20system/">
+      
+      
+        <link rel="prev" href="../05-Installing%20the%20Gentoo%20installation%20files/">
+      
+      
+        <link rel="next" href="../07-Configuring%20the%20linux%20kernel/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Installing the Gentoo base system - KaboliDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Installing the Gentoo base system - KaboliDocs" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/installation/06-Installing the Gentoo base system.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://floviken.github.io/mkdocs/gentoo/installation/06-Installing%20the%20Gentoo%20base%20system/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Installing the Gentoo base system - KaboliDocs" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/installation/06-Installing the Gentoo base system.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installing-the-gentoo-base-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KaboliDocs" class="md-header__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KaboliDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Installing the Gentoo base system
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../ssh/" class="md-tabs__link">
+      SSH setup
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Gentoo
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KaboliDocs" class="md-nav__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    KaboliDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ssh/" class="md-nav__link">
+        SSH setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        gentoo handbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-About%20the%20Gentoo%20Linux%20Installation/" class="md-nav__link">
+        About the Gentoo Linux Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../010-Configuring%20the%20bootloader/" class="md-nav__link">
+        Configuring the bootloader
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Choosing%20the%20right%20installation%20medium/" class="md-nav__link">
+        Choosing the right installation medium
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Configuring%20the%20network/" class="md-nav__link">
+        Configuring the network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Preparing%20the%20disks/" class="md-nav__link">
+        Preparing the disks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-Installing%20the%20Gentoo%20installation%20files/" class="md-nav__link">
+        Installing the Gentoo installation files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Installing the Gentoo base system
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Installing the Gentoo base system
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#chrooting" class="md-nav__link">
+    Chrooting
+  </a>
+  
+    <nav class="md-nav" aria-label="Chrooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#optional-selecting-mirrors" class="md-nav__link">
+    Optional: Selecting mirrors
+  </a>
+  
+    <nav class="md-nav" aria-label="Optional: Selecting mirrors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distribution-files" class="md-nav__link">
+    Distribution files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gentoo-ebuild-repository" class="md-nav__link">
+    Gentoo ebuild repository
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-dns-info" class="md-nav__link">
+    Copy DNS info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounting-the-necessary-filesystems" class="md-nav__link">
+    Mounting the necessary filesystems
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entering-the-new-environment" class="md-nav__link">
+    Entering the new environment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mounting-the-boot-partition" class="md-nav__link">
+    Mounting the boot partition
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-portage" class="md-nav__link">
+    Configuring Portage
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Portage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#installing-a-gentoo-ebuild-repository-snapshot-from-the-web" class="md-nav__link">
+    Installing a Gentoo ebuild repository snapshot from the web
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-updating-the-gentoo-ebuild-repository" class="md-nav__link">
+    Optional: Updating the Gentoo ebuild repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reading-news-items" class="md-nav__link">
+    Reading news items
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#choosing-the-right-profile" class="md-nav__link">
+    Choosing the right profile
+  </a>
+  
+    <nav class="md-nav" aria-label="Choosing the right profile">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#no-multilib" class="md-nav__link">
+    No-multilib
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#updating-the-world-set" class="md-nav__link">
+    Updating the @world set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-the-use-variable" class="md-nav__link">
+    Configuring the USE variable
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring the USE variable">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu_flags_" class="md-nav__link">
+    CPU_FLAGS_*
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video_cards" class="md-nav__link">
+    VIDEO_CARDS
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-configure-the-accept_license-variable" class="md-nav__link">
+    Optional: Configure the ACCEPT_LICENSE variable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optional-using-systemd-as-the-init-system" class="md-nav__link">
+    Optional: Using systemd as the init system
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#timezone" class="md-nav__link">
+    Timezone
+  </a>
+  
+    <nav class="md-nav" aria-label="Timezone">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openrc" class="md-nav__link">
+    OpenRC
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#systemd" class="md-nav__link">
+    systemd
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-locales" class="md-nav__link">
+    Configure locales
+  </a>
+  
+    <nav class="md-nav" aria-label="Configure locales">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#locale-generation" class="md-nav__link">
+    Locale generation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#locale-selection" class="md-nav__link">
+    Locale selection
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-Configuring%20the%20linux%20kernel/" class="md-nav__link">
+        Configuring the Linux kernel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-Configuring%20the%20system/" class="md-nav__link">
+        Configuring the system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-Installing%20system%20tools/" class="md-nav__link">
+        Installing system tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Working with gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Working with gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/01-Portage/" class="md-nav__link">
+        Working with Gentoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/02-Use/" class="md-nav__link">
+        What are USE flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/03-Features/" class="md-nav__link">
+        Portage features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/04-Initscripts/" class="md-nav__link">
+        Runlevels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_gentoo/05-EnvVar/" class="md-nav__link">
+        Environment variables
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Working with portage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Working with portage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_portage/01-Files/" class="md-nav__link">
+        01 Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="installing-the-gentoo-base-system">Installing the Gentoo base system</h1>
+<h2 id="chrooting">Chrooting</h2>
+<h3 id="optional-selecting-mirrors">Optional: Selecting mirrors</h3>
+<h4 id="distribution-files">Distribution files</h4>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>It is safe to skip this step when using non-Gentoo installation media. The <a href="https://packages.gentoo.org/packages/app-portage/mirrorselect">app-portage/mirrorselect</a> package can be emerged later within the stage3 (after <a href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Base#Entering_the_new_environment">Entering the new environment</a>) and the actions defined in this section can be performed at that point.</p>
+<p>In order to download source code quickly it is recommended to select a fast mirror. Portage will look in the make.conf file for the <em>GENTOO_MIRRORS</em> variable and use the mirrors listed therein. It is possible to surf to the Gentoo mirror list and search for a mirror (or mirrors) that is close to the system's physical location (as those are most frequently the fastest ones). However, we provide a nice tool called <strong>mirrorselect</strong> which provides users with a nice interface to select the mirrors needed. Just navigate to the mirrors of choice and press <code>Spacebar</code> to select one or more mirrors.</p>
+<p><code>root # mirrorselect -i -o &gt;&gt; /mnt/gentoo/etc/portage/make.conf</code></p>
+<h4 id="gentoo-ebuild-repository">Gentoo ebuild repository</h4>
+<p>A second important step in selecting mirrors is to configure the Gentoo ebuild repository via the /etc/portage/repos.conf/gentoo.conf file. This file contains the sync information needed to update the package repository (the collection of ebuilds and related files containing all the information Portage needs to download and install software packages).</p>
+<p>Configuring the repository can be done in a few simple steps. First, if it does not exist, create the <a href="https://wiki.gentoo.org/wiki//etc/portage/repos.conf">repos.conf</a> directory:</p>
+<p><code>root # mkdir --parents /mnt/gentoo/etc/portage/repos.conf</code></p>
+<p>Next, copy the Gentoo repository configuration file provided by Portage to the (newly created) repos.conf directory:</p>
+<p><code>root # cp /mnt/gentoo/usr/share/portage/config/repos.conf /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</code></p>
+<p>Take a peek with a text editor or by using the cat command. The inside of the file should be in .ini format and look like this:</p>
+<div class="highlight"><span class="filename">FILE /mnt/gentoo/etc/portage/repos.conf/gentoo.conf</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="o">[</span>DEFAULT<span class="o">]</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>main-repo<span class="w"> </span><span class="o">=</span><span class="w"> </span>gentoo
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="o">[</span>gentoo<span class="o">]</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">location</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>/var/db/repos/gentoo
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sync-type<span class="w"> </span><span class="o">=</span><span class="w"> </span>rsync
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>sync-uri<span class="w"> </span><span class="o">=</span><span class="w"> </span>rsync://rsync.gentoo.org/gentoo-portage
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>auto-sync<span class="w"> </span><span class="o">=</span><span class="w"> </span>yes
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>sync-rsync-verify-jobs<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>sync-rsync-verify-metamanifest<span class="w"> </span><span class="o">=</span><span class="w"> </span>yes
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>sync-rsync-verify-max-age<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">24</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>sync-openpgp-key-path<span class="w"> </span><span class="o">=</span><span class="w"> </span>/usr/share/openpgp-keys/gentoo-release.asc
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>sync-openpgp-key-refresh-retry-count<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">40</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>sync-openpgp-key-refresh-retry-overall-timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1200</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>sync-openpgp-key-refresh-retry-delay-exp-base<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>sync-openpgp-key-refresh-retry-delay-max<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>sync-openpgp-key-refresh-retry-delay-mult<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<p>The default <em>sync-uri</em> variable value listed above will determine a mirror location based on a rotation. This will aid in easing bandwidth stress on Gentoo's infrastructure and will provide a fail-safe in case a specific mirror is offline. It is recommended the default URI is retained unless a local, private Portage mirror will be used.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>The specification for Portage's plug-in sync API can be found in the Portage Sync article.</p>
+<h3 id="copy-dns-info">Copy DNS info</h3>
+<p>One thing still remains to be done before entering the new environment and that is copying over the DNS information in /etc/resolv.conf. This needs to be done to ensure that networking still works even after entering the new environment. /etc/resolv.conf contains the name servers for the network.</p>
+<p>To copy this information, it is recommended to pass the <code>--dereference</code> option to the <strong>cp</strong> command. This ensures that, if /etc/resolv.conf is a symbolic link, that the link's target file is copied instead of the symbolic link itself. Otherwise in the new environment the symbolic link would point to a non-existing file (as the link's target is most likely not available inside the new environment).</p>
+<p><code>root # cp --dereference /etc/resolv.conf /mnt/gentoo/etc/</code></p>
+<h3 id="mounting-the-necessary-filesystems">Mounting the necessary filesystems</h3>
+<p>In a few moments, the Linux root will be changed towards the new location.</p>
+<p>The filesystems that need to be made available are:</p>
+<ul>
+<li>/proc/ is a pseudo-filesystem. It looks like regular files, but is generated on-the-fly by the Linux kernel</li>
+<li>/sys/ is a pseudo-filesystem, like /proc/ which it was once meant to replace, and is more structured than /proc/</li>
+<li>/dev/ is a regular file system which contains all device. It is partially managed by the Linux device manager (usually <strong>udev</strong>)</li>
+<li>/run/ is a temporary file system used for files generated at runtime, such as PID files or locks</li>
+</ul>
+<p>The /proc/ location will be mounted on /mnt/gentoo/proc/ whereas the others are bind-mounted. The latter means that, for instance, /mnt/gentoo/sys/ will actually be /sys/ (it is just a second entry point to the same filesystem) whereas /mnt/gentoo/proc/ is a new mount (instance so to speak) of the filesystem.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>root<span class="w"> </span><span class="c1">#mount --types proc /proc /mnt/gentoo/proc</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>root<span class="w"> </span><span class="c1">#mount --rbind /sys /mnt/gentoo/sys</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>root<span class="w"> </span><span class="c1">#mount --make-rslave /mnt/gentoo/sys</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>root<span class="w"> </span><span class="c1">#mount --rbind /dev /mnt/gentoo/dev</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>root<span class="w"> </span><span class="c1">#mount --make-rslave /mnt/gentoo/dev</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>root<span class="w"> </span><span class="c1">#mount --bind /run /mnt/gentoo/run</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>root<span class="w"> </span><span class="c1">#mount --make-slave /mnt/gentoo/run</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The <code>--make-rslave</code> operations are needed for systemd support later in the installation.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>When using non-Gentoo installation media, this might not be sufficient. Some distributions make /dev/shm a symbolic link to /run/shm/ which, after the chroot, becomes invalid. Making /dev/shm/ a proper tmpfs mount up front can fix this:</p>
+<p><code>root # test -L /dev/shm &amp;&amp; rm /dev/shm &amp;&amp; mkdir /dev/shm</code>
+<code>root # mount --types tmpfs --options nosuid,nodev,noexec shm /dev/shm</code></p>
+<p>Also ensure that mode 1777 is set:</p>
+<p><code>root # chmod 1777 /dev/shm /run/shm</code></p>
+<h3 id="entering-the-new-environment">Entering the new environment</h3>
+<p>Now that all partitions are initialized and the base environment installed, it is time to enter the new installation environment by chrooting into it. This means that the session will change its root (most top-level location that can be accessed) from the current installation environment (installation CD or other installation medium) to the installation system (namely the initialized partitions). Hence the name, <em>change root</em> or <em>chroot</em>.</p>
+<p>This chrooting is done in three steps:</p>
+<ol>
+<li>The root location is changed from / (on the installation medium) to /mnt/gentoo/ (on the partitions) using chroot</li>
+<li>Some settings (those in /etc/profile) are reloaded in memory using the source command</li>
+<li>The primary prompt is changed to help us remember that this session is inside a chroot environment.</li>
+</ol>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>root<span class="w"> </span><span class="c1"># chroot /mnt/gentoo /bin/bash</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>root<span class="w"> </span><span class="c1"># source /etc/profile</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>root<span class="w"> </span><span class="c1"># export PS1=&quot;(chroot) ${PS1}&quot;</span>
+</code></pre></div>
+<p>From this point, all actions performed are immediately on the new Gentoo Linux environment.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>If the Gentoo installation is interrupted anywhere after this point, it should be possible to 'resume' the installation at this step. There is no need to repartition the disks again! Simply mount the root partition and run the steps above starting with copying the DNS info to re-enter the working environment. This is also useful for fixing bootloader issues. More information can be found in the chroot article.</p>
+<h3 id="mounting-the-boot-partition">Mounting the boot partition</h3>
+<p>Now that the new environment has been entered, it is necessary to mount the boot partition. This will be important when it is time to compile the kernel and install the bootloader:</p>
+<p><code>root #mount /dev/sda1 /boot</code></p>
+<h2 id="configuring-portage">Configuring Portage</h2>
+<h3 id="installing-a-gentoo-ebuild-repository-snapshot-from-the-web">Installing a Gentoo ebuild repository snapshot from the web</h3>
+<p>Next step is to install a snapshot of the Gentoo ebuild repository. This snapshot contains a collection of files that informs Portage about available software titles (for installation), which profiles the system administrator can select, package or profile specific news items, etc.</p>
+<p>The use of <strong>emerge-webrsync</strong> is recommended for those who are behind restrictive firewalls (it uses HTTP/FTP protocols for downloading the snapshot) and saves network bandwidth. Readers who have no network or bandwidth restrictions can happily skip down to the next section.</p>
+<p>This will fetch the latest snapshot (which is released on a daily basis) from one of Gentoo's mirrors and install it onto the system:</p>
+<p><code>root # emerge-webrsync</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>During this operation, emerge-webrsync might complain about a missing /var/db/repos/gentoo/ location. This is to be expected and nothing to worry about - the tool will create the location.</p>
+<p>From this point onward, Portage might mention that certain updates are recommended to be executed. This is because system packages installed through the stage file might have newer versions available; Portage is now aware of new packages because of the repository snapshot. Package updates can be safely ignored for now; updates can be delayed until after the Gentoo installation has finished.</p>
+<h3 id="optional-updating-the-gentoo-ebuild-repository">Optional: Updating the Gentoo ebuild repository</h3>
+<p>It is possible to update the Gentoo ebuild repository to the latest version. The previous <strong>emerge-webrsync</strong> command will have installed a very recent snapshot (usually recent up to 24h) so this step is definitely optional.</p>
+<p>Suppose there is a need for the last package updates (up to 1 hour), then use <strong>emerge --sync</strong>. This command will use the rsync protocol to update the Gentoo ebuild repository (which was fetched earlier on through emerge-webrsync) to the latest state.</p>
+<p><code>root # emerge --sync</code></p>
+<p>On slow terminals, like some framebuffers or serial consoles, it is recommended to use the --quiet option to speed up the process:</p>
+<p><code>root # emerge --sync --quiet</code></p>
+<h3 id="reading-news-items">Reading news items</h3>
+<p>When the Gentoo ebuild repository is synchronized, Portage may output informational messages similar to the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>*<span class="w"> </span>IMPORTANT:<span class="w"> </span><span class="m">2</span><span class="w"> </span>news<span class="w"> </span>items<span class="w"> </span>need<span class="w"> </span>reading<span class="w"> </span><span class="k">for</span><span class="w"> </span>repository<span class="w"> </span><span class="s1">&#39;gentoo&#39;</span>.
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>*<span class="w"> </span>Use<span class="w"> </span>eselect<span class="w"> </span>news<span class="w"> </span>to<span class="w"> </span><span class="nb">read</span><span class="w"> </span>news<span class="w"> </span>items.
+</code></pre></div>
+<p>News items were created to provide a communication medium to push critical messages to users via the Gentoo ebuild repository. To manage them, use <strong>eselect news</strong>. The <strong>eselect</strong> application is a Gentoo-specific utility that allows for a common management interface for system administration. In this case, <strong>eselect</strong> is asked to use its news module.</p>
+<p>For the <code>news</code> module, three operations are most used:</p>
+<p>With <code>list</code> an overview of the available news items is displayed.
+With <code>read</code> the news items can be read.
+With <code>purge</code> news items can be removed once they have been read and will not be reread anymore.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>root #eselect news list
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>root #eselect news read
+</code></pre></div>
+<p>More information about the news reader is available through its manual page:</p>
+<p><code>root # man news.eselect</code></p>
+<h3 id="choosing-the-right-profile">Choosing the right profile</h3>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>Desktop profiles are not exclusively for desktop environments. They are still suitable for minimal window managers like i3 or sway.</p>
+<p>A <em>profile</em> is a building block for any Gentoo system. Not only does it specify default values for USE, CFLAGS, and other important variables, it also locks the system to a certain range of package versions. These settings are all maintained by Gentoo's Portage developers.</p>
+<p>To see what profile the system is currently using, run <strong>eselect</strong> using the <code>profile</code> module:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>root<span class="w"> </span><span class="c1"># eselect profile list</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>Available<span class="w"> </span>profile<span class="w"> </span>symlink<span class="w"> </span>targets:
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1<span class="w"> </span>*
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop/gnome
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop/kde
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The output of the command is just an example and evolves over time.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>To use systemd, select a profile which has "systemd" in the name and vice versa, if not</p>
+<p>There are also desktop subprofiles available for some architectures.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Profile upgrades are not to be taken lightly. When selecting the initial profile, use the profile corresponding to the same version as the one initially used by stage3 (e.g. 17.1). Each new profile version is announced through a news item containing migration instructions. Follow the instructions before switching to a newer profile.</p>
+<p>After viewing the available profiles for the amd64 architecture, users can select a different profile for the system:</p>
+<p><code>root $ eselect profile set 2</code></p>
+<h4 id="no-multilib">No-multilib</h4>
+<p>In order to select a pure 64-bit environment, with no 32-bit applications or libraries, use a no-multilib profile:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>root<span class="w"> </span>$<span class="w"> </span>eselect<span class="w"> </span>profile<span class="w"> </span>list
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Available<span class="w"> </span>profile<span class="w"> </span>symlink<span class="w"> </span>targets:
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1<span class="w"> </span>*
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop/gnome
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop/kde
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span><span class="o">[</span><span class="m">5</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/no-multilib
+</code></pre></div>
+<p>Next select the <em>no-multilib</em> profile:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>root<span class="w"> </span>$<span class="w"> </span>eselect<span class="w"> </span>profile<span class="w"> </span><span class="nb">set</span><span class="w"> </span><span class="m">5</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>root<span class="w"> </span>$<span class="w"> </span>eselect<span class="w"> </span>profile<span class="w"> </span>list
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>Available<span class="w"> </span>profile<span class="w"> </span>symlink<span class="w"> </span>targets:
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop/gnome
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/desktop/kde
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span><span class="o">[</span><span class="m">5</span><span class="o">]</span><span class="w">   </span>default/linux/amd64/17.1/no-multilib<span class="w"> </span>*
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The <code>developer</code> subprofile is specifically for Gentoo Linux development and is not meant to be used by casual users.</p>
+<h3 id="updating-the-world-set">Updating the @world set</h3>
+<p>At this point, it is wise to update the system's <a href="https://wiki.gentoo.org/wiki/World_set_(Portage)">@world</a> set so that a base can be established.</p>
+<p>This following step is necessary so the system can apply any updates or USE flag changes which have appeared since the stage3 was built and from any profile selection:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>root<span class="w"> </span>$<span class="w"> </span>emerge<span class="w"> </span>--ask<span class="w"> </span>--verbose<span class="w"> </span>--update<span class="w"> </span>--deep<span class="w"> </span>--newuse<span class="w"> </span>@world
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>If a full scale desktop environment profile has been selected this process could greatly extend the amount of time necessary for the install process. Those in a time crunch can work by this 'rule of thumb': the shorter the profile name, the less specific the system's @world set; the less specific the <a href="https://wiki.gentoo.org/wiki/World_set_(Portage)">@world</a> set, the fewer packages the system will require. In other words:
+Selecting default/linux/amd64/17.1 will require very few packages to be updated, whereas
+Selecting default/linux/amd64/17.1/desktop/gnome/systemd will require many packages to be installed since the init system is changing from OpenRC to systemd, and the GNOME desktop environment framework will be installed.</p>
+<h3 id="configuring-the-use-variable">Configuring the USE variable</h3>
+<p><em>USE</em> is one of the most powerful variables Gentoo provides to its users. Several programs can be compiled with or without optional support for certain items. For instance, some programs can be compiled with support for GTK+ or with support for Qt. Others can be compiled with or without SSL support. Some programs can even be compiled with framebuffer support (svgalib) instead of X11 support (X-server).</p>
+<p>Most distributions compile their packages with support for as much as possible, increasing the size of the programs and startup time, not to mention an enormous amount of dependencies. With Gentoo users can define what options a package should be compiled with. This is where <em>USE</em> comes into play.</p>
+<p>In the <em>USE</em> variable users define keywords which are mapped onto compile-options. For instance, ssl will compile SSL support in the programs that support it. -X will remove X-server support (note the minus sign in front). gnome gtk -kde -qt5 will compile programs with GNOME (and GTK+) support, and not with KDE (and Qt) support, making the system fully tweaked for GNOME (if the architecture supports it).</p>
+<p>The default USE settings are placed in the make.defaults files of the Gentoo profile used by the system. Gentoo uses a (complex) inheritance system for its profiles, which we will not dive into at this stage. The easiest way to check the currently active USE settings is to run <strong>emerge --info</strong> and select the line that starts with <em>USE</em>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>root<span class="w"> </span>$<span class="w"> </span>emerge<span class="w"> </span>--info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>^USE
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">USE</span><span class="o">=</span><span class="s2">&quot;X acl alsa amd64 berkdb bindist bzip2 cli cracklib crypt cxx dri ...&quot;</span>
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>The above example is truncated, the actual list of USE values is much, much larger.
+A full description on the available USE flags can be found on the system in /var/db/repos/gentoo/profiles/use.desc.</p>
+<p><code>root $ less /var/db/repos/gentoo/profiles/use.desc</code></p>
+<p>Inside the <strong>less</strong> command, scrolling can be done using the ↑ and ↓ keys, and exited by pressing q.</p>
+<p>As an example we show a USE setting for a KDE-based system with DVD, ALSA, and CD recording support:</p>
+<p><code>root $ nano -w /etc/portage/make.conf</code></p>
+<div class="highlight"><span class="filename">FILE /etc/portage/make.conf Enabling flags for a KDE/Plasma-based system with DVD, ALSA, and CD recording support</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">USE</span><span class="o">=</span><span class="s2">&quot;-gtk -gnome qt5 kde dvd alsa cdr&quot;</span>
+</code></pre></div>
+<p>When a <em>USE</em> value is defined in /etc/portage/make.conf it is added to the system's USE flag list. USE flags can be globally <em>removed</em> by adding a - minus sign in front of the value in the the list. For example, to disable support for X graphical environments, <code>-X</code> can be set:</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/make.confIgnoring default USE flags</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">USE</span><span class="o">=</span><span class="s2">&quot;-X acl alsa&quot;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Although possible, setting -* (which will disable all USE values except the ones specified in make.conf) is strongly discouraged and unwise. Ebuild developers choose certain default USE flag values in ebuilds in order to prevent conflicts, enhance security, and avoid errors, and other reasons. Disabling all USE flags will negate default behavior and may cause major issues.</p>
+<h4 id="cpu_flags_">CPU_FLAGS_*</h4>
+<p>Some architectures (including AMD64/X86, ARM, PPC) have a <a href="https://wiki.gentoo.org/wiki/USE_EXPAND">USE_EXPAND</a> variable called <a href="https://wiki.gentoo.org/wiki/CPU_FLAGS_X86">CPU_FLAGS_ARCH</a> (replace ARCH with the relevant system architecture as appropriate).</p>
+<p>This is used to configure the build to compile in specific assembly code or other intrinsics, usually hand-written or otherwise extra, and is <strong>not</strong> the same as asking the compiler to output optimized code for a certain CPU feature (e.g. <code>-march=</code>).</p>
+<p>Users should set this variable in addition to configuring their <em>COMMON_FLAGS</em> as desired.</p>
+<p>A few steps are needed to set this up:</p>
+<p><code>root # emerge --ask app-portage/cpuid2cpuflags</code></p>
+<p>Inspect the output manually if curious:</p>
+<p><code>root # cpuid2cpuflags</code></p>
+<p>Then copy the output into package.use:</p>
+<p><code>root # echo "*/* $(cpuid2cpuflags)" &gt; /etc/portage/package.use/00cpu-flags</code></p>
+<h4 id="video_cards">VIDEO_CARDS</h4>
+<p>The <em>VIDEO_CARDS USE_EXPAND</em> variable should be configured appropriately depending on the available GPU(s). The <a href="https://wiki.gentoo.org/wiki/Xorg/Guide#Make.conf_configuration">Xorg guide</a> covers how to do this. Setting <em>VIDEO_CARDS</em> is not required for a console only install.</p>
+<h3 id="optional-configure-the-accept_license-variable">Optional: Configure the ACCEPT_LICENSE variable</h3>
+<p>The licenses of a Gentoo package are stored in the <em>LICENSE</em> variable in the ebuild. The accepted specific licenses or groups of licenses of a system are defined in the following files:</p>
+<ul>
+<li>System wide in the selected profile.</li>
+<li>System wide in the /etc/portage/make.conf file.</li>
+<li>Per-package in a /etc/portage/package.license file.</li>
+<li>Per-package in a /etc/portage/package.license/ directory of files.
+Portage looks up in the <em>ACCEPT_LICENSE</em> which packages to allow for installation. In order to print the current system wide value run:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>user<span class="w"> </span>$<span class="w"> </span>portageq<span class="w"> </span>envvar<span class="w"> </span>ACCEPT_LICENSE
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>@FREE
+</code></pre></div>
+<p>Optionally override the system wide accepted default in the profiles by changing /etc/portage/make.conf.</p>
+<div class="highlight"><span class="filename">FILE /etc/portage/make.confExample how to accept licenses with ACCEPT_LICENSE system wide</span><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">ACCEPT_LICENSE</span><span class="o">=</span><span class="s2">&quot;-* @FREE @BINARY-REDISTRIBUTABLE&quot;</span>
+</code></pre></div>
+<p>Optionally one can also define accepted licenses per-package as shown in the following directory of files example. Note that the package.license directory will need created if it does not already exist:</p>
+<p><code>root # mkdir /etc/portage/package.license</code></p>
+<div class="highlight"><span class="filename">FILE /etc/portage/package.license/kernelExample how to accept licenses per-package</span><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>app-arch/unrar<span class="w"> </span>unRAR
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>sys-kernel/linux-firmware<span class="w"> </span>@BINARY-REDISTRIBUTABLE
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>sys-firmware/intel-microcode<span class="w"> </span>intel-ucode
+</code></pre></div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+</div>
+<p>The <em>LICENSE</em> variable in an ebuild is only a guideline for Gentoo developers and users. It is not a legal statement, and there is no guarantee that it will reflect reality. So don't rely on it, but check the package itself in depth, including all files that have been installed to the system.</p>
+<p>The license groups defined in the Gentoo repository, managed by the Gentoo Licenses project, are:</p>
+<table>
+<thead>
+<tr>
+<th>Group Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@GPL-COMPATIBLE</td>
+<td>GPL compatible licenses approved by the Free Software Foundation [a_license 1]</td>
+</tr>
+<tr>
+<td>@FSF-APPROVED</td>
+<td>Free software licenses approved by the FSF (includes @GPL-COMPATIBLE)</td>
+</tr>
+<tr>
+<td>@OSI-APPROVED</td>
+<td>Licenses approved by the Open Source Initiative [a_license 2]</td>
+</tr>
+<tr>
+<td>@MISC-FREE</td>
+<td>Misc licenses that are probably free software, i.e. follow the Free Software Definition [a_license 3] but are not approved by either FSF or OSI</td>
+</tr>
+<tr>
+<td>@FREE-SOFTWARE</td>
+<td>Combines @FSF-APPROVED, @OSI-APPROVED and @MISC-FREE</td>
+</tr>
+<tr>
+<td>@FSF-APPROVED-OTHER</td>
+<td>FSF-approved licenses for "free documentation" and "works of practical use besides software and documentation" (including fonts)</td>
+</tr>
+<tr>
+<td>@MISC-FREE-DOCS</td>
+<td>Misc licenses for free documents and other works (including fonts) that follow the free definition [a_license 4] but are NOT listed in @FSF-APPROVED-OTHER</td>
+</tr>
+<tr>
+<td>@FREE-DOCUMENTS</td>
+<td>Combines @FSF-APPROVED-OTHER and @MISC-FREE-DOCS</td>
+</tr>
+<tr>
+<td>@FREE</td>
+<td>Metaset of all licenses with the freedom to use, share, modify and share modifications. Combines @FREE-SOFTWARE and @FREE-DOCUMENTS</td>
+</tr>
+<tr>
+<td>@BINARY-REDISTRIBUTABLE</td>
+<td>Licenses that at least permit free redistribution of the software in binary form. Includes @FREE</td>
+</tr>
+<tr>
+<td>@EULA</td>
+<td>License agreements that try to take away your rights. These are more restrictive than "all-rights-reserved" or require explicit approval</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><a href="https://www.gnu.org/licenses/license-list.html">https://www.gnu.org/licenses/license-list.html</a></li>
+<li><a href="https://www.opensource.org/licenses">https://www.opensource.org/licenses</a></li>
+<li><a href="https://www.gnu.org/philosophy/free-sw.html">https://www.gnu.org/philosophy/free-sw.html</a></li>
+<li><a href="https://freedomdefined.org/">https://freedomdefined.org/</a></li>
+</ul>
+<h3 id="optional-using-systemd-as-the-init-system">Optional: Using systemd as the init system</h3>
+<p>The remainder of the Gentoo handbook will provide systemd steps alongside <a href="https://wiki.gentoo.org/wiki/OpenRC">OpenRC</a> (the traditional Gentoo init system) where separate steps or recommendations are necessary. System administrators should also consult the <a href="https://wiki.gentoo.org/wiki/Systemd">systemd</a> article for more details on managing systemd as the system and service manager.</p>
+<h3 id="timezone">Timezone</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>This step does not apply to users of the musl libc. Users who do not know what that means should perform this step.
+Select the timezone for the system. Look for the available timezones in /usr/share/zoneinfo/:</p>
+<p><code>root # ls /usr/share/zoneinfo</code></p>
+<p>Suppose the timezone of choice is Europe/Brussels.</p>
+<h4 id="openrc">OpenRC</h4>
+<p>We write the timezone name into the /etc/timezone file.</p>
+<p><code>root # echo "Europe/Brussels" &gt; /etc/timezone</code></p>
+<p>Please avoid the /usr/share/zoneinfo/Etc/GMT* timezones as their names do not indicate the expected zones. For instance, GMT-8 is in fact GMT+8.</p>
+<p>Next, reconfigure the sys-libs/timezone-data package, which will update the /etc/localtime file for us, based on the /etc/timezone entry. The /etc/localtime file is used by the system C library to know the timezone the system is in.</p>
+<p><code>root # emerge --config sys-libs/timezone-data</code></p>
+<h4 id="systemd">systemd</h4>
+<p>A slightly different approach is employed when using systemd. A symbolic link is generated:</p>
+<p><code>root # ln -sf ../usr/share/zoneinfo/Europe/Brussels /etc/localtime</code></p>
+<p>Later, when systemd is running, the timezone and related settings can be configured with the timedatectl command.</p>
+<h3 id="configure-locales">Configure locales</h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>This step does not apply to users of the musl libc. Users who do not know what that means should perform this step.</p>
+<h4 id="locale-generation">Locale generation</h4>
+<p>Most users will want to use only one or two locales on their system.</p>
+<p>Locales specify not only the language that the user should use to interact with the system, but also the rules for sorting strings, displaying dates and times, etc. Locales are case <em>sensitive</em> and must be represented exactly as described. A full listing of available locales can be found in the /usr/share/i18n/SUPPORTED file.</p>
+<p>Supported system locales must be defined in the /etc/locale.gen file.</p>
+<p><code>root # nano -w /etc/locale.gen</code></p>
+<p>The following locales are an example to get both English (United States) and German (Germany/Deutschland) with the accompanying character formats (like UTF-8).</p>
+<div class="highlight"><span class="filename">FILE /etc/locale.gen Enabling US and DE locales with the appropriate character formats</span><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>en_US<span class="w"> </span>ISO-8859-1
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>en_US.UTF-8<span class="w"> </span>UTF-8
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>de_DE<span class="w"> </span>ISO-8859-1
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>de_DE.UTF-8<span class="w"> </span>UTF-8
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+</div>
+<p>Many applications require least one UTF-8 locale to build properly.
+The next step is to run the <strong>locale-gen</strong> command. This command generates all locales specified in the /etc/locale.gen file.</p>
+<p><code>root # locale-gen</code></p>
+<p>To verify that the selected locales are now available, run <strong>locale -a</strong>.</p>
+<p>On systemd installs, <strong>localectl</strong> can be used, e.g. <strong>localectl set-locale</strong> ... or <strong>localectl list-locales</strong>.</p>
+<h4 id="locale-selection">Locale selection</h4>
+<p>Once done, it is now time to set the system-wide locale settings. Again we use eselect for this, now with the locale module.</p>
+<p>With <strong>eselect locale list</strong>, the available targets are displayed:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>root<span class="w"> </span>$<span class="w"> </span>eselect<span class="w"> </span>locale<span class="w"> </span>list
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>Available<span class="w"> </span>targets<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>LANG<span class="w"> </span>variable:
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span><span class="o">[</span><span class="m">1</span><span class="o">]</span><span class="w">  </span>C
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span><span class="o">[</span><span class="m">2</span><span class="o">]</span><span class="w">  </span>C.utf8
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span><span class="o">[</span><span class="m">3</span><span class="o">]</span><span class="w">  </span>en_US
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span><span class="o">[</span><span class="m">4</span><span class="o">]</span><span class="w">  </span>en_US.iso88591
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span><span class="o">[</span><span class="m">5</span><span class="o">]</span><span class="w">  </span>en_US.utf8
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="w">  </span><span class="o">[</span><span class="m">6</span><span class="o">]</span><span class="w">  </span>de_DE
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a><span class="w">  </span><span class="o">[</span><span class="m">7</span><span class="o">]</span><span class="w">  </span>de_DE.iso88591
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="w">  </span><span class="o">[</span><span class="m">8</span><span class="o">]</span><span class="w">  </span>de_DE.iso885915
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="w">  </span><span class="o">[</span><span class="m">9</span><span class="o">]</span><span class="w">  </span>de_DE.utf8
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a><span class="w">  </span><span class="o">[</span><span class="m">10</span><span class="o">]</span><span class="w"> </span>POSIX
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a><span class="w">  </span><span class="o">[</span><span class="w"> </span><span class="o">]</span><span class="w">  </span><span class="o">(</span>free<span class="w"> </span>form<span class="o">)</span>
+</code></pre></div>
+<p>With <strong>eselect locale set <NUMBER></strong> the correct locale can be selected:</p>
+<p><code>root # eselect locale set 9</code></p>
+<p>Manually, this can still be accomplished through the /etc/env.d/02locale file and for Systemd the /etc/locale.conf file:</p>
+<div class="highlight"><span class="filename">FILE /etc/env.d/02localeManually setting system locale definitions</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">LANG</span><span class="o">=</span><span class="s2">&quot;de_DE.UTF-8&quot;</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">LC_COLLATE</span><span class="o">=</span><span class="s2">&quot;C.UTF-8&quot;</span>
+</code></pre></div>
+<p>Setting the locale will avoid warnings and errors during kernel and software compilations later in the installation.</p>
+<p>Now reload the environment:</p>
+<p><code>root # env-update &amp;&amp; source /etc/profile &amp;&amp; export PS1="(chroot) ${PS1}"</code></p>
+<p>For additional guidance through the locale selection process read also the <a href="https://wiki.gentoo.org/wiki/Localization/Guide">Localization guide</a> and the <a href="https://wiki.gentoo.org/wiki/UTF-8">UTF-8</a> guide.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/floviken"  target="_blank" rel="noopener">kaboli</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/floviken" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>

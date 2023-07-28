@@ -1,0 +1,1002 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://floviken.github.io/mkdocs/gentoo/working_with_gentoo/05-EnvVar/">
+      
+      
+        <link rel="prev" href="../04-Initscripts/">
+      
+      
+        <link rel="next" href="../../working_with_portage/01-Files/">
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.1, mkdocs-material-9.1.21">
+    
+    
+      
+        <title>Environment variables - KaboliDocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.eebd395e.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Environment variables - KaboliDocs" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/working_with_gentoo/05-EnvVar.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://floviken.github.io/mkdocs/gentoo/working_with_gentoo/05-EnvVar/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Environment variables - KaboliDocs" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://floviken.github.io/mkdocs/assets/images/social/gentoo/working_with_gentoo/05-EnvVar.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#environment-variables" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="KaboliDocs" class="md-header__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            KaboliDocs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Environment variables
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="orange" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Welcome to MkDocs
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../ssh/" class="md-tabs__link">
+      SSH setup
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Gentoo
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="KaboliDocs" class="md-nav__button md-logo" aria-label="KaboliDocs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    KaboliDocs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Welcome to MkDocs
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ssh/" class="md-nav__link">
+        SSH setup
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        gentoo handbook
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+          Installation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Installation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/01-About%20the%20Gentoo%20Linux%20Installation/" class="md-nav__link">
+        About the Gentoo Linux Installation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/010-Configuring%20the%20bootloader/" class="md-nav__link">
+        Configuring the bootloader
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/02-Choosing%20the%20right%20installation%20medium/" class="md-nav__link">
+        Choosing the right installation medium
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/03-Configuring%20the%20network/" class="md-nav__link">
+        Configuring the network
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/04-Preparing%20the%20disks/" class="md-nav__link">
+        Preparing the disks
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/05-Installing%20the%20Gentoo%20installation%20files/" class="md-nav__link">
+        Installing the Gentoo installation files
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/06-Installing%20the%20Gentoo%20base%20system/" class="md-nav__link">
+        Installing the Gentoo base system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/07-Configuring%20the%20linux%20kernel/" class="md-nav__link">
+        Configuring the Linux kernel
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/08-Configuring%20the%20system/" class="md-nav__link">
+        Configuring the system
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/09-Installing%20system%20tools/" class="md-nav__link">
+        Installing system tools
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Working with gentoo
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Working with gentoo
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-Portage/" class="md-nav__link">
+        Working with Gentoo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-Use/" class="md-nav__link">
+        What are USE flags
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-Features/" class="md-nav__link">
+        Portage features
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-Initscripts/" class="md-nav__link">
+        Runlevels
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Environment variables
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Environment variables
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables_1" class="md-nav__link">
+    Environment variables
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#important-examples" class="md-nav__link">
+    Important examples
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-variables-globally" class="md-nav__link">
+    Defining variables globally
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining variables globally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-envd-directory" class="md-nav__link">
+    The env.d directory
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#env-update" class="md-nav__link">
+    env-update
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-variables-locally" class="md-nav__link">
+    Defining variables locally
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining variables locally">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-specific" class="md-nav__link">
+    User specific
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-specific" class="md-nav__link">
+    Session specific
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          Working with portage
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Working with portage
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../working_with_portage/01-Files/" class="md-nav__link">
+        01 Files
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="environment-variables">Environment variables</h1>
+<h2 id="environment-variables_1">Environment variables</h2>
+<h3 id="introduction">Introduction</h3>
+<p>An environment variable is a named object that contains information used by one or more applications. By using environment variables one can easily change a configuration setting for one or more applications.</p>
+<h3 id="important-examples">Important examples</h3>
+<p>The following table lists a number of variables used by a Linux system and describes their use. Example values are presented after the table.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>PATH</em></td>
+<td>This variable contains a colon-separated list of directories in which the system looks for executable files. If a name is entered of an executable (such as ls, rc-update, or emerge) but this executable is not located in a listed directory, then the system will not execute it (unless the full path is entered as the command, such as /bin/ls).</td>
+</tr>
+<tr>
+<td><em>ROOTPATH</em></td>
+<td>This variable has the same function as PATH, but this one only lists the directories that should be checked when the root-user enters a command.</td>
+</tr>
+<tr>
+<td><em>LDPATH</em></td>
+<td>This variable contains a colon-separated list of directories in which the dynamical linker searches through to find a library.</td>
+</tr>
+<tr>
+<td><em>MANPATH</em></td>
+<td>This variable contains a colon-separated list of directories in which the man command searches for the man pages.</td>
+</tr>
+<tr>
+<td><em>INFODIR</em></td>
+<td>This variable contains a colon-separated list of directories in which the info command searches for the info pages.</td>
+</tr>
+<tr>
+<td><em>PAGER</em></td>
+<td>This variable contains the path to the program used to list the contents of files through (such as less or more).</td>
+</tr>
+<tr>
+<td><em>EDITOR</em></td>
+<td>This variable contains the path to the program used to change the contents of files with (such as nano or vi).</td>
+</tr>
+<tr>
+<td><em>KDEDIRS</em></td>
+<td>This variable contains a colon-separated list of directories which contain KDE-specific material.</td>
+</tr>
+<tr>
+<td><em>CONFIG_PROTECT</em></td>
+<td>This variable contains a space-delimited list of directories which should be protected by Portage during package updates.</td>
+</tr>
+<tr>
+<td><em>CONFIG_PROTECT_MASK</em></td>
+<td>This variable contains a space-delimited list of directories which should not be protected by Portage during package updates.</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example definition of all these variables:</p>
+<div class="highlight"><span class="filename">CODE Example settings for the mentioned variables</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/bin:/usr/bin:/usr/local/bin:/opt/bin:/usr/games/bin&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">ROOTPATH</span><span class="o">=</span><span class="s2">&quot;/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin&quot;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">LDPATH</span><span class="o">=</span><span class="s2">&quot;/lib:/usr/lib:/usr/local/lib:/usr/lib/gcc-lib/i686-pc-linux-gnu/3.2.3&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">MANPATH</span><span class="o">=</span><span class="s2">&quot;/usr/share/man:/usr/local/share/man&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">INFODIR</span><span class="o">=</span><span class="s2">&quot;/usr/share/info:/usr/local/share/info&quot;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">PAGER</span><span class="o">=</span><span class="s2">&quot;/usr/bin/less&quot;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">EDITOR</span><span class="o">=</span><span class="s2">&quot;/usr/bin/vim&quot;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">KDEDIRS</span><span class="o">=</span><span class="s2">&quot;/usr&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># Directories that are protected during package updates.</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># Note the use of the \ (backslashes) on the end of the following lines which interprets to a single space-delimited line.</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">CONFIG_PROTECT</span><span class="o">=</span><span class="s2">&quot;/usr/X11R6/lib/X11/xkb /opt/tomcat/conf \</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s2">                /usr/kde/3.1/share/config /usr/share/texmf/tex/generic/config/ \</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s2">                /usr/share/texmf/tex/platex/config/ /usr/share/config&quot;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># Directories that are _not_ protected during package updates.</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nv">CONFIG_PROTECT_MASK</span><span class="o">=</span><span class="s2">&quot;/etc/gconf&quot;</span>
+</code></pre></div>
+<h2 id="defining-variables-globally">Defining variables globally</h2>
+<h3 id="the-envd-directory">The env.d directory</h3>
+<p>To centralize the definitions of these variables, Gentoo introduced the /etc/env.d/ directory. Inside this directory a number of files are available, such as 00basic, 05gcc, etc. which contain the variables needed by the application mentioned in their name.</p>
+<p>For instance, when <strong>gcc</strong> is installed, a file called 05gcc was created by the ebuild which contains the definitions of the following variables:</p>
+<div class="highlight"><span class="filename">FILE /etc/env.d/05gccDefault gcc enabled environment variables</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/i686-pc-linux-gnu/gcc-bin/3.2&quot;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">ROOTPATH</span><span class="o">=</span><span class="s2">&quot;/usr/i686-pc-linux-gnu/gcc-bin/3.2&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">MANPATH</span><span class="o">=</span><span class="s2">&quot;/usr/share/gcc-data/i686-pc-linux-gnu/3.2/man&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">INFOPATH</span><span class="o">=</span><span class="s2">&quot;/usr/share/gcc-data/i686-pc-linux-gnu/3.2/info&quot;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">CC</span><span class="o">=</span><span class="s2">&quot;gcc&quot;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nv">CXX</span><span class="o">=</span><span class="s2">&quot;g++&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">LDPATH</span><span class="o">=</span><span class="s2">&quot;/usr/lib/gcc-lib/i686-pc-linux-gnu/3.2.3&quot;</span>
+</code></pre></div>
+<p>Other distributions might tell their users to change or add such environment variable definitions in /etc/profile or other locations. Gentoo on the other hand makes it easy for the user (and for Portage) to maintain and manage the environment variables without having to pay attention to the numerous files that can contain environment variables.</p>
+<p>For instance, when <strong>gcc</strong> is updated, the /etc/env.d/05gcc file is updated too without requesting any user-interaction.</p>
+<p>This not only benefits Portage, but also the user. Occasionally users might be asked to set a certain environment variable system-wide. As an example we take the <em>http_proxy</em> variable. Instead of messing about with /etc/profile, users can now just create a file (say /etc/env.d/99local) and enter the definition(s) in it:</p>
+<div class="highlight"><span class="filename">FILE /etc/env.d/99localSetting a global variable</span><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">http_proxy</span><span class="o">=</span><span class="s2">&quot;proxy.server.com:8080&quot;</span>
+</code></pre></div>
+<p>By using the same file for all self-managed variables, users have a quick overview on the variables they have defined themselves.</p>
+<h3 id="env-update">env-update</h3>
+<p>Several files in /etc/env.d/ define the <em>PATH</em> variable. This is not a mistake: when the <strong>env-update</strong> command is executed, it will append the several definitions before it updates the environment variables, thereby making it easy for packages (or users) to add their own environment variable settings without interfering with the already existing values.</p>
+<p>The <strong>env-update</strong> script will append the values in the alphabetical order of the /etc/env.d/ files. The file names must begin with two decimal digits.</p>
+<div class="highlight"><span class="filename">CODE Update order used by env-update</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>00basic<span class="w">        </span>99kde-env<span class="w">       </span>99local
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">     </span>+-------------+----------------+-------------+
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/bin:/usr/bin:/usr/kde/3.2/bin:/usr/local/bin&quot;</span>
+</code></pre></div>
+<p>The concatenation of variables does not always happen, only with the following variables: <em>ADA_INCLUDE_PATH, ADA_OBJECTS_PATH, CLASSPATH, KDEDIRS, PATH, LDPATH, MANPATH, INFODIR, INFOPATH, ROOTPATH, CONFIG_PROTECT, CONFIG_PROTECT_MASK, PRELINK_PATH, PRELINK_PATH_MASK, PKG_CONFIG_PATH</em>, and <em>PYTHONPATH</em>. For all other variables the latest defined value (in alphabetical order of the files in /etc/env.d/) is used.</p>
+<p>It is possible to add more variables into this list of concatenate-variables by adding the variable name to either <em>COLON_SEPARATED</em> or <em>SPACE_SEPARATED</em> variables (also inside an /etc/env.d/ file).</p>
+<p>When executing <strong>env-update</strong>, the script will create all environment variables and place them in /etc/profile.env (which is used by /etc/profile). It will also extract the information from the <em>LDPATH</em> variable and use that to create /etc/ld.so.conf. After this, it will run <em>ldconfig</em> to recreate the /etc/ld.so.cache file used by the dynamical linker.</p>
+<p>To notice the effect of <strong>env-update</strong> immediately after running it, execute the following command to update the environment. Users who have installed Gentoo themselves will probably remember this from the installation instructions:</p>
+<p><code>root # env-update &amp;&amp; source /etc/profile</code></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p>```The above command only updates the variables in the current terminal, new consoles, and their children. Thus, if the user is working in X11, he needs to either type source /etc/profile in every new terminal opened or restart X so that all new terminals source the new variables. If a login manager is used, it is necessary to become root and restart the /etc/init.d/xdm service.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>!!! Important
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>```It is not possible to use shell variables when defining other variables. This means things like FOO=&quot;$BAR&quot; (where $BAR is another variable) are forbidden.
+</code></pre></div></p>
+<h2 id="defining-variables-locally">Defining variables locally</h2>
+<h3 id="user-specific">User specific</h3>
+<p>It might not be necessary to define an environment variable globally. For instance, one might want to add /home/my_user/bin and the current working directory (the directory the user is in) to the <em>PATH</em> variable but do not want all other users on the system to have that in their <em>PATH</em> too. To define an environment variable locally, use ~/.bashrc or ~/.bash_profile:</p>
+<div class="highlight"><span class="filename">FILE ~/.bashrcExtending PATH for local usage</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># A colon followed by no directory is treated as the current working directory</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PATH</span><span class="si">}</span><span class="s2">:/home/my_user/bin:&quot;</span>
+</code></pre></div>
+<p>After logout/login, the <em>PATH</em> variable will be updated.</p>
+<h3 id="session-specific">Session specific</h3>
+<p>Sometimes even stricter definitions are requested. For instance, a user might want to be able to use binaries from a temporary directory created without using the path to the binaries themselves or editing ~/.bashrc for the short time necessary.</p>
+<p>In this case, just define the PATH variable in the current session by using the export command. As long as the user does not log out, the PATH variable will be using the temporary settings.</p>
+<p><code>root #export PATH="${PATH}:/home/my_user/tmp/usr/bin"</code></p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2023 <a href="https://github.com/floviken"  target="_blank" rel="noopener">kaboli</a>
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/floviken" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.tracking", "navigation.sections", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "search.suggest", "search.highlight", "content.tabs.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.74e28a9f.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.220ee61c.min.js"></script>
+      
+    
+  </body>
+</html>
