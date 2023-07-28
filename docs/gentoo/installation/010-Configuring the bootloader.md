@@ -11,6 +11,7 @@ For amd64, we document how to configure either GRUB or LILO for BIOS based syste
 In this section of the Handbook a delineation has been made between emerging the boot loader's package and installing a boot loader to a system disk. Here the term emerge will be used to ask Portage to make the software package available to the system. The term install will signify the boot loader copying files or physically modifying appropriate sections of the system's disk drive in order to render the boot loader activated and ready to operate on the next power cycle.
 
 Default: GRUB
+
 By default, the majority of Gentoo systems now rely upon GRUB (found in the sys-boot/grub package), which is the direct successor to GRUB Legacy. With no additional configuration, GRUB gladly supports older BIOS ("pc") systems. With a small amount of configuration, necessary before build time, GRUB can support more than a half a dozen additional platforms. For more information, consult the Prerequisites section of the GRUB article.
 
 Emerge
